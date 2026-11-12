@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>TD Duct Splitter</Name>
+    <!-- Đường dẫn tương đối: đặt thư mục TD.DuctSplitter cạnh file .addin -->
+    <Assembly>TD.DuctSplitter\TD.DuctSplitter.dll</Assembly>
+    <AddInId>6F1C3E2A-8B4D-4E7A-9C21-3D5F0A7B9E14</AddInId>
+    <FullClassName>TD.DuctSplitter.App</FullClassName>
+    <VendorId>TDMEP</VendorId>
+    <VendorDescription>Tien Dat MEP tools</VendorDescription>
+  </AddIn>
+</RevitAddIns>
