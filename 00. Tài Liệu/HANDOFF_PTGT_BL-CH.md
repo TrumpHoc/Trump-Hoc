@@ -179,3 +179,8 @@
 - File hiện hành: `4. Khối lượng - BOQ/PTGT Buong lanh + Chiller - 2026.11.13_v21.xlsx` + PDF `…_v21.pdf`
 - Thay đổi: ghi chú 5 "Giao hàng và thi công: 55 - 60 ngày tính từ khi thanh toán tạm ứng" (trước 30 - 40). Số liệu không đổi.
 - Còn mở: tên công ty/địa chỉ/email KH
+
+## CHECKPOINT 22 – 2026-11-13
+- File hiện hành: `4. Khối lượng - BOQ/PTGT Buong lanh + Chiller - 2026.11.13_v22.xlsx` + PDF `…_v22.pdf`
+- Thay đổi: 3 dòng tổng (trước thuế, VAT, sau thuế) cùng cao 42. Số liệu không đổi.
+- Còn mở: tên công ty/địa chỉ/email KH

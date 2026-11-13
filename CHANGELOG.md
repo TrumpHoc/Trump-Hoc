@@ -20,3 +20,4 @@
 - 2026-11-13 v19: Lặp tiêu đề dòng 14–15 mỗi trang in; thu hẹp dòng 14–15; xuất lại PDF.
 - 2026-11-13 v20: Dòng VAT cao bằng dòng tổng trước thuế; xuất lại PDF.
 - 2026-11-13 v21: Thời gian giao hàng, thi công 55 - 60 ngày.
+- 2026-11-13 v22: Dòng tổng sau thuế cao bằng 2 dòng tổng trên.
