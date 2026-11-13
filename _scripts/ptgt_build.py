@@ -265,19 +265,19 @@ ROWS[-1]["user"] = True
 gc("Vật tư phụ lắp vỏ (silicone, keo bọt, ốc vít, rivet, đèn, van thông áp)", "Trọn bộ", "", "Lô", 1,
    GC["vt_phu_lap_vo_lo"], 0)
 gc("Vận chuyển panel đến công trình", "", "", "Lô", 1, 0, GC["van_chuyen_panel_lo"])
-gc("Máy nén Panasonic 20HP", "", "", "cái", nC, GC["may_nen_20HP"], 0)
-gc("Bình ngưng giải nhiệt nước 20HP", "", "", "cái", nC, GC["binh_ngung_20HP"], 0)
-gc("Nhớt lạnh POE", "", "", "bộ", nC, GC["nhot_POE_bo"], 0, "Theo cụm")
-gc("Phụ kiện lên máy (bình chứa, phin, mắt gas, van, rơ le áp...)", "", "", "bộ", nC, GC["phu_kien_len_may"], 0)
-gc("Nhân công lắp ráp cụm máy nén ngưng tụ", "", "", "cụm", nC, 0, GC["nc_len_cum"])
+gc("Cụm máy nén bình ngưng 20HP", "Máy nén Panasonic 20HP + bình ngưng + nhớt POE + phụ kiện lên máy", "",
+   "cụm", nC, GC["may_nen_20HP"] + GC["binh_ngung_20HP"] + GC["nhot_POE_bo"] + GC["phu_kien_len_may"],
+   GC["nc_len_cum"], "NC = nhân công lắp ráp cụm")
+ROWS[-1]["nc_share"] = "I.1"
 gc("Dàn lạnh DJ 14.3/85-201 (≈25HP)", "theo ghi chép", "", "cái", nE, GC["dan_lanh"], 0,
    "Model đọc từ ghi chép tay – cần xác nhận")
+ROWS[-1]["nc_share"] = "I.1"
 gc("Tháp giải nhiệt 20RT", "", "", "bộ", B["so_thap"], GC["thap_20RT"], 0,
    "1 tháp 20RT cho mỗi cụm CDU 20HP (user chốt 13/11)")
+ROWS[-1]["nc_share"] = "I.1"
 gc("Bơm giải nhiệt 1,5kW (Ewara) – 1 bơm/cụm", "", "Ý", "cái", B["so_bom"], GC["bom_1_5kW"], 0,
    "1 bơm cho mỗi cụm, không có bơm dự phòng (user chốt 13/11)")
-gc("Nhân công lắp đặt hệ thống (tháp, bơm, đường ống, điện, nạp gas, chạy thử)", "", "", "hệ", nC, 0,
-   GC["nc_lap_dat_moi_he"])
+ROWS[-1]["nc_share"] = "I.1"
 
 sec("I.2", "Đường ống")
 Lg = nC * (B["L_CDU_buong_m"] + B["L_them_moi_tuyen_m"])
@@ -285,16 +285,30 @@ L_cu = round(Lg * (1 + HH))
 gc("Ống đồng Ø42x1,0 + Ø16x0,8 + bảo ôn 42x25 + phụ kiện đồng (theo cặp ống)", "800.000 đ/m (ghi chép)",
    "", "m", L_cu, GC["ong_dong_cap_m"], 0,
    f"{nC} tuyến × ({B['L_CDU_buong_m']}+{B['L_them_moi_tuyen_m']}) m × 1,05")
+ROWS[-1]["nc_share"] = "I.2"
 gc("Van tiết lưu TES5", "Danfoss", "", "bộ", nC, GC["tiet_luu_TES5"], 0)
+ROWS[-1]["nc_share"] = "I.2"
 gc("Gas lạnh R404A/R507", "", "", "hệ", nC, GC["gas_moi_he"], 0, "5.700.000/hệ – user xác nhận 13/11")
+ROWS[-1]["nc_share"] = "I.2"
 gc("Ống PVC + phụ kiện (nước giải nhiệt, thoát nước xả đá)", "", "Việt Nam", "hệ", nC, GC["ong_pvc_moi_he"], 0)
+ROWS[-1]["nc_share"] = "I.2"
 item("Giá đỡ chung tuyến ống gas (thép hình, ty treo, kẹp)", "@1,5 m", "Việt Nam", "cái",
      math.ceil(B["L_CDU_buong_m"] / 1.5) + 2, GD_LON[0], nc(1), GD_LON[1], "Có nguồn")
 
 sec("I.3", "Đường điện")
 gc("Tủ điện điều khiển cụm máy (1 tủ/cụm)", "", "Việt Nam", "tủ", nC, GC["tu_dk_moi_he"], 0)
+ROWS[-1]["nc_share"] = "I.3"
 gc("Dây điện, cáp động lực và điều khiển", "", "Việt Nam", "hệ", nC, GC["day_dien_moi_he"], 0)
+ROWS[-1]["nc_share"] = "I.3"
 
+# ---- chia đều NC lắp đặt hệ thống (11tr/hệ × nC) cho 3 mục I.1 / I.2 / I.3, trong mục chia đều theo dòng
+_nc_tot = g(GC["nc_lap_dat_moi_he"]) * nC
+for _m in ("I.1", "I.2", "I.3"):
+    _rows = [r for r in ROWS if r.get("nc_share") == _m]
+    for r in _rows:
+        _add = _nc_tot / 3 / len(_rows) / r["sl"]
+        r["r"] = round((r["r"] or 0) + _add)
+        r["note"] = (r["note"] + "; " if r["note"] else "") + f"NC gồm phần chia đều NC lắp đặt {_nc_tot:,.0f} đ (1/3 cho mục {_m}, chia đều {len(_rows)} dòng)"
 # ================================================================ PHẦN II – CHILLER
 C = P["chiller"]
 n = C["so_chiller"]
@@ -329,10 +343,10 @@ fit(f"Cút 90° uPVC D{D}", D, n * (6 + 8), CUT[D], 0.6)
 fit(f"Mặt bích uPVC D{D}", D, 2 * n + 2 * (2 * n) + 4 * n + 2 * n, BICH[D], 0.6)
 ROWS[-1]["note"] = "Bích chờ tank DN100 6 + bơm 2/cái×6 + cổ chiller 4×3 + cổ tháp 2×3"
 item(f"Bảo ôn cao su lưu hóa dày 15mm cho ống D{D}", "", "China", "m",
-     ceil_to(n * L_lanh_1 * (1 + HH), P["cay_bao_on_m"]), BO_114_15[0],
+     ceil_to(n * L_lanh_1 * (1 + HH), 4), BO_114_15[0],
      round(BO_114_15[0] * P["ty_le_NC_bao_on"], -2), BO_114_15[1], "Quy đổi")
 item("Bảo ôn van, phụ kiện nước lạnh (cuộn + keo + băng dính)", "", "China", "Lô", 1,
-     round(0.15 * ROWS[-1]["sl"] * ROWS[-1]["q"], -3), 0, "Quy đổi 15% giá trị bảo ôn ống", "Quy đổi")
+     round(0.15 * ROWS[-1]["sl"] * ROWS[-1]["q"], -3), U["nc_bao_on_pk"], "Quy đổi 15% giá trị bảo ôn ống; NC user cấp", "Quy đổi")
 
 VBI110 = (P["gia_user_chiller"]["van_pvc_110"], "Giá user cấp 13/11/2026")
 acc(f"Van bi nhựa PVC tay gạt D{D}", "dán keo", 2 * n + n + n, VBI110, 1.1, xx="")
@@ -374,14 +388,19 @@ item("Móng bê tông thiết bị", "CĐT PHỤ TRÁCH", "", "Lô", 1, 0, 0, "S
 item("Cáp nguồn đến tủ điện tổng", "CĐT PHỤ TRÁCH", "", "Lô", 1, 0, 0, "Phạm vi", "Lô", "CĐT PHỤ TRÁCH")
 
 # ================================================================ GHI FILE
+# Bố cục cột (v12 – đã xoá cột Ghi chú/Nguồn/Trạng thái):
+#   A–K bán | L, M trống | N nhãn tham số | O SL vốn | P ĐG VT vốn | Q ĐG NC vốn | R TT VT | S TT NC | T TỔNG vốn
+#   U cờ tiêu hao (1/0) | V cờ loại khỏi nền CPK (1)
+from openpyxl.utils import get_column_letter as CL
+cSL, cQ, cR, cS, cT, cU, cX, cY = 15, 16, 17, 18, 19, 20, 21, 22
+L_ = {k: CL(v) for k, v in dict(SL=cSL, Q=cQ, R=cR, S=cS, T=cT, U=cU, X=cX, Y=cY).items()}
+HS_CELL, CPK_CELL, TH_CELL = "O8", "O9", "O10"
 tpl = openpyxl.load_workbook(TPL)
 ws = tpl["BG"]
 ws.title = "DT"
-# chụp style mẫu
 def cap(r):
-    return {c: copy.copy(ws.cell(r, c)._style) for c in range(1, 13)}
+    return {c: copy.copy(ws.cell(r, c)._style) for c in range(1, 12)}
 ST = {"part": cap(16), "sec": cap(19), "item": cap(20), "text": cap(22), "tot": cap(61), "note": cap(65)}
-H_ROW = {k: ws.row_dimensions[r].height for k, r in [("part", 16), ("sec", 19), ("item", 20)]}
 notes = [ws.cell(r, 1).value for r in range(64, 78)]
 for mr in list(ws.merged_cells.ranges):
     if mr.min_row >= 16:
@@ -401,148 +420,112 @@ ws["H11"] = P["quota_no"]
 ws["H12"] = P["ngay"]
 YEL = PatternFill("solid", fgColor="FFFF00")
 ORG = PatternFill("solid", fgColor="F8CBAD")
-RED = PatternFill("solid", fgColor="FFC7CE")
 BLU = PatternFill("solid", fgColor="DDEBF7")
-thin = Side(style="thin")
-BOX = Border(left=thin, right=thin, top=thin, bottom=thin)
-ws["O8"] = "HỆ SỐ GIÁ BÁN"
-ws["O8"].font = Font(bold=True)
-ws["P8"] = P["he_so_gia_ban_P8"]
-ws["P8"].fill = YEL
-ws["P8"].font = Font(bold=True, color="0000FF")
-ws["P8"].comment = Comment("Hệ số giá bán – CHỜ USER CHỐT (đang để 1,00 = bán bằng vốn)", "Claude")
-ws["O9"] = "TỶ LỆ CHI PHÍ KHÁC"; ws["O9"].font = Font(bold=True)
-ws["P9"] = P["ty_le_chi_phi_khac"]; ws["P9"].number_format = "0.0%"
-ws["O10"] = "TỶ LỆ VT TIÊU HAO"; ws["O10"].font = Font(bold=True)
-ws["P10"] = P["ty_le_vat_tu_tieu_hao"]; ws["P10"].number_format = "0.0%"
-for _c in ("P9", "P10"):
-    ws[_c].fill = YEL; ws[_c].font = Font(bold=True, color="0000FF")
-ws["P9"].comment = Comment("Chi phí khác = P9 × [tổng vốn (Phần I + II) − VT các dòng cột Y = 1 (chiller, bơm, tháp chiller)], chia 6 dòng III.B theo cơ cấu SGC 20/15/5/10/50/40", "Claude")
-ws["P10"].comment = Comment("Vật tư tiêu hao = P10 × Σ(SL × ĐG VT vốn × cột X) các dòng phía trên", "Claude")
-ws["X14"] = "TÍNH TIÊU HAO (1/0)"
-ws["X14"]._style = copy.copy(ws["G14"]._style)
-ws.column_dimensions["X"].width = 10
-ws["Y14"] = "LOẠI VT KHỎI NỀN CPK (1)"
-ws["Y14"]._style = copy.copy(ws["G14"]._style)
-ws.column_dimensions["Y"].width = 12
-ws["L14"] = "GHI CHÚ"
-for col, t in zip("PQRSTUVW", ["SL", "ĐG VT vốn", "ĐG NC vốn", "TT VT vốn", "TT NC vốn", "TỔNG vốn",
-                               "NGUỒN ĐƠN GIÁ", "TRẠNG THÁI"]):
-    c = ws[f"{col}14"]
-    c.value = t
+for cell, lab, val, fmt in [(HS_CELL, "HỆ SỐ GIÁ BÁN", P["he_so_gia_ban_P8"], "0.00"),
+                            (CPK_CELL, "TỶ LỆ CHI PHÍ KHÁC", P["ty_le_chi_phi_khac"], "0.0%"),
+                            (TH_CELL, "TỶ LỆ VT TIÊU HAO", P["ty_le_vat_tu_tieu_hao"], "0.0%")]:
+    lc = ws.cell(ws[cell].row, cSL - 1, lab); lc.font = Font(bold=True)
+    ws[cell] = val; ws[cell].number_format = fmt
+    ws[cell].fill = YEL; ws[cell].font = Font(bold=True, color="0000FF")
+ws[HS_CELL].comment = Comment("Hệ số giá bán: G = ROUND(ĐG VT vốn × hệ số, -3); H tương tự", "Claude")
+ws[CPK_CELL].comment = Comment("Chi phí khác = ô này × [tổng vốn Phần I + II − VT các dòng cột V = 1 (chiller, bơm, tháp chiller)] × tỷ trọng/140 (SGC)", "Claude")
+ws[TH_CELL].comment = Comment("Vật tư tiêu hao = ô này × Σ(SL × ĐG VT vốn × cột U) các dòng phía trên", "Claude")
+for col, t in [(cSL, "SL"), (cQ, "ĐG VT vốn"), (cR, "ĐG NC vốn"), (cS, "TT VT vốn"), (cT, "TT NC vốn"),
+               (cU, "TỔNG vốn"), (cX, "TÍNH TIÊU HAO (1/0)"), (cY, "LOẠI VT KHỎI NỀN CPK (1)")]:
+    c = ws.cell(14, col, t)
     c._style = copy.copy(ws["G14"]._style)
-ws.merge_cells("L14:L15")
-for col, w in {"B": 63, "C": 22, "D": 12, "G": 15, "H": 14, "I": 17, "J": 16, "K": 18, "L": 34,
-               "P": 8, "Q": 14, "R": 14, "S": 16, "T": 16, "U": 17, "V": 60, "W": 14}.items():
+for col, w in {"B": 63, "C": 26, "D": 12, "G": 15, "H": 14, "I": 17, "J": 16, "K": 18, "N": 22,
+               L_["SL"]: 8, L_["Q"]: 14, L_["R"]: 14, L_["S"]: 16, L_["T"]: 16, L_["U"]: 17,
+               L_["X"]: 10, L_["Y"]: 12}.items():
     ws.column_dimensions[col].width = w
 
+SLc, Qc, Rc, Sc, Tc, Uc, Xc, Yc = (L_[k] for k in ("SL", "Q", "R", "S", "T", "U", "X", "Y"))
 r0 = 16
 part_rows, sec_rows = [], []
-cur_part = cur_sec = None
-excel_rows = []
 for i, it in enumerate(ROWS):
     rr = r0 + i
     it["row"] = rr
     k = it["kind"]
     st = ST[k]
-    for c in range(1, 13):
+    for c in range(1, 12):
         ws.cell(rr, c)._style = copy.copy(st[c])
-    for c in range(16, 24):
-        ws.cell(rr, c)._style = copy.copy(st[min(c - 8, 11)])
+    for c in range(cSL, cY + 1):
+        ws.cell(rr, c)._style = copy.copy(st[11])
         ws.cell(rr, c).number_format = "#,##0"
-    if k in ("part", "sec", "item"):
-        ws.row_dimensions[rr].height = None
-    if k == "part":
-        cur_part = it; it["children"] = []; part_rows.append(it)
-        ws.cell(rr, 1, it["tt"]); ws.cell(rr, 2, it["name"])
-    elif k == "sec":
-        cur_sec = it; it["children"] = []; sec_rows.append(it); cur_part["children"].append(it)
+    if k in ("part", "sec"):
+        (part_rows if k == "part" else sec_rows).append(it)
         ws.cell(rr, 1, it["tt"]); ws.cell(rr, 2, it["name"])
     elif k == "text":
         ws.cell(rr, 2, it["name"])
-        cur_sec["children"].append(it)
     else:
-        cur_sec["children"].append(it)
         ws.cell(rr, 2, it["name"]); ws.cell(rr, 3, it["spec"]); ws.cell(rr, 4, it["xx"])
         ws.cell(rr, 5, it["dv"]); ws.cell(rr, 6, it["sl"])
-        ws.cell(rr, 7, f"=ROUND(Q{rr}*$P$8,-3)"); ws.cell(rr, 8, f"=ROUND(R{rr}*$P$8,-3)")
+        ws.cell(rr, 7, f"=ROUND({Qc}{rr}*${HS_CELL[0]}${HS_CELL[1:]},-3)")
+        ws.cell(rr, 8, f"=ROUND({Rc}{rr}*${HS_CELL[0]}${HS_CELL[1:]},-3)")
         ws.cell(rr, 9, f"=F{rr}*G{rr}"); ws.cell(rr, 10, f"=F{rr}*H{rr}"); ws.cell(rr, 11, f"=I{rr}+J{rr}")
-        ws.cell(rr, 12, it["note"])
-        ws.cell(rr, 16, f"=F{rr}")
+        ws.cell(rr, cSL, f"=F{rr}")
         if it["q"] is not None:
-            ws.cell(rr, 17, it["q"])
+            ws.cell(rr, cQ, it["q"])
         if it["r"] is not None:
-            ws.cell(rr, 18, it["r"])
-        ws.cell(rr, 19, f"=P{rr}*Q{rr}"); ws.cell(rr, 20, f"=P{rr}*R{rr}"); ws.cell(rr, 21, f"=S{rr}+T{rr}")
-        ws.cell(rr, 22, it["src"]); ws.cell(rr, 23, it["st"])
+            ws.cell(rr, cR, it["r"])
+        ws.cell(rr, cS, f"={SLc}{rr}*{Qc}{rr}"); ws.cell(rr, cT, f"={SLc}{rr}*{Rc}{rr}")
+        ws.cell(rr, cU, f"={Sc}{rr}+{Tc}{rr}")
         if "th" in it:
-            ws.cell(rr, 24, it["th"])
-        ws.cell(rr, 25, it.get("no_cpk", 0))
-        ws.cell(rr, 22).alignment = Alignment(wrap_text=True, vertical="center")
-        ws.cell(rr, 12).alignment = Alignment(wrap_text=True, vertical="center")
+            ws.cell(rr, cX, it["th"])
+        ws.cell(rr, cY, it.get("no_cpk", 0))
         if it["st"] == "Quy đổi":
-            for c in (17, 18):
+            for c in (cQ, cR):
                 ws.cell(rr, c).fill = ORG
-            ws.cell(rr, 17).comment = Comment(it["src"], "Claude")
-        elif it["st"] == "Cần hỏi giá":
-            ws.cell(rr, 17).fill = RED
-            ws.cell(rr, 23).fill = RED
-        elif it["st"] == "Đề xuất NC":
-            ws.cell(rr, 18).fill = YEL
-            ws.cell(rr, 18).comment = Comment(it["src"] + " – đề xuất, chờ user duyệt", "Claude")
-    for c in (6, 7, 8, 9, 10, 11, 17, 18, 19, 20, 21):
+            ws.cell(rr, cQ).comment = Comment(it["src"], "Claude")
+    for c in (6, 7, 8, 9, 10, 11):
         ws.cell(rr, c).number_format = "#,##0" if c != 6 else "#,##0.0#"
 
 last = r0 + len(ROWS) - 1
-for grp in part_rows + sec_rows:
+SUBC = ["I", "J", "K", Sc, Tc, Uc]
+for grp in sec_rows:
     rr = grp["row"]
-    # phạm vi: từ dòng sau đến dòng cuối của nhóm
-    nxt = [g["row"] for g in (part_rows if grp in part_rows else part_rows + sec_rows) if g["row"] > rr]
-    if grp in sec_rows:
-        nxt = [g["row"] for g in part_rows + sec_rows if g["row"] > rr]
+    nxt = [g["row"] for g in part_rows + sec_rows if g["row"] > rr]
     end = (min(nxt) - 1) if nxt else last
-    for c in "IJKSTU":
+    for c in SUBC:
         ws[f"{c}{rr}"] = f"=SUBTOTAL(9,{c}{rr + 1}:{c}{end})"
         ws[f"{c}{rr}"].number_format = "#,##0"
-# part rows: phạm vi đến trước part kế tiếp
 for idx, grp in enumerate(part_rows):
     rr = grp["row"]
     end = part_rows[idx + 1]["row"] - 1 if idx + 1 < len(part_rows) else last
-    for c in "IJKSTU":
+    for c in SUBC:
         ws[f"{c}{rr}"] = f"=SUBTOTAL(9,{c}{rr + 1}:{c}{end})"
+        ws[f"{c}{rr}"].number_format = "#,##0"
 
-# công thức tiêu hao + chi phí khác
 _pI = next(g for g in part_rows if g["tt"] == "I")["row"]
 _pII = next(g for g in part_rows if g["tt"] == "II")["row"]
+_pIII = next(g for g in part_rows if g["tt"] == "III")["row"]
 for it in ROWS:
     tg = it.get("tag")
     if tg == "th":
         _e = it["row"] - 1
-        ws.cell(it["row"], 17, f"=ROUND($P$10*SUMPRODUCT(P{r0}:P{_e},Q{r0}:Q{_e},X{r0}:X{_e}),-5)")
+        ws.cell(it["row"], cQ, f"=ROUND(${TH_CELL[0]}${TH_CELL[1:]}*SUMPRODUCT({SLc}{r0}:{SLc}{_e},{Qc}{r0}:{Qc}{_e},{Xc}{r0}:{Xc}{_e}),-5)")
     elif isinstance(tg, tuple):
-        _e = next(g for g in part_rows if g["tt"] == "III")["row"] - 1
-        ws.cell(it["row"], 18, f"=ROUND($P$9*(U{_pI}+U{_pII}-SUMPRODUCT(S{r0}:S{_e},Y{r0}:Y{_e}))*{tg[1]}/140,-5)")
+        _e = _pIII - 1
+        ws.cell(it["row"], cR, f"=ROUND(${CPK_CELL[0]}${CPK_CELL[1:]}*({Uc}{_pI}+{Uc}{_pII}-SUMPRODUCT({Sc}{r0}:{Sc}{_e},{Yc}{r0}:{Yc}{_e}))*{tg[1]}/140,-5)")
 t = last + 1
 for rr, lab in [(t, "TỔNG GIÁ TRỊ TRƯỚC THUẾ"), (t + 1, f"THUẾ VAT {P['VAT']:.0%}"), (t + 2, "TỔNG GIÁ TRỊ SAU THUẾ")]:
-    for c in range(1, 13):
+    for c in range(1, 12):
         ws.cell(rr, c)._style = copy.copy(ST["tot"][c])
     ws.cell(rr, 1, lab).font = Font(name="Times New Roman", size=14, bold=True)
     ws.merge_cells(start_row=rr, start_column=1, end_row=rr, end_column=8 if rr == t else 10)
-for c in "IJKSTU":
+for c in SUBC:
     ws[f"{c}{t}"] = f"=SUBTOTAL(9,{c}{r0}:{c}{last})"
-    ws[f"{c}{t}"].number_format = "#,##0"
 ws[f"K{t + 1}"] = f"=K{t}*{P['VAT']}"
 ws[f"K{t + 2}"] = f"=K{t}+K{t + 1}"
-ws[f"U{t + 1}"] = f"=U{t}*{P['VAT']}"
-ws[f"U{t + 2}"] = f"=U{t}+U{t + 1}"
-ws[f"P{t}"] = "Lãi gộp"; ws[f"Q{t}"] = f"=K{t}-U{t}"
-ws[f"P{t + 1}"] = "Tỷ suất"; ws[f"Q{t + 1}"] = f"=IF(K{t}=0,0,Q{t}/K{t})"
-ws[f"Q{t + 1}"].number_format = "0.0%"
-for c in ("K", "U", "Q"):
+ws[f"{Uc}{t + 1}"] = f"={Uc}{t}*{P['VAT']}"
+ws[f"{Uc}{t + 2}"] = f"={Uc}{t}+{Uc}{t + 1}"
+ws[f"{SLc}{t}"] = "Lãi gộp"; ws[f"{Qc}{t}"] = f"=K{t}-{Uc}{t}"
+ws[f"{SLc}{t + 1}"] = "Tỷ suất"; ws[f"{Qc}{t + 1}"] = f"=IF(K{t}=0,0,{Qc}{t}/K{t})"
+for c in ("I", "J", "K", Sc, Tc, Uc, Qc):
     for rr in (t, t + 1, t + 2):
-        if ws[f"{c}{rr}"].number_format != "0.0%":
-            ws[f"{c}{rr}"].number_format = "#,##0"
+        ws[f"{c}{rr}"].number_format = "#,##0"
         ws[f"{c}{rr}"].font = Font(name="Times New Roman", size=14, bold=True)
+ws[f"{Qc}{t + 1}"].number_format = "0.0%"
 
 notes_new = list(notes)
 notes_new[1] = "1. Báo giá trên đã bao gồm VAT, chi phí giao hàng, chi phí lắp đặt hệ thống và phí bảo hành "
@@ -551,12 +534,23 @@ notes_new[2] = ("2. Báo giá trên chưa bao gồm: tank 20m³, "
 nr = t + 4
 for k_, v in enumerate(notes_new):
     rr = nr + k_
-    for c in range(1, 13):
+    for c in range(1, 12):
         ws.cell(rr, c)._style = copy.copy(ST["note"][c])
     ws.cell(rr, 1, v)
     ws.merge_cells(start_row=rr, start_column=1, end_row=rr, end_column=11 if k_ == len(notes_new) - 1 else 7)
-ws.freeze_panes = "C16"
-ws.print_area = f"A1:L{nr + len(notes_new) - 1}"
+ws.freeze_panes = None
+ws.print_area = f"A1:K{nr + len(notes_new) - 1}"
+
+# ---- sheet NGUON (thay cho cột Ghi chú/Nguồn/Trạng thái đã xoá ở DT)
+ng = tpl.create_sheet("NGUON")
+ng.append(["Dòng DT", "Hạng mục", "Nguồn đơn giá", "Trạng thái", "Ghi chú"])
+for it in ROWS:
+    if it["kind"] == "item":
+        ng.append([it["row"], it["name"], it["src"], it["st"], it["note"]])
+for col, w in zip("ABCDE", (9, 60, 70, 14, 70)):
+    ng.column_dimensions[col].width = w
+for c in ng[1]:
+    c.font = Font(bold=True); c.fill = BLU
 
 # ---- sheet NOI_SUY
 ns = tpl.create_sheet("NOI_SUY")
@@ -566,7 +560,7 @@ for x in NOI_SUY:
     if x[2] in _used:
         ns.append(list(x))
 ns.append([])
-ns.append(["Ghi chú", "Ô cam ở sheet DT = đơn giá quy đổi/nội suy; ô đỏ = cần hỏi giá; ô vàng cột R = NC đề xuất chờ duyệt", ""])
+ns.append(["Ghi chú", "Ô cam ở sheet DT (cột P, Q) = đơn giá quy đổi/nội suy; nguồn từng dòng xem sheet NGUON", ""])
 for col, w in zip("ABC", (40, 90, 16)):
     ns.column_dimensions[col].width = w
 for row in ns.iter_rows(min_row=1, max_row=1):

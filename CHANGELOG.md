@@ -10,3 +10,4 @@
 - 2026-11-13 v09: NC chiller theo user (2tr/300k/1tr/1,5tr); bỏ đấu nối tank, súc rửa chạy thử.
 - 2026-11-13 v10: Bích tank DN100; CPK 4% bỏ kho bãi; bỏ điện chiller (CĐT cấp); giá đỡ chiller 8tr+3tr; van D110 gộp; bảo ôn China; Y lọc 700k China.
 - 2026-11-13 v11: Cấu trúc 3 mục/phần (Thiết bị/Đường ống/Đường điện); tiêu hao vào II.2; bỏ VT phụ điện; tủ buồng lạnh 1 tủ/cụm.
+- 2026-11-13 v12: Gộp cụm máy nén bình ngưng; chia đều NC lắp đặt 55tr cho 3 mục; bảo ôn 56 m; NC bảo ôn PK 700k; bỏ freeze; xoá cột L/V/W (nguồn → sheet NGUON).

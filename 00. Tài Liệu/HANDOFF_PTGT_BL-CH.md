@@ -108,3 +108,13 @@
 - Số liệu Excel (vốn, chưa VAT): Tổng 2.759,1 tr · sau VAT 2.979,8 tr; I 1.201,8 · II 1.523,4 · III 33,9
 - Còn mở: thông tin khách hàng; P8
 - BƯỚC TIẾP THEO: điền KH + chốt P8 → bản chào giá ẩn cột vốn
+
+## CHECKPOINT 12 – 2026-11-13
+- File hiện hành: `4. Khối lượng - BOQ/PTGT Buong lanh + Chiller - 2026.11.13_v12.xlsx` (v11 backup ở `90. Backup/`)
+- Quyết định user: gộp máy nén + bình ngưng + POE + phụ kiện lên máy → "Cụm máy nén bình ngưng 20HP" (90,2tr VT, NC lắp ráp 4,4tr gộp vào);
+  NC lắp đặt 11tr/hệ (55tr) chia đều 1/3 cho I.1, I.2, I.3, trong mục chia đều theo dòng (I.1: cụm, dàn, tháp, bơm; I.2: ống đồng, TES5, gas, ống PVC; I.3: tủ, dây);
+  bảo ôn ống chiller tròn bội 4 (56 m); NC bảo ôn phụ kiện 700k; bỏ freeze; xoá cột Ghi chú/Nguồn/Trạng thái.
+- BỐ CỤC CỘT MỚI: A–K bán; N nhãn; **O8 hệ số giá bán, O9 tỷ lệ CPK, O10 tỷ lệ tiêu hao**; O SL vốn, P ĐG VT vốn, Q ĐG NC vốn, R/S/T thành tiền vốn; U cờ tiêu hao; V cờ loại khỏi nền CPK.
+  Nguồn/trạng thái/ghi chú từng dòng chuyển sang sheet NGUON.
+- Số liệu Excel (vốn, chưa VAT): Tổng 2.760,1 tr · sau VAT 2.980,9 tr; I 1.201,8 · II 1.524,3 · III 34,0
+- BƯỚC TIẾP THEO: thông tin KH + hệ số giá bán (O8) → bản chào giá ẩn cột N–V
