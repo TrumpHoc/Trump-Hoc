@@ -55,9 +55,8 @@
   },
   "chiller": {
     "so_chiller": 3,
-    "cong_suat_lanh_kW_moi_may": 211,
-    "luu_luong_nuoc_lanh_m3h": 36,
-    "luu_luong_giai_nhiet_m3h": 45,
+    "luu_luong_nuoc_lanh_m3h": 59,
+    "luu_luong_giai_nhiet_m3h": 70,
     "nhiet_do_nuoc_lanh": "7/12°C (giả định) → bảo ôn ống nước lạnh",
     "L_bom_chiller_m": 6,
     "L_chiller_thap_m": 15,
@@ -68,9 +67,9 @@
     "L_mang_cap_m": 40,
     "L_tank_bom_m": 3,
     "L_chiller_tank_m": 8,
-    "ID_D90_m": 0.0836,
-    "ong": "uPVC D90 toàn bộ, 3 vòng độc lập; tank có sẵn 6 bích chờ DN80 (user 13/11)",
-    "bao_on_mm": 15
+    "ong": "uPVC D110 toàn bộ, 3 vòng độc lập; tank có sẵn 6 bích chờ DN80; chỉ van bi nhựa tay gạt D110 + Y lọc DN100, bỏ khớp mềm, van 1 chiều (user 13/11)",
+    "bao_on_mm": 15,
+    "ID_D110_m": 0.1016
   },
   "gia_ghi_chep": {
     "nguon": "Ghi chép tay user 13/11/2026 (00. Tài Liệu/GHI_CHEP_GIA_BUONG_LANH_2026-11-13_*.jpg) × 1,10",
@@ -99,6 +98,7 @@
     "nguon": "Giá user cấp 13/11/2026",
     "bom": 13500000,
     "thap": 42000000,
-    "tu_dien": 45000000
+    "tu_dien": 45000000,
+    "chiller": 400000000
   }
 }

@@ -109,12 +109,14 @@ BICH[90] = bg("CT-00107")
 # Cút 90° D90: không có dòng A → nội suy tuyến tính giữa D60 (A) và D110 (A)
 _c90 = round(CUT[60][0] + (CUT[110][0] - CUT[60][0]) * (90 - 60) / (110 - 60), -2)
 CUT[90] = (_c90, "Nội suy tuyến tính cút 90° uPVC Tiền Phong (A) D60–D110")
-NOI_SUY.append(("Cút 90° uPVC D90", "10.500 + (39.160−10.500)×(90−60)/(110−60)", _c90))
 # Van bi nhựa PVC D90: dữ liệu NCC (A) chỉ đến D63 → ngoại suy hàm mũ từ D48, D63
 _bb = math.log(85000 / 60000) / math.log(63 / 48)
 _vb90 = round(85000 * (90 / 63) ** _bb, -2)
 VBI_PVC90 = (_vb90, "Ngoại suy hàm mũ van bi PVC dán keo (CT-00714/715, A) – ngoài dải, độ tin cậy thấp")
-NOI_SUY.append(("Van bi nhựa PVC D90", f"85.000×(90/63)^{_bb:.3f} (ngoại suy từ D48, D63) – cần hỏi giá xác nhận", _vb90))
+_vb110 = round(85000 * (110 / 63) ** _bb, -2)
+VBI_PVC110 = (_vb110, "Ngoại suy hàm mũ van bi PVC dán keo (CT-00714/715, A) – ngoài dải, độ tin cậy thấp, cần hỏi giá")
+NOI_SUY.append(("Van bi nhựa PVC tay gạt D110", f"85.000×(110/63)^{_bb:.3f} (ngoại suy từ D48, D63) – cần hỏi giá xác nhận", _vb110))
+CON_110_90 = bg("CT-00284")
 # Van Wonil (Tuấn Hưng Phát – nguồn ưu tiên skill §3)
 VB = {50: bg("CT-00445"), 100: bg("CT-00448"), 125: bg("CT-00449"), 150: bg("CT-00450")}
 YL = {100: bg("CT-00887"), 125: bg("CT-00888")}
@@ -149,9 +151,11 @@ _b = math.log(BO_140_25[0] / BO_114_25[0]) / math.log(140 / 114)
 _bo160 = round(BO_140_25[0] * (160 / 140) ** _b, -2)
 BO_160_25 = (_bo160, "Ngoại suy hàm mũ Superlon 25mm từ Ø114 & Ø140 (HV-00090/91)")
 NOI_SUY.append(("Bảo ôn Superlon 25mm Ø160", f"y = 259.563×(160/140)^{_b:.3f} (ngoại suy, ngoài dải)", _bo160))
+_bo15b = round(102459 + (163934 - 102459) * (15 - 13) / (19 - 13), -2)
+BO_114_15 = (_bo15b, "Nội suy tuyến tính Superlon Ø114 dày 13mm (HV-00054) – 19mm (HV-00072)")
+NOI_SUY.append(("Bảo ôn Superlon Ø114 dày 15mm", "102.459 + (163.934−102.459)×(15−13)/(19−13)", _bo15b))
 _bo15 = round(50546 + (81967 - 50546) * (15 - 13) / (19 - 13), -2)
 BO_89_15 = (_bo15, "Nội suy tuyến tính Superlon Ø89 dày 13mm (HV-00053) – 19mm (HV-00071)")
-NOI_SUY.append(("Bảo ôn Superlon Ø89 dày 15mm", "50.546 + (81.967−50.546)×(15−13)/(19−13)", _bo15))
 BANG_DINH = bg("HV-00225")
 KEO_BO = bg("HV-00230")
 
@@ -305,19 +309,19 @@ C = P["chiller"]
 n = C["so_chiller"]
 U = P["gia_user_chiller"]
 SRC_U = U["nguon"]
-D = 90
+D = 110
 part("II", "HỆ THỐNG CHILLER 03 x 80HP")
-sec("II.A", "Thiết bị và lắp đặt (chiller, tank 20m³ do CĐT cấp)")
-item("Bơm tuần hoàn nước lạnh", "theo thông số chiller", "", "cái", n, U["bom"], nca(2), SRC_U, "Có nguồn",
-     "VT: giá user cấp; NC: đề xuất hệ số 2 × K_A")
-item("Bơm giải nhiệt", "theo thông số chiller", "", "cái", n, U["bom"], nca(2), SRC_U, "Có nguồn",
-     "VT: giá user cấp; NC: đề xuất hệ số 2 × K_A")
-item("Tháp giải nhiệt", "theo thông số chiller", "", "bộ", n, U["thap"], nca(4), SRC_U, "Có nguồn",
+sec("II.A", "Thiết bị và lắp đặt (tank 20m³ do CĐT cấp)")
+item("Chiller 80HP giải nhiệt nước", "", "", "bộ", n, U["chiller"], nca(10), SRC_U + " – giá nhập", "Có nguồn",
+     "VT: giá nhập user cấp; NC: đề xuất hệ số 10 × K_A (SGC 2.685 kW = 30)")
+item("Bơm tuần hoàn nước lạnh", f"{C['luu_luong_nuoc_lanh_m3h']} m³/h", "", "cái", n, U["bom"], nca(2), SRC_U,
+     "Có nguồn", "VT: giá user cấp; NC: đề xuất hệ số 2 × K_A")
+item("Bơm giải nhiệt", f"{C['luu_luong_giai_nhiet_m3h']} m³/h", "", "cái", n, U["bom"], nca(2), SRC_U,
+     "Có nguồn", "VT: giá user cấp; NC: đề xuất hệ số 2 × K_A")
+item("Tháp giải nhiệt", "", "", "bộ", n, U["thap"], nca(4), SRC_U, "Có nguồn",
      "VT: giá user cấp; NC: đề xuất hệ số 4 × K_A")
-for r_ in ROWS[-3:]:
+for r_ in ROWS[-4:]:
     r_["user"] = True
-item("Lắp đặt, căn chỉnh chiller 80HP giải nhiệt nước (chiller CĐT cấp)", "Giá NC", "", "bộ", n, None, nca(10),
-     "Hệ số 10 × K_A (SGC 2.685 kW = 30)", "Đề xuất NC")
 item("Đấu nối vào 6 bích chờ DN80 có sẵn tại tank 20m³", "Giá NC", "", "Lô", 1, None, nca(1),
      "Hệ số 1 × K_A", "Đề xuất NC")
 item("Súc rửa, thử áp, chạy thử, cân chỉnh hệ thống", "Giá NC", "", "hệ", 1, None, nca(8),
@@ -326,50 +330,41 @@ item("Súc rửa, thử áp, chạy thử, cân chỉnh hệ thống", "Giá NC"
 sec("II.B", f"Ống uPVC D{D} vòng nước lạnh và giải nhiệt (Tiền Phong C2) – {n} vòng độc lập")
 L_lanh_1 = C["L_tank_bom_m"] + C["L_bom_chiller_m"] + C["L_chiller_tank_m"]
 L_gn_1 = 2 * C["L_chiller_thap_m"] + 4
-v_l = C["luu_luong_nuoc_lanh_m3h"] / 3600 / (math.pi / 4 * C["ID_D90_m"] ** 2)
-v_g = C["luu_luong_giai_nhiet_m3h"] / 3600 / (math.pi / 4 * C["ID_D90_m"] ** 2)
+A_ = math.pi / 4 * C["ID_D110_m"] ** 2
+v_l = C["luu_luong_nuoc_lanh_m3h"] / 3600 / A_
+v_g = C["luu_luong_giai_nhiet_m3h"] / 3600 / A_
 text(f"Mỗi chiller: tank → bơm lạnh → chiller → tank ({L_lanh_1} m); chiller → bơm GN → tháp → chiller ({L_gn_1} m). "
-     f"Vận tốc D90: lạnh {v_l:.2f} m/s, GN {v_g:.2f} m/s (lưu lượng giả định)")
+     f"Vận tốc D110 (ID {C['ID_D110_m']*1000:.1f}): lạnh {v_l:.2f} m/s, GN {v_g:.2f} m/s")
 item(f"Ống uPVC Tiền Phong D{D}", "C2 (PN8)", "Việt Nam", "m", L_upvc(n * (L_lanh_1 + L_gn_1)),
      UPVC[D][0], nc(D / 100), UPVC[D][1], "Có nguồn", f"{n}×({L_lanh_1}+{L_gn_1}) m × 1,05, tròn cây 4 m")
 fit(f"Cút 90° uPVC D{D}", D, n * (6 + 8), CUT[D], 0.6)
-n_bich = 2 * n + 2 * (2 * n) + 4 * n + 2 * n   # tank + bơm + cổ chiller + cổ tháp
-fit(f"Mặt bích uPVC D{D}", D, n_bich, BICH[D], 0.6)
-ROWS[-1]["note"] = "Tank 6 + bơm 2/cái×6 + cổ chiller 4×3 + cổ tháp 2×3"
+fit("Côn thu uPVC D110/90 (nối bích chờ tank)", D, 2 * n, CON_110_90, 0.6)
+fit("Mặt bích uPVC D90 (nối bích chờ DN80 tại tank)", 90, 2 * n, BICH[90], 0.6)
+fit(f"Mặt bích uPVC D{D}", D, 2 * (2 * n) + 4 * n + 2 * n, BICH[D], 0.6)
+ROWS[-1]["note"] = "Bơm 2/cái×6 + cổ chiller 4×3 + cổ tháp 2×3"
 text("Bảo ôn ống nước lạnh dày 15mm")
 item(f"Bảo ôn cao su lưu hóa dày 15mm cho ống D{D}", "Superlon", "Malaysia", "m",
-     ceil_to(n * L_lanh_1 * (1 + HH), P["cay_bao_on_m"]), BO_89_15[0],
-     round(BO_89_15[0] * P["ty_le_NC_bao_on"], -2), BO_89_15[1], "Quy đổi")
+     ceil_to(n * L_lanh_1 * (1 + HH), P["cay_bao_on_m"]), BO_114_15[0],
+     round(BO_114_15[0] * P["ty_le_NC_bao_on"], -2), BO_114_15[1], "Quy đổi")
 item("Bảo ôn van, phụ kiện nước lạnh (cuộn + keo + băng dính)", "Superlon", "Malaysia", "Lô", 1,
      round(0.15 * ROWS[-1]["sl"] * ROWS[-1]["q"], -3), 0, "Quy đổi 15% giá trị bảo ôn ống", "Quy đổi")
 
-sec("II.C", "Van (van nhựa PVC), vòi, thiết bị đường ống")
-for tag in ("bơm nước lạnh", "bơm giải nhiệt"):
-    text(f"Cụm van {tag} – {n} bộ")
-    acc(f"Van bi nhựa PVC D{D} – phía hút", "dán keo", n, VBI_PVC90, 0.9, xx="")
-    valve("Y lọc gang mặt bích – phía hút", 80, n, YL80, 1)
-    valve("Khớp nối mềm cao su – phía hút", 80, n, KM[80], 0.8, "Đài Loan")
-    valve("Khớp nối mềm cao su – phía đẩy", 80, n, KM[80], 0.8, "Đài Loan")
-    ask(f"Van một chiều nhựa PVC D{D} – phía đẩy", "dán keo", "cái", n, nc(0.9))
-    acc(f"Van bi nhựa PVC D{D} – phía đẩy", "dán keo", n, VBI_PVC90, 0.9, xx="")
-    acc("Đồng hồ áp suất 0–6 bar mặt 100", "Wise", 2 * n, DH, 0.4)
-    acc("Van bi DN15 cho đồng hồ", "DN15", 2 * n, VBI15, 0.3)
-    acc("Ống siphon đồng hồ phía đẩy", "DN15", n, SIPHON, 0.3)
-text(f"Cổ chiller – {n} bộ")
-acc(f"Van bi nhựa PVC D{D} vào/ra bình bay hơi, bình ngưng", "dán keo", 4 * n, VBI_PVC90, 0.9, xx="")
-valve("Khớp nối mềm cao su vào/ra bình bay hơi, bình ngưng", 80, 4 * n, KM[80], 0.8, "Đài Loan")
+sec("II.C", "Van nhựa PVC tay gạt, Y lọc, đồng hồ")
+acc(f"Van bi nhựa PVC tay gạt D{D} – hút/đẩy bơm (2 cái/bơm)", "dán keo", 2 * 2 * n, VBI_PVC110, 1.1, xx="")
+acc(f"Van bi nhựa PVC tay gạt D{D} – vào/ra bình bay hơi, bình ngưng", "dán keo", 4 * n, VBI_PVC110, 1.1, xx="")
+acc(f"Van bi nhựa PVC tay gạt D{D} – vào/ra tháp", "dán keo", 2 * n, VBI_PVC110, 1.1, xx="")
+valve("Y lọc gang mặt bích – hút bơm", 100, 2 * n, YL[100], 1)
+acc("Van bi nhựa PVC D34 – cấp nước bù tháp", "dán keo", n, bg("CT-00713"), 0.3, xx="")
+acc("Van bi nhựa PVC D63 – xả đáy tháp", "dán keo", n, bg("CT-00715"), 0.3, xx="")
+acc("Đồng hồ áp suất 0–6 bar mặt 100 – hút/đẩy bơm, vào/ra chiller", "Wise", 2 * 2 * n + 4 * n, DH, 0.4)
+acc("Van bi nhựa PVC D21 cho đồng hồ", "dán keo", 2 * 2 * n + 4 * n, bg("CT-00711"), 0.3, xx="")
 acc("Nhiệt kế vào/ra bình bay hơi, bình ngưng", "0–100°C", 4 * n, NHIET_KE, 0.4)
-acc("Đồng hồ áp vào/ra bình bay hơi, bình ngưng", "0–6 bar", 4 * n, DH, 0.4)
-acc("Van bi DN15 cho đồng hồ", "DN15", 4 * n, VBI15, 0.3)
 acc("Công tắc dòng chảy ra bình bay hơi, bình ngưng", "", 2 * n, FLOW_SW, 0.4)
-text(f"Tháp giải nhiệt – {n} bộ")
-acc(f"Van bi nhựa PVC D{D} vào/ra tháp", "dán keo", 2 * n, VBI_PVC90, 0.9, xx="")
-valve("Van bi đồng cấp nước bù tháp", 25, n, VBI[25], 0.3 * 100 / 25, "Việt Nam")
-valve("Van bi đồng xả đáy tháp", 50, n, VBI[50], 0.3 * 100 / 50, "Việt Nam")
 
 sec("II.D", "Vật tư phụ (bu lông, gioăng)")
-acc("Bộ bu lông + gioăng mối nối DN80", "8 bu lông", 2 * n + 2 * n * 5 + 4 * n * 2 + 2 * n, BL[80], 0.2 * 0.8)
-ROWS[-1]["note"] = "Tank 6 + bơm 5/cái×6 + cổ chiller 2×12 + tháp 6"
+acc("Bộ bu lông + gioăng mối nối DN100", "8 bu lông", 3 * 2 * n + 4 * n + 2 * n, BL[100], 0.2 * 1.0)
+ROWS[-1]["note"] = "Bơm 3/cái×6 (bích–Y, Y–bơm, bơm–bích) + cổ chiller 12 + tháp 6"
+acc("Bộ bu lông + gioăng mối nối DN80 (bích chờ tank)", "8 bu lông", 2 * n, BL[80], 0.2 * 0.8)
 
 sec("II.E", "Giá đỡ")
 item(f"Giá đỡ ống D{D} (bát V40 + đai omega; ống lạnh có gối PU)", "@1,2 m", "Việt Nam", "bộ",
@@ -598,7 +593,7 @@ for c in ("K", "U", "Q"):
 
 notes_new = list(notes)
 notes_new[1] = "1. Báo giá trên đã bao gồm VAT, chi phí giao hàng, chi phí lắp đặt hệ thống và phí bảo hành "
-notes_new[2] = ("2. Báo giá trên chưa bao gồm: thiết bị hệ chiller (chiller, bơm, tháp giải nhiệt, tank 20m³), "
+notes_new[2] = ("2. Báo giá trên chưa bao gồm: tank 20m³, "
                 "móng máy, dây nguồn đến tủ điện tổng và chi phí phát sinh")
 nr = t + 4
 for k_, v in enumerate(notes_new):
@@ -613,8 +608,10 @@ ws.print_area = f"A1:L{nr + len(notes_new) - 1}"
 # ---- sheet NOI_SUY
 ns = tpl.create_sheet("NOI_SUY")
 ns.append(["Hạng mục", "Cách tính", "Đơn giá (đ)"])
+_used = {r["q"] for r in ROWS if r["kind"] == "item"}
 for x in NOI_SUY:
-    ns.append(list(x))
+    if x[2] in _used:
+        ns.append(list(x))
 ns.append([])
 ns.append(["Ghi chú", "Ô cam ở sheet DT = đơn giá quy đổi/nội suy; ô đỏ = cần hỏi giá; ô vàng cột R = NC đề xuất chờ duyệt", ""])
 for col, w in zip("ABC", (40, 90, 16)):

@@ -64,3 +64,12 @@
 - Cần hỏi giá: cửa buồng lạnh; van một chiều PVC D90 (6 cái); xác nhận giá van bi PVC D90
 - Rủi ro: D90 với lưu lượng giả định 45 m³/h vòng GN → v ≈ 2,28 m/s (> 2,1 hút); cần lưu lượng thực của chiller
 - BƯỚC TIẾP THEO: giá cửa + van 1 chiều PVC; lưu lượng chiller → v07
+
+## CHECKPOINT 07 – 2026-11-13
+- File hiện hành: `4. Khối lượng - BOQ/PTGT Buong lanh + Chiller - 2026.11.13_v07.xlsx` (v06 backup ở `90. Backup/`)
+- Quyết định user: lưu lượng lạnh 59 m³/h, GN 70 m³/h/chiller; ống uPVC D110; chỉ van bi nhựa tay gạt PVC D110 + Y lọc DN100;
+  bỏ khớp mềm, van 1 chiều; chiller giá nhập 400tr/cái (TĐ cấp). Van cấp bù/xả đáy/đồng hồ đổi sang van bi PVC.
+- Số liệu Excel (vốn, chưa VAT): Tổng 3.242,7 tr · sau VAT 3.502,2 tr; I 1.179,8 · II 1.810,0 · III 253,0 (chi phí khác 240,2)
+- Rủi ro: v D110 lạnh 2,02 / GN 2,40 m/s (> 2,1 hút); chi phí khác 8% đang tính trên cả thiết bị (chiller 1,2 tỷ) – chờ user quyết
+- Cần hỏi giá: cửa buồng lạnh; xác nhận van bi PVC D110 (ngoại suy 173.600)
+- BƯỚC TIẾP THEO: user quyết nền tính 8%, xác nhận giữ đồng hồ/nhiệt kế/flow switch → v08
