@@ -15,7 +15,7 @@ from openpyxl.styles import PatternFill, Font, Alignment, Border, Side
 ROOT = Path(__file__).resolve().parents[1]
 P = json.loads((ROOT / "_scripts/params.json").read_text(encoding="utf-8"))
 VER = sys.argv[1] if len(sys.argv) > 1 else "v01"
-OUT = ROOT / "4. Khối lượng - BOQ" / f"PTGT Buong lanh + Chiller - 2026.11.13_{VER}.xlsx"
+OUT = ROOT / "4. Khối lượng - BOQ" / f"PTGT Buong lanh + Chiller - {P.get('ngay_file', '2026.11.13')}_{VER}.xlsx"
 TPL = ROOT / "00. Tài Liệu/MAU_BG_LMT1_But_Son_2026.08.13.xlsx"
 SRC_BG = "BẢNG GIÁ MEPF v2.0 12/11/2026"
 SRC_SGC = "Bản chốt SGC 05/10/2026 (skill §6)"
@@ -217,14 +217,20 @@ part("I", "HỆ THỐNG BUỒNG LẠNH -20°C (7 x 3,4 x 2,6 m)")
 
 sec("I.A", "Vỏ buồng lạnh (panel PU, cửa)")
 a, b, c = B["dai"], B["rong"], B["cao"]
-S_panel = round(2 * (a * b + a * c + b * c), 1)
-ask("Panel PU 100mm, tỷ trọng ≥40 kg/m³, 2 mặt inox 304 – tường, trần, sàn",
-    f"6 mặt = 2×({a}×{b}+{a}×{c}+{b}×{c}) = {S_panel} m²", "m2", S_panel, nca(0.2),
-    "Cần hỏi giá NCC panel; KT giả định phủ bì; sàn panel chịu lực/chống trượt cần xác nhận")
+PN = P["panel_NCC"]
+S_panel = round(2 * (a * c + b * c) + a * b, 2)   # tường + trần, KHÔNG gồm sàn (khớp NCC 77,88 m²)
+SRC_PN = PN["nguon"]
+item("Panel PU 100mm 2 mặt inox – tường + trần", f"2×({a}+{b})×{c} + {a}×{b} = {S_panel} m²",
+     "", "m2", S_panel, PN["don_gia_m2"], PN["nc_m2"], SRC_PN, "Có nguồn",
+     "Báo giá NCC chưa gồm sàn – xem dòng cách nhiệt sàn")
+ask("Cách nhiệt sàn kho -20°C (panel sàn / PU đổ sàn + sưởi chống đóng băng nền)",
+    f"{a}×{b} = {round(a * b, 2)} m²", "m2", round(a * b, 2), 0,
+    "NCC panel không báo sàn – cần xác nhận phạm vi (CĐT hay TĐ) và giải pháp")
 ask("Cửa bản lề panel 100mm 2 mặt inox, có điện trở sưởi khung", "700 x 1700 mm", "bộ",
-    B["so_cua"], nca(2))
-ask("Phụ kiện lắp ghép panel (nhôm V/U góc, silicone, rivet, bu lông treo trần)", "Trọn bộ", "Lô", 1, 0)
-ask("Van cân bằng áp suất kho âm (có sưởi)", "", "cái", 1, nca(0.3))
+    B["so_cua"], 0, "Báo giá NCC panel chưa thấy cửa – cần xác nhận đã gồm trong 1.160.000 đ/m² chưa")
+item("Phụ kiện lắp đặt vỏ (silicone, keo bọt, ốc vít, rivet, đèn, van thông áp)", "Trọn bộ", "",
+     "Lô", 1, PN["phu_kien_lo"], 0, SRC_PN, "Lô")
+item("Vận chuyển panel đến công trình", "", "", "Lô", 1, 0, PN["van_chuyen_lo"], SRC_PN, "Lô")
 
 sec("I.B", "Lắp đặt, căn chỉnh thiết bị (thiết bị do CĐT/NCC cấp)")
 item("Lắp đặt, căn chỉnh cụm máy nén ngưng tụ CDU 20HP (giải nhiệt nước)", "Giá NC", "", "bộ",

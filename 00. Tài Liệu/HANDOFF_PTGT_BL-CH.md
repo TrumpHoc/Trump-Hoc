@@ -17,3 +17,11 @@
 - Rủi ro / câu hỏi mở: công suất 100HP cho buồng 62 m³ (cấp đông?); 5 dàn 25HP có lắp vừa buồng 7 m không; model CDU/chiller/bơm/tháp;
   nhiệt độ nước lạnh; mặt bằng/khoảng cách; P8; tổng khoán NC; giá LS MCCB đang là giá niêm yết (CK = 0)
 - BƯỚC TIẾP THEO: user trả lời câu hỏi → sửa `params.json` (và giá panel/tủ nếu có) → chạy `python3 _scripts/ptgt_build.py v02`
+
+## CHECKPOINT 02 – 2026-11-13
+- File hiện hành: `4. Khối lượng - BOQ/PTGT Buong lanh + Chiller - 2026.11.13_v02.xlsx` (v01 backup ở `90. Backup/`)
+- Thay đổi: áp báo giá NCC panel (params `panel_NCC`): 77,88 m² tường+trần × 1.160.000; NC 80.000/m²; phụ kiện vỏ (gồm đèn, van thông áp) 5 tr; vận chuyển 1 tr.
+  Bỏ dòng van cân bằng áp riêng (đã nằm trong lô phụ kiện). Sàn tách dòng "cần hỏi giá"; cửa vẫn "cần hỏi giá".
+- Số liệu (vốn, chưa VAT): VT 777,9 tr · NC+CP 409,3 tr · Tổng 1.187,2 tr · sau VAT 1.282,1 tr; I 541,8 · II 531,3 · III 114,1
+- Cần hỏi giá còn 11 dòng: cách nhiệt sàn, cửa, dầu POE, phụ kiện đồng + que hàn, dây sưởi xả, 2 vỏ tủ, bộ ĐK kho, PLC liên động, 2 lô phụ kiện ĐK
+- BƯỚC TIẾP THEO: xác nhận sàn + cửa với NCC panel; các câu hỏi mở ở CHECKPOINT 01 → v03
