@@ -8,3 +8,4 @@
 - 2026-11-13 v07: Chiller D110, lưu lượng 59/70 m³/h, van bi PVC tay gạt + Y lọc DN100, bỏ khớp mềm/van 1 chiều; chiller 400tr/cái.
 - 2026-11-13 v08: Bỏ CPK trên thiết bị chiller; chỉ van PVC D110 650k (12 cái) + Y lọc DN100; bỏ đồng hồ/nhiệt kế/flow switch; cửa 11tr.
 - 2026-11-13 v09: NC chiller theo user (2tr/300k/1tr/1,5tr); bỏ đấu nối tank, súc rửa chạy thử.
+- 2026-11-13 v10: Bích tank DN100; CPK 4% bỏ kho bãi; bỏ điện chiller (CĐT cấp); giá đỡ chiller 8tr+3tr; van D110 gộp; bảo ôn China; Y lọc 700k China.

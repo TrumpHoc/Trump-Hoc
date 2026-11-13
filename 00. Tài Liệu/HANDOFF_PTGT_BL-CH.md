@@ -90,3 +90,12 @@
 - Số liệu Excel (vốn, chưa VAT): Tổng 3.061,7 tr · sau VAT 3.306,7 tr; I 1.201,8 · II 1.725,5 · III 134,5 (chi phí khác 122,6)
 - Còn mở: thông tin khách hàng; P8 = 1,00 (bán = vốn); ẩn cột P–Y trước khi gửi
 - BƯỚC TIẾP THEO: điền KH + chốt P8 → xuất bản chào giá (ẩn cột vốn)
+
+## CHECKPOINT 10 – 2026-11-13
+- File hiện hành: `4. Khối lượng - BOQ/PTGT Buong lanh + Chiller - 2026.11.13_v10.xlsx` (v09 backup ở `90. Backup/`)
+- Quyết định user: bích chờ tank DN100 (bỏ côn 110/90, bích D90; +6 bích D110, bu lông DN100 42 bộ); chi phí khác 8% → 4% (P9), bỏ phí văn phòng kho bãi;
+  bỏ tủ điện + cáp + thang chiller → dòng "Tủ điện, dây điện cấp nguồn – CĐT cấp"; giá đỡ ống chiller Lô 8tr VT + 3tr NC;
+  van PVC D110 gộp 1 dòng 12 cái; bảo ôn bỏ chữ Superlon, xuất xứ China; Y lọc DN100 China 700k/cái.
+- Số liệu Excel (vốn, chưa VAT): Tổng 2.766,6 tr · sau VAT 2.988,0 tr; I 1.201,8 · II 1.522,2 · III 42,7 (chi phí khác 34,1)
+- Còn mở: thông tin khách hàng; P8; vật tư phụ điện 6tr+1,35tr (III.A) có giữ không khi điện chiller CĐT cấp
+- BƯỚC TIẾP THEO: điền KH + chốt P8 → bản chào giá ẩn cột vốn

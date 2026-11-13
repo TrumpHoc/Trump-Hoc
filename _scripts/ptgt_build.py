@@ -312,7 +312,7 @@ U = P["gia_user_chiller"]
 SRC_U = U["nguon"]
 D = 110
 part("II", "HỆ THỐNG CHILLER 03 x 80HP")
-sec("II.A", "Thiết bị và lắp đặt (tank 20m³ do CĐT cấp)")
+sec("II.A", "Thiết bị và lắp đặt (tank 20m³ do CĐT cấp, có sẵn 6 bích chờ DN100)")
 item("Chiller 80HP giải nhiệt nước", "", "", "bộ", n, U["chiller"], U["nc_chiller"], SRC_U + " – giá nhập", "Có nguồn",
      "VT: giá nhập, NC: user cấp")
 item("Bơm tuần hoàn nước lạnh", f"{C['luu_luong_nuoc_lanh_m3h']} m³/h", "", "cái", n, U["bom"], U["nc_bom"], SRC_U,
@@ -336,58 +336,30 @@ text(f"Mỗi chiller: tank → bơm lạnh → chiller → tank ({L_lanh_1} m); 
 item(f"Ống uPVC Tiền Phong D{D}", "C2 (PN8)", "Việt Nam", "m", L_upvc(n * (L_lanh_1 + L_gn_1)),
      UPVC[D][0], nc(D / 100), UPVC[D][1], "Có nguồn", f"{n}×({L_lanh_1}+{L_gn_1}) m × 1,05, tròn cây 4 m")
 fit(f"Cút 90° uPVC D{D}", D, n * (6 + 8), CUT[D], 0.6)
-fit("Côn thu uPVC D110/90 (nối bích chờ tank)", D, 2 * n, CON_110_90, 0.6)
-fit("Mặt bích uPVC D90 (nối bích chờ DN80 tại tank)", 90, 2 * n, BICH[90], 0.6)
-fit(f"Mặt bích uPVC D{D}", D, 2 * (2 * n) + 4 * n + 2 * n, BICH[D], 0.6)
-ROWS[-1]["note"] = "Bơm 2/cái×6 + cổ chiller 4×3 + cổ tháp 2×3"
+fit(f"Mặt bích uPVC D{D}", D, 2 * n + 2 * (2 * n) + 4 * n + 2 * n, BICH[D], 0.6)
+ROWS[-1]["note"] = "Bích chờ tank DN100 6 + bơm 2/cái×6 + cổ chiller 4×3 + cổ tháp 2×3"
 text("Bảo ôn ống nước lạnh dày 15mm")
-item(f"Bảo ôn cao su lưu hóa dày 15mm cho ống D{D}", "Superlon", "Malaysia", "m",
+item(f"Bảo ôn cao su lưu hóa dày 15mm cho ống D{D}", "", "China", "m",
      ceil_to(n * L_lanh_1 * (1 + HH), P["cay_bao_on_m"]), BO_114_15[0],
      round(BO_114_15[0] * P["ty_le_NC_bao_on"], -2), BO_114_15[1], "Quy đổi")
-item("Bảo ôn van, phụ kiện nước lạnh (cuộn + keo + băng dính)", "Superlon", "Malaysia", "Lô", 1,
+item("Bảo ôn van, phụ kiện nước lạnh (cuộn + keo + băng dính)", "", "China", "Lô", 1,
      round(0.15 * ROWS[-1]["sl"] * ROWS[-1]["q"], -3), 0, "Quy đổi 15% giá trị bảo ôn ống", "Quy đổi")
 
-sec("II.C", "Van nhựa PVC tay gạt D110, Y lọc DN100")
+sec("II.C", "Van, Y lọc")
 VBI110 = (P["gia_user_chiller"]["van_pvc_110"], "Giá user cấp 13/11/2026")
-acc(f"Van bi nhựa PVC tay gạt D{D} – 1 cái/bơm", "dán keo", 2 * n, VBI110, 1.1, xx="")
-acc(f"Van bi nhựa PVC tay gạt D{D} – 1 cái/chiller", "dán keo", n, VBI110, 1.1, xx="")
-acc(f"Van bi nhựa PVC tay gạt D{D} – 1 cái/tháp", "dán keo", n, VBI110, 1.1, xx="")
-valve("Y lọc gang mặt bích – hút bơm", 100, 2 * n, YL[100], 1)
+acc(f"Van bi nhựa PVC tay gạt D{D}", "dán keo", 2 * n + n + n, VBI110, 1.1, xx="")
+item("Y lọc mặt bích DN100", "DN100", "China", "cái", 2 * n, U["y_loc"], nc(1), "Giá user cấp 13/11/2026", "Có nguồn")
 
 sec("II.D", "Vật tư phụ (bu lông, gioăng)")
-acc("Bộ bu lông + gioăng mối nối DN100", "8 bu lông", 3 * 2 * n + 4 * n + 2 * n, BL[100], 0.2 * 1.0)
-ROWS[-1]["note"] = "Bơm 3/cái×6 (bích–Y, Y–bơm, bơm–bích) + cổ chiller 12 + tháp 6"
-acc("Bộ bu lông + gioăng mối nối DN80 (bích chờ tank)", "8 bu lông", 2 * n, BL[80], 0.2 * 0.8)
+acc("Bộ bu lông + gioăng mối nối DN100", "8 bu lông", 2 * n + 3 * 2 * n + 4 * n + 2 * n, BL[100], 0.2 * 1.0, xx="VN/TQ")
+ROWS[-1]["note"] = "Tank 6 + bơm 3/cái×6 (bích–Y, Y–bơm, bơm–bích) + cổ chiller 12 + tháp 6"
 
 sec("II.E", "Giá đỡ")
-item(f"Giá đỡ ống D{D} (bát V40 + đai omega; ống lạnh có gối PU)", "@1,2 m", "Việt Nam", "bộ",
-     math.ceil(L_upvc(n * (L_lanh_1 + L_gn_1)) / 1.2), GD_NHO[0], nc(0.3), GD_NHO[1], "Có nguồn")
-item("Giá đỡ cụm van bơm, cổ chiller, cổ tháp (thép hình)", "", "Việt Nam", "cái", 4 * n,
-     GD_LON[0], nc(1), GD_LON[1], "Có nguồn")
+item("Giá đỡ đường ống chiller (thép hình, bát V, đai omega, gối PU ống lạnh)", "Trọn bộ", "Việt Nam", "Lô", 1,
+     U["gia_do_vt"], U["gia_do_nc"], "Giá user cấp 13/11/2026", "Lô")
 
-sec("II.F", "Tủ điện tổng chiller")
-item("Tủ điện tổng chiller trọn bộ (động lực + điều khiển liên động chiller – bơm – tháp)", "Trọn bộ",
-     "Việt Nam", "bộ", 1, U["tu_dien"], U["nc_tu"], SRC_U + " – giá nhập", "Có nguồn",
-     "VT: giá nhập, NC lắp đặt + đấu nối: user cấp")
-ROWS[-1]["user"] = True
-
-sec("II.G", "Dây điện, cáp, thang cáp")
-cable("Cáp nguồn tủ → chiller", "3x50+25", C["L_tu_chiller_m"], n, "CV25")
-cable("Cáp nguồn tủ → bơm nước lạnh", "3x6+4", C["L_tu_bom_m"], n, "CV4")
-cable("Cáp nguồn tủ → bơm giải nhiệt", "3x6+4", C["L_tu_bom_m"], n, "CV4")
-cable("Cáp nguồn tủ → quạt tháp", "4x4", C["L_tu_thap_m"], n, "CV4")
-q, s = CAP["TH2x1.5"]
-item("Cáp tín hiệu liên động, công tắc dòng chảy", "2x1,5 chống nhiễu", "Việt Nam", "m",
-     C["L_cap_tin_hieu_m"], q, round(q * P["ty_le_NC_cap"], -2), s, "Có nguồn")
-item("Thang cáp sơn tĩnh điện 300x100 dày 1,2mm", "2DE", "Việt Nam", "m", C["L_mang_cap_m"],
-     THANG_300[0], round(THANG_300[0] * P["ty_le_NC_mang"], -2), THANG_300[1], "Có nguồn")
-item("Nắp thang cáp 300 dày 1,2mm", "BKVN", "Việt Nam", "m", C["L_mang_cap_m"],
-     NAP_300[0], round(NAP_300[0] * 0.2, -2), NAP_300[1], "Có nguồn")
-item("Phụ kiện thang cáp (co, tê, giá treo)", "Trọn bộ", "Việt Nam", "Lô", 1,
-     round(0.15 * C["L_mang_cap_m"] * (THANG_300[0] + NAP_300[0]), -3),
-     round(0.05 * C["L_mang_cap_m"] * (THANG_300[0] + NAP_300[0]), -3),
-     "Quy đổi 15% giá trị thang + nắp; NC = VT/3 (skill §7.5)", "Quy đổi")
-item("Ống ruột gà D25 bảo vệ cáp", "", "Việt Nam", "m", 60, RUOT_GA[0], 18000, RUOT_GA[1], "Có nguồn")
+sec("II.F", "Tủ điện, dây điện")
+item("Tủ điện, dây điện cấp nguồn", "CĐT cấp", "", "Lô", 1, 0, 0, "User 13/11/2026", "Lô", "CĐT cấp")
 
 # ================================================================ PHẦN III – CHI PHÍ CHUNG
 vt_sum = sum((r["q"] or 0) * r["sl"] for r in ROWS if r["kind"] == "item")
@@ -410,7 +382,7 @@ cpk_total = round(P["ty_le_chi_phi_khac"] * base, -6)
 sec("III.B", "Chi phí khác")
 for name, w in [("Phí vận chuyển, nâng hạ", 20), ("Xe nâng hạ thi công, dàn giáo", 15),
                 ("Phí vệ sinh môi trường", 5), ("Công dụng cụ thi công", 10),
-                ("Phí văn phòng, kho bãi", 50), ("Phí quản lý", 40)]:
+                ("Phí quản lý", 40)]:
     item(name, "", "Việt Nam", "Lô", 1, 0, round(cpk_total * w / 140, -5),
          f"Công thức: ô P9 × [tổng vốn (I + II + III.A) − VT thiết bị chiller (cột Y = 1)] × {w}/140 (cơ cấu SGC)", "Lô")
     ROWS[-1]["tag"] = ("cpk", w)
