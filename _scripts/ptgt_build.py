@@ -187,7 +187,7 @@ def pipe(D, L, label="Ống uPVC Tiền Phong", spec="C2 (PN8)"):
 
 def fit(kind, D, sl, price, hs):
     q, s = price
-    item(f"{kind}", "uPVC Tiền Phong", "Việt Nam", "cái", sl, q, nc(hs * D / 100), s,
+    item(f"{kind}", "", "Tiền Phong", "cái", sl, q, nc(hs * D / 100), s,
          "Quy đổi" if "Nội suy" in s or "Quy đổi" in s else "Có nguồn")
 
 
@@ -264,27 +264,26 @@ item("Cửa bản lề panel 100mm 2 mặt inox, có điện trở sưởi khung
 ROWS[-1]["user"] = True
 gc("Vật tư phụ lắp vỏ (silicone, keo bọt, ốc vít, rivet, đèn, van thông áp)", "Trọn bộ", "", "Lô", 1,
    GC["vt_phu_lap_vo_lo"], 0)
-gc("Cụm máy nén bình ngưng 20HP", "Máy nén Panasonic 20HP + bình ngưng + nhớt POE + phụ kiện lên máy", "",
+gc("Cụm máy nén bình ngưng 20HP", "Máy nén 20HP + bình ngưng + nhớt POE + phụ kiện lên máy", "Panasonic",
    "cụm", nC, GC["may_nen_20HP"] + GC["binh_ngung_20HP"] + GC["nhot_POE_bo"] + GC["phu_kien_len_may"],
    GC["nc_len_cum"], "NC = nhân công lắp ráp cụm")
 ROWS[-1]["nc_share"] = "I.1"
 gc("Dàn lạnh DJ 14.3/85-201 (≈25HP)", "", "", "cái", nE, GC["dan_lanh"], 0)
 ROWS[-1]["nc_share"] = "I.1"
-gc("Tháp giải nhiệt 20RT", "", "", "bộ", B["so_thap"], GC["thap_20RT"], 0,
+gc("Tháp giải nhiệt 20RT", "", "TTP", "bộ", B["so_thap"], GC["thap_20RT"], 0,
    "1 tháp 20RT cho mỗi cụm CDU 20HP (user chốt 13/11)")
 ROWS[-1]["nc_share"] = "I.1"
-gc("Bơm giải nhiệt 1,5kW (Ewara) – 1 bơm/cụm", "", "Ý", "cái", B["so_bom"], GC["bom_1_5kW"], 0,
-   "1 bơm cho mỗi cụm, không có bơm dự phòng (user chốt 13/11)")
+gc("Bơm giải nhiệt", "", "Ewara", "cái", B["so_bom"], GC["bom_1_5kW"], 0)
 ROWS[-1]["nc_share"] = "I.1"
 
 sec("I.2", "Đường ống")
 Lg = nC * (B["L_CDU_buong_m"] + B["L_them_moi_tuyen_m"])
 L_cu = round(Lg * (1 + HH))
-gc("Ống đồng Ø42x1,0 + Ø16x0,8 + bảo ôn 42x25 + phụ kiện đồng (theo cặp ống)", "Hailiang",
-   "", "m", L_cu, GC["ong_dong_cap_m"], 0,
+gc("Ống đồng Ø42x1,0 + Ø16x0,8 + bảo ôn 42x25 + phụ kiện đồng (theo cặp ống)", "",
+   "Hailiang", "m", L_cu, GC["ong_dong_cap_m"], 0,
    f"{nC} tuyến × ({B['L_CDU_buong_m']}+{B['L_them_moi_tuyen_m']}) m × 1,05")
 ROWS[-1]["nc_share"] = "I.2"
-gc("Van tiết lưu TES5", "Danfoss", "", "bộ", nC, GC["tiet_luu_TES5"], 0)
+gc("Van tiết lưu TES5", "", "Danfoss", "bộ", nC, GC["tiet_luu_TES5"], 0)
 ROWS[-1]["nc_share"] = "I.2"
 gc("Gas lạnh R404A/R507", "", "China", "hệ", nC, GC["gas_moi_he"], 0)
 ROWS[-1]["nc_share"] = "I.2"
@@ -299,14 +298,26 @@ ROWS[-1]["nc_share"] = "I.3"
 gc("Dây điện, cáp động lực và điều khiển", "", "Việt Nam", "hệ", nC, GC["day_dien_moi_he"], 0)
 ROWS[-1]["nc_share"] = "I.3"
 
-# ---- NC lắp đặt hệ thống (11tr/hệ × nC) phân bổ theo tỷ lệ VT thành tiền của các dòng nhận (I.1, I.2, I.3)
-_nc_tot = g(GC["nc_lap_dat_moi_he"]) * nC
+# ---- NC Phần I: tổng NC user cấp (lắp ráp cụm 4tr + lắp đặt 10tr)/hệ × 1,10 × nC giữ nguyên;
+#      đặt NC cố định theo user, phần còn lại phân bổ theo tỷ lệ VT cho ống đồng, gas, ống PVC, dây điện
+_nc_pool = (g(GC["nc_len_cum"]) + g(GC["nc_lap_dat_moi_he"])) * nC
+_fix = P["nc_co_dinh_buong_lanh"]
+_map = {"Cụm máy nén bình ngưng 20HP": "cum", "Dàn lạnh DJ 14.3/85-201 (≈25HP)": "dan_lanh",
+        "Tủ điện điều khiển cụm máy (1 tủ/cụm)": "tu", "Tháp giải nhiệt 20RT": "thap", "Bơm giải nhiệt": "bom",
+        "Van tiết lưu TES5": "tiet_luu"}
 _rows = [r for r in ROWS if r.get("nc_share")]
-_vt = sum(r["q"] * r["sl"] for r in _rows)
+_fixed_sum = 0
 for r in _rows:
-    _add = _nc_tot * (r["q"] * r["sl"]) / _vt / r["sl"]
-    r["r"] = round((r["r"] or 0) + _add)
-    r["note"] = (r["note"] + "; " if r["note"] else "") + f"NC gồm phần phân bổ NC lắp đặt {_nc_tot:,.0f} đ theo tỷ lệ VT ({r['q'] * r['sl'] / _vt:.2%})"
+    if r["name"] in _map:
+        r["r"] = _fix[_map[r["name"]]]
+        r["note"] = "NC user cấp"
+        _fixed_sum += r["r"] * r["sl"]
+_rest = [r for r in _rows if r["name"] not in _map]
+_vt = sum(r["q"] * r["sl"] for r in _rest)
+_remain = _nc_pool - _fixed_sum
+for r in _rest:
+    r["r"] = round(_remain * r["q"] / _vt)
+    r["note"] = f"NC = phần còn lại {_remain:,.0f} đ phân bổ theo tỷ lệ VT ({r['q'] * r['sl'] / _vt:.2%})"
 # ================================================================ PHẦN II – CHILLER
 C = P["chiller"]
 n = C["so_chiller"]
@@ -317,11 +328,11 @@ part("II", "HỆ THỐNG CHILLER 03 x 80HP")
 sec("II.1", "Thiết bị (tank 20m³ do CĐT cấp, có sẵn 6 bích chờ DN100)")
 item("Chiller 80HP giải nhiệt nước (đầu nén Hanbell - Đài Loan)", "", "Hstar", "bộ", n, U["chiller"], U["nc_chiller"], SRC_U + " – giá nhập", "Có nguồn",
      "VT: giá nhập, NC: user cấp")
-item(f"Bơm tuần hoàn nước lạnh {C['luu_luong_nuoc_lanh_m3h']} m³/h", "Teco", "", "cái", n, U["bom"], U["nc_bom"], SRC_U,
+item(f"Bơm tuần hoàn nước lạnh {C['luu_luong_nuoc_lanh_m3h']} m³/h", "", "Teco", "cái", n, U["bom"], U["nc_bom"], SRC_U,
      "Có nguồn", "VT, NC: user cấp")
-item(f"Bơm giải nhiệt {C['luu_luong_giai_nhiet_m3h']} m³/h", "Teco", "", "cái", n, U["bom"], U["nc_bom"], SRC_U,
+item(f"Bơm giải nhiệt {C['luu_luong_giai_nhiet_m3h']} m³/h", "", "Teco", "cái", n, U["bom"], U["nc_bom"], SRC_U,
      "Có nguồn", "VT, NC: user cấp")
-item("Tháp giải nhiệt", "TTP", "", "bộ", n, U["thap"], U["nc_thap"], SRC_U, "Có nguồn",
+item("Tháp giải nhiệt", "", "TTP", "bộ", n, U["thap"], U["nc_thap"], SRC_U, "Có nguồn",
      "VT, NC: user cấp")
 for r_ in ROWS[-4:]:
     r_["user"] = True
@@ -333,7 +344,7 @@ L_gn_1 = 2 * C["L_chiller_thap_m"] + 4
 A_ = math.pi / 4 * C["ID_D110_m"] ** 2
 v_l = C["luu_luong_nuoc_lanh_m3h"] / 3600 / A_
 v_g = C["luu_luong_giai_nhiet_m3h"] / 3600 / A_
-item(f"Ống uPVC Tiền Phong D{D}", "C2 (PN8)", "Việt Nam", "m", L_upvc(n * (L_lanh_1 + L_gn_1)),
+item(f"Ống uPVC D{D}", "C2 (PN8)", "Tiền Phong", "m", L_upvc(n * (L_lanh_1 + L_gn_1)),
      UPVC[D][0], nc(D / 100), UPVC[D][1], "Có nguồn", f"{n}×({L_lanh_1}+{L_gn_1}) m × 1,05, tròn cây 4 m")
 fit(f"Cút 90° uPVC D{D}", D, n * (6 + 8), CUT[D], 0.6)
 fit(f"Mặt bích uPVC D{D}", D, 2 * n + 2 * (2 * n) + 4 * n + 2 * n, BICH[D], 0.6)
@@ -345,7 +356,7 @@ item("Bảo ôn van, phụ kiện nước lạnh (cuộn + keo + băng dính)", 
      round(0.15 * ROWS[-1]["sl"] * ROWS[-1]["q"], -3), U["nc_bao_on_pk"], "Quy đổi 15% giá trị bảo ôn ống; NC user cấp", "Quy đổi")
 
 VBI110 = (P["gia_user_chiller"]["van_pvc_110"], "Giá user cấp 13/11/2026")
-acc(f"Van bi nhựa PVC tay gạt D{D}", "Taijan", 2 * n + n + n, VBI110, 1.1, xx="")
+acc(f"Van bi nhựa PVC tay gạt D{D}", "", 2 * n + n + n, VBI110, 1.1, xx="Taijan")
 item("Y lọc mặt bích DN100", "DN100", "China", "cái", 2 * n, U["y_loc"], nc(1), "Giá user cấp 13/11/2026", "Có nguồn")
 
 acc("Bộ bu lông + gioăng mối nối DN100", "8 bu lông", 2 * n + 3 * 2 * n + 4 * n + 2 * n, BL[100], 0.2 * 1.0, xx="VN/TQ")
@@ -415,6 +426,7 @@ ws.page_setup.fitToWidth = 1
 ws.page_setup.fitToHeight = 0
 ws.sheet_properties.pageSetUpPr.fitToPage = True
 ws["B8"] = P["khach_hang"]
+ws["H8"] = P["sale"]["ten"]; ws["H9"] = P["sale"]["mobile"]; ws["H10"] = P["sale"]["email"]
 ws["B11"] = P["dia_chi_kh"]
 ws["H11"] = P["quota_no"]
 ws["H12"] = P["ngay"]
@@ -434,7 +446,8 @@ for col, t in [(cSL, "SL"), (cQ, "ĐG VT vốn"), (cR, "ĐG NC vốn"), (cS, "TT
                (cU, "TỔNG vốn"), (cX, "TÍNH TIÊU HAO (1/0)"), (cY, "LOẠI VT KHỎI NỀN CPK (1)")]:
     c = ws.cell(14, col, t)
     c._style = copy.copy(ws["G14"]._style)
-for col, w in {"B": 63, "C": 26, "D": 12, "G": 15, "H": 14, "I": 17, "J": 16, "K": 18, "N": 22,
+COLW = {"A": 8, "B": 60, "C": 30, "D": 14, "E": 9, "F": 9, "G": 15, "H": 14, "I": 18, "J": 16, "K": 19}
+for col, w in {**COLW, "N": 22,
                L_["SL"]: 8, L_["Q"]: 14, L_["R"]: 14, L_["S"]: 16, L_["T"]: 16, L_["U"]: 17,
                L_["X"]: 10, L_["Y"]: 12}.items():
     ws.column_dimensions[col].width = w
@@ -479,6 +492,19 @@ for i, it in enumerate(ROWS):
             ws.cell(rr, cQ).comment = Comment(it["src"], "Claude")
     for c in (6, 7, 8, 9, 10, 11):
         ws.cell(rr, c).number_format = "#,##0" if c != 6 else "#,##0.0#"
+
+# ---- chiều cao dòng theo độ dài chữ (B, C, D xuống dòng)
+for it in ROWS:
+    rr = it["row"]
+    n_line = 1
+    for col in ("B", "C", "D"):
+        c = ws[f"{col}{rr}"]
+        c.alignment = Alignment(wrap_text=True, vertical="center",
+                                horizontal="left" if col == "B" else "center")
+        txt = str(c.value or "")
+        if txt:
+            n_line = max(n_line, math.ceil(len(txt) / (COLW[col] * 0.95)))
+    ws.row_dimensions[rr].height = max(24, 20 * n_line + 6)
 
 last = r0 + len(ROWS) - 1
 SUBC = ["I", "J", "K", Sc, Tc, Uc]

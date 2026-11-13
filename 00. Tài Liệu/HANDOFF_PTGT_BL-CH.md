@@ -127,3 +127,12 @@
   VT tiêu hao chiller cộng thêm 1tr (params `tieu_hao_cong_them`).
 - Số liệu Excel (vốn, chưa VAT): Tổng 2.755,9 tr · sau VAT 2.976,4 tr; I 1.195,7 · II 1.525,3 · III 34,9
 - BƯỚC TIẾP THEO: thông tin KH + hệ số giá bán (O8) → bản chào giá ẩn cột N–V
+
+## CHECKPOINT 14 – 2026-11-13
+- File hiện hành: `4. Khối lượng - BOQ/PTGT Buong lanh + Chiller - 2026.11.13_v14.xlsx` (v13 backup ở `90. Backup/`)
+- Quyết định user: tháp buồng lạnh TTP; bơm buồng lạnh "Bơm giải nhiệt", cột D = Ewara; mọi hãng ghi cột D (Panasonic, TTP, Ewara, Hailiang, Danfoss, Tiền Phong, Hstar, Teco, Taijan);
+  NC cố định Phần I: cụm 1,5tr, dàn 2tr, tủ 1tr, tháp 1tr, bơm 300k, tiết lưu 500k (params `nc_co_dinh_buong_lanh`);
+  phần còn lại của tổng NC 77tr (= (4+10)tr × 1,1 × 5) = 45,5tr phân bổ theo tỷ lệ VT cho ống đồng, gas, ống PVC, dây điện.
+  Chiều cao dòng tự tính theo độ dài chữ cột B/C/D. Sale: Mr. Bùi Hoàng Nghĩa – 0964826488 – project.tiendatco@gmail.com; KH: Mr. Quang Anh.
+- Số liệu Excel (vốn, chưa VAT): Tổng 2.755,9 tr · sau VAT 2.976,4 tr; I 1.195,7 · II 1.525,3 · III 34,9
+- Còn mở: tên công ty/địa chỉ KH; hệ số giá bán O8 (1,00); ẩn cột N–V khi gửi

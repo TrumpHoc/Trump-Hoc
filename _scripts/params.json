@@ -3,8 +3,8 @@
   "du_an": "HỆ THỐNG BUỒNG LẠNH -20°C VÀ HỆ THỐNG CHILLER 3x80HP",
   "quota_no": "TD-2026.11.13",
   "ngay": "13/11/2026",
-  "khach_hang": "[Tên khách hàng – chờ bổ sung]",
-  "dia_chi_kh": "[Địa chỉ – chờ bổ sung]",
+  "khach_hang": "Mr. Quang Anh",
+  "dia_chi_kh": "",
   "he_so_gia_ban_P8": 1.0,
   "VAT": 0.08,
   "K_lap_dat_thiet_bi_d_per_he_so": 763333,
@@ -112,5 +112,18 @@
     "day_dien_moi_he": 6000000,
     "nc_lap_dat_moi_he": 10000000
   },
-  "tieu_hao_cong_them": 1000000
+  "tieu_hao_cong_them": 1000000,
+  "sale": {
+    "ten": "Mr. Bùi Hoàng Nghĩa",
+    "mobile": "0964826488",
+    "email": "project.tiendatco@gmail.com"
+  },
+  "nc_co_dinh_buong_lanh": {
+    "cum": 1500000,
+    "dan_lanh": 2000000,
+    "tu": 1000000,
+    "thap": 1000000,
+    "bom": 300000,
+    "tiet_luu": 500000
+  }
 }

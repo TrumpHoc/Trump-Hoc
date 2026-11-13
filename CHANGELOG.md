@@ -12,3 +12,4 @@
 - 2026-11-13 v11: Cấu trúc 3 mục/phần (Thiết bị/Đường ống/Đường điện); tiêu hao vào II.2; bỏ VT phụ điện; tủ buồng lạnh 1 tủ/cụm.
 - 2026-11-13 v12: Gộp cụm máy nén bình ngưng; chia đều NC lắp đặt 55tr cho 3 mục; bảo ôn 56 m; NC bảo ôn PK 700k; bỏ freeze; xoá cột L/V/W (nguồn → sheet NGUON).
 - 2026-11-13 v13: Bỏ chữ ghi chép; thương hiệu (Taijan, Hailiang, Hstar/Hanbell, Teco, TTP); vận chuyển panel sang III; cửa 7,5tr+1tr; NC lắp đặt theo tỷ lệ VT; tiêu hao +1tr.
+- 2026-11-13 v14: Hãng sang cột D; NC cố định buồng lạnh + phần còn lại theo tỷ lệ VT; chiều cao dòng; thông tin sale/KH.
