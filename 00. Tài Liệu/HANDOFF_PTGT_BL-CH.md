@@ -158,3 +158,9 @@
 - Số liệu Excel: VỐN 2.868,6 tr (sau VAT 3.098,1 tr); BÁN trước thuế 3.729,2 tr, VAT 298,3 tr, sau thuế 4.027,6 tr; lãi gộp 860,6 tr (23,1%)
   - Bán: I 1.559,6 · II 2.137,2 · III 32,4
 - Còn mở: công ty/địa chỉ KH; ẩn cột N–V + sheet nội bộ khi gửi
+
+## CHECKPOINT 18 – 2026-11-13
+- File hiện hành: `4. Khối lượng - BOQ/PTGT Buong lanh + Chiller - 2026.11.13_v18.xlsx` + PDF gửi khách `4. Khối lượng - BOQ/BG Buong lanh + Chiller - TD-2026.11.13_v18.pdf` (2 trang, chỉ vùng A1:K – không có cột vốn/sheet nội bộ)
+- Thay đổi: dòng "Rất mong…" căn trái (vẫn in đậm). Số liệu không đổi so với v17: bán sau VAT 4.027,6 tr; vốn 2.868,6 tr; lãi gộp 860,6 tr (23,1%)
+- Cách xuất PDF: copy v18, xoá các sheet khác DT, LibreOffice convert pdf (print area A1:K, landscape, fit width)
+- Còn mở: tên công ty/địa chỉ/email KH (ô To/Add/Email)

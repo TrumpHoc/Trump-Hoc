@@ -585,7 +585,7 @@ for k_, v in enumerate(notes_new):
     ws.row_dimensions[rr].height = 24
     if k_ >= len(notes_new) - 2:      # "Rất mong…" và dòng ký tên
         _fb = copy.copy(ws.cell(rr, 1).font); _fb.b = True; ws.cell(rr, 1).font = _fb
-        ws.cell(rr, 1).alignment = Alignment(horizontal="center", vertical="center")
+        ws.cell(rr, 1).alignment = Alignment(horizontal="left" if k_ == len(notes_new) - 2 else "center", vertical="center")
         ws.row_dimensions[rr].height = 30
 ws.freeze_panes = None
 ws.print_area = f"A1:K{nr + len(notes_new) - 1}"
