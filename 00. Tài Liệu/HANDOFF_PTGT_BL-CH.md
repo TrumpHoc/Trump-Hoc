@@ -164,3 +164,8 @@
 - Thay đổi: dòng "Rất mong…" căn trái (vẫn in đậm). Số liệu không đổi so với v17: bán sau VAT 4.027,6 tr; vốn 2.868,6 tr; lãi gộp 860,6 tr (23,1%)
 - Cách xuất PDF: copy v18, xoá các sheet khác DT, LibreOffice convert pdf (print area A1:K, landscape, fit width)
 - Còn mở: tên công ty/địa chỉ/email KH (ô To/Add/Email)
+
+## CHECKPOINT 19 – 2026-11-13
+- File hiện hành: `4. Khối lượng - BOQ/PTGT Buong lanh + Chiller - 2026.11.13_v19.xlsx` + PDF `4. Khối lượng - BOQ/BG Buong lanh + Chiller - TD-2026.11.13_v19.pdf`
+- Thay đổi: lặp dòng tiêu đề bảng 14–15 ở đầu mỗi trang in (print_title_rows); chiều cao dòng 14 = 22, 15 = 20 (trước 40,5/39). Số liệu không đổi.
+- Còn mở: tên công ty/địa chỉ/email KH

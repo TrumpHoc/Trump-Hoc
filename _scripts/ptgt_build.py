@@ -589,6 +589,9 @@ for k_, v in enumerate(notes_new):
         ws.row_dimensions[rr].height = 30
 ws.freeze_panes = None
 ws.print_area = f"A1:K{nr + len(notes_new) - 1}"
+ws.print_title_rows = "14:15"
+ws.row_dimensions[14].height = 22
+ws.row_dimensions[15].height = 20
 
 # ---- sheet NGUON (thay cho cột Ghi chú/Nguồn/Trạng thái đã xoá ở DT)
 ng = tpl.create_sheet("NGUON")
