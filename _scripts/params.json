@@ -59,17 +59,18 @@
     "luu_luong_nuoc_lanh_m3h": 36,
     "luu_luong_giai_nhiet_m3h": 45,
     "nhiet_do_nuoc_lanh": "7/12°C (giả định) → bảo ôn ống nước lạnh",
-    "L_header_hut_tank_m": 6,
-    "L_header_ve_tank_m": 10,
-    "L_nhanh_hut_bom_m": 2,
     "L_bom_chiller_m": 6,
-    "L_chiller_header_ve_m": 3,
     "L_chiller_thap_m": 15,
     "L_tu_chiller_m": 15,
     "L_tu_bom_m": 10,
     "L_tu_thap_m": 25,
     "L_cap_tin_hieu_m": 200,
-    "L_mang_cap_m": 40
+    "L_mang_cap_m": 40,
+    "L_tank_bom_m": 3,
+    "L_chiller_tank_m": 8,
+    "ID_D90_m": 0.0836,
+    "ong": "uPVC D90 toàn bộ, 3 vòng độc lập; tank có sẵn 6 bích chờ DN80 (user 13/11)",
+    "bao_on_mm": 15
   },
   "gia_ghi_chep": {
     "nguon": "Ghi chép tay user 13/11/2026 (00. Tài Liệu/GHI_CHEP_GIA_BUONG_LANH_2026-11-13_*.jpg) × 1,10",
@@ -93,5 +94,11 @@
     "tu_dk_moi_he": 6000000,
     "day_dien_moi_he": 6000000,
     "nc_lap_dat_moi_he": 10000000
+  },
+  "gia_user_chiller": {
+    "nguon": "Giá user cấp 13/11/2026",
+    "bom": 13500000,
+    "thap": 42000000,
+    "tu_dien": 45000000
   }
 }

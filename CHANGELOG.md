@@ -4,3 +4,4 @@
 - 2026-11-13 v03: Panel dùng đơn giá NCC × KL 6 mặt 101,68 m² (gồm sàn); bỏ dòng sàn riêng.
 - 2026-11-13 v04: Phần I dùng đơn giá ghi chép 13/11 ×1,10; TĐ cấp thiết bị buồng lạnh; tiêu hao loại trừ hạng mục ghi chép.
 - 2026-11-13 v05: Buồng lạnh đổi thành 5 tháp 20RT + 5 bơm 1,5kW.
+- 2026-11-13 v06: Chiller: bơm/tháp/tủ theo giá user; ống uPVC D90 3 vòng độc lập, van PVC, bảo ôn 15mm; thang cáp 1,2mm có nắp; P9/P10 công thức.

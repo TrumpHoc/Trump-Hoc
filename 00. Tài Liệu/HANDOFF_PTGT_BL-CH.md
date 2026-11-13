@@ -52,3 +52,15 @@
 - Số liệu (vốn, chưa VAT): VT 1.460,8 tr · NC+CP 404,7 tr · Tổng 1.865,5 tr · sau VAT 2.014,8 tr; I 1.179,8 · II 531,3 · III 154,4
 - Còn mở: gas 5,7 hay 4,5 tr/hệ; chi phí khác 8% có tính trên thiết bị không; 4 dòng chờ giá (cửa, vỏ tủ chiller, PLC, phụ kiện ĐK); P8
 - BƯỚC TIẾP THEO: trả lời các điểm mở → v06
+
+## CHECKPOINT 06 – 2026-11-13
+- File hiện hành: `4. Khối lượng - BOQ/PTGT Buong lanh + Chiller - 2026.11.13_v06.xlsx` (v05 backup ở `90. Backup/`)
+- Quyết định user 13/11: gas 5,7tr/hệ; P8 = 1,00; bơm chiller (lạnh + GN) 13,5tr/cái; tháp chiller 42tr/cái (dùng nguyên giá, không ×1,1);
+  ống chiller toàn bộ uPVC D90, 3 vòng độc lập, tank có sẵn 6 bích chờ DN80; van dùng van nhựa PVC (không van bướm); bảo ôn 15mm;
+  tủ điện chiller trọn bộ giá nhập 45tr; thang cáp có nắp dày 1,2mm.
+- Excel: tỷ lệ chi phí khác ô P9 (8%), tỷ lệ VT tiêu hao ô P10 (2,5%) – dòng III.A/III.B là công thức; cột X = 1 dòng tính tiêu hao.
+- Nội suy mới: cút D90, van bi PVC D90 (ngoại suy, tin cậy thấp), bảo ôn Ø89 15mm, bu lông DN80. Y lọc giữ gang DN80 (Wonil).
+- Số liệu Excel (vốn, chưa VAT): Tổng 1.953,7 tr · sau VAT 2.110,0 tr; I 1.179,8 · II 616,1 · III 157,8
+- Cần hỏi giá: cửa buồng lạnh; van một chiều PVC D90 (6 cái); xác nhận giá van bi PVC D90
+- Rủi ro: D90 với lưu lượng giả định 45 m³/h vòng GN → v ≈ 2,28 m/s (> 2,1 hút); cần lưu lượng thực của chiller
+- BƯỚC TIẾP THEO: giá cửa + van 1 chiều PVC; lưu lượng chiller → v07
