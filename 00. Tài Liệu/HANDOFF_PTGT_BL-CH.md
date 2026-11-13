@@ -99,3 +99,12 @@
 - Số liệu Excel (vốn, chưa VAT): Tổng 2.766,6 tr · sau VAT 2.988,0 tr; I 1.201,8 · II 1.522,2 · III 42,7 (chi phí khác 34,1)
 - Còn mở: thông tin khách hàng; P8; vật tư phụ điện 6tr+1,35tr (III.A) có giữ không khi điện chiller CĐT cấp
 - BƯỚC TIẾP THEO: điền KH + chốt P8 → bản chào giá ẩn cột vốn
+
+## CHECKPOINT 11 – 2026-11-13
+- File hiện hành: `4. Khối lượng - BOQ/PTGT Buong lanh + Chiller - 2026.11.13_v11.xlsx` (v10 backup ở `90. Backup/`)
+- Quyết định user: mỗi phần lớn chỉ 3 mục: 1 Thiết bị / 2 Đường ống / 3 Đường điện; vật tư tiêu hao chuyển vào II.2 (cuối mục);
+  bỏ vật tư phụ điện; Phần III chỉ còn "CHI PHÍ KHÁC"; tủ điện buồng lạnh 1 tủ/cụm (5 tủ × 6,6tr).
+- Công thức: tiêu hao = P10 × SUMPRODUCT(P,Q,X) các dòng phía trên; CPK = P9 × (U_I + U_II − SUMPRODUCT(S,Y)) × w/140.
+- Số liệu Excel (vốn, chưa VAT): Tổng 2.759,1 tr · sau VAT 2.979,8 tr; I 1.201,8 · II 1.523,4 · III 33,9
+- Còn mở: thông tin khách hàng; P8
+- BƯỚC TIẾP THEO: điền KH + chốt P8 → bản chào giá ẩn cột vốn
