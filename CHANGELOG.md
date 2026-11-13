@@ -19,3 +19,4 @@
 - 2026-11-13 v18: Dòng 'Rất mong…' căn trái; xuất PDF báo giá gửi khách.
 - 2026-11-13 v19: Lặp tiêu đề dòng 14–15 mỗi trang in; thu hẹp dòng 14–15; xuất lại PDF.
 - 2026-11-13 v20: Dòng VAT cao bằng dòng tổng trước thuế; xuất lại PDF.
+- 2026-11-13 v21: Thời gian giao hàng, thi công 55 - 60 ngày.

@@ -572,6 +572,7 @@ ws[f"{Qc}{t + 1}"].number_format = "0.0%"
 
 notes_new = list(notes)
 notes_new[1] = "1. Báo giá trên đã bao gồm VAT, chi phí giao hàng, chi phí lắp đặt hệ thống và phí bảo hành "
+notes_new[5] = "5. Giao hàng và thi công :  55 - 60 ngày tính từ khi thanh toán tạm ứng."
 notes_new[11] = f"11. Vui lòng liên hệ với số điện thoại: {P['sale']['mobile']} ({P['sale']['ten']}) để được tư vấn chi tiết."
 notes_new[2] = ("2. Báo giá trên chưa bao gồm: tank 20m³, "
                 "móng máy, dây nguồn đến tủ điện tổng và chi phí phát sinh")

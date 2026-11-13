@@ -174,3 +174,8 @@
 - File hiện hành: `4. Khối lượng - BOQ/PTGT Buong lanh + Chiller - 2026.11.13_v20.xlsx` + PDF `…_v20.pdf`
 - Thay đổi: chiều cao dòng VAT 8% = dòng TỔNG GIÁ TRỊ TRƯỚC THUẾ (42; trước là 48). Dòng sau thuế giữ 35,25. Số liệu không đổi.
 - Còn mở: tên công ty/địa chỉ/email KH
+
+## CHECKPOINT 21 – 2026-11-13
+- File hiện hành: `4. Khối lượng - BOQ/PTGT Buong lanh + Chiller - 2026.11.13_v21.xlsx` + PDF `…_v21.pdf`
+- Thay đổi: ghi chú 5 "Giao hàng và thi công: 55 - 60 ngày tính từ khi thanh toán tạm ứng" (trước 30 - 40). Số liệu không đổi.
+- Còn mở: tên công ty/địa chỉ/email KH
