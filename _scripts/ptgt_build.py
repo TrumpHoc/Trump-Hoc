@@ -253,7 +253,7 @@ def gc(name, spec, xx, dv, sl, vt, ncv, note=""):
          (note + "; " if note else "") + f"Đơn giá user cấp × {HS:.2f}")
 
 
-sec("I.1", "Thiết bị")
+sec("I.1", "Vỏ buồng lạnh")
 a, b, c = B["dai"], B["rong"], B["cao"]
 S_panel = round(2 * (a * b + a * c + b * c), 2)   # 6 mặt: tường + trần + sàn
 gc("Panel PU 100mm 2 mặt inox – 6 mặt (tường, trần, sàn)",
@@ -264,11 +264,12 @@ item("Cửa bản lề panel 100mm 2 mặt inox, có điện trở sưởi khung
 ROWS[-1]["user"] = True
 gc("Vật tư phụ lắp vỏ (silicone, keo bọt, ốc vít, rivet, đèn, van thông áp)", "Trọn bộ", "", "Lô", 1,
    GC["vt_phu_lap_vo_lo"], 0)
-gc("Cụm máy nén bình ngưng 20HP", "Máy nén 20HP + bình ngưng + nhớt POE + phụ kiện lên máy", "Panasonic",
+sec("I.2", "Thiết bị")
+gc("Cụm máy nén bình ngưng 20HP", "Máy nén Panasonic 20HP + bình ngưng + nhớt POE + phụ kiện lên máy", "Việt Nam",
    "cụm", nC, GC["may_nen_20HP"] + GC["binh_ngung_20HP"] + GC["nhot_POE_bo"] + GC["phu_kien_len_may"],
    GC["nc_len_cum"], "NC = nhân công lắp ráp cụm")
 ROWS[-1]["nc_share"] = "I.1"
-gc("Dàn lạnh DJ 14.3/85-201 (≈25HP)", "", "", "cái", nE, GC["dan_lanh"], 0)
+gc("Dàn lạnh inox", "DJ 14.3/85-201", "China", "cái", nE, GC["dan_lanh"], 0)
 ROWS[-1]["nc_share"] = "I.1"
 gc("Tháp giải nhiệt 20RT", "", "TTP", "bộ", B["so_thap"], GC["thap_20RT"], 0,
    "1 tháp 20RT cho mỗi cụm CDU 20HP (user chốt 13/11)")
@@ -276,10 +277,10 @@ ROWS[-1]["nc_share"] = "I.1"
 gc("Bơm giải nhiệt", "", "Ewara", "cái", B["so_bom"], GC["bom_1_5kW"], 0)
 ROWS[-1]["nc_share"] = "I.1"
 
-sec("I.2", "Đường ống")
+sec("I.3", "Đường ống")
 Lg = nC * (B["L_CDU_buong_m"] + B["L_them_moi_tuyen_m"])
 L_cu = round(Lg * (1 + HH))
-gc("Ống đồng Ø42x1,0 + Ø16x0,8 + bảo ôn 42x25 + phụ kiện đồng (theo cặp ống)", "",
+gc("Ống đồng Ø42x1,0 + Ø16x0,8 + bảo ôn và phụ kiện", "",
    "Hailiang", "m", L_cu, GC["ong_dong_cap_m"], 0,
    f"{nC} tuyến × ({B['L_CDU_buong_m']}+{B['L_them_moi_tuyen_m']}) m × 1,05")
 ROWS[-1]["nc_share"] = "I.2"
@@ -292,17 +293,18 @@ ROWS[-1]["nc_share"] = "I.2"
 item("Giá đỡ chung tuyến ống gas (thép hình, ty treo, kẹp)", "@1,5 m", "Việt Nam", "cái",
      math.ceil(B["L_CDU_buong_m"] / 1.5) + 2, GD_LON[0], nc(1), GD_LON[1], "Có nguồn")
 
-sec("I.3", "Đường điện")
+sec("I.4", "Đường điện")
 gc("Tủ điện điều khiển cụm máy (1 tủ/cụm)", "", "Việt Nam", "tủ", nC, GC["tu_dk_moi_he"], 0)
 ROWS[-1]["nc_share"] = "I.3"
-gc("Dây điện, cáp động lực và điều khiển", "", "Việt Nam", "hệ", nC, GC["day_dien_moi_he"], 0)
+item("Dây điện, cáp động lực và điều khiển", "", "Việt Nam", "hệ", nC, P["day_dien_buong_lanh_he"], 0, "Giá user cấp 13/11/2026", "Có nguồn")
+ROWS[-1]["user"] = True
 ROWS[-1]["nc_share"] = "I.3"
 
 # ---- NC Phần I: tổng NC user cấp (lắp ráp cụm 4tr + lắp đặt 10tr)/hệ × 1,10 × nC giữ nguyên;
 #      đặt NC cố định theo user, phần còn lại phân bổ theo tỷ lệ VT cho ống đồng, gas, ống PVC, dây điện
 _nc_pool = (g(GC["nc_len_cum"]) + g(GC["nc_lap_dat_moi_he"])) * nC
 _fix = P["nc_co_dinh_buong_lanh"]
-_map = {"Cụm máy nén bình ngưng 20HP": "cum", "Dàn lạnh DJ 14.3/85-201 (≈25HP)": "dan_lanh",
+_map = {"Cụm máy nén bình ngưng 20HP": "cum", "Dàn lạnh inox": "dan_lanh",
         "Tủ điện điều khiển cụm máy (1 tủ/cụm)": "tu", "Tháp giải nhiệt 20RT": "thap", "Bơm giải nhiệt": "bom",
         "Van tiết lưu TES5": "tiet_luu"}
 _rows = [r for r in ROWS if r.get("nc_share")]
@@ -332,7 +334,7 @@ item(f"Bơm tuần hoàn nước lạnh {C['luu_luong_nuoc_lanh_m3h']} m³/h", "
      "Có nguồn", "VT, NC: user cấp")
 item(f"Bơm giải nhiệt {C['luu_luong_giai_nhiet_m3h']} m³/h", "", "Teco", "cái", n, U["bom"], U["nc_bom"], SRC_U,
      "Có nguồn", "VT, NC: user cấp")
-item("Tháp giải nhiệt", "", "TTP", "bộ", n, U["thap"], U["nc_thap"], SRC_U, "Có nguồn",
+item("Tháp giải nhiệt 100RT", "", "TTP", "bộ", n, U["thap"], U["nc_thap"], SRC_U, "Có nguồn",
      "VT, NC: user cấp")
 for r_ in ROWS[-4:]:
     r_["user"] = True
@@ -354,6 +356,9 @@ item(f"Bảo ôn cao su lưu hóa dày 15mm cho ống D{D}", "", "China", "m",
      round(BO_114_15[0] * P["ty_le_NC_bao_on"], -2), BO_114_15[1], "Quy đổi")
 item("Bảo ôn van, phụ kiện nước lạnh (cuộn + keo + băng dính)", "", "China", "Lô", 1,
      round(0.15 * ROWS[-1]["sl"] * ROWS[-1]["q"], -3), U["nc_bao_on_pk"], "Quy đổi 15% giá trị bảo ôn ống; NC user cấp", "Quy đổi")
+_L_bq = n * L_lanh_1 * (1 + HH)
+item("Băng quấn trắng", "1 kg / 3 m ống", "", "kg", math.ceil(ceil_to(_L_bq, 4) / 3), U["bang_quan_kg"], 0,
+     "Giá user cấp 13/11/2026", "Có nguồn", "SL = chiều dài ống nước lạnh / 3")
 
 VBI110 = (P["gia_user_chiller"]["van_pvc_110"], "Giá user cấp 13/11/2026")
 acc(f"Van bi nhựa PVC tay gạt D{D}", "", 2 * n + n + n, VBI110, 1.1, xx="Taijan")

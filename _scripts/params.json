@@ -87,7 +87,8 @@
     "gia_do_vt": 8000000,
     "gia_do_nc": 3000000,
     "nc_bao_on_pk": 700000,
-    "nc_cua": 1000000
+    "nc_cua": 1000000,
+    "bang_quan_kg": 25000
   },
   "gia_user_buong_lanh": {
     "nguon": "Giá user cấp 13/11/2026 × 1,10",
@@ -125,5 +126,6 @@
     "thap": 1000000,
     "bom": 300000,
     "tiet_luu": 500000
-  }
+  },
+  "day_dien_buong_lanh_he": 7400000
 }

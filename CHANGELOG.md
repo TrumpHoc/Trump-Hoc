@@ -13,3 +13,4 @@
 - 2026-11-13 v12: Gộp cụm máy nén bình ngưng; chia đều NC lắp đặt 55tr cho 3 mục; bảo ôn 56 m; NC bảo ôn PK 700k; bỏ freeze; xoá cột L/V/W (nguồn → sheet NGUON).
 - 2026-11-13 v13: Bỏ chữ ghi chép; thương hiệu (Taijan, Hailiang, Hstar/Hanbell, Teco, TTP); vận chuyển panel sang III; cửa 7,5tr+1tr; NC lắp đặt theo tỷ lệ VT; tiêu hao +1tr.
 - 2026-11-13 v14: Hãng sang cột D; NC cố định buồng lạnh + phần còn lại theo tỷ lệ VT; chiều cao dòng; thông tin sale/KH.
+- 2026-11-13 v15: Phần I tách Vỏ buồng lạnh/Thiết bị; dàn inox China; cụm máy Việt Nam; dây điện 7,4tr; tháp chiller 100RT; băng quấn trắng.

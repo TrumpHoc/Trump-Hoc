@@ -136,3 +136,11 @@
   Chiều cao dòng tự tính theo độ dài chữ cột B/C/D. Sale: Mr. Bùi Hoàng Nghĩa – 0964826488 – project.tiendatco@gmail.com; KH: Mr. Quang Anh.
 - Số liệu Excel (vốn, chưa VAT): Tổng 2.755,9 tr · sau VAT 2.976,4 tr; I 1.195,7 · II 1.525,3 · III 34,9
 - Còn mở: tên công ty/địa chỉ KH; hệ số giá bán O8 (1,00); ẩn cột N–V khi gửi
+
+## CHECKPOINT 15 – 2026-11-13
+- File hiện hành: `4. Khối lượng - BOQ/PTGT Buong lanh + Chiller - 2026.11.13_v15.xlsx` (v14 backup ở `90. Backup/`)
+- Quyết định user: ống đồng ghi "+ bảo ôn và phụ kiện"; cụm máy model "Máy nén Panasonic 20HP + …", xuất xứ Việt Nam; "Dàn lạnh inox", model DJ 14.3/85-201, China;
+  Phần I tách 4 mục: I.1 Vỏ buồng lạnh / I.2 Thiết bị / I.3 Đường ống / I.4 Đường điện; dây điện buồng lạnh 7,4tr/hệ (giá dùng nguyên, params `day_dien_buong_lanh_he`);
+  tháp chiller "100RT"; thêm "Băng quấn trắng" 25.000 đ/kg, 1 kg/3 m ống nước lạnh → 19 kg.
+- Số liệu Excel (vốn, chưa VAT): Tổng 2.760,7 tr · sau VAT 2.981,5 tr; I 1.199,7 · II 1.525,9 · III 35,1
+- Còn mở: công ty/địa chỉ KH; hệ số giá bán O8; ẩn cột N–V khi gửi
