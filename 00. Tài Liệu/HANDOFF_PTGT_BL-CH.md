@@ -33,3 +33,15 @@
 - Số liệu (vốn, chưa VAT): VT 806,2 tr · NC+CP 413,2 tr · Tổng 1.219,4 tr · sau VAT 1.316,9 tr; I 571,3 · II 531,3 · III 116,8
 - Cần hỏi giá còn 10 dòng (cửa, dầu POE, phụ kiện đồng + que hàn, dây sưởi xả, 2 vỏ tủ, bộ ĐK kho, PLC, 2 lô phụ kiện ĐK)
 - BƯỚC TIẾP THEO: giá cửa + các câu hỏi mở CHECKPOINT 01 → v04
+
+## CHECKPOINT 04 – 2026-11-13
+- File hiện hành: `4. Khối lượng - BOQ/PTGT Buong lanh + Chiller - 2026.11.13_v04.xlsx` (v03 backup ở `90. Backup/`)
+- Quyết định user: Phần I buồng lạnh dùng đơn giá ghi chép tay 13/11/2026 (ảnh lưu `00. Tài Liệu/GHI_CHEP_GIA_BUONG_LANH_2026-11-13_*.jpg`)
+  × 1,10 = giá đầu vào (params `gia_ghi_chep`). TĐ cấp thiết bị buồng lạnh (máy nén Pana 20HP + bình ngưng tự lắp cụm, dàn lạnh, tháp, bơm).
+  Đơn giá theo hệ ×5: cụm máy, dàn, TES5, gas, ống PVC, tủ ĐK, dây điện, NC lắp đặt. Ống đồng cặp Ø42/Ø16 + bảo ôn + phụ kiện 800k/m × 105 m.
+  Panel 2 mặt inox 1.160.000 × 101,68 m² (6 mặt). Tháp/bơm SL theo phạm vi (1 tháp 20RT, 2 bơm 1,5kW) – chưa xác nhận công suất.
+  Vật tư tiêu hao 2,5% chỉ tính trên VT không thuộc ghi chép.
+- Số liệu (vốn, chưa VAT): VT 1.375,6 tr · NC+CP 397,7 tr · Tổng 1.773,3 tr · sau VAT 1.915,1 tr; I 1.094,6 · II 531,3 · III 147,4
+- Sai lệch trong ghi chép cần hỏi: gas 5,7tr nhưng tổng 178,1tr khớp 4,5tr (lệch 1,2tr/hệ); inox 1 mặt 940k×77,88=73,2tr ≠ 74,76tr ghi (=960k)
+- Cần hỏi giá còn 4 dòng: cửa, vỏ tủ chiller, PLC liên động chiller, phụ kiện ĐK tủ chiller
+- BƯỚC TIẾP THEO: xác nhận tháp/bơm buồng lạnh (1 tháp 20RT+2 bơm 1,5kW hay 5 bộ), gas/hệ, chi phí khác 8% trên phần thiết bị → v05

@@ -36,10 +36,10 @@
     "binh_gas_moi_he": 2,
     "L_CDU_buong_m": 14,
     "L_them_moi_tuyen_m": 6,
-    "ong_hut_OD": 41.28,
-    "ong_hut_day": 1.2,
-    "ong_long_OD": 19.05,
-    "ong_long_day": 1.0,
+    "ong_hut_OD": 42,
+    "ong_hut_day": 1.0,
+    "ong_long_OD": 16,
+    "ong_long_day": 0.8,
     "nhiet_thai_moi_CDU_kW": 45,
     "L_thap_bom_m": 10,
     "L_header_CDU_m": 15,
@@ -49,7 +49,9 @@
     "L_tu_dan_lanh_m": 25,
     "L_tu_thap_m": 20,
     "L_tu_bom_m": 15,
-    "L_mang_cap_m": 30
+    "L_mang_cap_m": 30,
+    "so_thap": 1,
+    "so_bom": 2
   },
   "chiller": {
     "so_chiller": 3,
@@ -69,11 +71,27 @@
     "L_cap_tin_hieu_m": 200,
     "L_mang_cap_m": 40
   },
-  "panel_NCC": {
-    "nguon": "Đơn giá NCC panel do user cấp 13/11/2026 (1.160.000 đ/m² VT; 80.000 đ/m² NC) – áp cho KL 6 mặt",
-    "don_gia_m2": 1160000,
-    "nc_m2": 80000,
-    "phu_kien_lo": 5000000,
-    "van_chuyen_lo": 1000000
+  "gia_ghi_chep": {
+    "nguon": "Ghi chép tay user 13/11/2026 (00. Tài Liệu/GHI_CHEP_GIA_BUONG_LANH_2026-11-13_*.jpg) × 1,10",
+    "he_so_dau_vao": 1.1,
+    "panel_2mat_m2": 1160000,
+    "nc_lap_vo_m2": 80000,
+    "vt_phu_lap_vo_lo": 5000000,
+    "van_chuyen_panel_lo": 1000000,
+    "may_nen_20HP": 57000000,
+    "binh_ngung_20HP": 17000000,
+    "nhot_POE_bo": 2000000,
+    "phu_kien_len_may": 6000000,
+    "nc_len_cum": 4000000,
+    "dan_lanh": 29000000,
+    "tiet_luu_TES5": 2500000,
+    "gas_moi_he": 5700000,
+    "thap_20RT": 16000000,
+    "bom_1_5kW": 4500000,
+    "ong_dong_cap_m": 800000,
+    "ong_pvc_moi_he": 4000000,
+    "tu_dk_moi_he": 6000000,
+    "day_dien_moi_he": 6000000,
+    "nc_lap_dat_moi_he": 10000000
   }
 }

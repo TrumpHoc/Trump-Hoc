@@ -214,120 +214,72 @@ def ask(name, spec, dv, sl, r=0, note="Cần hỏi giá NCC"):
 B = P["buong_lanh"]
 nC, nE = B["so_CDU"], B["so_dan_lanh"]
 part("I", "HỆ THỐNG BUỒNG LẠNH -20°C (7 x 3,4 x 2,6 m)")
+GC = P["gia_ghi_chep"]
+HS = GC["he_so_dau_vao"]
+SRC_GC = GC["nguon"]
 
-sec("I.A", "Vỏ buồng lạnh (panel PU, cửa)")
+
+def g(v):
+    """Giá đầu vào = đơn giá ghi chép × hệ số (1,10), làm tròn nghìn."""
+    return round(v * HS, -3)
+
+
+def gc(name, spec, xx, dv, sl, vt, ncv, note=""):
+    item(name, spec, xx, dv, sl, g(vt) if vt else 0, g(ncv) if ncv else 0, SRC_GC,
+         "Lô" if dv == "Lô" else "Có nguồn",
+         (note + "; " if note else "") + f"Đơn giá ghi chép × {HS:.2f}")
+
+
+sec("I.A", "Vỏ buồng lạnh (panel PU 100mm 2 mặt inox, cửa)")
 a, b, c = B["dai"], B["rong"], B["cao"]
-PN = P["panel_NCC"]
-S_panel = round(2 * (a * b + a * c + b * c), 2)   # 6 mặt: tường + trần + sàn (phạm vi user)
-SRC_PN = PN["nguon"]
-item("Panel PU 100mm 2 mặt inox – 6 mặt (tường, trần, sàn)",
-     f"2×({a}×{b}+{a}×{c}+{b}×{c}) = {S_panel} m²", "", "m2", S_panel, PN["don_gia_m2"], PN["nc_m2"],
-     SRC_PN, "Có nguồn", "Áp đơn giá NCC cho KL 6 mặt; KT giả định phủ bì, không trừ ô cửa")
-ask("Cửa bản lề panel 100mm 2 mặt inox, có điện trở sưởi khung", "700 x 1700 mm", "bộ",
-    B["so_cua"], 0, "Báo giá NCC panel chưa thấy cửa – cần xác nhận đã gồm trong 1.160.000 đ/m² chưa")
-item("Phụ kiện lắp đặt vỏ (silicone, keo bọt, ốc vít, rivet, đèn, van thông áp)", "Trọn bộ", "",
-     "Lô", 1, PN["phu_kien_lo"], 0, SRC_PN, "Lô")
-item("Vận chuyển panel đến công trình", "", "", "Lô", 1, 0, PN["van_chuyen_lo"], SRC_PN, "Lô")
+S_panel = round(2 * (a * b + a * c + b * c), 2)   # 6 mặt: tường + trần + sàn
+gc("Panel PU 100mm 2 mặt inox – 6 mặt (tường, trần, sàn)",
+   f"2×({a}×{b}+{a}×{c}+{b}×{c}) = {S_panel} m²", "", "m2", S_panel, GC["panel_2mat_m2"], GC["nc_lap_vo_m2"],
+   "KT giả định phủ bì, không trừ ô cửa")
+ask("Cửa bản lề panel 100mm 2 mặt inox, có điện trở sưởi khung", "700 x 1700 mm", "bộ", B["so_cua"], 0,
+    "Ghi chép chưa có giá cửa – cần hỏi NCC panel")
+gc("Vật tư phụ lắp vỏ (silicone, keo bọt, ốc vít, rivet, đèn, van thông áp)", "Trọn bộ", "", "Lô", 1,
+   GC["vt_phu_lap_vo_lo"], 0)
+gc("Vận chuyển panel đến công trình", "", "", "Lô", 1, 0, GC["van_chuyen_panel_lo"])
 
-sec("I.B", "Lắp đặt, căn chỉnh thiết bị (thiết bị do CĐT/NCC cấp)")
-item("Lắp đặt, căn chỉnh cụm máy nén ngưng tụ CDU 20HP (giải nhiệt nước)", "Giá NC", "", "bộ",
-     nC, None, nca(5), "Hệ số 5 × K_A (SGC)", "Đề xuất NC")
-item("Lắp đặt dàn lạnh 25HP treo trần, đấu nối ống thoát nước xả đá", "Giá NC", "", "bộ",
-     nE, None, nca(4), "Hệ số 4 × K_A (SGC)", "Đề xuất NC")
-item("Lắp đặt tháp giải nhiệt cho CDU", "Giá NC", "", "bộ", 1, None, nca(4),
-     "Hệ số 4 × K_A (SGC)", "Đề xuất NC")
-item("Lắp đặt, căn chỉnh bơm giải nhiệt (1 chạy 1 dự phòng)", "Giá NC", "", "bộ", 2, None,
-     nca(2), "Hệ số 2 × K_A (SGC)", "Đề xuất NC")
-item("Thử kín N2, hút chân không, nạp gas, chạy thử, cân chỉnh mỗi hệ", "Giá NC", "", "hệ",
-     nC, None, nca(3), "Hệ số 3 × K_A (SGC)", "Đề xuất NC")
+sec("I.B", f"Cụm máy nén ngưng tụ 20HP giải nhiệt nước (TĐ lắp cụm) – {nC} cụm")
+gc("Máy nén Panasonic 20HP", "", "", "cái", nC, GC["may_nen_20HP"], 0)
+gc("Bình ngưng giải nhiệt nước 20HP", "", "", "cái", nC, GC["binh_ngung_20HP"], 0)
+gc("Nhớt lạnh POE", "", "", "bộ", nC, GC["nhot_POE_bo"], 0, "Theo cụm")
+gc("Phụ kiện lên máy (bình chứa, phin, mắt gas, van, rơ le áp...)", "", "", "bộ", nC, GC["phu_kien_len_may"], 0)
+gc("Nhân công lắp ráp cụm máy", "", "", "cụm", nC, 0, GC["nc_len_cum"])
 
-sec("I.C", "Đường ống gas lạnh, bảo ôn, gas, dầu")
+sec("I.C", "Dàn lạnh, tiết lưu, gas")
+gc("Dàn lạnh DJ 14.3/85-201 (≈25HP)", "theo ghi chép", "", "cái", nE, GC["dan_lanh"], 0,
+   "Model đọc từ ghi chép tay – cần xác nhận")
+gc("Van tiết lưu TES5", "Danfoss", "", "bộ", nC, GC["tiet_luu_TES5"], 0)
+gc("Gas lạnh R404A/R507", "", "", "hệ", nC, GC["gas_moi_he"], 0,
+   "Ghi chép: 5.700.000/hệ nhưng tổng 178,1tr khớp với 4.500.000 – cần xác nhận")
+
+sec("I.D", "Tháp giải nhiệt, bơm giải nhiệt")
+gc("Tháp giải nhiệt 20RT", "", "", "bộ", B["so_thap"], GC["thap_20RT"], 0,
+   "Phạm vi 1 tháp cho 5 CDU 20HP – 20RT chỉ đủ ~1 cụm, CẦN XÁC NHẬN công suất/số lượng")
+gc("Bơm giải nhiệt 1,5kW (Ewara) – 1 chạy 1 dự phòng", "", "Ý", "cái", B["so_bom"], GC["bom_1_5kW"], 0,
+   "1,5kW chỉ đủ ~1 cụm; 5 cụm cần ≈39 m³/h – CẦN XÁC NHẬN")
+
+sec("I.E", "Đường ống gas, ống nước, giá đỡ")
 Lg = nC * (B["L_CDU_buong_m"] + B["L_them_moi_tuyen_m"])
-Lcu = ceil_to(Lg * (1 + HH), P["cay_dong_m"])
-item(f"Ống đồng cứng Ø{B['ong_hut_OD']} x {B['ong_hut_day']} mm – đường hút", "Hailiang",
-     "Việt Nam", "m", Lcu, DONG_HUT[0], nc(1.3 * B["ong_hut_OD"] / 100), DONG_HUT[1], "Có nguồn",
-     f"{nC} tuyến × ({B['L_CDU_buong_m']}+{B['L_them_moi_tuyen_m']}) m ×1,05, tròn cây 5,8 m; cỡ ống theo model CDU – cần xác nhận")
-item(f"Ống đồng cứng Ø{B['ong_long_OD']} x {B['ong_long_day']} mm – đường lỏng", "Hailiang",
-     "Việt Nam", "m", Lcu, DONG_LONG[0], nc(1.3 * B["ong_long_OD"] / 100), DONG_LONG[1], "Có nguồn")
-Lbo = ceil_to(Lg * (1 + HH), P["cay_bao_on_m"])
-item("Bảo ôn cao su lưu hóa ống hút Ø42 dày 32mm", "Superlon", "Malaysia", "m", Lbo, BO_42_32[0],
-     round(BO_42_32[0] * P["ty_le_NC_bao_on"], -2), BO_42_32[1], "Có nguồn")
-item("Bảo ôn cao su lưu hóa ống lỏng Ø19 dày 19mm", "Superlon", "Malaysia", "m", Lbo, BO_19_19[0],
-     round(BO_19_19[0] * P["ty_le_NC_bao_on"], -2), BO_19_19[1], "Có nguồn")
-item("Băng dính cao su Superlon", "48mm x 9,14m", "Malaysia", "cuộn", 20, BANG_DINH[0], 0,
-     BANG_DINH[1], "Có nguồn")
-item("Keo dán cao su Superlon", "hộp 3,36 kg", "Malaysia", "hộp", 3, KEO_BO[0], 0, KEO_BO[1], "Có nguồn")
-item(f"Gas lạnh {B['gas']}", "bình 10,9 kg – Supon", "TQ/Ấn Độ", "bình", nC * B["binh_gas_moi_he"],
-     GAS[0], 0, GAS[1], "Có nguồn", f"Giả định {B['binh_gas_moi_he']} bình/hệ – chốt theo lượng nạp của hãng CDU")
-ask("Dầu lạnh POE bổ sung", "theo hãng máy nén", "Lô", 1)
-ask("Phụ kiện đồng (cút, tê, măng sông), que hàn bạc, khí N2 thử kín", "Trọn bộ", "Lô", 1)
-L_xa = nE * B["L_xa_nuoc_moi_dan_m"]
-item("Ống uPVC thoát nước xả đá D42", "Tiền Phong C2", "Việt Nam", "m", L_upvc(L_xa),
-     bg("CT-01153")[0], nc(0.42), bg("CT-01153")[1], "Có nguồn")
-ask("Dây điện trở sưởi ống xả nước trong kho âm", "", "m", ceil_to(nE * 2, 1), 0)
-
-sec("I.D", "Đường ống nước giải nhiệt CDU (uPVC)")
-Q_cdu = nC * B["nhiet_thai_moi_CDU_kW"] / (4.186 * 5) * 3.6
-text(f"Lưu lượng GN ≈ {nC}×{B['nhiet_thai_moi_CDU_kW']} kW/(4,186×5K) = {Q_cdu:.1f} m³/h (giả định)")
-pipe(140, 2 * B["L_thap_bom_m"])
-pipe(110, 2 * B["L_header_CDU_m"])
-pipe(60, nC * 2 * B["L_nhanh_moi_CDU_m"])
-fit("Cút 90° uPVC D140", 140, 6, CUT[140], 0.6)
-fit("Cút 90° uPVC D110", 110, 8, CUT[110], 0.6)
-fit("Cút 90° uPVC D60", 60, 4 * nC, CUT[60], 0.6)
-fit("Tê thu uPVC D110/60", 110, 2 * nC, TE_THU_110_60, 0.9)
-fit("Côn thu uPVC D140/110", 140, 2, CON_140_110, 0.6)
-fit("Mặt bích uPVC D140", 140, 2 + 2, BICH[140], 0.6)
-fit("Mặt bích uPVC D110", 110, 2, BICH[110], 0.6)
-fit("Mặt bích uPVC D60", 60, 2 * nC, BICH[60], 0.6)
-pump_set(2, 125, 100, "bơm giải nhiệt CDU")
-text("Van cho CDU và tháp")
-valve("Van bướm tay quay vào/ra bình ngưng CDU", 50, 2 * nC, VB[50], 1)
-valve("Van bướm tay quay vào/ra tháp", 125, 2, VB[125], 1)
-valve("Van bi đồng cấp nước bù tháp", 25, 1, VBI[25], 0.3 * 100 / 25, "Việt Nam")
-valve("Van bi đồng xả đáy tháp", 50, 1, VBI[50], 0.3 * 100 / 50, "Việt Nam")
-acc("Nhiệt kế vào/ra header giải nhiệt", "0–100°C", 2, NHIET_KE, 0.4)
-text("Bu lông, gioăng (đếm theo mối nối mặt bích)")
-acc("Bộ bu lông + gioăng mối nối DN125", "8 bu lông", 2 * 3 + 2, BL[125], 0.2 * 1.25)
-acc("Bộ bu lông + gioăng mối nối DN100", "8 bu lông", 2 * 3, BL[100], 0.2 * 1.0)
-acc("Bộ bu lông + gioăng mối nối DN50", "4 bu lông", 2 * nC, BL[50], 0.2 * 0.5)
-
-sec("I.E", "Giá đỡ")
+L_cu = round(Lg * (1 + HH))
+gc("Ống đồng Ø42x1,0 + Ø16x0,8 + bảo ôn 42x25 + phụ kiện đồng (theo cặp ống)", "800.000 đ/m (ghi chép)",
+   "", "m", L_cu, GC["ong_dong_cap_m"], 0,
+   f"{nC} tuyến × ({B['L_CDU_buong_m']}+{B['L_them_moi_tuyen_m']}) m × 1,05")
+gc("Ống PVC + phụ kiện (nước giải nhiệt, thoát nước xả đá)", "", "Việt Nam", "hệ", nC, GC["ong_pvc_moi_he"], 0)
 item("Giá đỡ chung tuyến ống gas (thép hình, ty treo, kẹp)", "@1,5 m", "Việt Nam", "cái",
      math.ceil(B["L_CDU_buong_m"] / 1.5) + 2, GD_LON[0], nc(1), GD_LON[1], "Có nguồn")
-n_gd = math.ceil((L_upvc(2 * B["L_thap_bom_m"]) + L_upvc(2 * B["L_header_CDU_m"])) / 1.2) + 4
-item("Giá đỡ ống nước D110–D140 (bát V40 + đai omega)", "@1,2 m", "Việt Nam", "bộ", n_gd,
-     GD_NHO[0], nc(0.3), GD_NHO[1], "Có nguồn")
-item("Giá đỡ ống nhánh D60", "@1,2 m", "Việt Nam", "bộ",
-     math.ceil(L_upvc(nC * 2 * B["L_nhanh_moi_CDU_m"]) / 1.2), GD_NHO[0], nc(0.3), GD_NHO[1], "Có nguồn")
 
-sec("I.F", "Tủ điện tổng buồng lạnh")
-ask("Vỏ tủ điện sơn tĩnh điện IP54 + thanh cái, cầu đấu, đèn báo, nút nhấn", "", "bộ", 1, nca(5),
-    "Cần hỏi giá; NC = lắp đặt + đấu nối tủ")
-acc("MCCB tổng 3P 350A", "LS ABS", 1, MCCB[350], 0.4, xx="Hàn Quốc")
-acc("MCCB 3P 50A – CDU", "LS ABN", nC, MCCB[50], 0.3, xx="Hàn Quốc")
-acc("MCCB 3P 30A – dàn lạnh (quạt + xả đá)", "LS ABN", nE, MCCB[30], 0.3, xx="Hàn Quốc")
-acc("MCCB 3P 15A – tháp, bơm", "LS ABN", 3, MCCB[15], 0.3, xx="Hàn Quốc")
-acc("Contactor 50A – máy nén CDU", "LS MC", nC, CONT[50], 0.3, xx="Hàn Quốc")
-acc("Rơ le nhiệt 65A – máy nén CDU", "LS MT", nC, RL[65], 0.2, xx="Hàn Quốc")
-acc("Contactor 32A – điện trở xả đá", "LS MC", nE, CONT[32], 0.3, xx="Hàn Quốc")
-acc("Contactor 12A – quạt dàn lạnh, tháp, bơm", "LS MC", nE + 3, CONT[12], 0.3, xx="Hàn Quốc")
-acc("Rơ le nhiệt 18A – quạt, tháp, bơm", "LS MT", nE + 3, RL[18], 0.2, xx="Hàn Quốc")
-ask("Bộ điều khiển nhiệt độ kho lạnh + đầu dò (Dixell/Carel)", "", "bộ", nC, nc(0.4))
-ask("Phụ kiện điều khiển (relay trung gian, timer, aptomat MCB, máng nhựa trong tủ)", "", "Lô", 1)
+sec("I.F", "Tủ điện, dây điện")
+gc("Tủ điện tổng điều khiển buồng lạnh (đơn giá theo hệ)", "1 tủ cho 5 hệ", "Việt Nam", "hệ", nC,
+   GC["tu_dk_moi_he"], 0)
+gc("Dây điện, cáp động lực và điều khiển", "", "Việt Nam", "hệ", nC, GC["day_dien_moi_he"], 0)
 
-sec("I.G", "Dây điện, cáp, máng cáp")
-cable("Cáp nguồn tủ → CDU", "3x16+10", B["L_tu_CDU_m"], nC, "CV10")
-cable("Cáp nguồn tủ → dàn lạnh (quạt + xả đá)", "3x6+4", B["L_tu_dan_lanh_m"], nE, "CV4")
-cable("Cáp nguồn tủ → quạt tháp", "4x4", B["L_tu_thap_m"], 1, "CV4")
-cable("Cáp nguồn tủ → bơm giải nhiệt", "4x4", B["L_tu_bom_m"], 2, "CV4")
-cable("Cáp tín hiệu (đầu dò, liên động)", "TH2x1.5", B["L_tu_dan_lanh_m"], nE)
-item("Máng cáp mạ kẽm nhúng nóng 200x100 dày 1,5 có nắp", "2DE", "Việt Nam", "m",
-     B["L_mang_cap_m"], MANG_200[0], round(MANG_200[0] * P["ty_le_NC_mang"], -2), MANG_200[1], "Có nguồn")
-item("Phụ kiện máng cáp (co, tê, giá treo)", "Trọn bộ", "Việt Nam", "Lô", 1,
-     round(0.15 * B["L_mang_cap_m"] * MANG_200[0], -3), round(0.05 * B["L_mang_cap_m"] * MANG_200[0], -3),
-     "Quy đổi 15% giá trị máng; NC = VT/3 (skill §7.5)", "Quy đổi")
-item("Ống ruột gà D25 bảo vệ cáp", "", "Việt Nam", "m", 60, RUOT_GA[0], 18000, RUOT_GA[1], "Có nguồn")
+sec("I.G", "Nhân công lắp đặt hệ thống")
+gc("Nhân công lắp đặt (tháp, bơm, đường ống, điện, nạp gas, chạy thử)", "", "", "hệ", nC, 0,
+   GC["nc_lap_dat_moi_he"])
 
 # ================================================================ PHẦN II – CHILLER
 C = P["chiller"]
@@ -432,12 +384,13 @@ item("Ống ruột gà D25 bảo vệ cáp", "", "Việt Nam", "m", 60, RUOT_GA[
 
 # ================================================================ PHẦN III – CHI PHÍ CHUNG
 vt_sum = sum((r["q"] or 0) * r["sl"] for r in ROWS if r["kind"] == "item")
+vt_th = sum((r["q"] or 0) * r["sl"] for r in ROWS if r["kind"] == "item" and r["src"] != SRC_GC)
 nc_sum = sum((r["r"] or 0) * r["sl"] for r in ROWS if r["kind"] == "item")
 part("III", "VẬT TƯ PHỤ VÀ CHI PHÍ KHÁC")
 sec("III.A", "Vật tư phụ")
-tieu_hao = round(P["ty_le_vat_tu_tieu_hao"] * vt_sum, -5)
+tieu_hao = round(P["ty_le_vat_tu_tieu_hao"] * vt_th, -5)
 item("Vật tư tiêu hao (keo, dung môi uPVC, que hàn, sơn, băng tan, khí cắt hàn, đá cắt...)", "Trọn bộ",
-     "VN/TQ", "Lô", 1, tieu_hao, 0, f"Quy đổi {P['ty_le_vat_tu_tieu_hao']:.1%} tổng VT (SGC 40tr/1,19 tỷ ≈ 3,4%)",
+     "VN/TQ", "Lô", 1, tieu_hao, 0, f"Quy đổi {P['ty_le_vat_tu_tieu_hao']:.1%} VT phần chiller + giá đỡ (không tính hạng mục theo ghi chép đã gồm phụ kiện)",
      "Lô")
 item("Vật tư phụ điện (băng dính, dây thít, đầu cốt, ốc siết cáp)", "Trọn bộ", "VN/TQ", "Lô", 1,
      6000000, 1350000, "Mẫu BG Bút Sơn 13/08/2026 – vật tư phụ phần điện", "Lô")
@@ -597,7 +550,7 @@ for c in ("K", "U", "Q"):
 
 notes_new = list(notes)
 notes_new[1] = "1. Báo giá trên đã bao gồm VAT, chi phí giao hàng, chi phí lắp đặt hệ thống và phí bảo hành "
-notes_new[2] = ("2. Báo giá trên chưa bao gồm: thiết bị chính (CDU, dàn lạnh, chiller, tháp, bơm, tank 20m³), "
+notes_new[2] = ("2. Báo giá trên chưa bao gồm: thiết bị hệ chiller (chiller, bơm, tháp giải nhiệt, tank 20m³), "
                 "móng máy, dây nguồn đến tủ điện tổng và chi phí phát sinh")
 nr = t + 4
 for k_, v in enumerate(notes_new):
