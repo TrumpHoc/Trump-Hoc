@@ -71,8 +71,26 @@
     "bao_on_mm": 15,
     "ID_D110_m": 0.1016
   },
-  "gia_ghi_chep": {
-    "nguon": "Ghi chép tay user 13/11/2026 (00. Tài Liệu/GHI_CHEP_GIA_BUONG_LANH_2026-11-13_*.jpg) × 1,10",
+  "gia_user_chiller": {
+    "nguon": "Giá user cấp 13/11/2026",
+    "bom": 13500000,
+    "thap": 42000000,
+    "tu_dien": 45000000,
+    "chiller": 400000000,
+    "van_pvc_110": 650000,
+    "cua": 7500000,
+    "nc_chiller": 2000000,
+    "nc_bom": 300000,
+    "nc_thap": 1000000,
+    "nc_tu": 1500000,
+    "y_loc": 700000,
+    "gia_do_vt": 8000000,
+    "gia_do_nc": 3000000,
+    "nc_bao_on_pk": 700000,
+    "nc_cua": 1000000
+  },
+  "gia_user_buong_lanh": {
+    "nguon": "Giá user cấp 13/11/2026 × 1,10",
     "he_so_dau_vao": 1.1,
     "panel_2mat_m2": 1160000,
     "nc_lap_vo_m2": 80000,
@@ -94,21 +112,5 @@
     "day_dien_moi_he": 6000000,
     "nc_lap_dat_moi_he": 10000000
   },
-  "gia_user_chiller": {
-    "nguon": "Giá user cấp 13/11/2026",
-    "bom": 13500000,
-    "thap": 42000000,
-    "tu_dien": 45000000,
-    "chiller": 400000000,
-    "van_pvc_110": 650000,
-    "cua": 11000000,
-    "nc_chiller": 2000000,
-    "nc_bom": 300000,
-    "nc_thap": 1000000,
-    "nc_tu": 1500000,
-    "y_loc": 700000,
-    "gia_do_vt": 8000000,
-    "gia_do_nc": 3000000,
-    "nc_bao_on_pk": 700000
-  }
+  "tieu_hao_cong_them": 1000000
 }

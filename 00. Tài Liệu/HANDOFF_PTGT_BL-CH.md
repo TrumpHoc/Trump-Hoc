@@ -118,3 +118,12 @@
   Nguồn/trạng thái/ghi chú từng dòng chuyển sang sheet NGUON.
 - Số liệu Excel (vốn, chưa VAT): Tổng 2.760,1 tr · sau VAT 2.980,9 tr; I 1.201,8 · II 1.524,3 · III 34,0
 - BƯỚC TIẾP THEO: thông tin KH + hệ số giá bán (O8) → bản chào giá ẩn cột N–V
+
+## CHECKPOINT 13 – 2026-11-13
+- File hiện hành: `4. Khối lượng - BOQ/PTGT Buong lanh + Chiller - 2026.11.13_v13.xlsx` (v12 backup ở `90. Backup/`)
+- Quyết định user: bỏ dòng diễn giải vận tốc chiller; bỏ mọi chữ "ghi chép" (params đổi tên `gia_user_buong_lanh`, nguồn "Giá user cấp × 1,10");
+  van D110 Taijan; ống đồng Hailiang; gas China; chiller "(đầu nén Hanbell - Đài Loan)", cột xuất xứ = Hstar; bơm chiller Teco; tháp chiller TTP;
+  vận chuyển panel 1,1tr chuyển sang III (cộng vào dòng Phí vận chuyển); cửa VT 7,5tr + NC 1tr; NC lắp đặt 55tr phân bổ theo tỷ lệ VT (không chia đều);
+  VT tiêu hao chiller cộng thêm 1tr (params `tieu_hao_cong_them`).
+- Số liệu Excel (vốn, chưa VAT): Tổng 2.755,9 tr · sau VAT 2.976,4 tr; I 1.195,7 · II 1.525,3 · III 34,9
+- BƯỚC TIẾP THEO: thông tin KH + hệ số giá bán (O8) → bản chào giá ẩn cột N–V
