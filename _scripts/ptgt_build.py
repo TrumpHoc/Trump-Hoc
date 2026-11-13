@@ -313,21 +313,17 @@ SRC_U = U["nguon"]
 D = 110
 part("II", "HỆ THỐNG CHILLER 03 x 80HP")
 sec("II.A", "Thiết bị và lắp đặt (tank 20m³ do CĐT cấp)")
-item("Chiller 80HP giải nhiệt nước", "", "", "bộ", n, U["chiller"], nca(10), SRC_U + " – giá nhập", "Có nguồn",
-     "VT: giá nhập user cấp; NC: đề xuất hệ số 10 × K_A (SGC 2.685 kW = 30)")
-item("Bơm tuần hoàn nước lạnh", f"{C['luu_luong_nuoc_lanh_m3h']} m³/h", "", "cái", n, U["bom"], nca(2), SRC_U,
-     "Có nguồn", "VT: giá user cấp; NC: đề xuất hệ số 2 × K_A")
-item("Bơm giải nhiệt", f"{C['luu_luong_giai_nhiet_m3h']} m³/h", "", "cái", n, U["bom"], nca(2), SRC_U,
-     "Có nguồn", "VT: giá user cấp; NC: đề xuất hệ số 2 × K_A")
-item("Tháp giải nhiệt", "", "", "bộ", n, U["thap"], nca(4), SRC_U, "Có nguồn",
-     "VT: giá user cấp; NC: đề xuất hệ số 4 × K_A")
+item("Chiller 80HP giải nhiệt nước", "", "", "bộ", n, U["chiller"], U["nc_chiller"], SRC_U + " – giá nhập", "Có nguồn",
+     "VT: giá nhập, NC: user cấp")
+item("Bơm tuần hoàn nước lạnh", f"{C['luu_luong_nuoc_lanh_m3h']} m³/h", "", "cái", n, U["bom"], U["nc_bom"], SRC_U,
+     "Có nguồn", "VT, NC: user cấp")
+item("Bơm giải nhiệt", f"{C['luu_luong_giai_nhiet_m3h']} m³/h", "", "cái", n, U["bom"], U["nc_bom"], SRC_U,
+     "Có nguồn", "VT, NC: user cấp")
+item("Tháp giải nhiệt", "", "", "bộ", n, U["thap"], U["nc_thap"], SRC_U, "Có nguồn",
+     "VT, NC: user cấp")
 for r_ in ROWS[-4:]:
     r_["user"] = True
     r_["no_cpk"] = 1
-item("Đấu nối vào 6 bích chờ DN80 có sẵn tại tank 20m³", "Giá NC", "", "Lô", 1, None, nca(1),
-     "Hệ số 1 × K_A", "Đề xuất NC")
-item("Súc rửa, thử áp, chạy thử, cân chỉnh hệ thống", "Giá NC", "", "hệ", 1, None, nca(8),
-     "Hệ số 8 × K_A", "Đề xuất NC")
 
 sec("II.B", f"Ống uPVC D{D} vòng nước lạnh và giải nhiệt (Tiền Phong C2) – {n} vòng độc lập")
 L_lanh_1 = C["L_tank_bom_m"] + C["L_bom_chiller_m"] + C["L_chiller_tank_m"]
@@ -371,8 +367,8 @@ item("Giá đỡ cụm van bơm, cổ chiller, cổ tháp (thép hình)", "", "V
 
 sec("II.F", "Tủ điện tổng chiller")
 item("Tủ điện tổng chiller trọn bộ (động lực + điều khiển liên động chiller – bơm – tháp)", "Trọn bộ",
-     "Việt Nam", "bộ", 1, U["tu_dien"], nca(6), SRC_U + " – giá nhập", "Có nguồn",
-     "VT: giá nhập user cấp; NC lắp đặt + đấu nối: đề xuất hệ số 6 × K_A")
+     "Việt Nam", "bộ", 1, U["tu_dien"], U["nc_tu"], SRC_U + " – giá nhập", "Có nguồn",
+     "VT: giá nhập, NC lắp đặt + đấu nối: user cấp")
 ROWS[-1]["user"] = True
 
 sec("II.G", "Dây điện, cáp, thang cáp")

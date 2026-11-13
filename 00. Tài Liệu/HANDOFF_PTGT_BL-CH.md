@@ -82,3 +82,11 @@
 - Số liệu Excel (vốn, chưa VAT): Tổng 3.105,3 tr · sau VAT 3.353,7 tr; I 1.201,8 · II 1.765,8 · III 137,7 (chi phí khác 125,8)
 - Cần hỏi giá: 0. NC đề xuất (ô vàng) còn: đấu nối tank, súc rửa chạy thử, NC lắp chiller/bơm/tháp/tủ trong cột R
 - BƯỚC TIẾP THEO: user duyệt NC đề xuất + điền thông tin khách hàng → bản chào giá
+
+## CHECKPOINT 09 – 2026-11-13
+- File hiện hành: `4. Khối lượng - BOQ/PTGT Buong lanh + Chiller - 2026.11.13_v09.xlsx` (v08 backup ở `90. Backup/`)
+- Quyết định user – NC chiller: lắp chiller 2tr/máy; bơm 300k/cái; tháp 1tr/bộ; tủ 1,5tr; bỏ dòng đấu nối tank và súc rửa/chạy thử.
+- Không còn dòng NC đề xuất, không còn dòng cần hỏi giá.
+- Số liệu Excel (vốn, chưa VAT): Tổng 3.061,7 tr · sau VAT 3.306,7 tr; I 1.201,8 · II 1.725,5 · III 134,5 (chi phí khác 122,6)
+- Còn mở: thông tin khách hàng; P8 = 1,00 (bán = vốn); ẩn cột P–Y trước khi gửi
+- BƯỚC TIẾP THEO: điền KH + chốt P8 → xuất bản chào giá (ẩn cột vốn)
