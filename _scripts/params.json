@@ -50,8 +50,8 @@
     "L_tu_thap_m": 20,
     "L_tu_bom_m": 15,
     "L_mang_cap_m": 30,
-    "so_thap": 1,
-    "so_bom": 2
+    "so_thap": 5,
+    "so_bom": 5
   },
   "chiller": {
     "so_chiller": 3,

@@ -258,9 +258,9 @@ gc("Gas lạnh R404A/R507", "", "", "hệ", nC, GC["gas_moi_he"], 0,
 
 sec("I.D", "Tháp giải nhiệt, bơm giải nhiệt")
 gc("Tháp giải nhiệt 20RT", "", "", "bộ", B["so_thap"], GC["thap_20RT"], 0,
-   "Phạm vi 1 tháp cho 5 CDU 20HP – 20RT chỉ đủ ~1 cụm, CẦN XÁC NHẬN công suất/số lượng")
-gc("Bơm giải nhiệt 1,5kW (Ewara) – 1 chạy 1 dự phòng", "", "Ý", "cái", B["so_bom"], GC["bom_1_5kW"], 0,
-   "1,5kW chỉ đủ ~1 cụm; 5 cụm cần ≈39 m³/h – CẦN XÁC NHẬN")
+   "1 tháp 20RT cho mỗi cụm CDU 20HP (user chốt 13/11)")
+gc("Bơm giải nhiệt 1,5kW (Ewara) – 1 bơm/cụm", "", "Ý", "cái", B["so_bom"], GC["bom_1_5kW"], 0,
+   "1 bơm cho mỗi cụm, không có bơm dự phòng (user chốt 13/11)")
 
 sec("I.E", "Đường ống gas, ống nước, giá đỡ")
 Lg = nC * (B["L_CDU_buong_m"] + B["L_them_moi_tuyen_m"])

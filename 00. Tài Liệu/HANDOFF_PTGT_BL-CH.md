@@ -45,3 +45,10 @@
 - Sai lệch trong ghi chép cần hỏi: gas 5,7tr nhưng tổng 178,1tr khớp 4,5tr (lệch 1,2tr/hệ); inox 1 mặt 940k×77,88=73,2tr ≠ 74,76tr ghi (=960k)
 - Cần hỏi giá còn 4 dòng: cửa, vỏ tủ chiller, PLC liên động chiller, phụ kiện ĐK tủ chiller
 - BƯỚC TIẾP THEO: xác nhận tháp/bơm buồng lạnh (1 tháp 20RT+2 bơm 1,5kW hay 5 bộ), gas/hệ, chi phí khác 8% trên phần thiết bị → v05
+
+## CHECKPOINT 05 – 2026-11-13
+- File hiện hành: `4. Khối lượng - BOQ/PTGT Buong lanh + Chiller - 2026.11.13_v05.xlsx` (v04 backup ở `90. Backup/`)
+- Quyết định user: buồng lạnh 5 tháp 20RT + 5 bơm 1,5kW (1 bộ/cụm, không bơm dự phòng)
+- Số liệu (vốn, chưa VAT): VT 1.460,8 tr · NC+CP 404,7 tr · Tổng 1.865,5 tr · sau VAT 2.014,8 tr; I 1.179,8 · II 531,3 · III 154,4
+- Còn mở: gas 5,7 hay 4,5 tr/hệ; chi phí khác 8% có tính trên thiết bị không; 4 dòng chờ giá (cửa, vỏ tủ chiller, PLC, phụ kiện ĐK); P8
+- BƯỚC TIẾP THEO: trả lời các điểm mở → v06
