@@ -430,6 +430,15 @@ ws.page_setup.orientation = "landscape"
 ws.page_setup.fitToWidth = 1
 ws.page_setup.fitToHeight = 0
 ws.sheet_properties.pageSetUpPr.fitToPage = True
+from openpyxl.drawing.image import Image as XLImage
+from openpyxl.drawing.spreadsheet_drawing import OneCellAnchor, AnchorMarker
+from openpyxl.drawing.xdr import XDRPositiveSize2D
+from openpyxl.utils.units import pixels_to_EMU
+_logo = XLImage(str(ROOT / "00. Tài Liệu/LOGO_TIEN_DAT.jpg"))
+_logo.width = _logo.height = 150
+_logo.anchor = OneCellAnchor(_from=AnchorMarker(col=0, colOff=pixels_to_EMU(0), row=0, rowOff=pixels_to_EMU(20)),
+                             ext=XDRPositiveSize2D(pixels_to_EMU(150), pixels_to_EMU(150)))
+ws.add_image(_logo)
 ws["B8"] = P["khach_hang"]
 _sdt = P["sale"]["mobile"]
 ws["B3"] = f"Tel: {_sdt}      Fax: 024-36 757 313"
@@ -454,7 +463,7 @@ for col, t in [(cSL, "SL"), (cQ, "ĐG VT vốn"), (cR, "ĐG NC vốn"), (cS, "TT
                (cU, "TỔNG vốn"), (cX, "TÍNH TIÊU HAO (1/0)"), (cY, "LOẠI VT KHỎI NỀN CPK (1)")]:
     c = ws.cell(14, col, t)
     c._style = copy.copy(ws["G14"]._style)
-COLW = {"A": 9, "B": 58, "C": 34, "D": 15, "E": 9, "F": 9, "G": 17, "H": 15, "I": 19, "J": 17, "K": 20}
+COLW = {"A": 17, "B": 58, "C": 34, "D": 15, "E": 9, "F": 9, "G": 17, "H": 15, "I": 19, "J": 17, "K": 20}
 for col, w in {**COLW, "N": 22,
                L_["SL"]: 8, L_["Q"]: 14, L_["R"]: 14, L_["S"]: 16, L_["T"]: 16, L_["U"]: 17,
                L_["X"]: 10, L_["Y"]: 12}.items():

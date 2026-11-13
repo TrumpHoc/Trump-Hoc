@@ -151,3 +151,10 @@
   in đậm dòng "Rất mong…" và "ĐẠI DIỆN…/XÁC NHẬN KHÁCH HÀNG" (dòng 79–80); mọi số điện thoại (Tel, Hotline, ghi chú 11) đổi sang 0964826488; chỉnh độ rộng cột/chiều cao dòng.
 - Số liệu Excel (vốn, chưa VAT): Tổng 2.901,5 tr · sau VAT 3.133,7 tr; I 1.199,7 · II 1.676,9 · III 24,9
 - Còn mở: công ty/địa chỉ KH; hệ số giá bán O8; ẩn cột N–V khi gửi
+
+## CHECKPOINT 17 – 2026-11-13
+- File hiện hành: `4. Khối lượng - BOQ/PTGT Buong lanh + Chiller - 2026.11.13_v17.xlsx` (v16 backup ở `90. Backup/`)
+- Quyết định user: chiller 439tr/cái; hệ số giá bán O8 = 1,30; thêm logo (`00. Tài Liệu/LOGO_TIEN_DAT.jpg`) góc trái header, cột A rộng 17.
+- Số liệu Excel: VỐN 2.868,6 tr (sau VAT 3.098,1 tr); BÁN trước thuế 3.729,2 tr, VAT 298,3 tr, sau thuế 4.027,6 tr; lãi gộp 860,6 tr (23,1%)
+  - Bán: I 1.559,6 · II 2.137,2 · III 32,4
+- Còn mở: công ty/địa chỉ KH; ẩn cột N–V + sheet nội bộ khi gửi
