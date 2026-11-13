@@ -590,6 +590,7 @@ for k_, v in enumerate(notes_new):
 ws.freeze_panes = None
 ws.print_area = f"A1:K{nr + len(notes_new) - 1}"
 ws.print_title_rows = "14:15"
+ws.row_dimensions[t + 1].height = ws.row_dimensions[t].height   # dòng VAT = dòng tổng trước thuế
 ws.row_dimensions[14].height = 22
 ws.row_dimensions[15].height = 20
 

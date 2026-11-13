@@ -169,3 +169,8 @@
 - File hiện hành: `4. Khối lượng - BOQ/PTGT Buong lanh + Chiller - 2026.11.13_v19.xlsx` + PDF `4. Khối lượng - BOQ/BG Buong lanh + Chiller - TD-2026.11.13_v19.pdf`
 - Thay đổi: lặp dòng tiêu đề bảng 14–15 ở đầu mỗi trang in (print_title_rows); chiều cao dòng 14 = 22, 15 = 20 (trước 40,5/39). Số liệu không đổi.
 - Còn mở: tên công ty/địa chỉ/email KH
+
+## CHECKPOINT 20 – 2026-11-13
+- File hiện hành: `4. Khối lượng - BOQ/PTGT Buong lanh + Chiller - 2026.11.13_v20.xlsx` + PDF `…_v20.pdf`
+- Thay đổi: chiều cao dòng VAT 8% = dòng TỔNG GIÁ TRỊ TRƯỚC THUẾ (42; trước là 48). Dòng sau thuế giữ 35,25. Số liệu không đổi.
+- Còn mở: tên công ty/địa chỉ/email KH
