@@ -218,14 +218,11 @@ part("I", "HỆ THỐNG BUỒNG LẠNH -20°C (7 x 3,4 x 2,6 m)")
 sec("I.A", "Vỏ buồng lạnh (panel PU, cửa)")
 a, b, c = B["dai"], B["rong"], B["cao"]
 PN = P["panel_NCC"]
-S_panel = round(2 * (a * c + b * c) + a * b, 2)   # tường + trần, KHÔNG gồm sàn (khớp NCC 77,88 m²)
+S_panel = round(2 * (a * b + a * c + b * c), 2)   # 6 mặt: tường + trần + sàn (phạm vi user)
 SRC_PN = PN["nguon"]
-item("Panel PU 100mm 2 mặt inox – tường + trần", f"2×({a}+{b})×{c} + {a}×{b} = {S_panel} m²",
-     "", "m2", S_panel, PN["don_gia_m2"], PN["nc_m2"], SRC_PN, "Có nguồn",
-     "Báo giá NCC chưa gồm sàn – xem dòng cách nhiệt sàn")
-ask("Cách nhiệt sàn kho -20°C (panel sàn / PU đổ sàn + sưởi chống đóng băng nền)",
-    f"{a}×{b} = {round(a * b, 2)} m²", "m2", round(a * b, 2), 0,
-    "NCC panel không báo sàn – cần xác nhận phạm vi (CĐT hay TĐ) và giải pháp")
+item("Panel PU 100mm 2 mặt inox – 6 mặt (tường, trần, sàn)",
+     f"2×({a}×{b}+{a}×{c}+{b}×{c}) = {S_panel} m²", "", "m2", S_panel, PN["don_gia_m2"], PN["nc_m2"],
+     SRC_PN, "Có nguồn", "Áp đơn giá NCC cho KL 6 mặt; KT giả định phủ bì, không trừ ô cửa")
 ask("Cửa bản lề panel 100mm 2 mặt inox, có điện trở sưởi khung", "700 x 1700 mm", "bộ",
     B["so_cua"], 0, "Báo giá NCC panel chưa thấy cửa – cần xác nhận đã gồm trong 1.160.000 đ/m² chưa")
 item("Phụ kiện lắp đặt vỏ (silicone, keo bọt, ốc vít, rivet, đèn, van thông áp)", "Trọn bộ", "",

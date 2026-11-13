@@ -25,3 +25,11 @@
 - Số liệu (vốn, chưa VAT): VT 777,9 tr · NC+CP 409,3 tr · Tổng 1.187,2 tr · sau VAT 1.282,1 tr; I 541,8 · II 531,3 · III 114,1
 - Cần hỏi giá còn 11 dòng: cách nhiệt sàn, cửa, dầu POE, phụ kiện đồng + que hàn, dây sưởi xả, 2 vỏ tủ, bộ ĐK kho, PLC liên động, 2 lô phụ kiện ĐK
 - BƯỚC TIẾP THEO: xác nhận sàn + cửa với NCC panel; các câu hỏi mở ở CHECKPOINT 01 → v03
+
+## CHECKPOINT 03 – 2026-11-13
+- File hiện hành: `4. Khối lượng - BOQ/PTGT Buong lanh + Chiller - 2026.11.13_v03.xlsx` (v02 backup ở `90. Backup/`)
+- Quyết định user: chỉ dùng ĐƠN GIÁ NCC panel (1.160.000 VT + 80.000 NC /m²), khối lượng theo bóc tách 6 mặt = 101,68 m² (gồm sàn) → bỏ dòng sàn riêng.
+  Giữ lô phụ kiện vỏ 5 tr và vận chuyển 1 tr. Cửa vẫn chờ giá.
+- Số liệu (vốn, chưa VAT): VT 806,2 tr · NC+CP 413,2 tr · Tổng 1.219,4 tr · sau VAT 1.316,9 tr; I 571,3 · II 531,3 · III 116,8
+- Cần hỏi giá còn 10 dòng (cửa, dầu POE, phụ kiện đồng + que hàn, dây sưởi xả, 2 vỏ tủ, bộ ĐK kho, PLC, 2 lô phụ kiện ĐK)
+- BƯỚC TIẾP THEO: giá cửa + các câu hỏi mở CHECKPOINT 01 → v04
