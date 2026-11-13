@@ -16,8 +16,8 @@
   "ty_le_NC_mang": 0.5,
   "_ty_le_nguon": "Mẫu BG Bút Sơn 13/08/2026: cáp NC/VT = 36.000/119.000 ≈ 0,30; bảo ôn 75.000/173.000 ≈ 0,43; ruột gà 18.000/12.000",
   "ty_le_vat_tu_tieu_hao": 0.025,
-  "ty_le_chi_phi_khac": 0.04,
-  "_cpk_nguon": "User 13/11: giảm 50% (8% → 4%), bỏ phí văn phòng kho bãi; nền = tổng vốn trừ VT thiết bị chiller; các dòng còn lại giữ tỷ trọng SGC 20/15/5/10/40 trên 140",
+  "ty_le_chi_phi_khac": 0.028,
+  "_cpk_nguon": "User 13/11: 8% → 4% (giảm 50%) → 2,8% (giảm tiếp 30%); bỏ phí văn phòng kho bãi; nền = tổng vốn trừ VT thiết bị chiller; tỷ trọng SGC 20/15/5/10/40 trên 140; dòng vận chuyển cộng thêm 1,1tr vận chuyển panel",
   "hao_hut": 0.05,
   "cay_upvc_m": 4,
   "cay_dong_m": 5.8,
@@ -76,7 +76,7 @@
     "bom": 13500000,
     "thap": 42000000,
     "tu_dien": 45000000,
-    "chiller": 400000000,
+    "chiller": 450000000,
     "van_pvc_110": 650000,
     "cua": 7500000,
     "nc_chiller": 2000000,
@@ -88,7 +88,9 @@
     "gia_do_nc": 3000000,
     "nc_bao_on_pk": 700000,
     "nc_cua": 1000000,
-    "bang_quan_kg": 25000
+    "bang_quan_kg": 25000,
+    "bang_quan_sl_kg": 40,
+    "nc_bang_quan_kg": 14000
   },
   "gia_user_buong_lanh": {
     "nguon": "Giá user cấp 13/11/2026 × 1,10",

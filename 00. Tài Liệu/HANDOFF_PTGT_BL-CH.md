@@ -144,3 +144,10 @@
   tháp chiller "100RT"; thêm "Băng quấn trắng" 25.000 đ/kg, 1 kg/3 m ống nước lạnh → 19 kg.
 - Số liệu Excel (vốn, chưa VAT): Tổng 2.760,7 tr · sau VAT 2.981,5 tr; I 1.199,7 · II 1.525,9 · III 35,1
 - Còn mở: công ty/địa chỉ KH; hệ số giá bán O8; ẩn cột N–V khi gửi
+
+## CHECKPOINT 16 – 2026-11-13
+- File hiện hành: `4. Khối lượng - BOQ/PTGT Buong lanh + Chiller - 2026.11.13_v16.xlsx` (v15 backup ở `90. Backup/`)
+- Quyết định user: băng quấn 40 kg × 25.000, NC 14.000/kg, bỏ ghi chú; chiller 450tr/cái; chi phí khác giảm 30% (O9: 4% → 2,8%, giữ +1,1tr vận chuyển panel);
+  in đậm dòng "Rất mong…" và "ĐẠI DIỆN…/XÁC NHẬN KHÁCH HÀNG" (dòng 79–80); mọi số điện thoại (Tel, Hotline, ghi chú 11) đổi sang 0964826488; chỉnh độ rộng cột/chiều cao dòng.
+- Số liệu Excel (vốn, chưa VAT): Tổng 2.901,5 tr · sau VAT 3.133,7 tr; I 1.199,7 · II 1.676,9 · III 24,9
+- Còn mở: công ty/địa chỉ KH; hệ số giá bán O8; ẩn cột N–V khi gửi

@@ -357,8 +357,8 @@ item(f"Bảo ôn cao su lưu hóa dày 15mm cho ống D{D}", "", "China", "m",
 item("Bảo ôn van, phụ kiện nước lạnh (cuộn + keo + băng dính)", "", "China", "Lô", 1,
      round(0.15 * ROWS[-1]["sl"] * ROWS[-1]["q"], -3), U["nc_bao_on_pk"], "Quy đổi 15% giá trị bảo ôn ống; NC user cấp", "Quy đổi")
 _L_bq = n * L_lanh_1 * (1 + HH)
-item("Băng quấn trắng", "1 kg / 3 m ống", "", "kg", math.ceil(ceil_to(_L_bq, 4) / 3), U["bang_quan_kg"], 0,
-     "Giá user cấp 13/11/2026", "Có nguồn", "SL = chiều dài ống nước lạnh / 3")
+item("Băng quấn trắng", "", "", "kg", U["bang_quan_sl_kg"], U["bang_quan_kg"], U["nc_bang_quan_kg"],
+     "Giá user cấp 13/11/2026", "Có nguồn")
 
 VBI110 = (P["gia_user_chiller"]["van_pvc_110"], "Giá user cấp 13/11/2026")
 acc(f"Van bi nhựa PVC tay gạt D{D}", "", 2 * n + n + n, VBI110, 1.1, xx="Taijan")
@@ -431,6 +431,9 @@ ws.page_setup.fitToWidth = 1
 ws.page_setup.fitToHeight = 0
 ws.sheet_properties.pageSetUpPr.fitToPage = True
 ws["B8"] = P["khach_hang"]
+_sdt = P["sale"]["mobile"]
+ws["B3"] = f"Tel: {_sdt}      Fax: 024-36 757 313"
+ws["B5"] = f"Hotline: {_sdt}"
 ws["H8"] = P["sale"]["ten"]; ws["H9"] = P["sale"]["mobile"]; ws["H10"] = P["sale"]["email"]
 ws["B11"] = P["dia_chi_kh"]
 ws["H11"] = P["quota_no"]
@@ -451,7 +454,7 @@ for col, t in [(cSL, "SL"), (cQ, "ĐG VT vốn"), (cR, "ĐG NC vốn"), (cS, "TT
                (cU, "TỔNG vốn"), (cX, "TÍNH TIÊU HAO (1/0)"), (cY, "LOẠI VT KHỎI NỀN CPK (1)")]:
     c = ws.cell(14, col, t)
     c._style = copy.copy(ws["G14"]._style)
-COLW = {"A": 8, "B": 60, "C": 30, "D": 14, "E": 9, "F": 9, "G": 15, "H": 14, "I": 18, "J": 16, "K": 19}
+COLW = {"A": 9, "B": 58, "C": 34, "D": 15, "E": 9, "F": 9, "G": 17, "H": 15, "I": 19, "J": 17, "K": 20}
 for col, w in {**COLW, "N": 22,
                L_["SL"]: 8, L_["Q"]: 14, L_["R"]: 14, L_["S"]: 16, L_["T"]: 16, L_["U"]: 17,
                L_["X"]: 10, L_["Y"]: 12}.items():
@@ -508,8 +511,8 @@ for it in ROWS:
                                 horizontal="left" if col == "B" else "center")
         txt = str(c.value or "")
         if txt:
-            n_line = max(n_line, math.ceil(len(txt) / (COLW[col] * 0.95)))
-    ws.row_dimensions[rr].height = max(24, 20 * n_line + 6)
+            n_line = max(n_line, math.ceil(len(txt) / (COLW[col] * (1.05 if col == "B" else 0.95))))
+    ws.row_dimensions[rr].height = 22 if n_line == 1 else 19 * n_line + 6
 
 last = r0 + len(ROWS) - 1
 SUBC = ["I", "J", "K", Sc, Tc, Uc]
@@ -560,6 +563,7 @@ ws[f"{Qc}{t + 1}"].number_format = "0.0%"
 
 notes_new = list(notes)
 notes_new[1] = "1. Báo giá trên đã bao gồm VAT, chi phí giao hàng, chi phí lắp đặt hệ thống và phí bảo hành "
+notes_new[11] = f"11. Vui lòng liên hệ với số điện thoại: {P['sale']['mobile']} ({P['sale']['ten']}) để được tư vấn chi tiết."
 notes_new[2] = ("2. Báo giá trên chưa bao gồm: tank 20m³, "
                 "móng máy, dây nguồn đến tủ điện tổng và chi phí phát sinh")
 nr = t + 4
@@ -568,7 +572,12 @@ for k_, v in enumerate(notes_new):
     for c in range(1, 12):
         ws.cell(rr, c)._style = copy.copy(ST["note"][c])
     ws.cell(rr, 1, v)
-    ws.merge_cells(start_row=rr, start_column=1, end_row=rr, end_column=11 if k_ == len(notes_new) - 1 else 7)
+    ws.merge_cells(start_row=rr, start_column=1, end_row=rr, end_column=11 if k_ >= len(notes_new) - 2 else 7)
+    ws.row_dimensions[rr].height = 24
+    if k_ >= len(notes_new) - 2:      # "Rất mong…" và dòng ký tên
+        _fb = copy.copy(ws.cell(rr, 1).font); _fb.b = True; ws.cell(rr, 1).font = _fb
+        ws.cell(rr, 1).alignment = Alignment(horizontal="center", vertical="center")
+        ws.row_dimensions[rr].height = 30
 ws.freeze_panes = None
 ws.print_area = f"A1:K{nr + len(notes_new) - 1}"
 
