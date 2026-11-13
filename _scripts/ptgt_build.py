@@ -259,8 +259,9 @@ S_panel = round(2 * (a * b + a * c + b * c), 2)   # 6 mặt: tường + trần +
 gc("Panel PU 100mm 2 mặt inox – 6 mặt (tường, trần, sàn)",
    f"2×({a}×{b}+{a}×{c}+{b}×{c}) = {S_panel} m²", "", "m2", S_panel, GC["panel_2mat_m2"], GC["nc_lap_vo_m2"],
    "KT giả định phủ bì, không trừ ô cửa")
-ask("Cửa bản lề panel 100mm 2 mặt inox, có điện trở sưởi khung", "700 x 1700 mm", "bộ", B["so_cua"], 0,
-    "Ghi chép chưa có giá cửa – cần hỏi NCC panel")
+item("Cửa bản lề panel 100mm 2 mặt inox, có điện trở sưởi khung", "700 x 1700 mm", "", "bộ", B["so_cua"],
+     P["gia_user_chiller"]["cua"], 0, "Giá user cấp 13/11/2026", "Có nguồn", "NC lắp cửa đã gồm trong NC lắp vỏ")
+ROWS[-1]["user"] = True
 gc("Vật tư phụ lắp vỏ (silicone, keo bọt, ốc vít, rivet, đèn, van thông áp)", "Trọn bộ", "", "Lô", 1,
    GC["vt_phu_lap_vo_lo"], 0)
 gc("Vận chuyển panel đến công trình", "", "", "Lô", 1, 0, GC["van_chuyen_panel_lo"])
@@ -322,6 +323,7 @@ item("Tháp giải nhiệt", "", "", "bộ", n, U["thap"], nca(4), SRC_U, "Có n
      "VT: giá user cấp; NC: đề xuất hệ số 4 × K_A")
 for r_ in ROWS[-4:]:
     r_["user"] = True
+    r_["no_cpk"] = 1
 item("Đấu nối vào 6 bích chờ DN80 có sẵn tại tank 20m³", "Giá NC", "", "Lô", 1, None, nca(1),
      "Hệ số 1 × K_A", "Đề xuất NC")
 item("Súc rửa, thử áp, chạy thử, cân chỉnh hệ thống", "Giá NC", "", "hệ", 1, None, nca(8),
@@ -349,17 +351,12 @@ item(f"Bảo ôn cao su lưu hóa dày 15mm cho ống D{D}", "Superlon", "Malays
 item("Bảo ôn van, phụ kiện nước lạnh (cuộn + keo + băng dính)", "Superlon", "Malaysia", "Lô", 1,
      round(0.15 * ROWS[-1]["sl"] * ROWS[-1]["q"], -3), 0, "Quy đổi 15% giá trị bảo ôn ống", "Quy đổi")
 
-sec("II.C", "Van nhựa PVC tay gạt, Y lọc, đồng hồ")
-acc(f"Van bi nhựa PVC tay gạt D{D} – hút/đẩy bơm (2 cái/bơm)", "dán keo", 2 * 2 * n, VBI_PVC110, 1.1, xx="")
-acc(f"Van bi nhựa PVC tay gạt D{D} – vào/ra bình bay hơi, bình ngưng", "dán keo", 4 * n, VBI_PVC110, 1.1, xx="")
-acc(f"Van bi nhựa PVC tay gạt D{D} – vào/ra tháp", "dán keo", 2 * n, VBI_PVC110, 1.1, xx="")
+sec("II.C", "Van nhựa PVC tay gạt D110, Y lọc DN100")
+VBI110 = (P["gia_user_chiller"]["van_pvc_110"], "Giá user cấp 13/11/2026")
+acc(f"Van bi nhựa PVC tay gạt D{D} – 1 cái/bơm", "dán keo", 2 * n, VBI110, 1.1, xx="")
+acc(f"Van bi nhựa PVC tay gạt D{D} – 1 cái/chiller", "dán keo", n, VBI110, 1.1, xx="")
+acc(f"Van bi nhựa PVC tay gạt D{D} – 1 cái/tháp", "dán keo", n, VBI110, 1.1, xx="")
 valve("Y lọc gang mặt bích – hút bơm", 100, 2 * n, YL[100], 1)
-acc("Van bi nhựa PVC D34 – cấp nước bù tháp", "dán keo", n, bg("CT-00713"), 0.3, xx="")
-acc("Van bi nhựa PVC D63 – xả đáy tháp", "dán keo", n, bg("CT-00715"), 0.3, xx="")
-acc("Đồng hồ áp suất 0–6 bar mặt 100 – hút/đẩy bơm, vào/ra chiller", "Wise", 2 * 2 * n + 4 * n, DH, 0.4)
-acc("Van bi nhựa PVC D21 cho đồng hồ", "dán keo", 2 * 2 * n + 4 * n, bg("CT-00711"), 0.3, xx="")
-acc("Nhiệt kế vào/ra bình bay hơi, bình ngưng", "0–100°C", 4 * n, NHIET_KE, 0.4)
-acc("Công tắc dòng chảy ra bình bay hơi, bình ngưng", "", 2 * n, FLOW_SW, 0.4)
 
 sec("II.D", "Vật tư phụ (bu lông, gioăng)")
 acc("Bộ bu lông + gioăng mối nối DN100", "8 bu lông", 3 * 2 * n + 4 * n + 2 * n, BL[100], 0.2 * 1.0)
@@ -412,14 +409,14 @@ item("Vật tư tiêu hao (keo, dung môi uPVC, que hàn, sơn, băng tan, khí 
 ROWS[-1]["tag"] = "th"
 item("Vật tư phụ điện (băng dính, dây thít, đầu cốt, ốc siết cáp)", "Trọn bộ", "VN/TQ", "Lô", 1,
      6000000, 1350000, "Mẫu BG Bút Sơn 13/08/2026 – vật tư phụ phần điện", "Lô")
-base = vt_sum + nc_sum + tieu_hao + 6000000 + 1350000
+base = vt_sum + nc_sum + tieu_hao + 6000000 + 1350000 - sum(r["q"] * r["sl"] for r in ROWS if r.get("no_cpk"))
 cpk_total = round(P["ty_le_chi_phi_khac"] * base, -6)
 sec("III.B", "Chi phí khác")
 for name, w in [("Phí vận chuyển, nâng hạ", 20), ("Xe nâng hạ thi công, dàn giáo", 15),
                 ("Phí vệ sinh môi trường", 5), ("Công dụng cụ thi công", 10),
                 ("Phí văn phòng, kho bãi", 50), ("Phí quản lý", 40)]:
     item(name, "", "Việt Nam", "Lô", 1, 0, round(cpk_total * w / 140, -5),
-         f"Công thức: ô P9 (tỷ lệ) × tổng vốn (I + II + III.A) × {w}/140 (cơ cấu SGC)", "Lô")
+         f"Công thức: ô P9 × [tổng vốn (I + II + III.A) − VT thiết bị chiller (cột Y = 1)] × {w}/140 (cơ cấu SGC)", "Lô")
     ROWS[-1]["tag"] = ("cpk", w)
 item("Móng bê tông thiết bị", "CĐT PHỤ TRÁCH", "", "Lô", 1, 0, 0, "Skill §5", "Lô", "CĐT PHỤ TRÁCH")
 item("Cáp nguồn đến tủ điện tổng", "CĐT PHỤ TRÁCH", "", "Lô", 1, 0, 0, "Phạm vi", "Lô", "CĐT PHỤ TRÁCH")
@@ -468,11 +465,14 @@ ws["O10"] = "TỶ LỆ VT TIÊU HAO"; ws["O10"].font = Font(bold=True)
 ws["P10"] = P["ty_le_vat_tu_tieu_hao"]; ws["P10"].number_format = "0.0%"
 for _c in ("P9", "P10"):
     ws[_c].fill = YEL; ws[_c].font = Font(bold=True, color="0000FF")
-ws["P9"].comment = Comment("Chi phí khác = P9 × tổng vốn (Phần I + II + III.A), chia 6 dòng III.B theo cơ cấu SGC 20/15/5/10/50/40", "Claude")
+ws["P9"].comment = Comment("Chi phí khác = P9 × [tổng vốn (Phần I + II + III.A) − VT các dòng cột Y = 1 (chiller, bơm, tháp chiller)], chia 6 dòng III.B theo cơ cấu SGC 20/15/5/10/50/40", "Claude")
 ws["P10"].comment = Comment("Vật tư tiêu hao = P10 × Σ(cột S × cột X)", "Claude")
 ws["X14"] = "TÍNH TIÊU HAO (1/0)"
 ws["X14"]._style = copy.copy(ws["G14"]._style)
 ws.column_dimensions["X"].width = 10
+ws["Y14"] = "LOẠI VT KHỎI NỀN CPK (1)"
+ws["Y14"]._style = copy.copy(ws["G14"]._style)
+ws.column_dimensions["Y"].width = 12
 ws["L14"] = "GHI CHÚ"
 for col, t in zip("PQRSTUVW", ["SL", "ĐG VT vốn", "ĐG NC vốn", "TT VT vốn", "TT NC vốn", "TỔNG vốn",
                                "NGUỒN ĐƠN GIÁ", "TRẠNG THÁI"]):
@@ -525,6 +525,7 @@ for i, it in enumerate(ROWS):
         ws.cell(rr, 22, it["src"]); ws.cell(rr, 23, it["st"])
         if "th" in it:
             ws.cell(rr, 24, it["th"])
+        ws.cell(rr, 25, it.get("no_cpk", 0))
         ws.cell(rr, 22).alignment = Alignment(wrap_text=True, vertical="center")
         ws.cell(rr, 12).alignment = Alignment(wrap_text=True, vertical="center")
         if it["st"] == "Quy đổi":
@@ -568,7 +569,8 @@ for it in ROWS:
         _e = next(g for g in part_rows if g["tt"] == "III")["row"] - 1
         ws.cell(it["row"], 17, f"=ROUND($P$10*SUMPRODUCT(S{r0}:S{_e},X{r0}:X{_e}),-5)")
     elif isinstance(tg, tuple):
-        ws.cell(it["row"], 18, f"=ROUND($P$9*(U{_pI}+U{_pII}+U{_sIIIA})*{tg[1]}/140,-5)")
+        _e = next(g for g in part_rows if g["tt"] == "III")["row"] - 1
+        ws.cell(it["row"], 18, f"=ROUND($P$9*(U{_pI}+U{_pII}+U{_sIIIA}-SUMPRODUCT(S{r0}:S{_e},Y{r0}:Y{_e}))*{tg[1]}/140,-5)")
 t = last + 1
 for rr, lab in [(t, "TỔNG GIÁ TRỊ TRƯỚC THUẾ"), (t + 1, f"THUẾ VAT {P['VAT']:.0%}"), (t + 2, "TỔNG GIÁ TRỊ SAU THUẾ")]:
     for c in range(1, 13):

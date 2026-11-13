@@ -73,3 +73,12 @@
 - Rủi ro: v D110 lạnh 2,02 / GN 2,40 m/s (> 2,1 hút); chi phí khác 8% đang tính trên cả thiết bị (chiller 1,2 tỷ) – chờ user quyết
 - Cần hỏi giá: cửa buồng lạnh; xác nhận van bi PVC D110 (ngoại suy 173.600)
 - BƯỚC TIẾP THEO: user quyết nền tính 8%, xác nhận giữ đồng hồ/nhiệt kế/flow switch → v08
+
+## CHECKPOINT 08 – 2026-11-13
+- File hiện hành: `4. Khối lượng - BOQ/PTGT Buong lanh + Chiller - 2026.11.13_v08.xlsx` (v07 backup ở `90. Backup/`)
+- Quyết định user: (1) bỏ tính chi phí khác trên VT thiết bị chiller (chiller, bơm, tháp) – cột Y = 1, công thức III.B trừ ra;
+  (2) giữ toàn bộ D110; (3) bỏ đồng hồ, nhiệt kế, công tắc dòng chảy, van cấp bù/xả đáy; chỉ giữ van D110 + Y lọc DN100;
+  (4) van bi PVC D110 650k/cái: 1/bơm, 1/chiller, 1/tháp = 12 cái; (5) cửa 11tr/cái (dùng nguyên giá, không ×1,1).
+- Số liệu Excel (vốn, chưa VAT): Tổng 3.105,3 tr · sau VAT 3.353,7 tr; I 1.201,8 · II 1.765,8 · III 137,7 (chi phí khác 125,8)
+- Cần hỏi giá: 0. NC đề xuất (ô vàng) còn: đấu nối tank, súc rửa chạy thử, NC lắp chiller/bơm/tháp/tủ trong cột R
+- BƯỚC TIẾP THEO: user duyệt NC đề xuất + điền thông tin khách hàng → bản chào giá

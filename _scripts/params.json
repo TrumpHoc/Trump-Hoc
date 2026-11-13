@@ -17,7 +17,7 @@
   "_ty_le_nguon": "Mẫu BG Bút Sơn 13/08/2026: cáp NC/VT = 36.000/119.000 ≈ 0,30; bảo ôn 75.000/173.000 ≈ 0,43; ruột gà 18.000/12.000",
   "ty_le_vat_tu_tieu_hao": 0.025,
   "ty_le_chi_phi_khac": 0.08,
-  "_cpk_nguon": "SGC: chi phí khác 140tr ≈ 8% tổng trước thuế; chia theo cơ cấu SGC 20/15/5/10/50/40",
+  "_cpk_nguon": "SGC: chi phí khác ≈ 8%; nền = tổng vốn trừ VT thiết bị chiller (chiller, bơm, tháp) – user 13/11; chia 20/15/5/10/50/40",
   "hao_hut": 0.05,
   "cay_upvc_m": 4,
   "cay_dong_m": 5.8,
@@ -67,7 +67,7 @@
     "L_mang_cap_m": 40,
     "L_tank_bom_m": 3,
     "L_chiller_tank_m": 8,
-    "ong": "uPVC D110 toàn bộ, 3 vòng độc lập; tank có sẵn 6 bích chờ DN80; chỉ van bi nhựa tay gạt D110 + Y lọc DN100, bỏ khớp mềm, van 1 chiều (user 13/11)",
+    "ong": "uPVC D110 toàn bộ (user giữ dù v GN 2,40 m/s); 3 vòng độc lập; tank có sẵn 6 bích chờ DN80; chỉ van bi PVC tay gạt D110 (1/bơm, 1/chiller, 1/tháp) + Y lọc DN100; bỏ khớp mềm, van 1 chiều, đồng hồ, nhiệt kế, công tắc dòng chảy (user 13/11)",
     "bao_on_mm": 15,
     "ID_D110_m": 0.1016
   },
@@ -99,6 +99,8 @@
     "bom": 13500000,
     "thap": 42000000,
     "tu_dien": 45000000,
-    "chiller": 400000000
+    "chiller": 400000000,
+    "van_pvc_110": 650000,
+    "cua": 11000000
   }
 }

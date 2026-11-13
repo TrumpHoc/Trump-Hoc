@@ -6,3 +6,4 @@
 - 2026-11-13 v05: Buồng lạnh đổi thành 5 tháp 20RT + 5 bơm 1,5kW.
 - 2026-11-13 v06: Chiller: bơm/tháp/tủ theo giá user; ống uPVC D90 3 vòng độc lập, van PVC, bảo ôn 15mm; thang cáp 1,2mm có nắp; P9/P10 công thức.
 - 2026-11-13 v07: Chiller D110, lưu lượng 59/70 m³/h, van bi PVC tay gạt + Y lọc DN100, bỏ khớp mềm/van 1 chiều; chiller 400tr/cái.
+- 2026-11-13 v08: Bỏ CPK trên thiết bị chiller; chỉ van PVC D110 650k (12 cái) + Y lọc DN100; bỏ đồng hồ/nhiệt kế/flow switch; cửa 11tr.
