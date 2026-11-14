@@ -2,8 +2,8 @@
  "project": "SGS Hai Phong – H&N Phase 2 – HVAC",
  "source": "HVAC_Phase2_Calc_v4.xlsx",
  "revision": "v4 (WP1)",
- "total_installed_electrical_kW": 211.7,
- "total_cooling_selected_kW": 300.4,
+ "total_installed_electrical_kW": 191.7,
+ "total_cooling_selected_kW": 254.0,
  "equipment": [
   {
    "tag": "AHU-2.01",
@@ -11,17 +11,17 @@
    "qty": 1,
    "location": "Trên sàn kết cấu trên trần panel; phục vụ Digestion room, Kjeldahl room, Sample treatment 1, Balance room, Sample preparation, Sample coding, Sample dividing, Reporting room",
    "airflow_m3h": 22180,
-   "outdoor_air_m3h": 1650,
-   "return_air_m3h": 20530,
+   "outdoor_air_m3h": 1230,
+   "return_air_m3h": 20950,
    "esp_Pa": 500,
    "fan_total_pressure_Pa": 985,
-   "cooling_total_kW_design": 132.77,
-   "cooling_total_kW_selected": 146.05,
-   "cooling_sensible_kW_selected": 89.61,
+   "cooling_total_kW_design": 125.77,
+   "cooling_total_kW_selected": 138.35,
+   "cooling_sensible_kW_selected": 87.62,
    "coil_entering": {
-    "T_C": 25.95,
-    "W_kgkg": 0.01294,
-    "RH": 0.617
+    "T_C": 25.71,
+    "W_kgkg": 0.01267,
+    "RH": 0.613
    },
    "coil_leaving": {
     "T_C": 15.0,
@@ -35,12 +35,12 @@
    "voltage_phase": "380V/3P/50Hz",
    "FLA_A_est": 54.33,
    "filters": "G4 + F8",
-   "condensate_kg_h": 70.27,
+   "condensate_kg_h": 62.99,
    "coil_face_area_m2": 2.46,
    "duct_connection_mm": {
     "supply": "1300x600",
-    "return": "1300x550",
-    "outdoor_air": "400x250"
+    "return": "1350x550",
+    "outdoor_air": "350x200"
    },
    "condensate_drain": "Cần bơm",
    "notes": "Công suất lạnh chọn = tải coil × 1,10. ESP ước tính theo tuyến sơ bộ, WP3 kiểm lại."
@@ -51,36 +51,36 @@
    "qty": 1,
    "location": "Trên sàn kết cấu trên trần panel; phục vụ Sample treatment 2, Standard (19.72 m²), Standard (11.90 m²), Office",
    "airflow_m3h": 5250,
-   "outdoor_air_m3h": 2750,
-   "return_air_m3h": 2500,
+   "outdoor_air_m3h": 650,
+   "return_air_m3h": 4600,
    "esp_Pa": 500,
    "fan_total_pressure_Pa": 985,
-   "cooling_total_kW_design": 70.9,
-   "cooling_total_kW_selected": 77.99,
-   "cooling_sensible_kW_selected": 32.35,
+   "cooling_total_kW_design": 35.76,
+   "cooling_total_kW_selected": 39.33,
+   "cooling_sensible_kW_selected": 22.43,
    "coil_entering": {
-    "T_C": 31.7,
-    "W_kgkg": 0.01944,
-    "RH": 0.658
+    "T_C": 26.58,
+    "W_kgkg": 0.01366,
+    "RH": 0.627
    },
    "coil_leaving": {
     "T_C": 15.0,
     "RH": 0.97
    },
    "supply_temp_C": 16.36,
-   "heater_kW": 18,
+   "heater_kW": 12,
    "fan_motor_kW": 3,
    "fan_shaft_kW": 2.39,
-   "electrical_kW": 21,
+   "electrical_kW": 15,
    "voltage_phase": "380V/3P/50Hz",
-   "FLA_A_est": 33.66,
+   "FLA_A_est": 24.54,
    "filters": "G4 + F8",
-   "condensate_kg_h": 57.55,
+   "condensate_kg_h": 21.13,
    "coil_face_area_m2": 0.58,
    "duct_connection_mm": {
     "supply": "450x400",
-    "return": "350x250",
-    "outdoor_air": "450x350"
+    "return": "400x400",
+    "outdoor_air": "250x150"
    },
    "condensate_drain": "Cần bơm",
    "notes": "Công suất lạnh chọn = tải coil × 1,10. ESP ước tính theo tuyến sơ bộ, WP3 kiểm lại."
@@ -128,30 +128,30 @@
   {
    "tag": "CDU-2.01",
    "type": "Dàn nóng DX inverter R410A/R32 (module ghép AHU)",
-   "qty": 4,
+   "qty": 3,
    "location": "Bãi CDU ngoài tường A (phía nam ram dốc) – cho AHU-2.01",
-   "cooling_kW_per_unit_nominal_at_37.8C": 39.3,
-   "cooling_kW_per_unit_actual_after_pipe_derate": 36.51,
+   "cooling_kW_per_unit_nominal_at_37.8C": 49.63,
+   "cooling_kW_per_unit_actual_after_pipe_derate": 46.12,
    "refrigerant_pipe_length_m": 42.9,
    "pipe_derate_factor": 0.93,
-   "electrical_kW_per_unit": 13.1,
+   "electrical_kW_per_unit": 16.54,
    "voltage_phase": "380V/3P/50Hz",
-   "FLA_A_est_per_unit": 23.41,
-   "notes": "Tổng thực 146.0 kW ≥ 146.05 kW yêu cầu; COP 3,0; mỗi module một mạch coil riêng trong AHU-2.01."
+   "FLA_A_est_per_unit": 29.57,
+   "notes": "Tổng thực 138.4 kW ≥ 138.35 kW yêu cầu; COP 3,0; mỗi module một mạch coil riêng trong AHU-2.01."
   },
   {
    "tag": "CDU-2.02",
    "type": "Dàn nóng DX inverter R410A/R32 (module ghép AHU)",
-   "qty": 2,
+   "qty": 1,
    "location": "Bãi CDU ngoài tường A (phía nam ram dốc) – cho AHU-2.02",
-   "cooling_kW_per_unit_nominal_at_37.8C": 39.95,
-   "cooling_kW_per_unit_actual_after_pipe_derate": 38.99,
+   "cooling_kW_per_unit_nominal_at_37.8C": 40.3,
+   "cooling_kW_per_unit_actual_after_pipe_derate": 39.33,
    "refrigerant_pipe_length_m": 19.5,
    "pipe_derate_factor": 0.98,
-   "electrical_kW_per_unit": 13.32,
+   "electrical_kW_per_unit": 13.43,
    "voltage_phase": "380V/3P/50Hz",
-   "FLA_A_est_per_unit": 23.8,
-   "notes": "Tổng thực 78.0 kW ≥ 77.99 kW yêu cầu; COP 3,0; mỗi module một mạch coil riêng trong AHU-2.02."
+   "FLA_A_est_per_unit": 24.01,
+   "notes": "Tổng thực 39.3 kW ≥ 39.33 kW yêu cầu; COP 3,0; mỗi module một mạch coil riêng trong AHU-2.02."
   },
   {
    "tag": "CDU-2.03",
@@ -179,23 +179,23 @@
     "Sample preparation"
    ],
    "airflow_by_room_m3h": {
-    "Digestion room": 5076,
-    "Kjeldahl room": 990,
-    "Sample treatment 1": 7299,
-    "Sample preparation": 1440
+    "Digestion room": 5640,
+    "Kjeldahl room": 1100,
+    "Sample treatment 1": 8110,
+    "Sample preparation": 1600
    },
-   "airflow_m3h": 14805,
+   "airflow_m3h": 16450,
    "esp_Pa": 400,
    "filter_box_Pa": 285,
    "fan_total_pressure_Pa": 685,
-   "motor_kW": 5.5,
-   "electrical_kW": 5.5,
+   "motor_kW": 7.5,
+   "electrical_kW": 7.5,
    "voltage_phase": "380V/3P",
-   "FLA_A_est": 11.6,
-   "duct_connection_mm": "1050x500",
+   "FLA_A_est": 15.8,
+   "duct_connection_mm": "1150x500",
    "cooling_kW": 0,
    "heater_kW": 0,
-   "notes": "Không xử lý lạnh; = 90 % gió thải các phòng phục vụ; biến tần giữ áp ống; van gió động cơ tại mỗi miệng bù, mở theo tín hiệu chạy quạt tủ/chụp/EAF tương ứng."
+   "notes": "Không xử lý lạnh; = 100 % gió thải các phòng phục vụ (chủ trì duyệt, theo IFC/Phase 1); biến tần giữ áp ống; van gió động cơ tại mỗi miệng bù, mở theo tín hiệu chạy quạt tủ/chụp/EAF tương ứng."
   },
   {
    "tag": "FAF-2.02",
@@ -208,11 +208,11 @@
     "Standard (11.90 m²)"
    ],
    "airflow_by_room_m3h": {
-    "Sample treatment 2": 15138,
-    "Standard (19.72 m²)": 8442,
-    "Standard (11.90 m²)": 1170
+    "Sample treatment 2": 16820,
+    "Standard (19.72 m²)": 9380,
+    "Standard (11.90 m²)": 1300
    },
-   "airflow_m3h": 24750,
+   "airflow_m3h": 27500,
    "esp_Pa": 400,
    "filter_box_Pa": 285,
    "fan_total_pressure_Pa": 685,
@@ -220,10 +220,10 @@
    "electrical_kW": 11,
    "voltage_phase": "380V/3P",
    "FLA_A_est": 23.1,
-   "duct_connection_mm": "1750x500",
+   "duct_connection_mm": "1950x500",
    "cooling_kW": 0,
    "heater_kW": 0,
-   "notes": "Không xử lý lạnh; = 90 % gió thải các phòng phục vụ; biến tần giữ áp ống; van gió động cơ tại mỗi miệng bù, mở theo tín hiệu chạy quạt tủ/chụp/EAF tương ứng."
+   "notes": "Không xử lý lạnh; = 100 % gió thải các phòng phục vụ (chủ trì duyệt, theo IFC/Phase 1); biến tần giữ áp ống; van gió động cơ tại mỗi miệng bù, mở theo tín hiệu chạy quạt tủ/chụp/EAF tương ứng."
   },
   {
    "tag": "EAF-2.01",
@@ -416,24 +416,24 @@
    "type": "Bơm nước ngưng có bình chứa + phao báo mức cao (cắt lạnh AHU)",
    "qty": 1,
    "location": "Cạnh AHU-2.01 trên trần",
-   "flow_L_h": 211.0,
+   "flow_L_h": 189.0,
    "head_m": 6,
    "electrical_kW": 0.1,
    "voltage_phase": "220V/1P",
    "FLA_A_est": 0.63,
-   "notes": "Lượng ngưng thiết kế 70.3 L/h; tuyến > 0,8·L_max tự chảy."
+   "notes": "Lượng ngưng thiết kế 63.0 L/h; tuyến > 0,8·L_max tự chảy."
   },
   {
    "tag": "CP-2.03",
    "type": "Bơm nước ngưng có bình chứa + phao báo mức cao (cắt lạnh AHU)",
    "qty": 1,
    "location": "Cạnh AHU-2.02 trên trần",
-   "flow_L_h": 173.0,
+   "flow_L_h": 63.0,
    "head_m": 6,
    "electrical_kW": 0.1,
    "voltage_phase": "220V/1P",
    "FLA_A_est": 0.63,
-   "notes": "Lượng ngưng thiết kế 57.6 L/h; tuyến > 0,8·L_max tự chảy."
+   "notes": "Lượng ngưng thiết kế 21.1 L/h; tuyến > 0,8·L_max tự chảy."
   }
  ]
 }

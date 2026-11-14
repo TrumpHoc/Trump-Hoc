@@ -2,44 +2,7 @@
  "project": "SGS Hai Phong – H&N Phase 2 – HVAC",
  "source": "HVAC_Phase2_Calc_v4.xlsx (TaiPhong)",
  "units": "m3/h, W, kW, °C",
- "transfers": [
-  {
-   "from": "Kjeldahl room",
-   "to": "Digestion room",
-   "flow_m3h": 564,
-   "path": "Khe cửa D-01 (Digestion chỉ đi qua Kjeldahl)"
-  },
-  {
-   "from": "Sample treatment 1",
-   "to": "Kjeldahl room",
-   "flow_m3h": 674,
-   "path": "Khe cửa D-02 ST1 → Kjeldahl (gồm phần đi tiếp sang Digestion)"
-  },
-  {
-   "from": "Sample preparation",
-   "to": "Sample treatment 1",
-   "flow_m3h": 1485,
-   "path": "Miệng gió chuyển có cánh chặn sáng trên vách chung Sample prep / ST1 (2,65 m) – gồm phần đi tiếp sang Kjeldahl, Digestion"
-  },
-  {
-   "from": "Office",
-   "to": "Sample treatment 2",
-   "flow_m3h": 1000,
-   "path": "Khe cửa D-14 + miệng gió chuyển trên vách chung Office / ST2 (8,8 m)"
-  },
-  {
-   "from": "Sample treatment 2",
-   "to": "Standard (11.90 m²)",
-   "flow_m3h": 1068,
-   "path": "Khe cửa D-17 ST2 → Standard 11,90 (gồm phần đi tiếp sang Standard 19,72)"
-  },
-  {
-   "from": "Standard (11.90 m²)",
-   "to": "Standard (19.72 m²)",
-   "flow_m3h": 938,
-   "path": "Khe cửa D-16 Standard 11,90 → Standard 19,72"
-  }
- ],
+ "transfers": [],
  "rooms": [
   {
    "room": "Digestion room",
@@ -59,6 +22,7 @@
    "supply_ACH": 28.8,
    "supply_driver": "Tải hiện",
    "return_m3h": 1260,
+   "exfiltration_m3h": 0,
    "oa_people_m3h": 50,
    "oa_via_AHU_note": "Gió tươi được trộn tại AHU; phòng nhận gió cấp hỗn hợp. Lượng tươi theo AHU xem equipment_schedule.",
    "exhaust_m3h": {
@@ -82,15 +46,13 @@
     "arm_hood": 0,
     "instrument_vent": 0
    },
-   "makeup_FAFE_m3h": 5076,
-   "makeup_ratio": 0.9,
-   "transfer_in_m3h": 564,
+   "makeup_FAFE_m3h": 5640,
+   "makeup_ratio": 1,
+   "transfer_in_m3h": 0,
    "transfer_out_m3h": 0,
-   "transfer_in_from": [
-    "Kjeldahl room"
-   ],
+   "transfer_in_from": [],
    "transfer_out_to": [],
-   "supply_minus_return_m3h": 0,
+   "exhaust_minus_FAFE_m3h": 0,
    "serving_FAF": "FAF-2.01",
    "serving_EAF": [
     "EAF-2.01"
@@ -98,7 +60,7 @@
    "hood_fan_power_points": "FHF-2.01",
    "scrubber": true,
    "latent_check": "ĐẠT",
-   "tolerable_FAFE_spill_fraction": 0.0693
+   "tolerable_FAFE_spill_fraction": 0.0624
   },
   {
    "room": "Kjeldahl room",
@@ -118,6 +80,7 @@
    "supply_ACH": 63.4,
    "supply_driver": "Tải hiện",
    "return_m3h": 3590,
+   "exfiltration_m3h": 0,
    "oa_people_m3h": 50,
    "oa_via_AHU_note": "Gió tươi được trộn tại AHU; phòng nhận gió cấp hỗn hợp. Lượng tươi theo AHU xem equipment_schedule.",
    "exhaust_m3h": {
@@ -141,17 +104,13 @@
     "arm_hood": 0,
     "instrument_vent": 0
    },
-   "makeup_FAFE_m3h": 990,
-   "makeup_ratio": 0.9,
-   "transfer_in_m3h": 674,
-   "transfer_out_m3h": 564,
-   "transfer_in_from": [
-    "Sample treatment 1"
-   ],
-   "transfer_out_to": [
-    "Digestion room"
-   ],
-   "supply_minus_return_m3h": 0,
+   "makeup_FAFE_m3h": 1100,
+   "makeup_ratio": 1,
+   "transfer_in_m3h": 0,
+   "transfer_out_m3h": 0,
+   "transfer_in_from": [],
+   "transfer_out_to": [],
+   "exhaust_minus_FAFE_m3h": 0,
    "serving_FAF": "FAF-2.01",
    "serving_EAF": [
     "EAF-2.01"
@@ -159,7 +118,7 @@
    "hood_fan_power_points": null,
    "scrubber": false,
    "latent_check": "ĐẠT",
-   "tolerable_FAFE_spill_fraction": 1.0347
+   "tolerable_FAFE_spill_fraction": 0.9312
   },
   {
    "room": "Sample treatment 1",
@@ -179,6 +138,7 @@
    "supply_ACH": 60.2,
    "supply_driver": "Tải hiện",
    "return_m3h": 11870,
+   "exfiltration_m3h": 0,
    "oa_people_m3h": 250,
    "oa_via_AHU_note": "Gió tươi được trộn tại AHU; phòng nhận gió cấp hỗn hợp. Lượng tươi theo AHU xem equipment_schedule.",
    "exhaust_m3h": {
@@ -202,17 +162,13 @@
     "arm_hood": 0,
     "instrument_vent": 0
    },
-   "makeup_FAFE_m3h": 7299,
-   "makeup_ratio": 0.9,
-   "transfer_in_m3h": 1485,
-   "transfer_out_m3h": 674,
-   "transfer_in_from": [
-    "Sample preparation"
-   ],
-   "transfer_out_to": [
-    "Kjeldahl room"
-   ],
-   "supply_minus_return_m3h": 0,
+   "makeup_FAFE_m3h": 8110,
+   "makeup_ratio": 1,
+   "transfer_in_m3h": 0,
+   "transfer_out_m3h": 0,
+   "transfer_in_from": [],
+   "transfer_out_to": [],
+   "exhaust_minus_FAFE_m3h": 0,
    "serving_FAF": "FAF-2.01",
    "serving_EAF": [
     "EAF-2.01"
@@ -220,7 +176,7 @@
    "hood_fan_power_points": "FHF-2.02",
    "scrubber": true,
    "latent_check": "ĐẠT",
-   "tolerable_FAFE_spill_fraction": 0.4613
+   "tolerable_FAFE_spill_fraction": 0.4152
   },
   {
    "room": "Balance room",
@@ -239,7 +195,8 @@
    "supply_m3h": 480,
    "supply_ACH": 8.7,
    "supply_driver": "Tải hiện",
-   "return_m3h": 480,
+   "return_m3h": 372.0,
+   "exfiltration_m3h": 108.0,
    "oa_people_m3h": 100,
    "oa_via_AHU_note": "Gió tươi được trộn tại AHU; phòng nhận gió cấp hỗn hợp. Lượng tươi theo AHU xem equipment_schedule.",
    "exhaust_m3h": {
@@ -264,12 +221,12 @@
     "instrument_vent": 0
    },
    "makeup_FAFE_m3h": 0,
-   "makeup_ratio": 0.9,
+   "makeup_ratio": 1,
    "transfer_in_m3h": 0,
    "transfer_out_m3h": 0,
    "transfer_in_from": [],
    "transfer_out_to": [],
-   "supply_minus_return_m3h": 0,
+   "exhaust_minus_FAFE_m3h": 0,
    "serving_FAF": null,
    "serving_EAF": [],
    "hood_fan_power_points": null,
@@ -294,7 +251,8 @@
    "supply_m3h": 2850,
    "supply_ACH": 16.1,
    "supply_driver": "Tải hiện",
-   "return_m3h": 1205,
+   "return_m3h": 2208.0,
+   "exfiltration_m3h": 642.0,
    "oa_people_m3h": 250,
    "oa_via_AHU_note": "Gió tươi được trộn tại AHU; phòng nhận gió cấp hỗn hợp. Lượng tươi theo AHU xem equipment_schedule.",
    "exhaust_m3h": {
@@ -318,15 +276,13 @@
     "arm_hood": 2,
     "instrument_vent": 0
    },
-   "makeup_FAFE_m3h": 1440,
-   "makeup_ratio": 0.9,
+   "makeup_FAFE_m3h": 1600,
+   "makeup_ratio": 1,
    "transfer_in_m3h": 0,
-   "transfer_out_m3h": 1485,
+   "transfer_out_m3h": 0,
    "transfer_in_from": [],
-   "transfer_out_to": [
-    "Sample treatment 1"
-   ],
-   "supply_minus_return_m3h": 1645,
+   "transfer_out_to": [],
+   "exhaust_minus_FAFE_m3h": 0,
    "serving_FAF": "FAF-2.01",
    "serving_EAF": [
     "EAF-2.03"
@@ -334,7 +290,7 @@
    "hood_fan_power_points": null,
    "scrubber": false,
    "latent_check": "ĐẠT",
-   "tolerable_FAFE_spill_fraction": 0.5306
+   "tolerable_FAFE_spill_fraction": 0.4775
   },
   {
    "room": "Sample coding",
@@ -353,7 +309,8 @@
    "supply_m3h": 460,
    "supply_ACH": 6.1,
    "supply_driver": "Tải hiện",
-   "return_m3h": 460,
+   "return_m3h": 356.0,
+   "exfiltration_m3h": 104.0,
    "oa_people_m3h": 50,
    "oa_via_AHU_note": "Gió tươi được trộn tại AHU; phòng nhận gió cấp hỗn hợp. Lượng tươi theo AHU xem equipment_schedule.",
    "exhaust_m3h": {
@@ -378,12 +335,12 @@
     "instrument_vent": 0
    },
    "makeup_FAFE_m3h": 0,
-   "makeup_ratio": 0.9,
+   "makeup_ratio": 1,
    "transfer_in_m3h": 0,
    "transfer_out_m3h": 0,
    "transfer_in_from": [],
    "transfer_out_to": [],
-   "supply_minus_return_m3h": 0,
+   "exhaust_minus_FAFE_m3h": 0,
    "serving_FAF": null,
    "serving_EAF": [],
    "hood_fan_power_points": null,
@@ -408,7 +365,8 @@
    "supply_m3h": 270,
    "supply_ACH": 9.0,
    "supply_driver": "Tải hiện",
-   "return_m3h": 270,
+   "return_m3h": 209.0,
+   "exfiltration_m3h": 61.0,
    "oa_people_m3h": 25,
    "oa_via_AHU_note": "Gió tươi được trộn tại AHU; phòng nhận gió cấp hỗn hợp. Lượng tươi theo AHU xem equipment_schedule.",
    "exhaust_m3h": {
@@ -433,12 +391,12 @@
     "instrument_vent": 0
    },
    "makeup_FAFE_m3h": 0,
-   "makeup_ratio": 0.9,
+   "makeup_ratio": 1,
    "transfer_in_m3h": 0,
    "transfer_out_m3h": 0,
    "transfer_in_from": [],
    "transfer_out_to": [],
-   "supply_minus_return_m3h": 0,
+   "exhaust_minus_FAFE_m3h": 0,
    "serving_FAF": null,
    "serving_EAF": [],
    "hood_fan_power_points": null,
@@ -463,7 +421,8 @@
    "supply_m3h": 1400,
    "supply_ACH": 25.9,
    "supply_driver": "Tải hiện",
-   "return_m3h": 1400,
+   "return_m3h": 1085.0,
+   "exfiltration_m3h": 315.0,
    "oa_people_m3h": 250,
    "oa_via_AHU_note": "Gió tươi được trộn tại AHU; phòng nhận gió cấp hỗn hợp. Lượng tươi theo AHU xem equipment_schedule.",
    "exhaust_m3h": {
@@ -488,12 +447,12 @@
     "instrument_vent": 0
    },
    "makeup_FAFE_m3h": 0,
-   "makeup_ratio": 0.9,
+   "makeup_ratio": 1,
    "transfer_in_m3h": 0,
    "transfer_out_m3h": 0,
    "transfer_in_from": [],
    "transfer_out_to": [],
-   "supply_minus_return_m3h": 0,
+   "exhaust_minus_FAFE_m3h": 0,
    "serving_FAF": null,
    "serving_EAF": [],
    "hood_fan_power_points": null,
@@ -519,6 +478,7 @@
    "supply_ACH": 115.7,
    "supply_driver": "Tải hiện",
    "return_m3h": 11230,
+   "exfiltration_m3h": 0,
    "oa_people_m3h": 250,
    "oa_via_AHU_note": "Gió tươi được trộn tại AHU; phòng nhận gió cấp hỗn hợp. Lượng tươi theo AHU xem equipment_schedule.",
    "exhaust_m3h": {
@@ -548,7 +508,7 @@
    "transfer_out_m3h": 0,
    "transfer_in_from": [],
    "transfer_out_to": [],
-   "supply_minus_return_m3h": 1200,
+   "exhaust_minus_FAFE_m3h": 1200,
    "serving_FAF": null,
    "serving_EAF": [
     "EAF-2.03"
@@ -575,7 +535,8 @@
    "supply_m3h": 2950,
    "supply_ACH": 9.5,
    "supply_driver": "Tải hiện",
-   "return_m3h": 1200,
+   "return_m3h": 2950,
+   "exfiltration_m3h": 0,
    "oa_people_m3h": 250,
    "oa_via_AHU_note": "Gió tươi được trộn tại AHU; phòng nhận gió cấp hỗn hợp. Lượng tươi theo AHU xem equipment_schedule.",
    "exhaust_m3h": {
@@ -599,17 +560,13 @@
     "arm_hood": 0,
     "instrument_vent": 0
    },
-   "makeup_FAFE_m3h": 15138,
-   "makeup_ratio": 0.9,
-   "transfer_in_m3h": 1000,
-   "transfer_out_m3h": 1068,
-   "transfer_in_from": [
-    "Office"
-   ],
-   "transfer_out_to": [
-    "Standard (11.90 m²)"
-   ],
-   "supply_minus_return_m3h": 1750,
+   "makeup_FAFE_m3h": 16820,
+   "makeup_ratio": 1,
+   "transfer_in_m3h": 0,
+   "transfer_out_m3h": 0,
+   "transfer_in_from": [],
+   "transfer_out_to": [],
+   "exhaust_minus_FAFE_m3h": 0,
    "serving_FAF": "FAF-2.02",
    "serving_EAF": [
     "EAF-2.02"
@@ -617,7 +574,7 @@
    "hood_fan_power_points": "FHF-2.03",
    "scrubber": true,
    "latent_check": "ĐẠT",
-   "tolerable_FAFE_spill_fraction": 0.0524
+   "tolerable_FAFE_spill_fraction": 0.0471
   },
   {
    "room": "Standard (19.72 m²)",
@@ -637,6 +594,7 @@
    "supply_ACH": 7.6,
    "supply_driver": "Tải hiện",
    "return_m3h": 450,
+   "exfiltration_m3h": 0,
    "oa_people_m3h": 50,
    "oa_via_AHU_note": "Gió tươi được trộn tại AHU; phòng nhận gió cấp hỗn hợp. Lượng tươi theo AHU xem equipment_schedule.",
    "exhaust_m3h": {
@@ -660,15 +618,13 @@
     "arm_hood": 0,
     "instrument_vent": 0
    },
-   "makeup_FAFE_m3h": 8442,
-   "makeup_ratio": 0.9,
-   "transfer_in_m3h": 938,
+   "makeup_FAFE_m3h": 9380,
+   "makeup_ratio": 1,
+   "transfer_in_m3h": 0,
    "transfer_out_m3h": 0,
-   "transfer_in_from": [
-    "Standard (11.90 m²)"
-   ],
+   "transfer_in_from": [],
    "transfer_out_to": [],
-   "supply_minus_return_m3h": 0,
+   "exhaust_minus_FAFE_m3h": 0,
    "serving_FAF": "FAF-2.02",
    "serving_EAF": [
     "EAF-2.02"
@@ -676,7 +632,7 @@
    "hood_fan_power_points": "FHF-2.04",
    "scrubber": false,
    "latent_check": "ĐẠT",
-   "tolerable_FAFE_spill_fraction": 0.014
+   "tolerable_FAFE_spill_fraction": 0.0126
   },
   {
    "room": "Standard (11.90 m²)",
@@ -696,6 +652,7 @@
    "supply_ACH": 12.3,
    "supply_driver": "Tải hiện",
    "return_m3h": 440,
+   "exfiltration_m3h": 0,
    "oa_people_m3h": 50,
    "oa_via_AHU_note": "Gió tươi được trộn tại AHU; phòng nhận gió cấp hỗn hợp. Lượng tươi theo AHU xem equipment_schedule.",
    "exhaust_m3h": {
@@ -719,17 +676,13 @@
     "arm_hood": 0,
     "instrument_vent": 0
    },
-   "makeup_FAFE_m3h": 1170,
-   "makeup_ratio": 0.9,
-   "transfer_in_m3h": 1068,
-   "transfer_out_m3h": 938,
-   "transfer_in_from": [
-    "Sample treatment 2"
-   ],
-   "transfer_out_to": [
-    "Standard (19.72 m²)"
-   ],
-   "supply_minus_return_m3h": 0,
+   "makeup_FAFE_m3h": 1300,
+   "makeup_ratio": 1,
+   "transfer_in_m3h": 0,
+   "transfer_out_m3h": 0,
+   "transfer_in_from": [],
+   "transfer_out_to": [],
+   "exhaust_minus_FAFE_m3h": 0,
    "serving_FAF": "FAF-2.02",
    "serving_EAF": [
     "EAF-2.02"
@@ -737,7 +690,7 @@
    "hood_fan_power_points": null,
    "scrubber": false,
    "latent_check": "ĐẠT",
-   "tolerable_FAFE_spill_fraction": 0.0985
+   "tolerable_FAFE_spill_fraction": 0.0887
   },
   {
    "room": "Office",
@@ -756,7 +709,8 @@
    "supply_m3h": 1410,
    "supply_ACH": 11.5,
    "supply_driver": "Tải hiện",
-   "return_m3h": 410,
+   "return_m3h": 760,
+   "exfiltration_m3h": 650,
    "oa_people_m3h": 250,
    "oa_via_AHU_note": "Gió tươi được trộn tại AHU; phòng nhận gió cấp hỗn hợp. Lượng tươi theo AHU xem equipment_schedule.",
    "exhaust_m3h": {
@@ -781,14 +735,12 @@
     "instrument_vent": 0
    },
    "makeup_FAFE_m3h": 0,
-   "makeup_ratio": 0.9,
+   "makeup_ratio": 1,
    "transfer_in_m3h": 0,
-   "transfer_out_m3h": 1000,
+   "transfer_out_m3h": 0,
    "transfer_in_from": [],
-   "transfer_out_to": [
-    "Sample treatment 2"
-   ],
-   "supply_minus_return_m3h": 1000,
+   "transfer_out_to": [],
+   "exhaust_minus_FAFE_m3h": 0,
    "serving_FAF": null,
    "serving_EAF": [],
    "hood_fan_power_points": null,
@@ -800,7 +752,7 @@
  "totals": {
   "supply_m3h": 39860,
   "exhaust_m3h": 45150,
-  "makeup_FAFE_m3h": 39555,
-  "oa_via_AHU_m3h": 5600
+  "makeup_FAFE_m3h": 43950,
+  "oa_via_AHU_m3h": 3080
  }
 }
