@@ -1,0 +1,792 @@
+{
+ "project": "SGS Hai Phong – H&N Phase 2 – HVAC",
+ "wp": "WP4",
+ "revision": "v1.0",
+ "source": "05_electrical/build_electrical.py",
+ "note": "Khối lượng đã gồm +15 % chiều dài ngang & đoạn đứng; mục nhóm J là phương án chọn thêm (không cộng). Thân van gió động cơ thuộc WP3; thiết bị (AHU, CDU, quạt, scrubber, DH, bơm) thuộc WP5.",
+ "lines": [
+  {
+   "no": 1,
+   "group": "A. Tủ điện & điều khiển",
+   "item": "Tủ DB.HVAC (trọn bộ, lắp đặt, đấu nối, thử nghiệm)",
+   "spec": "1200W × 2100H × 500D; Đặt sàn (đế 100 mm). Thành phần chính: xem electrical_design.json → panels.DB.HVAC.components",
+   "unit": "tủ",
+   "qty": 1,
+   "note": "Vách khối phải (Office) phía lối đi, Y 1.600…2.800 (giữa cửa D-13 và D-15) – đúng vị trí gợi ý WP2"
+  },
+  {
+   "no": 2,
+   "group": "A. Tủ điện & điều khiển",
+   "item": "Tủ DDC-FAN (trọn bộ, lắp đặt, đấu nối, thử nghiệm)",
+   "spec": "1200W × 2100H × 500D; Đặt sàn (đế 100 mm). Thành phần chính: xem electrical_design.json → panels.DDC-FAN.components",
+   "unit": "tủ",
+   "qty": 1,
+   "note": "Vách khối phải phía lối đi, Y 100…1.300, cạnh DB.HVAC"
+  },
+  {
+   "no": 3,
+   "group": "A. Tủ điện & điều khiển",
+   "item": "Tủ DDC-AHU-2.02 (trọn bộ, lắp đặt, đấu nối, thử nghiệm)",
+   "spec": "1000W × 1400H × 300D; Treo tường, đáy +0,5 m. Thành phần chính: xem electrical_design.json → panels.DDC-AHU-2.02.components",
+   "unit": "tủ",
+   "qty": 1,
+   "note": "Vách khối phải phía lối đi, Y −1.400…−400"
+  },
+  {
+   "no": 4,
+   "group": "A. Tủ điện & điều khiển",
+   "item": "Tủ DDC-AHU-2.01 (trọn bộ, lắp đặt, đấu nối, thử nghiệm)",
+   "spec": "1000W × 1800H × 400D; Treo tường, đáy +0,3 m. Thành phần chính: xem electrical_design.json → panels.DDC-AHU-2.01.components",
+   "unit": "tủ",
+   "qty": 1,
+   "note": "Vách khối trái (Balance/Reporting) phía lối đi, Y 3.400…4.400 (giữa cửa D-05 và D-06)"
+  },
+  {
+   "no": 5,
+   "group": "A. Tủ điện & điều khiển",
+   "item": "Tủ DDC-AHU-2.03 (trọn bộ, lắp đặt, đấu nối, thử nghiệm)",
+   "spec": "1000W × 1600H × 400D; Treo tường, đáy +0,3 m. Thành phần chính: xem electrical_design.json → panels.DDC-AHU-2.03.components",
+   "unit": "tủ",
+   "qty": 1,
+   "note": "Vách khối trái (Reporting) phía lối đi, Y −5.300…−4.300 (đối diện vách đặc)"
+  },
+  {
+   "no": 6,
+   "group": "B. Cáp động lực Cu/XLPE/PVC 0,6/1 kV",
+   "item": "Cáp CXV 2×2,5 + E2,5",
+   "spec": "Cu/XLPE/PVC 0,6/1 kV, TCVN 5935 / IEC 60502-1; đi trên máng + ống",
+   "unit": "m",
+   "qty": 126,
+   "note": "Đã gồm +15 % chiều dài ngang + đoạn đứng"
+  },
+  {
+   "no": 7,
+   "group": "B. Cáp động lực Cu/XLPE/PVC 0,6/1 kV",
+   "item": "Cáp CXV 3×2,5 + E2,5",
+   "spec": "Cu/XLPE/PVC 0,6/1 kV, TCVN 5935 / IEC 60502-1; đi trên máng + ống",
+   "unit": "m",
+   "qty": 574,
+   "note": "Đã gồm +15 % chiều dài ngang + đoạn đứng"
+  },
+  {
+   "no": 8,
+   "group": "B. Cáp động lực Cu/XLPE/PVC 0,6/1 kV",
+   "item": "Cáp CXV 4×4 + E4",
+   "spec": "Cu/XLPE/PVC 0,6/1 kV, TCVN 5935 / IEC 60502-1; đi trên máng + ống",
+   "unit": "m",
+   "qty": 39,
+   "note": "Đã gồm +15 % chiều dài ngang + đoạn đứng"
+  },
+  {
+   "no": 9,
+   "group": "B. Cáp động lực Cu/XLPE/PVC 0,6/1 kV",
+   "item": "Cáp CXV 4×6 + E6",
+   "spec": "Cu/XLPE/PVC 0,6/1 kV, TCVN 5935 / IEC 60502-1; đi trên máng + ống",
+   "unit": "m",
+   "qty": 126,
+   "note": "Đã gồm +15 % chiều dài ngang + đoạn đứng"
+  },
+  {
+   "no": 10,
+   "group": "B. Cáp động lực Cu/XLPE/PVC 0,6/1 kV",
+   "item": "Cáp CXV 4×10 + E10",
+   "spec": "Cu/XLPE/PVC 0,6/1 kV, TCVN 5935 / IEC 60502-1; đi trên máng + ống",
+   "unit": "m",
+   "qty": 126,
+   "note": "Đã gồm +15 % chiều dài ngang + đoạn đứng"
+  },
+  {
+   "no": 11,
+   "group": "B. Cáp động lực Cu/XLPE/PVC 0,6/1 kV",
+   "item": "Cáp CXV 4×16 + E16",
+   "spec": "Cu/XLPE/PVC 0,6/1 kV, TCVN 5935 / IEC 60502-1; đi trên máng + ống",
+   "unit": "m",
+   "qty": 15,
+   "note": "Đã gồm +15 % chiều dài ngang + đoạn đứng"
+  },
+  {
+   "no": 12,
+   "group": "B. Cáp động lực Cu/XLPE/PVC 0,6/1 kV",
+   "item": "Cáp CXV 4×25 + E16",
+   "spec": "Cu/XLPE/PVC 0,6/1 kV, TCVN 5935 / IEC 60502-1; đi trên máng + ống",
+   "unit": "m",
+   "qty": 17,
+   "note": "Đã gồm +15 % chiều dài ngang + đoạn đứng"
+  },
+  {
+   "no": 13,
+   "group": "B. Cáp động lực Cu/XLPE/PVC 0,6/1 kV",
+   "item": "Cáp CXV/S (màn chắn Cu, cáp biến tần) 3×2,5 + E2,5",
+   "spec": "Cu/XLPE/PVC 0,6/1 kV, TCVN 5935 / IEC 60502-1; đi trên máng + ống",
+   "unit": "m",
+   "qty": 64,
+   "note": "Đã gồm +15 % chiều dài ngang + đoạn đứng"
+  },
+  {
+   "no": 14,
+   "group": "B. Cáp động lực Cu/XLPE/PVC 0,6/1 kV",
+   "item": "Cáp CXV/S (màn chắn Cu, cáp biến tần) 3×4 + E4",
+   "spec": "Cu/XLPE/PVC 0,6/1 kV, TCVN 5935 / IEC 60502-1; đi trên máng + ống",
+   "unit": "m",
+   "qty": 19,
+   "note": "Đã gồm +15 % chiều dài ngang + đoạn đứng"
+  },
+  {
+   "no": 15,
+   "group": "B. Cáp động lực Cu/XLPE/PVC 0,6/1 kV",
+   "item": "Cáp CXV/S (màn chắn Cu, cáp biến tần) 3×10 + E10",
+   "spec": "Cu/XLPE/PVC 0,6/1 kV, TCVN 5935 / IEC 60502-1; đi trên máng + ống",
+   "unit": "m",
+   "qty": 8,
+   "note": "Đã gồm +15 % chiều dài ngang + đoạn đứng"
+  },
+  {
+   "no": 16,
+   "group": "C. Cáp điều khiển, tín hiệu, mạng",
+   "item": "Cáp tín hiệu chống nhiễu 3C×0,75 mm²",
+   "spec": "Cu, cách điện PVC/PE, màn chắn lá nhôm + dây thoát (trừ cáp FR: IEC 60331, 90 phút)",
+   "unit": "m",
+   "qty": 95,
+   "note": ""
+  },
+  {
+   "no": 17,
+   "group": "C. Cáp điều khiển, tín hiệu, mạng",
+   "item": "Cáp ĐK chống nhiễu 2C×1,0 mm²",
+   "spec": "Cu, cách điện PVC/PE, màn chắn lá nhôm + dây thoát (trừ cáp FR: IEC 60331, 90 phút)",
+   "unit": "m",
+   "qty": 870,
+   "note": ""
+  },
+  {
+   "no": 18,
+   "group": "C. Cáp điều khiển, tín hiệu, mạng",
+   "item": "Cáp tín hiệu chống nhiễu 4C×0,75 mm²",
+   "spec": "Cu, cách điện PVC/PE, màn chắn lá nhôm + dây thoát (trừ cáp FR: IEC 60331, 90 phút)",
+   "unit": "m",
+   "qty": 450,
+   "note": ""
+  },
+  {
+   "no": 19,
+   "group": "C. Cáp điều khiển, tín hiệu, mạng",
+   "item": "Cáp ĐK chống nhiễu 3C×1,0 mm²",
+   "spec": "Cu, cách điện PVC/PE, màn chắn lá nhôm + dây thoát (trừ cáp FR: IEC 60331, 90 phút)",
+   "unit": "m",
+   "qty": 598,
+   "note": ""
+  },
+  {
+   "no": 20,
+   "group": "C. Cáp điều khiển, tín hiệu, mạng",
+   "item": "Cáp tín hiệu chống nhiễu 2C×0,75 mm²",
+   "spec": "Cu, cách điện PVC/PE, màn chắn lá nhôm + dây thoát (trừ cáp FR: IEC 60331, 90 phút)",
+   "unit": "m",
+   "qty": 95,
+   "note": ""
+  },
+  {
+   "no": 21,
+   "group": "C. Cáp điều khiển, tín hiệu, mạng",
+   "item": "Cáp chống cháy FR 2C×1,5 mm²",
+   "spec": "Cu, cách điện PVC/PE, màn chắn lá nhôm + dây thoát (trừ cáp FR: IEC 60331, 90 phút)",
+   "unit": "m",
+   "qty": 42,
+   "note": ""
+  },
+  {
+   "no": 22,
+   "group": "C. Cáp điều khiển, tín hiệu, mạng",
+   "item": "Cáp ĐK chống nhiễu 4C×1,0 mm²",
+   "spec": "Cu, cách điện PVC/PE, màn chắn lá nhôm + dây thoát (trừ cáp FR: IEC 60331, 90 phút)",
+   "unit": "m",
+   "qty": 354,
+   "note": ""
+  },
+  {
+   "no": 23,
+   "group": "C. Cáp điều khiển, tín hiệu, mạng",
+   "item": "Cáp mạng RS485 1 đôi xoắn chống nhiễu 0,75 mm² (BACnet MS/TP/Modbus)",
+   "spec": "Cu, cách điện PVC/PE, màn chắn lá nhôm + dây thoát (trừ cáp FR: IEC 60331, 90 phút)",
+   "unit": "m",
+   "qty": 46,
+   "note": ""
+  },
+  {
+   "no": 24,
+   "group": "C. Cáp điều khiển, tín hiệu, mạng",
+   "item": "Cáp truyền tín hiệu DX-kit ↔ CDU 2C×1,25 mm² chống nhiễu",
+   "spec": "Cu, cách điện PVC/PE, màn chắn lá nhôm + dây thoát (trừ cáp FR: IEC 60331, 90 phút)",
+   "unit": "m",
+   "qty": 258,
+   "note": ""
+  },
+  {
+   "no": 25,
+   "group": "D. Máng cáp & phụ kiện",
+   "item": "Máng cáp đục lỗ sơn tĩnh điện 200×100 dày 1,2 mm",
+   "spec": "BOP +3,6 m (như Phase 1); kèm phụ kiện; độ đầy ≤ 40 %",
+   "unit": "m",
+   "qty": 57,
+   "note": ""
+  },
+  {
+   "no": 26,
+   "group": "D. Máng cáp & phụ kiện",
+   "item": "Máng cáp đục lỗ sơn tĩnh điện 100×50 dày 1,2 mm",
+   "spec": "BOP +3,6 m (như Phase 1); kèm phụ kiện; độ đầy ≤ 40 %",
+   "unit": "m",
+   "qty": 158,
+   "note": ""
+  },
+  {
+   "no": 27,
+   "group": "D. Máng cáp & phụ kiện",
+   "item": "Máng cáp đục lỗ mạ kẽm nhúng nóng 200×100 có nắp (ngoài trời)",
+   "spec": "BOP +3,6 m (như Phase 1); kèm phụ kiện; độ đầy ≤ 40 %",
+   "unit": "m",
+   "qty": 19,
+   "note": ""
+  },
+  {
+   "no": 28,
+   "group": "D. Máng cáp & phụ kiện",
+   "item": "Máng cáp đục lỗ mạ kẽm nhúng nóng 100×50 có nắp (ngoài trời)",
+   "spec": "BOP +3,6 m (như Phase 1); kèm phụ kiện; độ đầy ≤ 40 %",
+   "unit": "m",
+   "qty": 19,
+   "note": ""
+  },
+  {
+   "no": 29,
+   "group": "D. Máng cáp & phụ kiện",
+   "item": "Co ngang 90°",
+   "spec": "Theo kích thước máng tương ứng",
+   "unit": "cái",
+   "qty": 4,
+   "note": ""
+  },
+  {
+   "no": 30,
+   "group": "D. Máng cáp & phụ kiện",
+   "item": "Tê ngang (T)",
+   "spec": "Theo kích thước máng tương ứng",
+   "unit": "cái",
+   "qty": 9,
+   "note": ""
+  },
+  {
+   "no": 31,
+   "group": "D. Máng cáp & phụ kiện",
+   "item": "Chữ thập (+)",
+   "spec": "Theo kích thước máng tương ứng",
+   "unit": "cái",
+   "qty": 2,
+   "note": ""
+  },
+  {
+   "no": 32,
+   "group": "D. Máng cáp & phụ kiện",
+   "item": "Nắp bịt đầu máng",
+   "spec": "Theo kích thước máng tương ứng",
+   "unit": "cái",
+   "qty": 12,
+   "note": ""
+  },
+  {
+   "no": 33,
+   "group": "D. Máng cáp & phụ kiện",
+   "item": "Co đứng 90° (máng đứng nóc tủ)",
+   "spec": "Theo kích thước máng tương ứng",
+   "unit": "cái",
+   "qty": 7,
+   "note": ""
+  },
+  {
+   "no": 34,
+   "group": "D. Máng cáp & phụ kiện",
+   "item": "Nối máng (khớp nối + bu lông), mỗi 2,4 m",
+   "spec": "Theo kích thước máng tương ứng",
+   "unit": "cái",
+   "qty": 106,
+   "note": ""
+  },
+  {
+   "no": 35,
+   "group": "D. Máng cáp & phụ kiện",
+   "item": "Giá treo trong nhà (ty M10 ×2 + U-channel 41×41, mỗi 1,5 m)",
+   "spec": "Theo kích thước máng tương ứng",
+   "unit": "bộ",
+   "qty": 144,
+   "note": ""
+  },
+  {
+   "no": 36,
+   "group": "D. Máng cáp & phụ kiện",
+   "item": "Giá đỡ ngoài trời ốp tường/bệ (mạ kẽm nhúng nóng, mỗi 1,5 m)",
+   "spec": "Theo kích thước máng tương ứng",
+   "unit": "bộ",
+   "qty": 26,
+   "note": ""
+  },
+  {
+   "no": 37,
+   "group": "D. Máng cáp & phụ kiện",
+   "item": "Ống lồng xuyên tường A Ø100 thép mạ kẽm + chèn chống cháy/chống thấm",
+   "spec": "Theo kích thước máng tương ứng",
+   "unit": "cái",
+   "qty": 4,
+   "note": ""
+  },
+  {
+   "no": 38,
+   "group": "E. Ống luồn, ống mềm, ốc siết cáp",
+   "item": "Ống nhựa PVC cứng Ø20 (cáp điều khiển/cảm biến)",
+   "spec": "Kèm khớp nối, kẹp, hộp kéo dây",
+   "unit": "m",
+   "qty": 326,
+   "note": ""
+  },
+  {
+   "no": 39,
+   "group": "E. Ống luồn, ống mềm, ốc siết cáp",
+   "item": "Ống thép EMT Ø20 (đoạn xuống thiết bị trên trần)",
+   "spec": "Kèm khớp nối, kẹp, hộp kéo dây",
+   "unit": "m",
+   "qty": 15,
+   "note": ""
+  },
+  {
+   "no": 40,
+   "group": "E. Ống luồn, ống mềm, ốc siết cáp",
+   "item": "Ống thép EMT Ø25 (đoạn xuống thiết bị trên trần)",
+   "spec": "Kèm khớp nối, kẹp, hộp kéo dây",
+   "unit": "m",
+   "qty": 35,
+   "note": ""
+  },
+  {
+   "no": 41,
+   "group": "E. Ống luồn, ống mềm, ốc siết cáp",
+   "item": "Ống thép EMT Ø32 (đoạn xuống thiết bị trên trần)",
+   "spec": "Kèm khớp nối, kẹp, hộp kéo dây",
+   "unit": "m",
+   "qty": 2,
+   "note": ""
+  },
+  {
+   "no": 42,
+   "group": "E. Ống luồn, ống mềm, ốc siết cáp",
+   "item": "Ống thép mạ kẽm (GI/IMC) ren Ø20 ngoài trời",
+   "spec": "Kèm khớp nối, kẹp, hộp kéo dây",
+   "unit": "m",
+   "qty": 17,
+   "note": ""
+  },
+  {
+   "no": 43,
+   "group": "E. Ống luồn, ống mềm, ốc siết cáp",
+   "item": "Ống thép mạ kẽm (GI/IMC) ren Ø25 ngoài trời",
+   "spec": "Kèm khớp nối, kẹp, hộp kéo dây",
+   "unit": "m",
+   "qty": 4,
+   "note": ""
+  },
+  {
+   "no": 44,
+   "group": "E. Ống luồn, ống mềm, ốc siết cáp",
+   "item": "Ống thép mạ kẽm (GI/IMC) ren Ø32 ngoài trời",
+   "spec": "Kèm khớp nối, kẹp, hộp kéo dây",
+   "unit": "m",
+   "qty": 5,
+   "note": ""
+  },
+  {
+   "no": 45,
+   "group": "E. Ống luồn, ống mềm, ốc siết cáp",
+   "item": "Ống mềm kim loại bọc PVC kín nước Ø20 + đầu nối",
+   "spec": "Đoạn cuối ~1 m vào động cơ/cụm sưởi/CDU (chống rung)",
+   "unit": "m",
+   "qty": 4,
+   "note": ""
+  },
+  {
+   "no": 46,
+   "group": "E. Ống luồn, ống mềm, ốc siết cáp",
+   "item": "Ống mềm kim loại bọc PVC kín nước Ø25 + đầu nối",
+   "spec": "Đoạn cuối ~1 m vào động cơ/cụm sưởi/CDU (chống rung)",
+   "unit": "m",
+   "qty": 31,
+   "note": ""
+  },
+  {
+   "no": 47,
+   "group": "E. Ống luồn, ống mềm, ốc siết cáp",
+   "item": "Ống mềm kim loại bọc PVC kín nước Ø32 + đầu nối",
+   "spec": "Đoạn cuối ~1 m vào động cơ/cụm sưởi/CDU (chống rung)",
+   "unit": "m",
+   "qty": 7,
+   "note": ""
+  },
+  {
+   "no": 48,
+   "group": "E. Ống luồn, ống mềm, ốc siết cáp",
+   "item": "Ống mềm kim loại bọc PVC kín nước Ø40 + đầu nối",
+   "spec": "Đoạn cuối ~1 m vào động cơ/cụm sưởi/CDU (chống rung)",
+   "unit": "m",
+   "qty": 1,
+   "note": ""
+  },
+  {
+   "no": 49,
+   "group": "E. Ống luồn, ống mềm, ốc siết cáp",
+   "item": "Ốc siết cáp nhựa nylon IP68 M20",
+   "spec": "Đầu vào tủ/hộp cách ly/thiết bị",
+   "unit": "cái",
+   "qty": 398,
+   "note": ""
+  },
+  {
+   "no": 50,
+   "group": "E. Ống luồn, ống mềm, ốc siết cáp",
+   "item": "Ốc siết cáp nhựa nylon IP68 M32",
+   "spec": "Đầu vào tủ/hộp cách ly/thiết bị",
+   "unit": "cái",
+   "qty": 4,
+   "note": ""
+  },
+  {
+   "no": 51,
+   "group": "E. Ống luồn, ống mềm, ốc siết cáp",
+   "item": "Ốc siết cáp nhựa nylon IP68 M40",
+   "spec": "Đầu vào tủ/hộp cách ly/thiết bị",
+   "unit": "cái",
+   "qty": 4,
+   "note": ""
+  },
+  {
+   "no": 52,
+   "group": "E. Ống luồn, ống mềm, ốc siết cáp",
+   "item": "Ốc siết cáp đồng mạ niken EMC M25",
+   "spec": "Đầu vào tủ/hộp cách ly/thiết bị",
+   "unit": "cái",
+   "qty": 16,
+   "note": ""
+  },
+  {
+   "no": 53,
+   "group": "E. Ống luồn, ống mềm, ốc siết cáp",
+   "item": "Ốc siết cáp đồng mạ niken EMC M32",
+   "spec": "Đầu vào tủ/hộp cách ly/thiết bị",
+   "unit": "cái",
+   "qty": 4,
+   "note": ""
+  },
+  {
+   "no": 54,
+   "group": "E. Ống luồn, ống mềm, ốc siết cáp",
+   "item": "Ốc siết cáp đồng mạ niken IP68 M25",
+   "spec": "Đầu vào tủ/hộp cách ly/thiết bị",
+   "unit": "cái",
+   "qty": 16,
+   "note": ""
+  },
+  {
+   "no": 55,
+   "group": "E. Ống luồn, ống mềm, ốc siết cáp",
+   "item": "Ốc siết cáp đồng mạ niken IP68 M32",
+   "spec": "Đầu vào tủ/hộp cách ly/thiết bị",
+   "unit": "cái",
+   "qty": 12,
+   "note": ""
+  },
+  {
+   "no": 56,
+   "group": "F. Cầu dao cách ly tại chỗ, ổ cắm",
+   "item": "Cầu dao cách ly tại chỗ 2P 20A IP65",
+   "spec": "Vỏ polycarbonate/kim loại, tay khóa được (lock-off), IEC 60947-3 AC-23A",
+   "unit": "cái",
+   "qty": 4,
+   "note": ""
+  },
+  {
+   "no": 57,
+   "group": "F. Cầu dao cách ly tại chỗ, ổ cắm",
+   "item": "Cầu dao cách ly tại chỗ 3P 20A IP65",
+   "spec": "Vỏ polycarbonate/kim loại, tay khóa được (lock-off), IEC 60947-3 AC-23A",
+   "unit": "cái",
+   "qty": 27,
+   "note": ""
+  },
+  {
+   "no": 58,
+   "group": "F. Cầu dao cách ly tại chỗ, ổ cắm",
+   "item": "Cầu dao cách ly tại chỗ 3P 20A IP65 + tiếp điểm phụ (báo biến tần)",
+   "spec": "Vỏ polycarbonate/kim loại, tay khóa được (lock-off), IEC 60947-3 AC-23A",
+   "unit": "cái",
+   "qty": 3,
+   "note": ""
+  },
+  {
+   "no": 59,
+   "group": "F. Cầu dao cách ly tại chỗ, ổ cắm",
+   "item": "Cầu dao cách ly tại chỗ 3P 25A IP65 + tiếp điểm phụ (báo biến tần)",
+   "spec": "Vỏ polycarbonate/kim loại, tay khóa được (lock-off), IEC 60947-3 AC-23A",
+   "unit": "cái",
+   "qty": 1,
+   "note": ""
+  },
+  {
+   "no": 60,
+   "group": "F. Cầu dao cách ly tại chỗ, ổ cắm",
+   "item": "Cầu dao cách ly tại chỗ 3P 40A IP65 + tiếp điểm phụ (báo biến tần)",
+   "spec": "Vỏ polycarbonate/kim loại, tay khóa được (lock-off), IEC 60947-3 AC-23A",
+   "unit": "cái",
+   "qty": 1,
+   "note": ""
+  },
+  {
+   "no": 61,
+   "group": "F. Cầu dao cách ly tại chỗ, ổ cắm",
+   "item": "Cầu dao cách ly tại chỗ 4P 25A IP65 ngoài trời (chống UV)",
+   "spec": "Vỏ polycarbonate/kim loại, tay khóa được (lock-off), IEC 60947-3 AC-23A",
+   "unit": "cái",
+   "qty": 1,
+   "note": ""
+  },
+  {
+   "no": 62,
+   "group": "F. Cầu dao cách ly tại chỗ, ổ cắm",
+   "item": "Cầu dao cách ly tại chỗ 4P 32A IP65 ngoài trời (chống UV)",
+   "spec": "Vỏ polycarbonate/kim loại, tay khóa được (lock-off), IEC 60947-3 AC-23A",
+   "unit": "cái",
+   "qty": 3,
+   "note": ""
+  },
+  {
+   "no": 63,
+   "group": "F. Cầu dao cách ly tại chỗ, ổ cắm",
+   "item": "Cầu dao cách ly tại chỗ 4P 40A IP65 ngoài trời (chống UV)",
+   "spec": "Vỏ polycarbonate/kim loại, tay khóa được (lock-off), IEC 60947-3 AC-23A",
+   "unit": "cái",
+   "qty": 3,
+   "note": ""
+  },
+  {
+   "no": 64,
+   "group": "F. Cầu dao cách ly tại chỗ, ổ cắm",
+   "item": "Ổ cắm công nghiệp 1P+N+E 16 A IP66 tại sàn AHU",
+   "spec": "IEC 60309",
+   "unit": "cái",
+   "qty": 3,
+   "note": ""
+  },
+  {
+   "no": 65,
+   "group": "G. Cảm biến & thiết bị hiện trường",
+   "item": "Cảm biến nhiệt độ/độ ẩm phòng gắn tường",
+   "spec": "0–50 °C ±0,3 K; 0–100 %RH ±2 %; ra 0–10 V; 24 VAC/DC; vỏ chịu hóa chất cho phòng hóa",
+   "unit": "cái",
+   "qty": 14,
+   "note": ""
+  },
+  {
+   "no": 66,
+   "group": "G. Cảm biến & thiết bị hiện trường",
+   "item": "Cảm biến nhiệt độ/độ ẩm ống gió",
+   "spec": "Que 200 mm, ±0,3 K / ±2 %RH, 0–10 V (gió cấp + gió hồi mỗi AHU)",
+   "unit": "cái",
+   "qty": 6,
+   "note": ""
+  },
+  {
+   "no": 67,
+   "group": "G. Cảm biến & thiết bị hiện trường",
+   "item": "Cảm biến nhiệt độ/độ ẩm ngoài trời",
+   "spec": "IP65, có hộp che nắng, 0–10 V",
+   "unit": "cái",
+   "qty": 1,
+   "note": ""
+  },
+  {
+   "no": 68,
+   "group": "G. Cảm biến & thiết bị hiện trường",
+   "item": "Bộ chuyển đổi chênh áp quạt AHU (đo lưu lượng k-factor)",
+   "spec": "0–1000 Pa, 0–10 V, kèm ống mềm & đầu đo",
+   "unit": "cái",
+   "qty": 3,
+   "note": ""
+  },
+  {
+   "no": 69,
+   "group": "G. Cảm biến & thiết bị hiện trường",
+   "item": "Cảm biến áp suất tĩnh ống gió bù FAF",
+   "spec": "0–500 Pa, 0–10 V, đầu đo tĩnh áp",
+   "unit": "cái",
+   "qty": 2,
+   "note": ""
+  },
+  {
+   "no": 70,
+   "group": "G. Cảm biến & thiết bị hiện trường",
+   "item": "Công tắc chênh áp lọc",
+   "spec": "50–500 Pa, tiếp điểm SPDT (G4 + F8 mỗi AHU/FAF)",
+   "unit": "cái",
+   "qty": 10,
+   "note": ""
+  },
+  {
+   "no": 71,
+   "group": "G. Cảm biến & thiết bị hiện trường",
+   "item": "Công tắc dòng gió (airflow switch)",
+   "spec": "20–300 Pa, SPDT (3 AHU – liên động sưởi; 3 EAF – xác nhận hút)",
+   "unit": "cái",
+   "qty": 6,
+   "note": ""
+  },
+  {
+   "no": 72,
+   "group": "G. Cảm biến & thiết bị hiện trường",
+   "item": "Thermostat an toàn sưởi reset tay",
+   "spec": "Kèm cụm sưởi AHU – WP4 chỉ đấu nối (không tính tiền nếu AHU đã kèm)",
+   "unit": "cái",
+   "qty": 3,
+   "note": ""
+  },
+  {
+   "no": 73,
+   "group": "G. Cảm biến & thiết bị hiện trường",
+   "item": "Bộ chấp hành van gió on/off lò xo hồi 24 VAC",
+   "spec": "≥ 10 Nm, thời gian chạy ≤ 90 s; van gió bù 15 hood + 7 nhóm EAF + 3 OA AHU + 2 OA FAF (thân van thuộc WP3)",
+   "unit": "cái",
+   "qty": 27,
+   "note": ""
+  },
+  {
+   "no": 74,
+   "group": "G. Cảm biến & thiết bị hiện trường",
+   "item": "Hộp công tắc tại tủ hood",
+   "spec": "Công tắc ON/OFF + đèn báo chạy, 24 VDC, IP54, gắn trên tủ hood",
+   "unit": "cái",
+   "qty": 15,
+   "note": ""
+  },
+  {
+   "no": 75,
+   "group": "G. Cảm biến & thiết bị hiện trường",
+   "item": "Rơ le dòng (current sensing relay) quạt tủ hood",
+   "spec": "Lõi xuyên, 0,5–5 A, tiếp điểm khô (lắp trong DDC-FAN)",
+   "unit": "cái",
+   "qty": 15,
+   "note": ""
+  },
+  {
+   "no": 76,
+   "group": "H. Tiếp địa",
+   "item": "Dây tiếp địa dọc máng cáp động lực CV 1×25 mm² vàng-xanh",
+   "spec": "Cu, IEC 60364-5-54",
+   "unit": "m",
+   "qty": 130.0,
+   "note": ""
+  },
+  {
+   "no": 77,
+   "group": "H. Tiếp địa",
+   "item": "Dây nối đẳng thế mối nối máng CV 1×6 mm² + đầu cos",
+   "spec": "Cu, IEC 60364-5-54",
+   "unit": "bộ",
+   "qty": 106,
+   "note": ""
+  },
+  {
+   "no": 78,
+   "group": "H. Tiếp địa",
+   "item": "Dây nối đất vỏ CDU/scrubber/khung bệ CV 1×16 mm² (3 m/thiết bị)",
+   "spec": "Cu, IEC 60364-5-54",
+   "unit": "m",
+   "qty": 21.0,
+   "note": ""
+  },
+  {
+   "no": 79,
+   "group": "H. Tiếp địa",
+   "item": "Đấu nối thanh PE DB.HVAC → thanh tiếp địa chính tòa nhà (MET) CV 1×95 mm² (giả định 10 m)",
+   "spec": "Cu, IEC 60364-5-54",
+   "unit": "m",
+   "qty": 10.0,
+   "note": ""
+  },
+  {
+   "no": 80,
+   "group": "H. Tiếp địa",
+   "item": "Kẹp tiếp địa/đầu cos đồng các loại",
+   "spec": "Cu, IEC 60364-5-54",
+   "unit": "bộ",
+   "qty": 60,
+   "note": ""
+  },
+  {
+   "no": 81,
+   "group": "I. Lập trình, thử nghiệm, nghiệm thu",
+   "item": "Lập trình DDC, chạy thử liên động hút–bù, cân chỉnh biến tần, T&C, hồ sơ hoàn công",
+   "spec": "4 tủ DDC, 27 van gió, 15 hood, 3 AHU, 6 CDU",
+   "unit": "lô",
+   "qty": 1,
+   "note": ""
+  },
+  {
+   "no": 82,
+   "group": "I. Lập trình, thử nghiệm, nghiệm thu",
+   "item": "Đo điện trở cách điện, thông mạch PE, thử RCD, đo sụt áp/dòng vận hành",
+   "spec": "TCVN 9208 / IEC 60364-6",
+   "unit": "lô",
+   "qty": 1,
+   "note": ""
+  },
+  {
+   "no": 83,
+   "group": "J. PHƯƠNG ÁN CHỌN THÊM (không cộng vào tổng)",
+   "item": "[OP-1] Bộ điều khiển mạng (network controller/BACnet router) BACnet MS/TP ↔ BACnet/IP, lắp trong DDC-FAN",
+   "spec": "Tùy chọn kết nối BMS/HMI Phase 1",
+   "unit": "bộ",
+   "qty": 1,
+   "note": "OPTION"
+  },
+  {
+   "no": 84,
+   "group": "J. PHƯƠNG ÁN CHỌN THÊM (không cộng vào tổng)",
+   "item": "[OP-2] Màn hình HMI cảm ứng 15,6\" (đồ họa 3 AHU, FAF/EAF, hood, scrubber, báo động, xu hướng) đặt tại Office hoặc phòng điều khiển Phase 1",
+   "spec": "Tùy chọn kết nối BMS/HMI Phase 1",
+   "unit": "bộ",
+   "qty": 1,
+   "note": "OPTION"
+  },
+  {
+   "no": 85,
+   "group": "J. PHƯƠNG ÁN CHỌN THÊM (không cộng vào tổng)",
+   "item": "[OP-3] Phần mềm + lập trình đồ họa, tích hợp vào HMI Phase 1 (\"MÀN HÌNH HMI\" – F3-SD-AC-017) qua BACnet/IP hoặc Modbus TCP",
+   "spec": "Tùy chọn kết nối BMS/HMI Phase 1",
+   "unit": "lô",
+   "qty": 1,
+   "note": "OPTION"
+  },
+  {
+   "no": 86,
+   "group": "J. PHƯƠNG ÁN CHỌN THÊM (không cộng vào tổng)",
+   "item": "[OP-4] Gateway BACnet/Modbus cho CDU (giám sát chi tiết lỗi/công suất từ hãng CDU)",
+   "spec": "Tùy chọn kết nối BMS/HMI Phase 1",
+   "unit": "bộ",
+   "qty": 3,
+   "note": "OPTION"
+  },
+  {
+   "no": 87,
+   "group": "J. PHƯƠNG ÁN CHỌN THÊM (không cộng vào tổng)",
+   "item": "[OP-5] Cáp mạng Cat6 FTP (DDC-FAN → HMI Phase 1, giả định 80 m) + ống PVC Ø20 + switch công nghiệp 8 cổng",
+   "spec": "Tùy chọn kết nối BMS/HMI Phase 1",
+   "unit": "lô",
+   "qty": 1,
+   "note": "OPTION"
+  }
+ ]
+}

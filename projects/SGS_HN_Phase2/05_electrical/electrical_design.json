@@ -1,0 +1,6749 @@
+{
+ "project": "SGS Hai Phong – H&N Phase 2 – HVAC",
+ "wp": "WP4 – Điện & điều khiển",
+ "revision": "v1.0",
+ "date": "2026-11-14",
+ "scope": "Từ DB.HVAC (gồm DB.HVAC) trở đi: tủ DDC, cáp lộ ra, máng/ống, cáp điều khiển, cảm biến. Nguồn cấp tới DB.HVAC thuộc gói điện (ngoài phạm vi).",
+ "inputs": [
+  "01_design_basis/DESIGN_BASIS.md v1.1",
+  "02_calc/equipment_schedule.json (WP1 v4)",
+  "03_geometry/geometry.json (WP2)"
+ ],
+ "parameters": {
+  "U3": 380.0,
+  "U1": 220.0,
+  "pf_std": 0.85,
+  "pf_vfd": 0.95,
+  "pf_heater": 1.0,
+  "eta_vfd": 0.97,
+  "eta_motor_IE3": {
+   "0.6": 0.85,
+   "0.75": 0.825,
+   "1.1": 0.841,
+   "3.0": 0.877,
+   "5.5": 0.896,
+   "7.5": 0.904,
+   "11.0": 0.914,
+   "15.0": 0.921
+  },
+  "k_temp_45C": 0.87,
+  "k_group": 0.8,
+  "In_over_Ib": 1.25,
+  "slack": 1.15,
+  "rho": 0.0225,
+  "X_ohm_per_m": 8e-05,
+  "dU_max_pct": 4.0,
+  "dU_feeder_target_pct": 1.5,
+  "tray_BOP_mm": 3600,
+  "spare": 0.2,
+  "ampacity_table": "IEC 60364-5-52 B.52.12 XLPE method E (≡ TCVN 9207:2012)"
+ },
+ "panels": {
+  "DB.HVAC": {
+   "xy": [
+    15935,
+    2200
+   ],
+   "mount": "Đặt sàn (đế 100 mm)",
+   "dims": "1200W × 2100H × 500D",
+   "ip": "IP42",
+   "wall": "Vách khối phải (Office) phía lối đi, Y 1.600…2.800 (giữa cửa D-13 và D-15) – đúng vị trí gợi ý WP2",
+   "xy_mm": [
+    15935,
+    2200
+   ],
+   "components": [
+    {
+     "item": "Vỏ tủ thép 1,5–2,0 mm sơn tĩnh điện, 1200W × 2100H × 500D, IP42, Form 2b, cửa có khóa",
+     "unit": "bộ",
+     "qty": 1
+    },
+    {
+     "item": "MCCB 4P 400 AF, Ir chỉnh 340 A (0,4–1,0 In), Icu ≥ 36 kA (giả định – gói điện xác nhận Ik)",
+     "unit": "cái",
+     "qty": 1
+    },
+    {
+     "item": "Thanh cái Cu 400 A 3P+N+PE (≈ 40×10 mm/pha, N = pha, PE 40×5), Icw ≥ 25 kA/1 s",
+     "unit": "bộ",
+     "qty": 1
+    },
+    {
+     "item": "Đồng hồ đa năng V/A/kW/kWh/PF/THD, Modbus RTU + 3 CT 400/5 A",
+     "unit": "bộ",
+     "qty": 1
+    },
+    {
+     "item": "Thiết bị chống sét lan truyền SPD Type 2, 4P, Imax 40 kA + MCB 4P 32 A",
+     "unit": "bộ",
+     "qty": 1
+    },
+    {
+     "item": "Đèn báo pha + cầu chì bảo vệ",
+     "unit": "bộ",
+     "qty": 3
+    },
+    {
+     "item": "MCCB 4P 25 A, Icu ≥ 25 kA",
+     "unit": "cái",
+     "qty": 1
+    },
+    {
+     "item": "MCCB 4P 32 A, Icu ≥ 25 kA",
+     "unit": "cái",
+     "qty": 3
+    },
+    {
+     "item": "MCCB 4P 40 A, Icu ≥ 25 kA",
+     "unit": "cái",
+     "qty": 4
+    },
+    {
+     "item": "MCCB 4P 63 A, Icu ≥ 25 kA",
+     "unit": "cái",
+     "qty": 1
+    },
+    {
+     "item": "MCCB 4P 80 A, Icu ≥ 25 kA",
+     "unit": "cái",
+     "qty": 2
+    },
+    {
+     "item": "Rơ le dòng rò ELR 300 mA + ZCT (cho lộ CDU, theo hãng CDU)",
+     "unit": "bộ",
+     "qty": 6
+    },
+    {
+     "item": "Lộ dự phòng 20 %: MCCB 4P 63 A, 25 kA (lắp sẵn)",
+     "unit": "cái",
+     "qty": 3
+    },
+    {
+     "item": "Cầu đấu, máng nhựa đi dây, nhãn, sơ đồ trong tủ, phụ kiện",
+     "unit": "lô",
+     "qty": 1
+    }
+   ],
+   "spare_ways": {
+    "n_used": 11,
+    "n_spare": 3,
+    "spec": "MCCB 4P 63 A, 25 kA (lắp sẵn)"
+   },
+   "io": null
+  },
+  "DDC-FAN": {
+   "xy": [
+    15935,
+    700
+   ],
+   "mount": "Đặt sàn (đế 100 mm)",
+   "dims": "1200W × 2100H × 500D",
+   "ip": "IP42",
+   "wall": "Vách khối phải phía lối đi, Y 100…1.300, cạnh DB.HVAC",
+   "xy_mm": [
+    15935,
+    700
+   ],
+   "components": [
+    {
+     "item": "Vỏ tủ thép sơn tĩnh điện 1200W × 2100H × 500D, IP42, quạt hút + lọc gió mặt tủ",
+     "unit": "bộ",
+     "qty": 1
+    },
+    {
+     "item": "MCCB tổng 4P 80 A 25 kA (tủ) / cầu dao tổng",
+     "unit": "cái",
+     "qty": 1
+    },
+    {
+     "item": "Thanh cái Cu 100 A 3P+N+PE",
+     "unit": "bộ",
+     "qty": 1
+    },
+    {
+     "item": "Biến tần 7,5 kW 380 V (HVAC, cuộn kháng DC/EMC C2, Modbus/BACnet) cho FAF-2.01",
+     "unit": "bộ",
+     "qty": 1
+    },
+    {
+     "item": "Biến tần 11,0 kW 380 V (HVAC, cuộn kháng DC/EMC C2, Modbus/BACnet) cho FAF-2.02",
+     "unit": "bộ",
+     "qty": 1
+    },
+    {
+     "item": "MCB 3P 20 A (C) 10 kA + biến tần 7,5 kW",
+     "unit": "cái",
+     "qty": 1
+    },
+    {
+     "item": "MCB 3P 25 A (C) 10 kA + biến tần 11,0 kW",
+     "unit": "cái",
+     "qty": 1
+    },
+    {
+     "item": "MPCB 3P 1,6–2,5 A + contactor AC3",
+     "unit": "cái",
+     "qty": 3
+    },
+    {
+     "item": "MPCB 3P 1–1,6 A + contactor AC3",
+     "unit": "cái",
+     "qty": 15
+    },
+    {
+     "item": "Contactor AC3 3P 9 A cuộn 24 VAC (quạt EAF + quạt tủ hood)",
+     "unit": "cái",
+     "qty": 18
+    },
+    {
+     "item": "Rơ le dòng lõi xuyên cho quạt tủ hood",
+     "unit": "cái",
+     "qty": 15
+    },
+    {
+     "item": "Biến áp 220/24 VAC 630 VA cấp bộ chấp hành van gió + MCB bảo vệ",
+     "unit": "bộ",
+     "qty": 1
+    },
+    {
+     "item": "Rơ le trung gian 24 VAC (lệnh van gió)",
+     "unit": "cái",
+     "qty": 24
+    },
+    {
+     "item": "Bộ điều khiển DDC lập trình tự do BACnet + module mở rộng: ≥ 62 DI / 54 DO / 3 AI / 3 AO (đã gồm 20 % dự phòng)",
+     "unit": "bộ",
+     "qty": 1
+    },
+    {
+     "item": "Màn hình hiển thị/cài đặt cục bộ trên cửa tủ (LCD/HMI 7\")",
+     "unit": "bộ",
+     "qty": 1
+    },
+    {
+     "item": "Công tắc H-O-A, nút dừng khẩn, đèn báo chạy/lỗi cho từng thiết bị",
+     "unit": "lô",
+     "qty": 1
+    },
+    {
+     "item": "Lộ dự phòng 20 %: MPCB 3P 1,6–2,5 A + contactor (lắp sẵn)",
+     "unit": "bộ",
+     "qty": 4
+    },
+    {
+     "item": "Cầu đấu, máng nhựa đi dây, nhãn, phụ kiện",
+     "unit": "lô",
+     "qty": 1
+    }
+   ],
+   "spare_ways": {
+    "n_used": 20,
+    "n_spare": 4,
+    "spec": "MPCB 3P 1,6–2,5 A + contactor (lắp sẵn)"
+   },
+   "io": {
+    "DI": 51,
+    "DO": 45,
+    "AI": 2,
+    "AO": 2,
+    "total": 100,
+    "DI_spare": 62,
+    "DO_spare": 54,
+    "AI_spare": 3,
+    "AO_spare": 3
+   }
+  },
+  "DDC-AHU-2.02": {
+   "xy": [
+    16035,
+    -900
+   ],
+   "mount": "Treo tường, đáy +0,5 m",
+   "dims": "1000W × 1400H × 300D",
+   "ip": "IP54",
+   "wall": "Vách khối phải phía lối đi, Y −1.400…−400",
+   "xy_mm": [
+    16035,
+    -900
+   ],
+   "components": [
+    {
+     "item": "Vỏ tủ thép sơn tĩnh điện 1000W × 1400H × 300D, IP54, quạt hút + lọc gió mặt tủ",
+     "unit": "bộ",
+     "qty": 1
+    },
+    {
+     "item": "MCCB tổng 4P 40 A 25 kA (tủ) / cầu dao tổng",
+     "unit": "cái",
+     "qty": 1
+    },
+    {
+     "item": "Thanh cái Cu 63 A 3P+N+PE",
+     "unit": "bộ",
+     "qty": 1
+    },
+    {
+     "item": "Biến tần 3,0 kW 380 V (HVAC, cuộn kháng DC/EMC C2, Modbus/BACnet) cho AHU-2.02-SF",
+     "unit": "bộ",
+     "qty": 1
+    },
+    {
+     "item": "MCB 3P 10 A (C) + SSR/thyristor 3P",
+     "unit": "cái",
+     "qty": 1
+    },
+    {
+     "item": "MCB 3P 10 A (C) + contactor AC1",
+     "unit": "cái",
+     "qty": 2
+    },
+    {
+     "item": "MCB 3P 10 A (C) 10 kA + biến tần 3,0 kW",
+     "unit": "cái",
+     "qty": 1
+    },
+    {
+     "item": "RCBO 1P+N 16 A 30 mA (C)",
+     "unit": "cái",
+     "qty": 1
+    },
+    {
+     "item": "RCBO 1P+N 6 A 30 mA (C)",
+     "unit": "cái",
+     "qty": 1
+    },
+    {
+     "item": "RCD 4P 40 A 300 mA cho nhóm sưởi",
+     "unit": "cái",
+     "qty": 1
+    },
+    {
+     "item": "Bộ điều khiển thyristor/SSR 3P (0–10 V) cho cấp sưởi 1",
+     "unit": "bộ",
+     "qty": 1
+    },
+    {
+     "item": "Contactor AC1 3P cho cấp sưởi 2, 3",
+     "unit": "cái",
+     "qty": 2
+    },
+    {
+     "item": "Rơ le an toàn liên động sưởi (quạt chạy + airflow + thermostat) + rơ le thời gian chạy quạt sau 3 phút",
+     "unit": "bộ",
+     "qty": 1
+    },
+    {
+     "item": "Biến áp 220/24 VAC 100 VA + nguồn 24 VDC 5 A cho DDC/cảm biến",
+     "unit": "bộ",
+     "qty": 1
+    },
+    {
+     "item": "Rơ le cắt cứng: báo cháy (STO/enable biến tần + sưởi), mức nước ngưng cao (cắt DX-kit)",
+     "unit": "bộ",
+     "qty": 1
+    },
+    {
+     "item": "Bộ điều khiển DDC lập trình tự do BACnet + module mở rộng: ≥ 15 DI / 6 DO / 18 AI / 4 AO (đã gồm 20 % dự phòng)",
+     "unit": "bộ",
+     "qty": 1
+    },
+    {
+     "item": "Màn hình hiển thị/cài đặt cục bộ trên cửa tủ (LCD/HMI 7\")",
+     "unit": "bộ",
+     "qty": 1
+    },
+    {
+     "item": "Công tắc H-O-A, nút dừng khẩn, đèn báo chạy/lỗi cho từng thiết bị",
+     "unit": "lô",
+     "qty": 1
+    },
+    {
+     "item": "Lộ dự phòng 20 %: MCB 3P 16 A (C) + 1 MCB 1P 10 A",
+     "unit": "bộ",
+     "qty": 2
+    },
+    {
+     "item": "Cầu đấu, máng nhựa đi dây, nhãn, phụ kiện",
+     "unit": "lô",
+     "qty": 1
+    }
+   ],
+   "spare_ways": {
+    "n_used": 6,
+    "n_spare": 2,
+    "spec": "MCB 3P 16 A (C) + 1 MCB 1P 10 A"
+   },
+   "io": {
+    "DI": 12,
+    "DO": 5,
+    "AI": 15,
+    "AO": 3,
+    "total": 35,
+    "DI_spare": 15,
+    "DO_spare": 6,
+    "AI_spare": 18,
+    "AO_spare": 4
+   }
+  },
+  "DDC-AHU-2.01": {
+   "xy": [
+    14585,
+    3900
+   ],
+   "mount": "Treo tường, đáy +0,3 m",
+   "dims": "1000W × 1800H × 400D",
+   "ip": "IP54",
+   "wall": "Vách khối trái (Balance/Reporting) phía lối đi, Y 3.400…4.400 (giữa cửa D-05 và D-06)",
+   "xy_mm": [
+    14585,
+    3900
+   ],
+   "components": [
+    {
+     "item": "Vỏ tủ thép sơn tĩnh điện 1000W × 1800H × 400D, IP54, quạt hút + lọc gió mặt tủ",
+     "unit": "bộ",
+     "qty": 1
+    },
+    {
+     "item": "MCCB tổng 4P 80 A 25 kA (tủ) / cầu dao tổng",
+     "unit": "cái",
+     "qty": 1
+    },
+    {
+     "item": "Thanh cái Cu 100 A 3P+N+PE",
+     "unit": "bộ",
+     "qty": 1
+    },
+    {
+     "item": "Biến tần 15,0 kW 380 V (HVAC, cuộn kháng DC/EMC C2, Modbus/BACnet) cho AHU-2.01-SF",
+     "unit": "bộ",
+     "qty": 1
+    },
+    {
+     "item": "MCB 3P 10 A (C) + SSR/thyristor 3P",
+     "unit": "cái",
+     "qty": 1
+    },
+    {
+     "item": "MCB 3P 10 A (C) + contactor AC1",
+     "unit": "cái",
+     "qty": 2
+    },
+    {
+     "item": "MCB 3P 40 A (C) 10 kA + biến tần 15,0 kW",
+     "unit": "cái",
+     "qty": 1
+    },
+    {
+     "item": "RCBO 1P+N 16 A 30 mA (C)",
+     "unit": "cái",
+     "qty": 1
+    },
+    {
+     "item": "RCBO 1P+N 6 A 30 mA (C)",
+     "unit": "cái",
+     "qty": 1
+    },
+    {
+     "item": "RCD 4P 40 A 300 mA cho nhóm sưởi",
+     "unit": "cái",
+     "qty": 1
+    },
+    {
+     "item": "Bộ điều khiển thyristor/SSR 3P (0–10 V) cho cấp sưởi 1",
+     "unit": "bộ",
+     "qty": 1
+    },
+    {
+     "item": "Contactor AC1 3P cho cấp sưởi 2, 3",
+     "unit": "cái",
+     "qty": 2
+    },
+    {
+     "item": "Rơ le an toàn liên động sưởi (quạt chạy + airflow + thermostat) + rơ le thời gian chạy quạt sau 3 phút",
+     "unit": "bộ",
+     "qty": 1
+    },
+    {
+     "item": "Biến áp 220/24 VAC 100 VA + nguồn 24 VDC 5 A cho DDC/cảm biến",
+     "unit": "bộ",
+     "qty": 1
+    },
+    {
+     "item": "Rơ le cắt cứng: báo cháy (STO/enable biến tần + sưởi), mức nước ngưng cao (cắt DX-kit)",
+     "unit": "bộ",
+     "qty": 1
+    },
+    {
+     "item": "Bộ điều khiển DDC lập trình tự do BACnet + module mở rộng: ≥ 20 DI / 9 DO / 26 AI / 6 AO (đã gồm 20 % dự phòng)",
+     "unit": "bộ",
+     "qty": 1
+    },
+    {
+     "item": "Màn hình hiển thị/cài đặt cục bộ trên cửa tủ (LCD/HMI 7\")",
+     "unit": "bộ",
+     "qty": 1
+    },
+    {
+     "item": "Công tắc H-O-A, nút dừng khẩn, đèn báo chạy/lỗi cho từng thiết bị",
+     "unit": "lô",
+     "qty": 1
+    },
+    {
+     "item": "Lộ dự phòng 20 %: MCB 3P 16 A (C) + 1 MCB 1P 10 A",
+     "unit": "bộ",
+     "qty": 2
+    },
+    {
+     "item": "Cầu đấu, máng nhựa đi dây, nhãn, phụ kiện",
+     "unit": "lô",
+     "qty": 1
+    }
+   ],
+   "spare_ways": {
+    "n_used": 6,
+    "n_spare": 2,
+    "spec": "MCB 3P 16 A (C) + 1 MCB 1P 10 A"
+   },
+   "io": {
+    "DI": 16,
+    "DO": 7,
+    "AI": 21,
+    "AO": 5,
+    "total": 49,
+    "DI_spare": 20,
+    "DO_spare": 9,
+    "AI_spare": 26,
+    "AO_spare": 6
+   }
+  },
+  "DDC-AHU-2.03": {
+   "xy": [
+    14585,
+    -4800
+   ],
+   "mount": "Treo tường, đáy +0,3 m",
+   "dims": "1000W × 1600H × 400D",
+   "ip": "IP54",
+   "wall": "Vách khối trái (Reporting) phía lối đi, Y −5.300…−4.300 (đối diện vách đặc)",
+   "xy_mm": [
+    14585,
+    -4800
+   ],
+   "components": [
+    {
+     "item": "Vỏ tủ thép sơn tĩnh điện 1000W × 1600H × 400D, IP54, quạt hút + lọc gió mặt tủ",
+     "unit": "bộ",
+     "qty": 1
+    },
+    {
+     "item": "MCCB tổng 4P 63 A 25 kA (tủ) / cầu dao tổng",
+     "unit": "cái",
+     "qty": 1
+    },
+    {
+     "item": "Thanh cái Cu 63 A 3P+N+PE",
+     "unit": "bộ",
+     "qty": 1
+    },
+    {
+     "item": "Biến tần 7,5 kW 380 V (HVAC, cuộn kháng DC/EMC C2, Modbus/BACnet) cho AHU-2.03-SF",
+     "unit": "bộ",
+     "qty": 1
+    },
+    {
+     "item": "MCB 3P 10 A (C) + SSR/thyristor 3P",
+     "unit": "cái",
+     "qty": 1
+    },
+    {
+     "item": "MCB 3P 10 A (C) + contactor AC1",
+     "unit": "cái",
+     "qty": 2
+    },
+    {
+     "item": "MCB 3P 20 A (C) 10 kA + biến tần 7,5 kW",
+     "unit": "cái",
+     "qty": 1
+    },
+    {
+     "item": "RCBO 1P+N 10 A 30 mA (C)",
+     "unit": "cái",
+     "qty": 1
+    },
+    {
+     "item": "RCBO 1P+N 16 A 30 mA (C)",
+     "unit": "cái",
+     "qty": 1
+    },
+    {
+     "item": "RCBO 1P+N 6 A 30 mA (C)",
+     "unit": "cái",
+     "qty": 1
+    },
+    {
+     "item": "RCD 4P 40 A 300 mA cho nhóm sưởi",
+     "unit": "cái",
+     "qty": 1
+    },
+    {
+     "item": "Bộ điều khiển thyristor/SSR 3P (0–10 V) cho cấp sưởi 1",
+     "unit": "bộ",
+     "qty": 1
+    },
+    {
+     "item": "Contactor AC1 3P cho cấp sưởi 2, 3",
+     "unit": "cái",
+     "qty": 2
+    },
+    {
+     "item": "Rơ le an toàn liên động sưởi (quạt chạy + airflow + thermostat) + rơ le thời gian chạy quạt sau 3 phút",
+     "unit": "bộ",
+     "qty": 1
+    },
+    {
+     "item": "Biến áp 220/24 VAC 100 VA + nguồn 24 VDC 5 A cho DDC/cảm biến",
+     "unit": "bộ",
+     "qty": 1
+    },
+    {
+     "item": "Rơ le cắt cứng: báo cháy (STO/enable biến tần + sưởi), mức nước ngưng cao (cắt DX-kit)",
+     "unit": "bộ",
+     "qty": 1
+    },
+    {
+     "item": "Bộ điều khiển DDC lập trình tự do BACnet + module mở rộng: ≥ 20 DI / 9 DO / 11 AI / 5 AO (đã gồm 20 % dự phòng)",
+     "unit": "bộ",
+     "qty": 1
+    },
+    {
+     "item": "Màn hình hiển thị/cài đặt cục bộ trên cửa tủ (LCD/HMI 7\")",
+     "unit": "bộ",
+     "qty": 1
+    },
+    {
+     "item": "Công tắc H-O-A, nút dừng khẩn, đèn báo chạy/lỗi cho từng thiết bị",
+     "unit": "lô",
+     "qty": 1
+    },
+    {
+     "item": "Lộ dự phòng 20 %: MCB 3P 16 A (C) + 1 MCB 1P 10 A",
+     "unit": "bộ",
+     "qty": 2
+    },
+    {
+     "item": "Cầu đấu, máng nhựa đi dây, nhãn, phụ kiện",
+     "unit": "lô",
+     "qty": 1
+    }
+   ],
+   "spare_ways": {
+    "n_used": 7,
+    "n_spare": 2,
+    "spec": "MCB 3P 16 A (C) + 1 MCB 1P 10 A"
+   },
+   "io": {
+    "DI": 16,
+    "DO": 7,
+    "AI": 9,
+    "AO": 4,
+    "total": 36,
+    "DI_spare": 20,
+    "DO_spare": 9,
+    "AI_spare": 11,
+    "AO_spare": 5
+   }
+  }
+ },
+ "db_hvac": {
+  "P_conn_rated_kW": 191.7,
+  "P_conn_input_kW": 205.2,
+  "S_conn_kVA": 228.1,
+  "I_conn_A": 346.6,
+  "cases": [
+   {
+    "case": "Hè (lạnh 100 %, sưởi 0)",
+    "kW": 166.8,
+    "kVA": 189.7,
+    "I_A": 288.3
+   },
+   {
+    "case": "Đông (sưởi 100 %, lạnh chỉ CDU-2.03 50 %)",
+    "kW": 125.7,
+    "kVA": 135.1,
+    "I_A": 205.2
+   },
+   {
+    "case": "Nồm/khử ẩm (lạnh 70 % + sưởi gia nhiệt lại 100 % + hút ẩm)",
+    "kW": 175.8,
+    "kVA": 194.0,
+    "I_A": 294.7
+   }
+  ],
+  "max_case": "Nồm/khử ẩm (lạnh 70 % + sưởi gia nhiệt lại 100 % + hút ẩm)",
+  "demand_kW": 175.8,
+  "demand_kVA": 194.0,
+  "Ib_max_A": 294.7,
+  "demand_factor_overall": 0.86,
+  "MCCB": "MCCB 4P 400 AF, Ir chỉnh 340 A (0,4–1,0 In), Icu ≥ 36 kA (giả định – gói điện xác nhận Ik)",
+  "In_A": 400,
+  "Ir_A": 340,
+  "busbar": "Thanh cái Cu 400 A 3P+N+PE (≈ 40×10 mm/pha, N = pha, PE 40×5), Icw ≥ 25 kA/1 s",
+  "incoming_cable": "1 × CXV 4×240 mm² + 1 × CV 1×120 mm² (PE)",
+  "incoming_cable_note": "Thông tin cho gói điện: Iz = 1 × 538 × 0.87 × 0.80 = 374 A ≥ Ir 340 A; chiều dài/tuyến, Ik, sụt áp tới DB.HVAC (khuyến nghị ≤ 1 %) do gói điện tính."
+ },
+ "feeders": [
+  {
+   "id": "DB-DDC-AHU-2.01",
+   "to": "DDC-AHU-2.01",
+   "P_input_kW": 33.19,
+   "Ib_A": 56.2,
+   "protection": "MCCB 4P 80 A, Icu ≥ 25 kA",
+   "In_A": 80,
+   "cable": "CXV 4×25 + E16",
+   "S_mm2": 25,
+   "Iz_A": 88.4,
+   "L_m": 8.5,
+   "dU_pct": 0.18
+  },
+  {
+   "id": "DB-DDC-AHU-2.02",
+   "to": "DDC-AHU-2.02",
+   "P_input_kW": 16.93,
+   "Ib_A": 30.4,
+   "protection": "MCCB 4P 40 A, Icu ≥ 25 kA",
+   "In_A": 40,
+   "cable": "CXV 4×10 + E10",
+   "S_mm2": 10,
+   "Iz_A": 52.2,
+   "L_m": 10.2,
+   "dU_pct": 0.29
+  },
+  {
+   "id": "DB-DDC-AHU-2.03",
+   "to": "DDC-AHU-2.03",
+   "P_input_kW": 20.12,
+   "Ib_A": 41.2,
+   "protection": "MCCB 4P 63 A, Icu ≥ 25 kA",
+   "In_A": 63,
+   "cable": "CXV 4×16 + E16",
+   "S_mm2": 16,
+   "Iz_A": 69.6,
+   "L_m": 14.6,
+   "dU_pct": 0.36
+  },
+  {
+   "id": "DB-DDC-FAN",
+   "to": "DDC-FAN",
+   "P_input_kW": 35.17,
+   "Ib_A": 60.3,
+   "protection": "MCCB 4P 80 A, Icu ≥ 25 kA",
+   "In_A": 80,
+   "cable": "CXV 4×25 + E16",
+   "S_mm2": 25,
+   "Iz_A": 88.4,
+   "L_m": 8.2,
+   "dU_pct": 0.19
+  }
+ ],
+ "circuits": [
+  {
+   "id": "DB-CDU-2.01-1",
+   "from_panel": "DB.HVAC",
+   "load": "Dàn nóng CDU-2.01-1 (inverter, 380V/3P+N)",
+   "tag": "CDU-2.01-1",
+   "kind": "INV",
+   "phases": 3,
+   "U_V": 380.0,
+   "P_rated_kW": 16.54,
+   "eta": 1.0,
+   "pf": 0.85,
+   "P_input_kW": 16.54,
+   "Ib_A": 29.57,
+   "I_cable_A": 29.57,
+   "demand_factors": {
+    "he": 1.0,
+    "dong": 0.0,
+    "nom": 0.7
+   },
+   "protection": "MCCB 4P 40 A, Icu ≥ 25 kA",
+   "In_A": 40,
+   "rcd": "ELCB 300 mA (loại B/tương thích inverter – theo yêu cầu hãng)",
+   "cable": "CXV 4×10 + E10",
+   "S_mm2": 10,
+   "PE_mm2": 10,
+   "Iz_A": 52.2,
+   "L_horizontal_m": 26.66,
+   "L_vertical_m": 6.6,
+   "L_m": 37.3,
+   "dU_pct": 0.98,
+   "dU_cum_pct": 0.98,
+   "local_isolator_A": 40,
+   "note": "Cấp trực tiếp từ DB.HVAC; AHU điều khiển CDU qua bộ DX-kit (tín hiệu), không đóng cắt nguồn"
+  },
+  {
+   "id": "DB-CDU-2.01-2",
+   "from_panel": "DB.HVAC",
+   "load": "Dàn nóng CDU-2.01-2 (inverter, 380V/3P+N)",
+   "tag": "CDU-2.01-2",
+   "kind": "INV",
+   "phases": 3,
+   "U_V": 380.0,
+   "P_rated_kW": 16.54,
+   "eta": 1.0,
+   "pf": 0.85,
+   "P_input_kW": 16.54,
+   "Ib_A": 29.57,
+   "I_cable_A": 29.57,
+   "demand_factors": {
+    "he": 1.0,
+    "dong": 0.0,
+    "nom": 0.7
+   },
+   "protection": "MCCB 4P 40 A, Icu ≥ 25 kA",
+   "In_A": 40,
+   "rcd": "ELCB 300 mA (loại B/tương thích inverter – theo yêu cầu hãng)",
+   "cable": "CXV 4×10 + E10",
+   "S_mm2": 10,
+   "PE_mm2": 10,
+   "Iz_A": 52.2,
+   "L_horizontal_m": 27.66,
+   "L_vertical_m": 6.6,
+   "L_m": 38.4,
+   "dU_pct": 1.01,
+   "dU_cum_pct": 1.01,
+   "local_isolator_A": 40,
+   "note": "Cấp trực tiếp từ DB.HVAC; AHU điều khiển CDU qua bộ DX-kit (tín hiệu), không đóng cắt nguồn"
+  },
+  {
+   "id": "DB-CDU-2.01-3",
+   "from_panel": "DB.HVAC",
+   "load": "Dàn nóng CDU-2.01-3 (inverter, 380V/3P+N)",
+   "tag": "CDU-2.01-3",
+   "kind": "INV",
+   "phases": 3,
+   "U_V": 380.0,
+   "P_rated_kW": 16.54,
+   "eta": 1.0,
+   "pf": 0.85,
+   "P_input_kW": 16.54,
+   "Ib_A": 29.57,
+   "I_cable_A": 29.57,
+   "demand_factors": {
+    "he": 1.0,
+    "dong": 0.0,
+    "nom": 0.7
+   },
+   "protection": "MCCB 4P 40 A, Icu ≥ 25 kA",
+   "In_A": 40,
+   "rcd": "ELCB 300 mA (loại B/tương thích inverter – theo yêu cầu hãng)",
+   "cable": "CXV 4×10 + E10",
+   "S_mm2": 10,
+   "PE_mm2": 10,
+   "Iz_A": 52.2,
+   "L_horizontal_m": 28.66,
+   "L_vertical_m": 6.6,
+   "L_m": 39.6,
+   "dU_pct": 1.04,
+   "dU_cum_pct": 1.04,
+   "local_isolator_A": 40,
+   "note": "Cấp trực tiếp từ DB.HVAC; AHU điều khiển CDU qua bộ DX-kit (tín hiệu), không đóng cắt nguồn"
+  },
+  {
+   "id": "DB-CDU-2.02",
+   "from_panel": "DB.HVAC",
+   "load": "Dàn nóng CDU-2.02 (inverter, 380V/3P+N)",
+   "tag": "CDU-2.02",
+   "kind": "INV",
+   "phases": 3,
+   "U_V": 380.0,
+   "P_rated_kW": 13.43,
+   "eta": 1.0,
+   "pf": 0.85,
+   "P_input_kW": 13.43,
+   "Ib_A": 24.01,
+   "I_cable_A": 24.01,
+   "demand_factors": {
+    "he": 1.0,
+    "dong": 0.0,
+    "nom": 0.7
+   },
+   "protection": "MCCB 4P 32 A, Icu ≥ 25 kA",
+   "In_A": 32,
+   "rcd": "ELCB 300 mA (loại B/tương thích inverter – theo yêu cầu hãng)",
+   "cable": "CXV 4×6 + E6",
+   "S_mm2": 6,
+   "PE_mm2": 6,
+   "Iz_A": 37.6,
+   "L_horizontal_m": 29.66,
+   "L_vertical_m": 6.6,
+   "L_m": 40.7,
+   "dU_pct": 1.44,
+   "dU_cum_pct": 1.44,
+   "local_isolator_A": 32,
+   "note": "Cấp trực tiếp từ DB.HVAC; AHU điều khiển CDU qua bộ DX-kit (tín hiệu), không đóng cắt nguồn"
+  },
+  {
+   "id": "DB-CDU-2.03-1",
+   "from_panel": "DB.HVAC",
+   "load": "Dàn nóng CDU-2.03-1 (inverter, 380V/3P+N)",
+   "tag": "CDU-2.03-1",
+   "kind": "INV",
+   "phases": 3,
+   "U_V": 380.0,
+   "P_rated_kW": 13.45,
+   "eta": 1.0,
+   "pf": 0.85,
+   "P_input_kW": 13.45,
+   "Ib_A": 24.04,
+   "I_cable_A": 24.04,
+   "demand_factors": {
+    "he": 1.0,
+    "dong": 0.5,
+    "nom": 0.7
+   },
+   "protection": "MCCB 4P 32 A, Icu ≥ 25 kA",
+   "In_A": 32,
+   "rcd": "ELCB 300 mA (loại B/tương thích inverter – theo yêu cầu hãng)",
+   "cable": "CXV 4×6 + E6",
+   "S_mm2": 6,
+   "PE_mm2": 6,
+   "Iz_A": 37.6,
+   "L_horizontal_m": 30.66,
+   "L_vertical_m": 6.6,
+   "L_m": 41.9,
+   "dU_pct": 1.48,
+   "dU_cum_pct": 1.48,
+   "local_isolator_A": 32,
+   "note": "Cấp trực tiếp từ DB.HVAC; AHU điều khiển CDU qua bộ DX-kit (tín hiệu), không đóng cắt nguồn"
+  },
+  {
+   "id": "DB-CDU-2.03-2",
+   "from_panel": "DB.HVAC",
+   "load": "Dàn nóng CDU-2.03-2 (inverter, 380V/3P+N)",
+   "tag": "CDU-2.03-2",
+   "kind": "INV",
+   "phases": 3,
+   "U_V": 380.0,
+   "P_rated_kW": 13.45,
+   "eta": 1.0,
+   "pf": 0.85,
+   "P_input_kW": 13.45,
+   "Ib_A": 24.04,
+   "I_cable_A": 24.04,
+   "demand_factors": {
+    "he": 1.0,
+    "dong": 0.5,
+    "nom": 0.7
+   },
+   "protection": "MCCB 4P 32 A, Icu ≥ 25 kA",
+   "In_A": 32,
+   "rcd": "ELCB 300 mA (loại B/tương thích inverter – theo yêu cầu hãng)",
+   "cable": "CXV 4×6 + E6",
+   "S_mm2": 6,
+   "PE_mm2": 6,
+   "Iz_A": 37.6,
+   "L_horizontal_m": 31.66,
+   "L_vertical_m": 6.6,
+   "L_m": 43.0,
+   "dU_pct": 1.52,
+   "dU_cum_pct": 1.52,
+   "local_isolator_A": 32,
+   "note": "Cấp trực tiếp từ DB.HVAC; AHU điều khiển CDU qua bộ DX-kit (tín hiệu), không đóng cắt nguồn"
+  },
+  {
+   "id": "DB-SCR-2.01",
+   "from_panel": "DB.HVAC",
+   "load": "Tủ điều khiển trọn bộ scrubber SCR-2.01 (quạt 5,5 + bơm 3 + định lượng 0,18 kW)",
+   "tag": "SCR-2.01",
+   "kind": "PKG",
+   "phases": 3,
+   "U_V": 380.0,
+   "P_rated_kW": 8.68,
+   "eta": 0.88,
+   "pf": 0.85,
+   "P_input_kW": 9.86,
+   "Ib_A": 18.3,
+   "I_cable_A": 18.3,
+   "demand_factors": {
+    "he": 1,
+    "dong": 1,
+    "nom": 1
+   },
+   "protection": "MCCB 4P 25 A, Icu ≥ 25 kA",
+   "In_A": 25,
+   "rcd": "",
+   "cable": "CXV 4×4 + E4",
+   "S_mm2": 4,
+   "PE_mm2": 4,
+   "Iz_A": 29.2,
+   "L_horizontal_m": 27.86,
+   "L_vertical_m": 6.6,
+   "L_m": 38.6,
+   "dU_pct": 1.55,
+   "dU_cum_pct": 1.55,
+   "local_isolator_A": 25,
+   "note": "HVAC cấp nguồn tới cầu dao cách ly + tủ vendor; tủ vendor có khởi động/biến tần riêng"
+  },
+  {
+   "id": "DDC-AHU-2.01-M1",
+   "from_panel": "DDC-AHU-2.01",
+   "load": "Quạt cấp AHU-2.01 15,0 kW qua biến tần (cáp màn chắn)",
+   "tag": "AHU-2.01-SF",
+   "kind": "VFD",
+   "phases": 3,
+   "U_V": 380.0,
+   "P_rated_kW": 15,
+   "eta": 0.893,
+   "pf": 0.95,
+   "P_input_kW": 16.79,
+   "Ib_A": 26.85,
+   "I_cable_A": 29.11,
+   "demand_factors": {
+    "he": 1,
+    "dong": 1,
+    "nom": 1
+   },
+   "protection": "MCB 3P 40 A (C) 10 kA + biến tần 15,0 kW",
+   "In_A": 40,
+   "rcd": "",
+   "cable": "CXV/S (màn chắn Cu, cáp biến tần) 3×10 + E10",
+   "S_mm2": 10,
+   "PE_mm2": 10,
+   "Iz_A": 52.2,
+   "L_horizontal_m": 3.23,
+   "L_vertical_m": 3.5,
+   "L_m": 7.2,
+   "dU_pct": 0.19,
+   "dU_cum_pct": 0.37,
+   "local_isolator_A": 40,
+   "note": ""
+  },
+  {
+   "id": "DDC-AHU-2.01-H1",
+   "from_panel": "DDC-AHU-2.01",
+   "load": "Sưởi điện AHU-2.01 cấp 1/3 – 5,0 kW (SSR/thyristor điều biến)",
+   "tag": "AHU-2.01-EH1",
+   "kind": "HEATER",
+   "phases": 3,
+   "U_V": 380.0,
+   "P_rated_kW": 5.0,
+   "eta": 1.0,
+   "pf": 1.0,
+   "P_input_kW": 5.0,
+   "Ib_A": 7.6,
+   "I_cable_A": 7.6,
+   "demand_factors": {
+    "he": 0,
+    "dong": 1,
+    "nom": 1
+   },
+   "protection": "MCB 3P 10 A (C) + SSR/thyristor 3P",
+   "In_A": 10,
+   "rcd": "RCD 300 mA 4P chung nhóm sưởi",
+   "cable": "CXV 3×2,5 + E2,5",
+   "S_mm2": 2.5,
+   "PE_mm2": 2.5,
+   "Iz_A": 22.3,
+   "L_horizontal_m": 3.23,
+   "L_vertical_m": 3.5,
+   "L_m": 7.2,
+   "dU_pct": 0.22,
+   "dU_cum_pct": 0.41,
+   "local_isolator_A": 20,
+   "note": ""
+  },
+  {
+   "id": "DDC-AHU-2.01-H2",
+   "from_panel": "DDC-AHU-2.01",
+   "load": "Sưởi điện AHU-2.01 cấp 2/3 – 5,0 kW (contactor)",
+   "tag": "AHU-2.01-EH2",
+   "kind": "HEATER",
+   "phases": 3,
+   "U_V": 380.0,
+   "P_rated_kW": 5.0,
+   "eta": 1.0,
+   "pf": 1.0,
+   "P_input_kW": 5.0,
+   "Ib_A": 7.6,
+   "I_cable_A": 7.6,
+   "demand_factors": {
+    "he": 0,
+    "dong": 1,
+    "nom": 1
+   },
+   "protection": "MCB 3P 10 A (C) + contactor AC1",
+   "In_A": 10,
+   "rcd": "RCD 300 mA 4P chung nhóm sưởi",
+   "cable": "CXV 3×2,5 + E2,5",
+   "S_mm2": 2.5,
+   "PE_mm2": 2.5,
+   "Iz_A": 22.3,
+   "L_horizontal_m": 3.23,
+   "L_vertical_m": 3.5,
+   "L_m": 7.2,
+   "dU_pct": 0.22,
+   "dU_cum_pct": 0.41,
+   "local_isolator_A": 20,
+   "note": ""
+  },
+  {
+   "id": "DDC-AHU-2.01-H3",
+   "from_panel": "DDC-AHU-2.01",
+   "load": "Sưởi điện AHU-2.01 cấp 3/3 – 5,0 kW (contactor)",
+   "tag": "AHU-2.01-EH3",
+   "kind": "HEATER",
+   "phases": 3,
+   "U_V": 380.0,
+   "P_rated_kW": 5.0,
+   "eta": 1.0,
+   "pf": 1.0,
+   "P_input_kW": 5.0,
+   "Ib_A": 7.6,
+   "I_cable_A": 7.6,
+   "demand_factors": {
+    "he": 0,
+    "dong": 1,
+    "nom": 1
+   },
+   "protection": "MCB 3P 10 A (C) + contactor AC1",
+   "In_A": 10,
+   "rcd": "RCD 300 mA 4P chung nhóm sưởi",
+   "cable": "CXV 3×2,5 + E2,5",
+   "S_mm2": 2.5,
+   "PE_mm2": 2.5,
+   "Iz_A": 22.3,
+   "L_horizontal_m": 3.23,
+   "L_vertical_m": 3.5,
+   "L_m": 7.2,
+   "dU_pct": 0.22,
+   "dU_cum_pct": 0.41,
+   "local_isolator_A": 20,
+   "note": ""
+  },
+  {
+   "id": "DDC-AHU-2.01-CP",
+   "from_panel": "DDC-AHU-2.01",
+   "load": "Bơm nước ngưng CP-2.02 (220V)",
+   "tag": "CP-2.02",
+   "kind": "1P",
+   "phases": 1,
+   "U_V": 220.0,
+   "P_rated_kW": 0.1,
+   "eta": 1.0,
+   "pf": 0.85,
+   "P_input_kW": 0.1,
+   "Ib_A": 0.63,
+   "I_cable_A": 0.63,
+   "demand_factors": {
+    "he": 1,
+    "dong": 1,
+    "nom": 1
+   },
+   "protection": "RCBO 1P+N 6 A 30 mA (C)",
+   "In_A": 6,
+   "rcd": "RCBO 30 mA",
+   "cable": "CXV 2×2,5 + E2,5",
+   "S_mm2": 2.5,
+   "PE_mm2": 2.5,
+   "Iz_A": 25.1,
+   "L_horizontal_m": 4.58,
+   "L_vertical_m": 3.5,
+   "L_m": 8.8,
+   "dU_pct": 0.04,
+   "dU_cum_pct": 0.22,
+   "local_isolator_A": 20,
+   "note": ""
+  },
+  {
+   "id": "DDC-AHU-2.01-SK",
+   "from_panel": "DDC-AHU-2.01",
+   "load": "Ổ cắm bảo trì 1P 16A IP66 tại sàn AHU-2.01",
+   "tag": "AHU-2.01-SO",
+   "kind": "SOCKET",
+   "phases": 1,
+   "U_V": 220.0,
+   "P_rated_kW": 1.0,
+   "eta": 1.0,
+   "pf": 1.0,
+   "P_input_kW": 1.0,
+   "Ib_A": 4.55,
+   "I_cable_A": 4.55,
+   "demand_factors": {
+    "he": 0.2,
+    "dong": 0.2,
+    "nom": 0.2
+   },
+   "protection": "RCBO 1P+N 16 A 30 mA (C)",
+   "In_A": 16,
+   "rcd": "RCBO 30 mA",
+   "cable": "CXV 2×2,5 + E2,5",
+   "S_mm2": 2.5,
+   "PE_mm2": 2.5,
+   "Iz_A": 25.1,
+   "L_horizontal_m": 5.54,
+   "L_vertical_m": 3.5,
+   "L_m": 9.9,
+   "dU_pct": 0.37,
+   "dU_cum_pct": 0.55,
+   "local_isolator_A": null,
+   "note": ""
+  },
+  {
+   "id": "DDC-AHU-2.01-CT",
+   "from_panel": "DDC-AHU-2.01",
+   "load": "Nguồn điều khiển (DDC, 24 VAC/DC, quạt tủ)",
+   "tag": "",
+   "kind": "CTRL",
+   "phases": 1,
+   "U_V": 220.0,
+   "P_rated_kW": 0.3,
+   "eta": 1.0,
+   "pf": 1.0,
+   "P_input_kW": 0.3,
+   "Ib_A": 1.36,
+   "I_cable_A": 1.36,
+   "demand_factors": {
+    "he": 1,
+    "dong": 1,
+    "nom": 1
+   },
+   "protection": "MCB 1P+N 6 A (C), 10 kA",
+   "In_A": 6,
+   "rcd": "",
+   "cable": null,
+   "S_mm2": null,
+   "PE_mm2": null,
+   "Iz_A": 0.0,
+   "L_horizontal_m": null,
+   "L_vertical_m": null,
+   "L_m": null,
+   "dU_pct": 0.0,
+   "dU_cum_pct": 0.18,
+   "local_isolator_A": null,
+   "note": ""
+  },
+  {
+   "id": "DDC-AHU-2.02-M1",
+   "from_panel": "DDC-AHU-2.02",
+   "load": "Quạt cấp AHU-2.02 3,0 kW qua biến tần (cáp màn chắn)",
+   "tag": "AHU-2.02-SF",
+   "kind": "VFD",
+   "phases": 3,
+   "U_V": 380.0,
+   "P_rated_kW": 3,
+   "eta": 0.851,
+   "pf": 0.95,
+   "P_input_kW": 3.53,
+   "Ib_A": 5.64,
+   "I_cable_A": 6.11,
+   "demand_factors": {
+    "he": 1,
+    "dong": 1,
+    "nom": 1
+   },
+   "protection": "MCB 3P 10 A (C) 10 kA + biến tần 3,0 kW",
+   "In_A": 10,
+   "rcd": "",
+   "cable": "CXV/S (màn chắn Cu, cáp biến tần) 3×2,5 + E2,5",
+   "S_mm2": 2.5,
+   "PE_mm2": 2.5,
+   "Iz_A": 22.3,
+   "L_horizontal_m": 21.67,
+   "L_vertical_m": 3.5,
+   "L_m": 28.4,
+   "dU_pct": 0.61,
+   "dU_cum_pct": 0.9,
+   "local_isolator_A": 20,
+   "note": ""
+  },
+  {
+   "id": "DDC-AHU-2.02-H1",
+   "from_panel": "DDC-AHU-2.02",
+   "load": "Sưởi điện AHU-2.02 cấp 1/3 – 4,0 kW (SSR/thyristor điều biến)",
+   "tag": "AHU-2.02-EH1",
+   "kind": "HEATER",
+   "phases": 3,
+   "U_V": 380.0,
+   "P_rated_kW": 4.0,
+   "eta": 1.0,
+   "pf": 1.0,
+   "P_input_kW": 4.0,
+   "Ib_A": 6.08,
+   "I_cable_A": 6.08,
+   "demand_factors": {
+    "he": 0,
+    "dong": 1,
+    "nom": 1
+   },
+   "protection": "MCB 3P 10 A (C) + SSR/thyristor 3P",
+   "In_A": 10,
+   "rcd": "RCD 300 mA 4P chung nhóm sưởi",
+   "cable": "CXV 3×2,5 + E2,5",
+   "S_mm2": 2.5,
+   "PE_mm2": 2.5,
+   "Iz_A": 22.3,
+   "L_horizontal_m": 21.67,
+   "L_vertical_m": 3.5,
+   "L_m": 28.4,
+   "dU_pct": 0.71,
+   "dU_cum_pct": 1.0,
+   "local_isolator_A": 20,
+   "note": ""
+  },
+  {
+   "id": "DDC-AHU-2.02-H2",
+   "from_panel": "DDC-AHU-2.02",
+   "load": "Sưởi điện AHU-2.02 cấp 2/3 – 4,0 kW (contactor)",
+   "tag": "AHU-2.02-EH2",
+   "kind": "HEATER",
+   "phases": 3,
+   "U_V": 380.0,
+   "P_rated_kW": 4.0,
+   "eta": 1.0,
+   "pf": 1.0,
+   "P_input_kW": 4.0,
+   "Ib_A": 6.08,
+   "I_cable_A": 6.08,
+   "demand_factors": {
+    "he": 0,
+    "dong": 1,
+    "nom": 1
+   },
+   "protection": "MCB 3P 10 A (C) + contactor AC1",
+   "In_A": 10,
+   "rcd": "RCD 300 mA 4P chung nhóm sưởi",
+   "cable": "CXV 3×2,5 + E2,5",
+   "S_mm2": 2.5,
+   "PE_mm2": 2.5,
+   "Iz_A": 22.3,
+   "L_horizontal_m": 21.67,
+   "L_vertical_m": 3.5,
+   "L_m": 28.4,
+   "dU_pct": 0.71,
+   "dU_cum_pct": 1.0,
+   "local_isolator_A": 20,
+   "note": ""
+  },
+  {
+   "id": "DDC-AHU-2.02-H3",
+   "from_panel": "DDC-AHU-2.02",
+   "load": "Sưởi điện AHU-2.02 cấp 3/3 – 4,0 kW (contactor)",
+   "tag": "AHU-2.02-EH3",
+   "kind": "HEATER",
+   "phases": 3,
+   "U_V": 380.0,
+   "P_rated_kW": 4.0,
+   "eta": 1.0,
+   "pf": 1.0,
+   "P_input_kW": 4.0,
+   "Ib_A": 6.08,
+   "I_cable_A": 6.08,
+   "demand_factors": {
+    "he": 0,
+    "dong": 1,
+    "nom": 1
+   },
+   "protection": "MCB 3P 10 A (C) + contactor AC1",
+   "In_A": 10,
+   "rcd": "RCD 300 mA 4P chung nhóm sưởi",
+   "cable": "CXV 3×2,5 + E2,5",
+   "S_mm2": 2.5,
+   "PE_mm2": 2.5,
+   "Iz_A": 22.3,
+   "L_horizontal_m": 21.67,
+   "L_vertical_m": 3.5,
+   "L_m": 28.4,
+   "dU_pct": 0.71,
+   "dU_cum_pct": 1.0,
+   "local_isolator_A": 20,
+   "note": ""
+  },
+  {
+   "id": "DDC-AHU-2.02-CP",
+   "from_panel": "DDC-AHU-2.02",
+   "load": "Bơm nước ngưng CP-2.03 (220V)",
+   "tag": "CP-2.03",
+   "kind": "1P",
+   "phases": 1,
+   "U_V": 220.0,
+   "P_rated_kW": 0.1,
+   "eta": 1.0,
+   "pf": 0.85,
+   "P_input_kW": 0.1,
+   "Ib_A": 0.63,
+   "I_cable_A": 0.63,
+   "demand_factors": {
+    "he": 1,
+    "dong": 1,
+    "nom": 1
+   },
+   "protection": "RCBO 1P+N 6 A 30 mA (C)",
+   "In_A": 6,
+   "rcd": "RCBO 30 mA",
+   "cable": "CXV 2×2,5 + E2,5",
+   "S_mm2": 2.5,
+   "PE_mm2": 2.5,
+   "Iz_A": 25.1,
+   "L_horizontal_m": 23.17,
+   "L_vertical_m": 3.5,
+   "L_m": 30.1,
+   "dU_pct": 0.13,
+   "dU_cum_pct": 0.42,
+   "local_isolator_A": 20,
+   "note": ""
+  },
+  {
+   "id": "DDC-AHU-2.02-SK",
+   "from_panel": "DDC-AHU-2.02",
+   "load": "Ổ cắm bảo trì 1P 16A IP66 tại sàn AHU-2.02",
+   "tag": "AHU-2.02-SO",
+   "kind": "SOCKET",
+   "phases": 1,
+   "U_V": 220.0,
+   "P_rated_kW": 1.0,
+   "eta": 1.0,
+   "pf": 1.0,
+   "P_input_kW": 1.0,
+   "Ib_A": 4.55,
+   "I_cable_A": 4.55,
+   "demand_factors": {
+    "he": 0.2,
+    "dong": 0.2,
+    "nom": 0.2
+   },
+   "protection": "RCBO 1P+N 16 A 30 mA (C)",
+   "In_A": 16,
+   "rcd": "RCBO 30 mA",
+   "cable": "CXV 2×2,5 + E2,5",
+   "S_mm2": 2.5,
+   "PE_mm2": 2.5,
+   "Iz_A": 25.1,
+   "L_horizontal_m": 24.07,
+   "L_vertical_m": 3.5,
+   "L_m": 31.2,
+   "dU_pct": 1.16,
+   "dU_cum_pct": 1.45,
+   "local_isolator_A": null,
+   "note": ""
+  },
+  {
+   "id": "DDC-AHU-2.02-CT",
+   "from_panel": "DDC-AHU-2.02",
+   "load": "Nguồn điều khiển (DDC, 24 VAC/DC, quạt tủ)",
+   "tag": "",
+   "kind": "CTRL",
+   "phases": 1,
+   "U_V": 220.0,
+   "P_rated_kW": 0.3,
+   "eta": 1.0,
+   "pf": 1.0,
+   "P_input_kW": 0.3,
+   "Ib_A": 1.36,
+   "I_cable_A": 1.36,
+   "demand_factors": {
+    "he": 1,
+    "dong": 1,
+    "nom": 1
+   },
+   "protection": "MCB 1P+N 6 A (C), 10 kA",
+   "In_A": 6,
+   "rcd": "",
+   "cable": null,
+   "S_mm2": null,
+   "PE_mm2": null,
+   "Iz_A": 0.0,
+   "L_horizontal_m": null,
+   "L_vertical_m": null,
+   "L_m": null,
+   "dU_pct": 0.0,
+   "dU_cum_pct": 0.29,
+   "local_isolator_A": null,
+   "note": ""
+  },
+  {
+   "id": "DDC-AHU-2.03-M1",
+   "from_panel": "DDC-AHU-2.03",
+   "load": "Quạt cấp AHU-2.03 7,5 kW qua biến tần (cáp màn chắn)",
+   "tag": "AHU-2.03-SF",
+   "kind": "VFD",
+   "phases": 3,
+   "U_V": 380.0,
+   "P_rated_kW": 7.5,
+   "eta": 0.877,
+   "pf": 0.95,
+   "P_input_kW": 8.55,
+   "Ib_A": 13.68,
+   "I_cable_A": 14.83,
+   "demand_factors": {
+    "he": 1,
+    "dong": 1,
+    "nom": 1
+   },
+   "protection": "MCB 3P 20 A (C) 10 kA + biến tần 7,5 kW",
+   "In_A": 20,
+   "rcd": "",
+   "cable": "CXV/S (màn chắn Cu, cáp biến tần) 3×2,5 + E2,5",
+   "S_mm2": 2.5,
+   "PE_mm2": 2.5,
+   "Iz_A": 22.3,
+   "L_horizontal_m": 10.88,
+   "L_vertical_m": 3.5,
+   "L_m": 16.0,
+   "dU_pct": 0.83,
+   "dU_cum_pct": 1.19,
+   "local_isolator_A": 20,
+   "note": ""
+  },
+  {
+   "id": "DDC-AHU-2.03-H1",
+   "from_panel": "DDC-AHU-2.03",
+   "load": "Sưởi điện AHU-2.03 cấp 1/3 – 3,0 kW (SSR/thyristor điều biến)",
+   "tag": "AHU-2.03-EH1",
+   "kind": "HEATER",
+   "phases": 3,
+   "U_V": 380.0,
+   "P_rated_kW": 3.0,
+   "eta": 1.0,
+   "pf": 1.0,
+   "P_input_kW": 3.0,
+   "Ib_A": 4.56,
+   "I_cable_A": 4.56,
+   "demand_factors": {
+    "he": 0,
+    "dong": 1,
+    "nom": 1
+   },
+   "protection": "MCB 3P 10 A (C) + SSR/thyristor 3P",
+   "In_A": 10,
+   "rcd": "RCD 300 mA 4P chung nhóm sưởi",
+   "cable": "CXV 3×2,5 + E2,5",
+   "S_mm2": 2.5,
+   "PE_mm2": 2.5,
+   "Iz_A": 22.3,
+   "L_horizontal_m": 10.88,
+   "L_vertical_m": 3.5,
+   "L_m": 16.0,
+   "dU_pct": 0.3,
+   "dU_cum_pct": 0.66,
+   "local_isolator_A": 20,
+   "note": ""
+  },
+  {
+   "id": "DDC-AHU-2.03-H2",
+   "from_panel": "DDC-AHU-2.03",
+   "load": "Sưởi điện AHU-2.03 cấp 2/3 – 3,0 kW (contactor)",
+   "tag": "AHU-2.03-EH2",
+   "kind": "HEATER",
+   "phases": 3,
+   "U_V": 380.0,
+   "P_rated_kW": 3.0,
+   "eta": 1.0,
+   "pf": 1.0,
+   "P_input_kW": 3.0,
+   "Ib_A": 4.56,
+   "I_cable_A": 4.56,
+   "demand_factors": {
+    "he": 0,
+    "dong": 1,
+    "nom": 1
+   },
+   "protection": "MCB 3P 10 A (C) + contactor AC1",
+   "In_A": 10,
+   "rcd": "RCD 300 mA 4P chung nhóm sưởi",
+   "cable": "CXV 3×2,5 + E2,5",
+   "S_mm2": 2.5,
+   "PE_mm2": 2.5,
+   "Iz_A": 22.3,
+   "L_horizontal_m": 10.88,
+   "L_vertical_m": 3.5,
+   "L_m": 16.0,
+   "dU_pct": 0.3,
+   "dU_cum_pct": 0.66,
+   "local_isolator_A": 20,
+   "note": ""
+  },
+  {
+   "id": "DDC-AHU-2.03-H3",
+   "from_panel": "DDC-AHU-2.03",
+   "load": "Sưởi điện AHU-2.03 cấp 3/3 – 3,0 kW (contactor)",
+   "tag": "AHU-2.03-EH3",
+   "kind": "HEATER",
+   "phases": 3,
+   "U_V": 380.0,
+   "P_rated_kW": 3.0,
+   "eta": 1.0,
+   "pf": 1.0,
+   "P_input_kW": 3.0,
+   "Ib_A": 4.56,
+   "I_cable_A": 4.56,
+   "demand_factors": {
+    "he": 0,
+    "dong": 1,
+    "nom": 1
+   },
+   "protection": "MCB 3P 10 A (C) + contactor AC1",
+   "In_A": 10,
+   "rcd": "RCD 300 mA 4P chung nhóm sưởi",
+   "cable": "CXV 3×2,5 + E2,5",
+   "S_mm2": 2.5,
+   "PE_mm2": 2.5,
+   "Iz_A": 22.3,
+   "L_horizontal_m": 10.88,
+   "L_vertical_m": 3.5,
+   "L_m": 16.0,
+   "dU_pct": 0.3,
+   "dU_cum_pct": 0.66,
+   "local_isolator_A": 20,
+   "note": ""
+  },
+  {
+   "id": "DDC-AHU-2.03-CP",
+   "from_panel": "DDC-AHU-2.03",
+   "load": "Bơm nước ngưng CP-2.01 (220V)",
+   "tag": "CP-2.01",
+   "kind": "1P",
+   "phases": 1,
+   "U_V": 220.0,
+   "P_rated_kW": 0.1,
+   "eta": 1.0,
+   "pf": 0.85,
+   "P_input_kW": 0.1,
+   "Ib_A": 0.63,
+   "I_cable_A": 0.63,
+   "demand_factors": {
+    "he": 1,
+    "dong": 1,
+    "nom": 1
+   },
+   "protection": "RCBO 1P+N 6 A 30 mA (C)",
+   "In_A": 6,
+   "rcd": "RCBO 30 mA",
+   "cable": "CXV 2×2,5 + E2,5",
+   "S_mm2": 2.5,
+   "PE_mm2": 2.5,
+   "Iz_A": 25.1,
+   "L_horizontal_m": 11.29,
+   "L_vertical_m": 3.5,
+   "L_m": 16.5,
+   "dU_pct": 0.07,
+   "dU_cum_pct": 0.43,
+   "local_isolator_A": 20,
+   "note": ""
+  },
+  {
+   "id": "DDC-AHU-2.03-DH",
+   "from_panel": "DDC-AHU-2.03",
+   "load": "Máy hút ẩm DH-2.01 (220V, bơm ngưng tích hợp)",
+   "tag": "DH-2.01",
+   "kind": "1P",
+   "phases": 1,
+   "U_V": 220.0,
+   "P_rated_kW": 1.17,
+   "eta": 1.0,
+   "pf": 0.85,
+   "P_input_kW": 1.17,
+   "Ib_A": 7.3,
+   "I_cable_A": 7.3,
+   "demand_factors": {
+    "he": 1,
+    "dong": 0.5,
+    "nom": 1
+   },
+   "protection": "RCBO 1P+N 10 A 30 mA (C)",
+   "In_A": 10,
+   "rcd": "RCBO 30 mA",
+   "cable": "CXV 2×2,5 + E2,5",
+   "S_mm2": 2.5,
+   "PE_mm2": 2.5,
+   "Iz_A": 25.1,
+   "L_horizontal_m": 7.68,
+   "L_vertical_m": 3.5,
+   "L_m": 12.3,
+   "dU_pct": 0.63,
+   "dU_cum_pct": 0.98,
+   "local_isolator_A": 20,
+   "note": ""
+  },
+  {
+   "id": "DDC-AHU-2.03-SK",
+   "from_panel": "DDC-AHU-2.03",
+   "load": "Ổ cắm bảo trì 1P 16A IP66 tại sàn AHU-2.03",
+   "tag": "AHU-2.03-SO",
+   "kind": "SOCKET",
+   "phases": 1,
+   "U_V": 220.0,
+   "P_rated_kW": 1.0,
+   "eta": 1.0,
+   "pf": 1.0,
+   "P_input_kW": 1.0,
+   "Ib_A": 4.55,
+   "I_cable_A": 4.55,
+   "demand_factors": {
+    "he": 0.2,
+    "dong": 0.2,
+    "nom": 0.2
+   },
+   "protection": "RCBO 1P+N 16 A 30 mA (C)",
+   "In_A": 16,
+   "rcd": "RCBO 30 mA",
+   "cable": "CXV 2×2,5 + E2,5",
+   "S_mm2": 2.5,
+   "PE_mm2": 2.5,
+   "Iz_A": 25.1,
+   "L_horizontal_m": 11.68,
+   "L_vertical_m": 3.5,
+   "L_m": 16.9,
+   "dU_pct": 0.63,
+   "dU_cum_pct": 0.99,
+   "local_isolator_A": null,
+   "note": ""
+  },
+  {
+   "id": "DDC-AHU-2.03-CT",
+   "from_panel": "DDC-AHU-2.03",
+   "load": "Nguồn điều khiển (DDC, 24 VAC/DC, quạt tủ)",
+   "tag": "",
+   "kind": "CTRL",
+   "phases": 1,
+   "U_V": 220.0,
+   "P_rated_kW": 0.3,
+   "eta": 1.0,
+   "pf": 1.0,
+   "P_input_kW": 0.3,
+   "Ib_A": 1.36,
+   "I_cable_A": 1.36,
+   "demand_factors": {
+    "he": 1,
+    "dong": 1,
+    "nom": 1
+   },
+   "protection": "MCB 1P+N 6 A (C), 10 kA",
+   "In_A": 6,
+   "rcd": "",
+   "cable": null,
+   "S_mm2": null,
+   "PE_mm2": null,
+   "Iz_A": 0.0,
+   "L_horizontal_m": null,
+   "L_vertical_m": null,
+   "L_m": null,
+   "dU_pct": 0.0,
+   "dU_cum_pct": 0.36,
+   "local_isolator_A": null,
+   "note": ""
+  },
+  {
+   "id": "DDC-FAN-FAF-2.01",
+   "from_panel": "DDC-FAN",
+   "load": "Quạt cấp bù FAF-2.01 7,5 kW qua biến tần (cáp màn chắn)",
+   "tag": "FAF-2.01",
+   "kind": "VFD",
+   "phases": 3,
+   "U_V": 380.0,
+   "P_rated_kW": 7.5,
+   "eta": 0.877,
+   "pf": 0.95,
+   "P_input_kW": 8.55,
+   "Ib_A": 13.68,
+   "I_cable_A": 14.83,
+   "demand_factors": {
+    "he": 1,
+    "dong": 1,
+    "nom": 1
+   },
+   "protection": "MCB 3P 20 A (C) 10 kA + biến tần 7,5 kW",
+   "In_A": 20,
+   "rcd": "",
+   "cable": "CXV/S (màn chắn Cu, cáp biến tần) 3×2,5 + E2,5",
+   "S_mm2": 2.5,
+   "PE_mm2": 2.5,
+   "Iz_A": 22.3,
+   "L_horizontal_m": 13.23,
+   "L_vertical_m": 3.5,
+   "L_m": 18.7,
+   "dU_pct": 0.97,
+   "dU_cum_pct": 1.16,
+   "local_isolator_A": 20,
+   "note": ""
+  },
+  {
+   "id": "DDC-FAN-FAF-2.02",
+   "from_panel": "DDC-FAN",
+   "load": "Quạt cấp bù FAF-2.02 11,0 kW qua biến tần (cáp màn chắn)",
+   "tag": "FAF-2.02",
+   "kind": "VFD",
+   "phases": 3,
+   "U_V": 380.0,
+   "P_rated_kW": 11,
+   "eta": 0.887,
+   "pf": 0.95,
+   "P_input_kW": 12.41,
+   "Ib_A": 19.84,
+   "I_cable_A": 21.51,
+   "demand_factors": {
+    "he": 1,
+    "dong": 1,
+    "nom": 1
+   },
+   "protection": "MCB 3P 25 A (C) 10 kA + biến tần 11,0 kW",
+   "In_A": 25,
+   "rcd": "",
+   "cable": "CXV/S (màn chắn Cu, cáp biến tần) 3×4 + E4",
+   "S_mm2": 4,
+   "PE_mm2": 4,
+   "Iz_A": 29.2,
+   "L_horizontal_m": 12.81,
+   "L_vertical_m": 3.5,
+   "L_m": 18.2,
+   "dU_pct": 0.86,
+   "dU_cum_pct": 1.05,
+   "local_isolator_A": 25,
+   "note": ""
+  },
+  {
+   "id": "DDC-FAN-EAF-2.01",
+   "from_panel": "DDC-FAN",
+   "load": "Quạt hút EAF-2.01 0,75 kW – khởi động trực tiếp (MPCB + contactor)",
+   "tag": "EAF-2.01",
+   "kind": "DOL",
+   "phases": 3,
+   "U_V": 380.0,
+   "P_rated_kW": 0.75,
+   "eta": 0.825,
+   "pf": 0.85,
+   "P_input_kW": 0.91,
+   "Ib_A": 1.62,
+   "I_cable_A": 1.62,
+   "demand_factors": {
+    "he": 1,
+    "dong": 1,
+    "nom": 1
+   },
+   "protection": "MPCB 3P 1,6–2,5 A + contactor AC3",
+   "In_A": 2.5,
+   "rcd": "",
+   "cable": "CXV 3×2,5 + E2,5",
+   "S_mm2": 2.5,
+   "PE_mm2": 2.5,
+   "Iz_A": 22.3,
+   "L_horizontal_m": 18.23,
+   "L_vertical_m": 3.5,
+   "L_m": 24.5,
+   "dU_pct": 0.14,
+   "dU_cum_pct": 0.33,
+   "local_isolator_A": 20,
+   "note": ""
+  },
+  {
+   "id": "DDC-FAN-EAF-2.02",
+   "from_panel": "DDC-FAN",
+   "load": "Quạt hút EAF-2.02 1,10 kW – khởi động trực tiếp (MPCB + contactor)",
+   "tag": "EAF-2.02",
+   "kind": "DOL",
+   "phases": 3,
+   "U_V": 380.0,
+   "P_rated_kW": 1.1,
+   "eta": 0.841,
+   "pf": 0.85,
+   "P_input_kW": 1.31,
+   "Ib_A": 2.34,
+   "I_cable_A": 2.34,
+   "demand_factors": {
+    "he": 1,
+    "dong": 1,
+    "nom": 1
+   },
+   "protection": "MPCB 3P 1,6–2,5 A + contactor AC3",
+   "In_A": 2.5,
+   "rcd": "",
+   "cable": "CXV 3×2,5 + E2,5",
+   "S_mm2": 2.5,
+   "PE_mm2": 2.5,
+   "Iz_A": 22.3,
+   "L_horizontal_m": 17.77,
+   "L_vertical_m": 3.5,
+   "L_m": 23.9,
+   "dU_pct": 0.2,
+   "dU_cum_pct": 0.39,
+   "local_isolator_A": 20,
+   "note": ""
+  },
+  {
+   "id": "DDC-FAN-EAF-2.03",
+   "from_panel": "DDC-FAN",
+   "load": "Quạt hút EAF-2.03 0,75 kW – khởi động trực tiếp (MPCB + contactor)",
+   "tag": "EAF-2.03",
+   "kind": "DOL",
+   "phases": 3,
+   "U_V": 380.0,
+   "P_rated_kW": 0.75,
+   "eta": 0.825,
+   "pf": 0.85,
+   "P_input_kW": 0.91,
+   "Ib_A": 1.62,
+   "I_cable_A": 1.62,
+   "demand_factors": {
+    "he": 1,
+    "dong": 1,
+    "nom": 1
+   },
+   "protection": "MPCB 3P 1,6–2,5 A + contactor AC3",
+   "In_A": 2.5,
+   "rcd": "",
+   "cable": "CXV 3×2,5 + E2,5",
+   "S_mm2": 2.5,
+   "PE_mm2": 2.5,
+   "Iz_A": 22.3,
+   "L_horizontal_m": 11.96,
+   "L_vertical_m": 3.5,
+   "L_m": 17.3,
+   "dU_pct": 0.1,
+   "dU_cum_pct": 0.29,
+   "local_isolator_A": 20,
+   "note": ""
+  },
+  {
+   "id": "DDC-FAN-HF01",
+   "from_panel": "DDC-FAN",
+   "load": "Quạt tủ hood DIG-FH1 (FHF-2.01, ACID) 0,6 kW",
+   "tag": "DIG-FH1",
+   "kind": "DOL",
+   "phases": 3,
+   "U_V": 380.0,
+   "P_rated_kW": 0.6,
+   "eta": 0.85,
+   "pf": 0.85,
+   "P_input_kW": 0.71,
+   "Ib_A": 1.26,
+   "I_cable_A": 1.26,
+   "demand_factors": {
+    "he": 1,
+    "dong": 1,
+    "nom": 1
+   },
+   "protection": "MPCB 3P 1–1,6 A + contactor AC3",
+   "In_A": 1.6,
+   "rcd": "",
+   "cable": "CXV 3×2,5 + E2,5",
+   "S_mm2": 2.5,
+   "PE_mm2": 2.5,
+   "Iz_A": 22.3,
+   "L_horizontal_m": 26.87,
+   "L_vertical_m": 4.0,
+   "L_m": 34.9,
+   "dU_pct": 0.15,
+   "dU_cum_pct": 0.34,
+   "local_isolator_A": 20,
+   "note": "Quạt thuộc gói nội thất; HVAC cấp nguồn + cách ly tại tủ + điều khiển"
+  },
+  {
+   "id": "DDC-FAN-HF02",
+   "from_panel": "DDC-FAN",
+   "load": "Quạt tủ hood DIG-FH2 (FHF-2.01, ACID) 0,6 kW",
+   "tag": "DIG-FH2",
+   "kind": "DOL",
+   "phases": 3,
+   "U_V": 380.0,
+   "P_rated_kW": 0.6,
+   "eta": 0.85,
+   "pf": 0.85,
+   "P_input_kW": 0.71,
+   "Ib_A": 1.26,
+   "I_cable_A": 1.26,
+   "demand_factors": {
+    "he": 1,
+    "dong": 1,
+    "nom": 1
+   },
+   "protection": "MPCB 3P 1–1,6 A + contactor AC3",
+   "In_A": 1.6,
+   "rcd": "",
+   "cable": "CXV 3×2,5 + E2,5",
+   "S_mm2": 2.5,
+   "PE_mm2": 2.5,
+   "Iz_A": 22.3,
+   "L_horizontal_m": 28.0,
+   "L_vertical_m": 4.0,
+   "L_m": 36.2,
+   "dU_pct": 0.16,
+   "dU_cum_pct": 0.35,
+   "local_isolator_A": 20,
+   "note": "Quạt thuộc gói nội thất; HVAC cấp nguồn + cách ly tại tủ + điều khiển"
+  },
+  {
+   "id": "DDC-FAN-HF03",
+   "from_panel": "DDC-FAN",
+   "load": "Quạt tủ hood ST1-FH1 (FHF-2.02, ACID) 0,6 kW",
+   "tag": "ST1-FH1",
+   "kind": "DOL",
+   "phases": 3,
+   "U_V": 380.0,
+   "P_rated_kW": 0.6,
+   "eta": 0.85,
+   "pf": 0.85,
+   "P_input_kW": 0.71,
+   "Ib_A": 1.26,
+   "I_cable_A": 1.26,
+   "demand_factors": {
+    "he": 1,
+    "dong": 1,
+    "nom": 1
+   },
+   "protection": "MPCB 3P 1–1,6 A + contactor AC3",
+   "In_A": 1.6,
+   "rcd": "",
+   "cable": "CXV 3×2,5 + E2,5",
+   "S_mm2": 2.5,
+   "PE_mm2": 2.5,
+   "Iz_A": 22.3,
+   "L_horizontal_m": 22.82,
+   "L_vertical_m": 4.0,
+   "L_m": 30.2,
+   "dU_pct": 0.13,
+   "dU_cum_pct": 0.32,
+   "local_isolator_A": 20,
+   "note": "Quạt thuộc gói nội thất; HVAC cấp nguồn + cách ly tại tủ + điều khiển"
+  },
+  {
+   "id": "DDC-FAN-HF04",
+   "from_panel": "DDC-FAN",
+   "load": "Quạt tủ hood ST1-FH2 (FHF-2.02) 0,6 kW",
+   "tag": "ST1-FH2",
+   "kind": "DOL",
+   "phases": 3,
+   "U_V": 380.0,
+   "P_rated_kW": 0.6,
+   "eta": 0.85,
+   "pf": 0.85,
+   "P_input_kW": 0.71,
+   "Ib_A": 1.26,
+   "I_cable_A": 1.26,
+   "demand_factors": {
+    "he": 1,
+    "dong": 1,
+    "nom": 1
+   },
+   "protection": "MPCB 3P 1–1,6 A + contactor AC3",
+   "In_A": 1.6,
+   "rcd": "",
+   "cable": "CXV 3×2,5 + E2,5",
+   "S_mm2": 2.5,
+   "PE_mm2": 2.5,
+   "Iz_A": 22.3,
+   "L_horizontal_m": 21.22,
+   "L_vertical_m": 4.0,
+   "L_m": 28.4,
+   "dU_pct": 0.13,
+   "dU_cum_pct": 0.32,
+   "local_isolator_A": 20,
+   "note": "Quạt thuộc gói nội thất; HVAC cấp nguồn + cách ly tại tủ + điều khiển"
+  },
+  {
+   "id": "DDC-FAN-HF05",
+   "from_panel": "DDC-FAN",
+   "load": "Quạt tủ hood ST1-FH3 (FHF-2.02) 0,6 kW",
+   "tag": "ST1-FH3",
+   "kind": "DOL",
+   "phases": 3,
+   "U_V": 380.0,
+   "P_rated_kW": 0.6,
+   "eta": 0.85,
+   "pf": 0.85,
+   "P_input_kW": 0.71,
+   "Ib_A": 1.26,
+   "I_cable_A": 1.26,
+   "demand_factors": {
+    "he": 1,
+    "dong": 1,
+    "nom": 1
+   },
+   "protection": "MPCB 3P 1–1,6 A + contactor AC3",
+   "In_A": 1.6,
+   "rcd": "",
+   "cable": "CXV 3×2,5 + E2,5",
+   "S_mm2": 2.5,
+   "PE_mm2": 2.5,
+   "Iz_A": 22.3,
+   "L_horizontal_m": 20.32,
+   "L_vertical_m": 4.0,
+   "L_m": 27.4,
+   "dU_pct": 0.12,
+   "dU_cum_pct": 0.31,
+   "local_isolator_A": 20,
+   "note": "Quạt thuộc gói nội thất; HVAC cấp nguồn + cách ly tại tủ + điều khiển"
+  },
+  {
+   "id": "DDC-FAN-HF06",
+   "from_panel": "DDC-FAN",
+   "load": "Quạt tủ hood ST2-FH1 (FHF-2.03) 0,6 kW",
+   "tag": "ST2-FH1",
+   "kind": "DOL",
+   "phases": 3,
+   "U_V": 380.0,
+   "P_rated_kW": 0.6,
+   "eta": 0.85,
+   "pf": 0.85,
+   "P_input_kW": 0.71,
+   "Ib_A": 1.26,
+   "I_cable_A": 1.26,
+   "demand_factors": {
+    "he": 1,
+    "dong": 1,
+    "nom": 1
+   },
+   "protection": "MPCB 3P 1–1,6 A + contactor AC3",
+   "In_A": 1.6,
+   "rcd": "",
+   "cable": "CXV 3×2,5 + E2,5",
+   "S_mm2": 2.5,
+   "PE_mm2": 2.5,
+   "Iz_A": 22.3,
+   "L_horizontal_m": 16.85,
+   "L_vertical_m": 4.0,
+   "L_m": 23.4,
+   "dU_pct": 0.1,
+   "dU_cum_pct": 0.29,
+   "local_isolator_A": 20,
+   "note": "Quạt thuộc gói nội thất; HVAC cấp nguồn + cách ly tại tủ + điều khiển"
+  },
+  {
+   "id": "DDC-FAN-HF07",
+   "from_panel": "DDC-FAN",
+   "load": "Quạt tủ hood ST2-FH2 (FHF-2.03) 0,6 kW",
+   "tag": "ST2-FH2",
+   "kind": "DOL",
+   "phases": 3,
+   "U_V": 380.0,
+   "P_rated_kW": 0.6,
+   "eta": 0.85,
+   "pf": 0.85,
+   "P_input_kW": 0.71,
+   "Ib_A": 1.26,
+   "I_cable_A": 1.26,
+   "demand_factors": {
+    "he": 1,
+    "dong": 1,
+    "nom": 1
+   },
+   "protection": "MPCB 3P 1–1,6 A + contactor AC3",
+   "In_A": 1.6,
+   "rcd": "",
+   "cable": "CXV 3×2,5 + E2,5",
+   "S_mm2": 2.5,
+   "PE_mm2": 2.5,
+   "Iz_A": 22.3,
+   "L_horizontal_m": 18.45,
+   "L_vertical_m": 4.0,
+   "L_m": 25.2,
+   "dU_pct": 0.11,
+   "dU_cum_pct": 0.3,
+   "local_isolator_A": 20,
+   "note": "Quạt thuộc gói nội thất; HVAC cấp nguồn + cách ly tại tủ + điều khiển"
+  },
+  {
+   "id": "DDC-FAN-HF08",
+   "from_panel": "DDC-FAN",
+   "load": "Quạt tủ hood ST2-FH3 (FHF-2.03, ACID) 0,6 kW",
+   "tag": "ST2-FH3",
+   "kind": "DOL",
+   "phases": 3,
+   "U_V": 380.0,
+   "P_rated_kW": 0.6,
+   "eta": 0.85,
+   "pf": 0.85,
+   "P_input_kW": 0.71,
+   "Ib_A": 1.26,
+   "I_cable_A": 1.26,
+   "demand_factors": {
+    "he": 1,
+    "dong": 1,
+    "nom": 1
+   },
+   "protection": "MPCB 3P 1–1,6 A + contactor AC3",
+   "In_A": 1.6,
+   "rcd": "",
+   "cable": "CXV 3×2,5 + E2,5",
+   "S_mm2": 2.5,
+   "PE_mm2": 2.5,
+   "Iz_A": 22.3,
+   "L_horizontal_m": 20.06,
+   "L_vertical_m": 4.0,
+   "L_m": 27.1,
+   "dU_pct": 0.12,
+   "dU_cum_pct": 0.31,
+   "local_isolator_A": 20,
+   "note": "Quạt thuộc gói nội thất; HVAC cấp nguồn + cách ly tại tủ + điều khiển"
+  },
+  {
+   "id": "DDC-FAN-HF09",
+   "from_panel": "DDC-FAN",
+   "load": "Quạt tủ hood ST2-FH4 (FHF-2.03) 0,6 kW",
+   "tag": "ST2-FH4",
+   "kind": "DOL",
+   "phases": 3,
+   "U_V": 380.0,
+   "P_rated_kW": 0.6,
+   "eta": 0.85,
+   "pf": 0.85,
+   "P_input_kW": 0.71,
+   "Ib_A": 1.26,
+   "I_cable_A": 1.26,
+   "demand_factors": {
+    "he": 1,
+    "dong": 1,
+    "nom": 1
+   },
+   "protection": "MPCB 3P 1–1,6 A + contactor AC3",
+   "In_A": 1.6,
+   "rcd": "",
+   "cable": "CXV 3×2,5 + E2,5",
+   "S_mm2": 2.5,
+   "PE_mm2": 2.5,
+   "Iz_A": 22.3,
+   "L_horizontal_m": 14.07,
+   "L_vertical_m": 4.0,
+   "L_m": 20.2,
+   "dU_pct": 0.09,
+   "dU_cum_pct": 0.28,
+   "local_isolator_A": 20,
+   "note": "Quạt thuộc gói nội thất; HVAC cấp nguồn + cách ly tại tủ + điều khiển"
+  },
+  {
+   "id": "DDC-FAN-HF10",
+   "from_panel": "DDC-FAN",
+   "load": "Quạt tủ hood ST2-FH5 (FHF-2.03) 0,6 kW",
+   "tag": "ST2-FH5",
+   "kind": "DOL",
+   "phases": 3,
+   "U_V": 380.0,
+   "P_rated_kW": 0.6,
+   "eta": 0.85,
+   "pf": 0.85,
+   "P_input_kW": 0.71,
+   "Ib_A": 1.26,
+   "I_cable_A": 1.26,
+   "demand_factors": {
+    "he": 1,
+    "dong": 1,
+    "nom": 1
+   },
+   "protection": "MPCB 3P 1–1,6 A + contactor AC3",
+   "In_A": 1.6,
+   "rcd": "",
+   "cable": "CXV 3×2,5 + E2,5",
+   "S_mm2": 2.5,
+   "PE_mm2": 2.5,
+   "Iz_A": 22.3,
+   "L_horizontal_m": 10.75,
+   "L_vertical_m": 4.0,
+   "L_m": 16.4,
+   "dU_pct": 0.07,
+   "dU_cum_pct": 0.26,
+   "local_isolator_A": 20,
+   "note": "Quạt thuộc gói nội thất; HVAC cấp nguồn + cách ly tại tủ + điều khiển"
+  },
+  {
+   "id": "DDC-FAN-HF11",
+   "from_panel": "DDC-FAN",
+   "load": "Quạt tủ hood ST2-FH6 (FHF-2.03) 0,6 kW",
+   "tag": "ST2-FH6",
+   "kind": "DOL",
+   "phases": 3,
+   "U_V": 380.0,
+   "P_rated_kW": 0.6,
+   "eta": 0.85,
+   "pf": 0.85,
+   "P_input_kW": 0.71,
+   "Ib_A": 1.26,
+   "I_cable_A": 1.26,
+   "demand_factors": {
+    "he": 1,
+    "dong": 1,
+    "nom": 1
+   },
+   "protection": "MPCB 3P 1–1,6 A + contactor AC3",
+   "In_A": 1.6,
+   "rcd": "",
+   "cable": "CXV 3×2,5 + E2,5",
+   "S_mm2": 2.5,
+   "PE_mm2": 2.5,
+   "Iz_A": 22.3,
+   "L_horizontal_m": 12.35,
+   "L_vertical_m": 4.0,
+   "L_m": 18.2,
+   "dU_pct": 0.08,
+   "dU_cum_pct": 0.27,
+   "local_isolator_A": 20,
+   "note": "Quạt thuộc gói nội thất; HVAC cấp nguồn + cách ly tại tủ + điều khiển"
+  },
+  {
+   "id": "DDC-FAN-HF12",
+   "from_panel": "DDC-FAN",
+   "load": "Quạt tủ hood STD20-FH1 (FHF-2.04) 0,6 kW",
+   "tag": "STD20-FH1",
+   "kind": "DOL",
+   "phases": 3,
+   "U_V": 380.0,
+   "P_rated_kW": 0.6,
+   "eta": 0.85,
+   "pf": 0.85,
+   "P_input_kW": 0.71,
+   "Ib_A": 1.26,
+   "I_cable_A": 1.26,
+   "demand_factors": {
+    "he": 1,
+    "dong": 1,
+    "nom": 1
+   },
+   "protection": "MPCB 3P 1–1,6 A + contactor AC3",
+   "In_A": 1.6,
+   "rcd": "",
+   "cable": "CXV 3×2,5 + E2,5",
+   "S_mm2": 2.5,
+   "PE_mm2": 2.5,
+   "Iz_A": 22.3,
+   "L_horizontal_m": 7.66,
+   "L_vertical_m": 4.0,
+   "L_m": 12.8,
+   "dU_pct": 0.06,
+   "dU_cum_pct": 0.25,
+   "local_isolator_A": 20,
+   "note": "Quạt thuộc gói nội thất; HVAC cấp nguồn + cách ly tại tủ + điều khiển"
+  },
+  {
+   "id": "DDC-FAN-HF13",
+   "from_panel": "DDC-FAN",
+   "load": "Quạt tủ hood STD20-FH2 (FHF-2.04) 0,6 kW",
+   "tag": "STD20-FH2",
+   "kind": "DOL",
+   "phases": 3,
+   "U_V": 380.0,
+   "P_rated_kW": 0.6,
+   "eta": 0.85,
+   "pf": 0.85,
+   "P_input_kW": 0.71,
+   "Ib_A": 1.26,
+   "I_cable_A": 1.26,
+   "demand_factors": {
+    "he": 1,
+    "dong": 1,
+    "nom": 1
+   },
+   "protection": "MPCB 3P 1–1,6 A + contactor AC3",
+   "In_A": 1.6,
+   "rcd": "",
+   "cable": "CXV 3×2,5 + E2,5",
+   "S_mm2": 2.5,
+   "PE_mm2": 2.5,
+   "Iz_A": 22.3,
+   "L_horizontal_m": 9.23,
+   "L_vertical_m": 4.0,
+   "L_m": 14.6,
+   "dU_pct": 0.06,
+   "dU_cum_pct": 0.26,
+   "local_isolator_A": 20,
+   "note": "Quạt thuộc gói nội thất; HVAC cấp nguồn + cách ly tại tủ + điều khiển"
+  },
+  {
+   "id": "DDC-FAN-HF14",
+   "from_panel": "DDC-FAN",
+   "load": "Quạt tủ hood STD20-FH3 (FHF-2.04) 0,6 kW",
+   "tag": "STD20-FH3",
+   "kind": "DOL",
+   "phases": 3,
+   "U_V": 380.0,
+   "P_rated_kW": 0.6,
+   "eta": 0.85,
+   "pf": 0.85,
+   "P_input_kW": 0.71,
+   "Ib_A": 1.26,
+   "I_cable_A": 1.26,
+   "demand_factors": {
+    "he": 1,
+    "dong": 1,
+    "nom": 1
+   },
+   "protection": "MPCB 3P 1–1,6 A + contactor AC3",
+   "In_A": 1.6,
+   "rcd": "",
+   "cable": "CXV 3×2,5 + E2,5",
+   "S_mm2": 2.5,
+   "PE_mm2": 2.5,
+   "Iz_A": 22.3,
+   "L_horizontal_m": 12.86,
+   "L_vertical_m": 4.0,
+   "L_m": 18.8,
+   "dU_pct": 0.08,
+   "dU_cum_pct": 0.27,
+   "local_isolator_A": 20,
+   "note": "Quạt thuộc gói nội thất; HVAC cấp nguồn + cách ly tại tủ + điều khiển"
+  },
+  {
+   "id": "DDC-FAN-HF15",
+   "from_panel": "DDC-FAN",
+   "load": "Quạt tủ hood STD20-FH4 (FHF-2.04) 0,6 kW",
+   "tag": "STD20-FH4",
+   "kind": "DOL",
+   "phases": 3,
+   "U_V": 380.0,
+   "P_rated_kW": 0.6,
+   "eta": 0.85,
+   "pf": 0.85,
+   "P_input_kW": 0.71,
+   "Ib_A": 1.26,
+   "I_cable_A": 1.26,
+   "demand_factors": {
+    "he": 1,
+    "dong": 1,
+    "nom": 1
+   },
+   "protection": "MPCB 3P 1–1,6 A + contactor AC3",
+   "In_A": 1.6,
+   "rcd": "",
+   "cable": "CXV 3×2,5 + E2,5",
+   "S_mm2": 2.5,
+   "PE_mm2": 2.5,
+   "Iz_A": 22.3,
+   "L_horizontal_m": 13.56,
+   "L_vertical_m": 4.0,
+   "L_m": 19.6,
+   "dU_pct": 0.09,
+   "dU_cum_pct": 0.28,
+   "local_isolator_A": 20,
+   "note": "Quạt thuộc gói nội thất; HVAC cấp nguồn + cách ly tại tủ + điều khiển"
+  },
+  {
+   "id": "DDC-FAN-CT",
+   "from_panel": "DDC-FAN",
+   "load": "Nguồn điều khiển + biến áp 24 VAC cho 27 bộ chấp hành van gió",
+   "tag": "",
+   "kind": "CTRL",
+   "phases": 1,
+   "U_V": 220.0,
+   "P_rated_kW": 0.5,
+   "eta": 1.0,
+   "pf": 1.0,
+   "P_input_kW": 0.5,
+   "Ib_A": 2.27,
+   "I_cable_A": 2.27,
+   "demand_factors": {
+    "he": 1,
+    "dong": 1,
+    "nom": 1
+   },
+   "protection": "MCB 1P+N 6 A (C), 10 kA",
+   "In_A": 6,
+   "rcd": "",
+   "cable": null,
+   "S_mm2": null,
+   "PE_mm2": null,
+   "Iz_A": 0.0,
+   "L_horizontal_m": null,
+   "L_vertical_m": null,
+   "L_m": null,
+   "dU_pct": 0.0,
+   "dU_cum_pct": 0.19,
+   "local_isolator_A": null,
+   "note": ""
+  }
+ ],
+ "cdu_feed_decision": "CDU cấp trực tiếp từ DB.HVAC (6 lộ MCCB 4P riêng + ELCB), cầu dao cách ly 4P IP65 ngoài trời tại mỗi module; AHU điều khiển CDU bằng tín hiệu DX-kit (không đóng cắt nguồn qua tủ DDC).",
+ "io_schedule": [
+  {
+   "panel": "DDC-AHU-2.01",
+   "type": "DO",
+   "point": "Lệnh chạy biến tần quạt AHU-2.01",
+   "device": "Biến tần (trong tủ)",
+   "location": null,
+   "internal": true,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-AHU-2.01",
+   "type": "DI",
+   "point": "Trạng thái chạy biến tần",
+   "device": "Biến tần",
+   "location": null,
+   "internal": true,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-AHU-2.01",
+   "type": "DI",
+   "point": "Lỗi biến tần",
+   "device": "Biến tần",
+   "location": null,
+   "internal": true,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-AHU-2.01",
+   "type": "AO",
+   "point": "Đặt tốc độ biến tần 0–10 V",
+   "device": "Biến tần",
+   "location": null,
+   "internal": true,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-AHU-2.01",
+   "type": "AI",
+   "point": "Chênh áp quạt (k-factor → lưu lượng gió cấp) 0–10 V",
+   "device": "Bộ chuyển đổi chênh áp 0–1000 Pa",
+   "location": "AHU-2.01c",
+   "internal": false,
+   "cable": "Cáp tín hiệu chống nhiễu 3C×0,75 mm²",
+   "L_m": 9.9
+  },
+  {
+   "panel": "DDC-AHU-2.01",
+   "type": "DI",
+   "point": "Công tắc dòng gió quạt (airflow switch) – liên động sưởi",
+   "device": "Công tắc chênh áp 20–300 Pa",
+   "location": "AHU-2.01c",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 2C×1,0 mm²",
+   "L_m": 9.9
+  },
+  {
+   "panel": "DDC-AHU-2.01",
+   "type": "DI",
+   "point": "Chênh áp lọc G4 bẩn",
+   "device": "Công tắc chênh áp 50–500 Pa",
+   "location": "AHU-2.01c",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 2C×1,0 mm²",
+   "L_m": 9.9
+  },
+  {
+   "panel": "DDC-AHU-2.01",
+   "type": "DI",
+   "point": "Chênh áp lọc F8 bẩn",
+   "device": "Công tắc chênh áp 50–500 Pa",
+   "location": "AHU-2.01c",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 2C×1,0 mm²",
+   "L_m": 9.9
+  },
+  {
+   "panel": "DDC-AHU-2.01",
+   "type": "AI",
+   "point": "Nhiệt độ gió cấp",
+   "device": "Cảm biến T/RH ống gió (gió cấp)",
+   "location": "AHU-2.01c",
+   "internal": false,
+   "cable": "Cáp tín hiệu chống nhiễu 4C×0,75 mm²",
+   "L_m": 9.9
+  },
+  {
+   "panel": "DDC-AHU-2.01",
+   "type": "AI",
+   "point": "Độ ẩm gió cấp",
+   "device": "(chung cảm biến trên)",
+   "location": "AHU-2.01c",
+   "internal": false,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-AHU-2.01",
+   "type": "AI",
+   "point": "Nhiệt độ gió hồi",
+   "device": "Cảm biến T/RH ống gió (gió hồi)",
+   "location": "AHU-2.01c",
+   "internal": false,
+   "cable": "Cáp tín hiệu chống nhiễu 4C×0,75 mm²",
+   "L_m": 9.9
+  },
+  {
+   "panel": "DDC-AHU-2.01",
+   "type": "AI",
+   "point": "Độ ẩm gió hồi",
+   "device": "(chung cảm biến trên)",
+   "location": "AHU-2.01c",
+   "internal": false,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-AHU-2.01",
+   "type": "DO",
+   "point": "Đóng contactor sưởi cấp 2",
+   "device": "Contactor AC1 (trong tủ)",
+   "location": null,
+   "internal": true,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-AHU-2.01",
+   "type": "DO",
+   "point": "Đóng contactor sưởi cấp 3",
+   "device": "Contactor AC1 (trong tủ)",
+   "location": null,
+   "internal": true,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-AHU-2.01",
+   "type": "AO",
+   "point": "Điều biến sưởi cấp 1 (SSR/thyristor 0–10 V)",
+   "device": "Bộ điều khiển thyristor 3P (trong tủ)",
+   "location": null,
+   "internal": true,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-AHU-2.01",
+   "type": "DI",
+   "point": "Bảo vệ quá nhiệt sưởi (thermostat an toàn reset tay) – cắt cứng",
+   "device": "Thermostat an toàn (kèm AHU)",
+   "location": "AHU-2.01c",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 2C×1,0 mm²",
+   "L_m": 9.9
+  },
+  {
+   "panel": "DDC-AHU-2.01",
+   "type": "DI",
+   "point": "Lỗi mạch sưởi (RCD/MCB nhảy)",
+   "device": "Tiếp điểm phụ RCD/MCB",
+   "location": null,
+   "internal": true,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-AHU-2.01",
+   "type": "DO",
+   "point": "Mở van gió tươi OA (on/off, lò xo hồi)",
+   "device": "Bộ chấp hành van gió 24 VAC",
+   "location": "AHU-2.01c",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 3C×1,0 mm²",
+   "L_m": 9.9
+  },
+  {
+   "panel": "DDC-AHU-2.01",
+   "type": "DO",
+   "point": "Cho phép chạy CDU-2.01-1 (DX-kit)",
+   "device": "Bộ DX-kit tại AHU",
+   "location": "AHU-2.01c",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 2C×1,0 mm²",
+   "L_m": 9.9
+  },
+  {
+   "panel": "DDC-AHU-2.01",
+   "type": "AO",
+   "point": "Yêu cầu công suất CDU-2.01-1 0–10 V",
+   "device": "Bộ DX-kit tại AHU",
+   "location": "AHU-2.01c",
+   "internal": false,
+   "cable": "Cáp tín hiệu chống nhiễu 2C×0,75 mm²",
+   "L_m": 9.9
+  },
+  {
+   "panel": "DDC-AHU-2.01",
+   "type": "DI",
+   "point": "Trạng thái chạy CDU-2.01-1",
+   "device": "Bộ DX-kit tại AHU",
+   "location": "AHU-2.01c",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 2C×1,0 mm²",
+   "L_m": 9.9
+  },
+  {
+   "panel": "DDC-AHU-2.01",
+   "type": "DI",
+   "point": "Lỗi CDU-2.01-1",
+   "device": "Bộ DX-kit tại AHU",
+   "location": "AHU-2.01c",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 2C×1,0 mm²",
+   "L_m": 9.9
+  },
+  {
+   "panel": "DDC-AHU-2.01",
+   "type": "DO",
+   "point": "Cho phép chạy CDU-2.01-2 (DX-kit)",
+   "device": "Bộ DX-kit tại AHU",
+   "location": "AHU-2.01c",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 2C×1,0 mm²",
+   "L_m": 9.9
+  },
+  {
+   "panel": "DDC-AHU-2.01",
+   "type": "AO",
+   "point": "Yêu cầu công suất CDU-2.01-2 0–10 V",
+   "device": "Bộ DX-kit tại AHU",
+   "location": "AHU-2.01c",
+   "internal": false,
+   "cable": "Cáp tín hiệu chống nhiễu 2C×0,75 mm²",
+   "L_m": 9.9
+  },
+  {
+   "panel": "DDC-AHU-2.01",
+   "type": "DI",
+   "point": "Trạng thái chạy CDU-2.01-2",
+   "device": "Bộ DX-kit tại AHU",
+   "location": "AHU-2.01c",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 2C×1,0 mm²",
+   "L_m": 9.9
+  },
+  {
+   "panel": "DDC-AHU-2.01",
+   "type": "DI",
+   "point": "Lỗi CDU-2.01-2",
+   "device": "Bộ DX-kit tại AHU",
+   "location": "AHU-2.01c",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 2C×1,0 mm²",
+   "L_m": 9.9
+  },
+  {
+   "panel": "DDC-AHU-2.01",
+   "type": "DO",
+   "point": "Cho phép chạy CDU-2.01-3 (DX-kit)",
+   "device": "Bộ DX-kit tại AHU",
+   "location": "AHU-2.01c",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 2C×1,0 mm²",
+   "L_m": 9.9
+  },
+  {
+   "panel": "DDC-AHU-2.01",
+   "type": "AO",
+   "point": "Yêu cầu công suất CDU-2.01-3 0–10 V",
+   "device": "Bộ DX-kit tại AHU",
+   "location": "AHU-2.01c",
+   "internal": false,
+   "cable": "Cáp tín hiệu chống nhiễu 2C×0,75 mm²",
+   "L_m": 9.9
+  },
+  {
+   "panel": "DDC-AHU-2.01",
+   "type": "DI",
+   "point": "Trạng thái chạy CDU-2.01-3",
+   "device": "Bộ DX-kit tại AHU",
+   "location": "AHU-2.01c",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 2C×1,0 mm²",
+   "L_m": 9.9
+  },
+  {
+   "panel": "DDC-AHU-2.01",
+   "type": "DI",
+   "point": "Lỗi CDU-2.01-3",
+   "device": "Bộ DX-kit tại AHU",
+   "location": "AHU-2.01c",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 2C×1,0 mm²",
+   "L_m": 9.9
+  },
+  {
+   "panel": "DDC-AHU-2.01",
+   "type": "DI",
+   "point": "Báo mức nước ngưng cao CP-2.02 (cắt cứng CDU)",
+   "device": "Phao báo mức của bơm",
+   "location": "CP-2.02",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 2C×1,0 mm²",
+   "L_m": 8.8
+  },
+  {
+   "panel": "DDC-AHU-2.01",
+   "type": "DI",
+   "point": "Tín hiệu báo cháy – dừng AHU (cắt cứng biến tần + sưởi)",
+   "device": "Module rơ le báo cháy (gói PCCC, đặt cạnh DB.HVAC)",
+   "location": "FA",
+   "internal": false,
+   "cable": "Cáp chống cháy FR 2C×1,5 mm²",
+   "L_m": 8.5
+  },
+  {
+   "panel": "DDC-AHU-2.01",
+   "type": "DI",
+   "point": "Công tắc chọn Tay/Tự động (H-O-A)",
+   "device": "Công tắc mặt tủ",
+   "location": null,
+   "internal": true,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-AHU-2.01",
+   "type": "AI",
+   "point": "Nhiệt độ phòng Digestion room",
+   "device": "Cảm biến T/RH phòng gắn tường",
+   "location": "room:DIG",
+   "internal": false,
+   "cable": "Cáp tín hiệu chống nhiễu 4C×0,75 mm²",
+   "L_m": 29.3
+  },
+  {
+   "panel": "DDC-AHU-2.01",
+   "type": "AI",
+   "point": "Độ ẩm phòng Digestion room",
+   "device": "(chung cảm biến trên)",
+   "location": "room:DIG",
+   "internal": false,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-AHU-2.01",
+   "type": "AI",
+   "point": "Nhiệt độ phòng Kjeldahl room",
+   "device": "Cảm biến T/RH phòng gắn tường",
+   "location": "room:KJE",
+   "internal": false,
+   "cable": "Cáp tín hiệu chống nhiễu 4C×0,75 mm²",
+   "L_m": 24.4
+  },
+  {
+   "panel": "DDC-AHU-2.01",
+   "type": "AI",
+   "point": "Độ ẩm phòng Kjeldahl room",
+   "device": "(chung cảm biến trên)",
+   "location": "room:KJE",
+   "internal": false,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-AHU-2.01",
+   "type": "AI",
+   "point": "Nhiệt độ phòng Sample treatment 1",
+   "device": "Cảm biến T/RH phòng gắn tường",
+   "location": "room:ST1",
+   "internal": false,
+   "cable": "Cáp tín hiệu chống nhiễu 4C×0,75 mm²",
+   "L_m": 20.6
+  },
+  {
+   "panel": "DDC-AHU-2.01",
+   "type": "AI",
+   "point": "Độ ẩm phòng Sample treatment 1",
+   "device": "(chung cảm biến trên)",
+   "location": "room:ST1",
+   "internal": false,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-AHU-2.01",
+   "type": "AI",
+   "point": "Nhiệt độ phòng Balance room",
+   "device": "Cảm biến T/RH phòng gắn tường",
+   "location": "room:BAL",
+   "internal": false,
+   "cable": "Cáp tín hiệu chống nhiễu 4C×0,75 mm²",
+   "L_m": 11.8
+  },
+  {
+   "panel": "DDC-AHU-2.01",
+   "type": "AI",
+   "point": "Độ ẩm phòng Balance room",
+   "device": "(chung cảm biến trên)",
+   "location": "room:BAL",
+   "internal": false,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-AHU-2.01",
+   "type": "AI",
+   "point": "Nhiệt độ phòng Sample preparation",
+   "device": "Cảm biến T/RH phòng gắn tường",
+   "location": "room:PRE",
+   "internal": false,
+   "cable": "Cáp tín hiệu chống nhiễu 4C×0,75 mm²",
+   "L_m": 29.1
+  },
+  {
+   "panel": "DDC-AHU-2.01",
+   "type": "AI",
+   "point": "Độ ẩm phòng Sample preparation",
+   "device": "(chung cảm biến trên)",
+   "location": "room:PRE",
+   "internal": false,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-AHU-2.01",
+   "type": "AI",
+   "point": "Nhiệt độ phòng Sample coding",
+   "device": "Cảm biến T/RH phòng gắn tường",
+   "location": "room:COD",
+   "internal": false,
+   "cable": "Cáp tín hiệu chống nhiễu 4C×0,75 mm²",
+   "L_m": 28.5
+  },
+  {
+   "panel": "DDC-AHU-2.01",
+   "type": "AI",
+   "point": "Độ ẩm phòng Sample coding",
+   "device": "(chung cảm biến trên)",
+   "location": "room:COD",
+   "internal": false,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-AHU-2.01",
+   "type": "AI",
+   "point": "Nhiệt độ phòng Sample dividing",
+   "device": "Cảm biến T/RH phòng gắn tường",
+   "location": "room:DIV",
+   "internal": false,
+   "cable": "Cáp tín hiệu chống nhiễu 4C×0,75 mm²",
+   "L_m": 29.6
+  },
+  {
+   "panel": "DDC-AHU-2.01",
+   "type": "AI",
+   "point": "Độ ẩm phòng Sample dividing",
+   "device": "(chung cảm biến trên)",
+   "location": "room:DIV",
+   "internal": false,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-AHU-2.01",
+   "type": "AI",
+   "point": "Nhiệt độ phòng Reporting room",
+   "device": "Cảm biến T/RH phòng gắn tường",
+   "location": "room:REP",
+   "internal": false,
+   "cable": "Cáp tín hiệu chống nhiễu 4C×0,75 mm²",
+   "L_m": 17.4
+  },
+  {
+   "panel": "DDC-AHU-2.01",
+   "type": "AI",
+   "point": "Độ ẩm phòng Reporting room",
+   "device": "(chung cảm biến trên)",
+   "location": "room:REP",
+   "internal": false,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-AHU-2.02",
+   "type": "DO",
+   "point": "Lệnh chạy biến tần quạt AHU-2.02",
+   "device": "Biến tần (trong tủ)",
+   "location": null,
+   "internal": true,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-AHU-2.02",
+   "type": "DI",
+   "point": "Trạng thái chạy biến tần",
+   "device": "Biến tần",
+   "location": null,
+   "internal": true,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-AHU-2.02",
+   "type": "DI",
+   "point": "Lỗi biến tần",
+   "device": "Biến tần",
+   "location": null,
+   "internal": true,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-AHU-2.02",
+   "type": "AO",
+   "point": "Đặt tốc độ biến tần 0–10 V",
+   "device": "Biến tần",
+   "location": null,
+   "internal": true,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-AHU-2.02",
+   "type": "AI",
+   "point": "Chênh áp quạt (k-factor → lưu lượng gió cấp) 0–10 V",
+   "device": "Bộ chuyển đổi chênh áp 0–1000 Pa",
+   "location": "AHU-2.02c",
+   "internal": false,
+   "cable": "Cáp tín hiệu chống nhiễu 3C×0,75 mm²",
+   "L_m": 31.2
+  },
+  {
+   "panel": "DDC-AHU-2.02",
+   "type": "DI",
+   "point": "Công tắc dòng gió quạt (airflow switch) – liên động sưởi",
+   "device": "Công tắc chênh áp 20–300 Pa",
+   "location": "AHU-2.02c",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 2C×1,0 mm²",
+   "L_m": 31.2
+  },
+  {
+   "panel": "DDC-AHU-2.02",
+   "type": "DI",
+   "point": "Chênh áp lọc G4 bẩn",
+   "device": "Công tắc chênh áp 50–500 Pa",
+   "location": "AHU-2.02c",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 2C×1,0 mm²",
+   "L_m": 31.2
+  },
+  {
+   "panel": "DDC-AHU-2.02",
+   "type": "DI",
+   "point": "Chênh áp lọc F8 bẩn",
+   "device": "Công tắc chênh áp 50–500 Pa",
+   "location": "AHU-2.02c",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 2C×1,0 mm²",
+   "L_m": 31.2
+  },
+  {
+   "panel": "DDC-AHU-2.02",
+   "type": "AI",
+   "point": "Nhiệt độ gió cấp",
+   "device": "Cảm biến T/RH ống gió (gió cấp)",
+   "location": "AHU-2.02c",
+   "internal": false,
+   "cable": "Cáp tín hiệu chống nhiễu 4C×0,75 mm²",
+   "L_m": 31.2
+  },
+  {
+   "panel": "DDC-AHU-2.02",
+   "type": "AI",
+   "point": "Độ ẩm gió cấp",
+   "device": "(chung cảm biến trên)",
+   "location": "AHU-2.02c",
+   "internal": false,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-AHU-2.02",
+   "type": "AI",
+   "point": "Nhiệt độ gió hồi",
+   "device": "Cảm biến T/RH ống gió (gió hồi)",
+   "location": "AHU-2.02c",
+   "internal": false,
+   "cable": "Cáp tín hiệu chống nhiễu 4C×0,75 mm²",
+   "L_m": 31.2
+  },
+  {
+   "panel": "DDC-AHU-2.02",
+   "type": "AI",
+   "point": "Độ ẩm gió hồi",
+   "device": "(chung cảm biến trên)",
+   "location": "AHU-2.02c",
+   "internal": false,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-AHU-2.02",
+   "type": "DO",
+   "point": "Đóng contactor sưởi cấp 2",
+   "device": "Contactor AC1 (trong tủ)",
+   "location": null,
+   "internal": true,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-AHU-2.02",
+   "type": "DO",
+   "point": "Đóng contactor sưởi cấp 3",
+   "device": "Contactor AC1 (trong tủ)",
+   "location": null,
+   "internal": true,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-AHU-2.02",
+   "type": "AO",
+   "point": "Điều biến sưởi cấp 1 (SSR/thyristor 0–10 V)",
+   "device": "Bộ điều khiển thyristor 3P (trong tủ)",
+   "location": null,
+   "internal": true,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-AHU-2.02",
+   "type": "DI",
+   "point": "Bảo vệ quá nhiệt sưởi (thermostat an toàn reset tay) – cắt cứng",
+   "device": "Thermostat an toàn (kèm AHU)",
+   "location": "AHU-2.02c",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 2C×1,0 mm²",
+   "L_m": 31.2
+  },
+  {
+   "panel": "DDC-AHU-2.02",
+   "type": "DI",
+   "point": "Lỗi mạch sưởi (RCD/MCB nhảy)",
+   "device": "Tiếp điểm phụ RCD/MCB",
+   "location": null,
+   "internal": true,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-AHU-2.02",
+   "type": "DO",
+   "point": "Mở van gió tươi OA (on/off, lò xo hồi)",
+   "device": "Bộ chấp hành van gió 24 VAC",
+   "location": "AHU-2.02c",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 3C×1,0 mm²",
+   "L_m": 31.2
+  },
+  {
+   "panel": "DDC-AHU-2.02",
+   "type": "DO",
+   "point": "Cho phép chạy CDU-2.02 (DX-kit)",
+   "device": "Bộ DX-kit tại AHU",
+   "location": "AHU-2.02c",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 2C×1,0 mm²",
+   "L_m": 31.2
+  },
+  {
+   "panel": "DDC-AHU-2.02",
+   "type": "AO",
+   "point": "Yêu cầu công suất CDU-2.02 0–10 V",
+   "device": "Bộ DX-kit tại AHU",
+   "location": "AHU-2.02c",
+   "internal": false,
+   "cable": "Cáp tín hiệu chống nhiễu 2C×0,75 mm²",
+   "L_m": 31.2
+  },
+  {
+   "panel": "DDC-AHU-2.02",
+   "type": "DI",
+   "point": "Trạng thái chạy CDU-2.02",
+   "device": "Bộ DX-kit tại AHU",
+   "location": "AHU-2.02c",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 2C×1,0 mm²",
+   "L_m": 31.2
+  },
+  {
+   "panel": "DDC-AHU-2.02",
+   "type": "DI",
+   "point": "Lỗi CDU-2.02",
+   "device": "Bộ DX-kit tại AHU",
+   "location": "AHU-2.02c",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 2C×1,0 mm²",
+   "L_m": 31.2
+  },
+  {
+   "panel": "DDC-AHU-2.02",
+   "type": "DI",
+   "point": "Báo mức nước ngưng cao CP-2.03 (cắt cứng CDU)",
+   "device": "Phao báo mức của bơm",
+   "location": "CP-2.03",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 2C×1,0 mm²",
+   "L_m": 30.1
+  },
+  {
+   "panel": "DDC-AHU-2.02",
+   "type": "DI",
+   "point": "Tín hiệu báo cháy – dừng AHU (cắt cứng biến tần + sưởi)",
+   "device": "Module rơ le báo cháy (gói PCCC, đặt cạnh DB.HVAC)",
+   "location": "FA",
+   "internal": false,
+   "cable": "Cáp chống cháy FR 2C×1,5 mm²",
+   "L_m": 10.2
+  },
+  {
+   "panel": "DDC-AHU-2.02",
+   "type": "DI",
+   "point": "Công tắc chọn Tay/Tự động (H-O-A)",
+   "device": "Công tắc mặt tủ",
+   "location": null,
+   "internal": true,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-AHU-2.02",
+   "type": "AI",
+   "point": "Nhiệt độ phòng Sample treatment 2",
+   "device": "Cảm biến T/RH phòng gắn tường",
+   "location": "room:ST2",
+   "internal": false,
+   "cable": "Cáp tín hiệu chống nhiễu 4C×0,75 mm²",
+   "L_m": 20.9
+  },
+  {
+   "panel": "DDC-AHU-2.02",
+   "type": "AI",
+   "point": "Độ ẩm phòng Sample treatment 2",
+   "device": "(chung cảm biến trên)",
+   "location": "room:ST2",
+   "internal": false,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-AHU-2.02",
+   "type": "AI",
+   "point": "Nhiệt độ phòng Standard (19,72 m²)",
+   "device": "Cảm biến T/RH phòng gắn tường",
+   "location": "room:STD20",
+   "internal": false,
+   "cable": "Cáp tín hiệu chống nhiễu 4C×0,75 mm²",
+   "L_m": 18.5
+  },
+  {
+   "panel": "DDC-AHU-2.02",
+   "type": "AI",
+   "point": "Độ ẩm phòng Standard (19,72 m²)",
+   "device": "(chung cảm biến trên)",
+   "location": "room:STD20",
+   "internal": false,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-AHU-2.02",
+   "type": "AI",
+   "point": "Nhiệt độ phòng Standard (11,90 m²)",
+   "device": "Cảm biến T/RH phòng gắn tường",
+   "location": "room:STD12",
+   "internal": false,
+   "cable": "Cáp tín hiệu chống nhiễu 4C×0,75 mm²",
+   "L_m": 24.3
+  },
+  {
+   "panel": "DDC-AHU-2.02",
+   "type": "AI",
+   "point": "Độ ẩm phòng Standard (11,90 m²)",
+   "device": "(chung cảm biến trên)",
+   "location": "room:STD12",
+   "internal": false,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-AHU-2.02",
+   "type": "AI",
+   "point": "Nhiệt độ phòng Office",
+   "device": "Cảm biến T/RH phòng gắn tường",
+   "location": "room:OFF",
+   "internal": false,
+   "cable": "Cáp tín hiệu chống nhiễu 4C×0,75 mm²",
+   "L_m": 16.8
+  },
+  {
+   "panel": "DDC-AHU-2.02",
+   "type": "AI",
+   "point": "Độ ẩm phòng Office",
+   "device": "(chung cảm biến trên)",
+   "location": "room:OFF",
+   "internal": false,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-AHU-2.02",
+   "type": "AI",
+   "point": "Nhiệt độ ngoài trời (chọn chế độ hè/đông/nồm)",
+   "device": "Cảm biến T/RH ngoài trời có che nắng",
+   "location": "LV-2.02",
+   "internal": false,
+   "cable": "Cáp tín hiệu chống nhiễu 4C×0,75 mm²",
+   "L_m": 30.9
+  },
+  {
+   "panel": "DDC-AHU-2.02",
+   "type": "AI",
+   "point": "Độ ẩm ngoài trời",
+   "device": "(chung cảm biến trên)",
+   "location": "LV-2.02",
+   "internal": false,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-AHU-2.03",
+   "type": "DO",
+   "point": "Lệnh chạy biến tần quạt AHU-2.03",
+   "device": "Biến tần (trong tủ)",
+   "location": null,
+   "internal": true,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-AHU-2.03",
+   "type": "DI",
+   "point": "Trạng thái chạy biến tần",
+   "device": "Biến tần",
+   "location": null,
+   "internal": true,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-AHU-2.03",
+   "type": "DI",
+   "point": "Lỗi biến tần",
+   "device": "Biến tần",
+   "location": null,
+   "internal": true,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-AHU-2.03",
+   "type": "AO",
+   "point": "Đặt tốc độ biến tần 0–10 V",
+   "device": "Biến tần",
+   "location": null,
+   "internal": true,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-AHU-2.03",
+   "type": "AI",
+   "point": "Chênh áp quạt (k-factor → lưu lượng gió cấp) 0–10 V",
+   "device": "Bộ chuyển đổi chênh áp 0–1000 Pa",
+   "location": "AHU-2.03c",
+   "internal": false,
+   "cable": "Cáp tín hiệu chống nhiễu 3C×0,75 mm²",
+   "L_m": 16.9
+  },
+  {
+   "panel": "DDC-AHU-2.03",
+   "type": "DI",
+   "point": "Công tắc dòng gió quạt (airflow switch) – liên động sưởi",
+   "device": "Công tắc chênh áp 20–300 Pa",
+   "location": "AHU-2.03c",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 2C×1,0 mm²",
+   "L_m": 16.9
+  },
+  {
+   "panel": "DDC-AHU-2.03",
+   "type": "DI",
+   "point": "Chênh áp lọc G4 bẩn",
+   "device": "Công tắc chênh áp 50–500 Pa",
+   "location": "AHU-2.03c",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 2C×1,0 mm²",
+   "L_m": 16.9
+  },
+  {
+   "panel": "DDC-AHU-2.03",
+   "type": "DI",
+   "point": "Chênh áp lọc F8 bẩn",
+   "device": "Công tắc chênh áp 50–500 Pa",
+   "location": "AHU-2.03c",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 2C×1,0 mm²",
+   "L_m": 16.9
+  },
+  {
+   "panel": "DDC-AHU-2.03",
+   "type": "AI",
+   "point": "Nhiệt độ gió cấp",
+   "device": "Cảm biến T/RH ống gió (gió cấp)",
+   "location": "AHU-2.03c",
+   "internal": false,
+   "cable": "Cáp tín hiệu chống nhiễu 4C×0,75 mm²",
+   "L_m": 16.9
+  },
+  {
+   "panel": "DDC-AHU-2.03",
+   "type": "AI",
+   "point": "Độ ẩm gió cấp",
+   "device": "(chung cảm biến trên)",
+   "location": "AHU-2.03c",
+   "internal": false,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-AHU-2.03",
+   "type": "AI",
+   "point": "Nhiệt độ gió hồi",
+   "device": "Cảm biến T/RH ống gió (gió hồi)",
+   "location": "AHU-2.03c",
+   "internal": false,
+   "cable": "Cáp tín hiệu chống nhiễu 4C×0,75 mm²",
+   "L_m": 16.9
+  },
+  {
+   "panel": "DDC-AHU-2.03",
+   "type": "AI",
+   "point": "Độ ẩm gió hồi",
+   "device": "(chung cảm biến trên)",
+   "location": "AHU-2.03c",
+   "internal": false,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-AHU-2.03",
+   "type": "DO",
+   "point": "Đóng contactor sưởi cấp 2",
+   "device": "Contactor AC1 (trong tủ)",
+   "location": null,
+   "internal": true,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-AHU-2.03",
+   "type": "DO",
+   "point": "Đóng contactor sưởi cấp 3",
+   "device": "Contactor AC1 (trong tủ)",
+   "location": null,
+   "internal": true,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-AHU-2.03",
+   "type": "AO",
+   "point": "Điều biến sưởi cấp 1 (SSR/thyristor 0–10 V)",
+   "device": "Bộ điều khiển thyristor 3P (trong tủ)",
+   "location": null,
+   "internal": true,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-AHU-2.03",
+   "type": "DI",
+   "point": "Bảo vệ quá nhiệt sưởi (thermostat an toàn reset tay) – cắt cứng",
+   "device": "Thermostat an toàn (kèm AHU)",
+   "location": "AHU-2.03c",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 2C×1,0 mm²",
+   "L_m": 16.9
+  },
+  {
+   "panel": "DDC-AHU-2.03",
+   "type": "DI",
+   "point": "Lỗi mạch sưởi (RCD/MCB nhảy)",
+   "device": "Tiếp điểm phụ RCD/MCB",
+   "location": null,
+   "internal": true,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-AHU-2.03",
+   "type": "DO",
+   "point": "Mở van gió tươi OA (on/off, lò xo hồi)",
+   "device": "Bộ chấp hành van gió 24 VAC",
+   "location": "AHU-2.03c",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 3C×1,0 mm²",
+   "L_m": 16.9
+  },
+  {
+   "panel": "DDC-AHU-2.03",
+   "type": "DO",
+   "point": "Cho phép chạy CDU-2.03-1 (DX-kit)",
+   "device": "Bộ DX-kit tại AHU",
+   "location": "AHU-2.03c",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 2C×1,0 mm²",
+   "L_m": 16.9
+  },
+  {
+   "panel": "DDC-AHU-2.03",
+   "type": "AO",
+   "point": "Yêu cầu công suất CDU-2.03-1 0–10 V",
+   "device": "Bộ DX-kit tại AHU",
+   "location": "AHU-2.03c",
+   "internal": false,
+   "cable": "Cáp tín hiệu chống nhiễu 2C×0,75 mm²",
+   "L_m": 16.9
+  },
+  {
+   "panel": "DDC-AHU-2.03",
+   "type": "DI",
+   "point": "Trạng thái chạy CDU-2.03-1",
+   "device": "Bộ DX-kit tại AHU",
+   "location": "AHU-2.03c",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 2C×1,0 mm²",
+   "L_m": 16.9
+  },
+  {
+   "panel": "DDC-AHU-2.03",
+   "type": "DI",
+   "point": "Lỗi CDU-2.03-1",
+   "device": "Bộ DX-kit tại AHU",
+   "location": "AHU-2.03c",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 2C×1,0 mm²",
+   "L_m": 16.9
+  },
+  {
+   "panel": "DDC-AHU-2.03",
+   "type": "DO",
+   "point": "Cho phép chạy CDU-2.03-2 (DX-kit)",
+   "device": "Bộ DX-kit tại AHU",
+   "location": "AHU-2.03c",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 2C×1,0 mm²",
+   "L_m": 16.9
+  },
+  {
+   "panel": "DDC-AHU-2.03",
+   "type": "AO",
+   "point": "Yêu cầu công suất CDU-2.03-2 0–10 V",
+   "device": "Bộ DX-kit tại AHU",
+   "location": "AHU-2.03c",
+   "internal": false,
+   "cable": "Cáp tín hiệu chống nhiễu 2C×0,75 mm²",
+   "L_m": 16.9
+  },
+  {
+   "panel": "DDC-AHU-2.03",
+   "type": "DI",
+   "point": "Trạng thái chạy CDU-2.03-2",
+   "device": "Bộ DX-kit tại AHU",
+   "location": "AHU-2.03c",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 2C×1,0 mm²",
+   "L_m": 16.9
+  },
+  {
+   "panel": "DDC-AHU-2.03",
+   "type": "DI",
+   "point": "Lỗi CDU-2.03-2",
+   "device": "Bộ DX-kit tại AHU",
+   "location": "AHU-2.03c",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 2C×1,0 mm²",
+   "L_m": 16.9
+  },
+  {
+   "panel": "DDC-AHU-2.03",
+   "type": "DI",
+   "point": "Báo mức nước ngưng cao CP-2.01 (cắt cứng CDU)",
+   "device": "Phao báo mức của bơm",
+   "location": "CP-2.01",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 2C×1,0 mm²",
+   "L_m": 16.5
+  },
+  {
+   "panel": "DDC-AHU-2.03",
+   "type": "DI",
+   "point": "Tín hiệu báo cháy – dừng AHU (cắt cứng biến tần + sưởi)",
+   "device": "Module rơ le báo cháy (gói PCCC, đặt cạnh DB.HVAC)",
+   "location": "FA",
+   "internal": false,
+   "cable": "Cáp chống cháy FR 2C×1,5 mm²",
+   "L_m": 14.6
+  },
+  {
+   "panel": "DDC-AHU-2.03",
+   "type": "DI",
+   "point": "Công tắc chọn Tay/Tự động (H-O-A)",
+   "device": "Công tắc mặt tủ",
+   "location": null,
+   "internal": true,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-AHU-2.03",
+   "type": "AI",
+   "point": "Nhiệt độ phòng Instrument room",
+   "device": "Cảm biến T/RH phòng gắn tường",
+   "location": "room:INS",
+   "internal": false,
+   "cable": "Cáp tín hiệu chống nhiễu 4C×0,75 mm²",
+   "L_m": 15.6
+  },
+  {
+   "panel": "DDC-AHU-2.03",
+   "type": "AI",
+   "point": "Độ ẩm phòng Instrument room",
+   "device": "(chung cảm biến trên)",
+   "location": "room:INS",
+   "internal": false,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-AHU-2.03",
+   "type": "AI",
+   "point": "Nhiệt độ phòng Instrument room",
+   "device": "Cảm biến T/RH phòng gắn tường",
+   "location": "room:INS",
+   "internal": false,
+   "cable": "Cáp tín hiệu chống nhiễu 4C×0,75 mm²",
+   "L_m": 15.6
+  },
+  {
+   "panel": "DDC-AHU-2.03",
+   "type": "AI",
+   "point": "Độ ẩm phòng Instrument room",
+   "device": "(chung cảm biến trên)",
+   "location": "room:INS",
+   "internal": false,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-AHU-2.03",
+   "type": "DO",
+   "point": "Cho phép chạy máy hút ẩm DH-2.01 (RH > 55 %)",
+   "device": "Tiếp điểm điều khiển từ xa DH",
+   "location": "DH-2.01",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 2C×1,0 mm²",
+   "L_m": 12.3
+  },
+  {
+   "panel": "DDC-AHU-2.03",
+   "type": "DI",
+   "point": "Trạng thái chạy DH-2.01",
+   "device": "Tiếp điểm DH",
+   "location": "DH-2.01",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 2C×1,0 mm²",
+   "L_m": 12.3
+  },
+  {
+   "panel": "DDC-AHU-2.03",
+   "type": "DI",
+   "point": "Lỗi/bồn đầy DH-2.01",
+   "device": "Tiếp điểm DH",
+   "location": "DH-2.01",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 2C×1,0 mm²",
+   "L_m": 12.3
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DO",
+   "point": "Lệnh chạy biến tần FAF-2.01",
+   "device": "Biến tần (trong tủ)",
+   "location": null,
+   "internal": true,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DI",
+   "point": "Trạng thái chạy FAF-2.01",
+   "device": "Biến tần",
+   "location": null,
+   "internal": true,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DI",
+   "point": "Lỗi biến tần FAF-2.01",
+   "device": "Biến tần",
+   "location": null,
+   "internal": true,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "AO",
+   "point": "Đặt tốc độ FAF-2.01",
+   "device": "Biến tần",
+   "location": null,
+   "internal": true,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "AI",
+   "point": "Áp suất tĩnh ống gió bù FAF-2.01 (PID)",
+   "device": "Cảm biến áp suất ống gió 0–500 Pa",
+   "location": "FAF-2.01",
+   "internal": false,
+   "cable": "Cáp tín hiệu chống nhiễu 3C×0,75 mm²",
+   "L_m": 18.7
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DI",
+   "point": "Chênh áp lọc G4 FAF-2.01",
+   "device": "Công tắc chênh áp 50–500 Pa",
+   "location": "FAF-2.01",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 2C×1,0 mm²",
+   "L_m": 18.7
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DI",
+   "point": "Chênh áp lọc F8 FAF-2.01",
+   "device": "Công tắc chênh áp 50–500 Pa",
+   "location": "FAF-2.01",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 2C×1,0 mm²",
+   "L_m": 18.7
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DO",
+   "point": "Mở van gió tươi cửa hút FAF-2.01",
+   "device": "Bộ chấp hành van gió 24 VAC",
+   "location": "FAF-2.01",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 3C×1,0 mm²",
+   "L_m": 18.7
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DO",
+   "point": "Lệnh chạy biến tần FAF-2.02",
+   "device": "Biến tần (trong tủ)",
+   "location": null,
+   "internal": true,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DI",
+   "point": "Trạng thái chạy FAF-2.02",
+   "device": "Biến tần",
+   "location": null,
+   "internal": true,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DI",
+   "point": "Lỗi biến tần FAF-2.02",
+   "device": "Biến tần",
+   "location": null,
+   "internal": true,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "AO",
+   "point": "Đặt tốc độ FAF-2.02",
+   "device": "Biến tần",
+   "location": null,
+   "internal": true,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "AI",
+   "point": "Áp suất tĩnh ống gió bù FAF-2.02 (PID)",
+   "device": "Cảm biến áp suất ống gió 0–500 Pa",
+   "location": "FAF-2.02",
+   "internal": false,
+   "cable": "Cáp tín hiệu chống nhiễu 3C×0,75 mm²",
+   "L_m": 18.2
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DI",
+   "point": "Chênh áp lọc G4 FAF-2.02",
+   "device": "Công tắc chênh áp 50–500 Pa",
+   "location": "FAF-2.02",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 2C×1,0 mm²",
+   "L_m": 18.2
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DI",
+   "point": "Chênh áp lọc F8 FAF-2.02",
+   "device": "Công tắc chênh áp 50–500 Pa",
+   "location": "FAF-2.02",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 2C×1,0 mm²",
+   "L_m": 18.2
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DO",
+   "point": "Mở van gió tươi cửa hút FAF-2.02",
+   "device": "Bộ chấp hành van gió 24 VAC",
+   "location": "FAF-2.02",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 3C×1,0 mm²",
+   "L_m": 18.2
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DO",
+   "point": "Lệnh chạy EAF-2.01 (contactor)",
+   "device": "Contactor (trong tủ)",
+   "location": null,
+   "internal": true,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DI",
+   "point": "Trạng thái chạy EAF-2.01 (tiếp điểm phụ)",
+   "device": "Contactor",
+   "location": null,
+   "internal": true,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DI",
+   "point": "Quá tải EAF-2.01 (MPCB)",
+   "device": "MPCB",
+   "location": null,
+   "internal": true,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DI",
+   "point": "Xác nhận dòng gió EAF-2.01",
+   "device": "Công tắc chênh áp 20–300 Pa",
+   "location": "EAF-2.01",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 2C×1,0 mm²",
+   "L_m": 24.5
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DO",
+   "point": "Lệnh chạy EAF-2.02 (contactor)",
+   "device": "Contactor (trong tủ)",
+   "location": null,
+   "internal": true,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DI",
+   "point": "Trạng thái chạy EAF-2.02 (tiếp điểm phụ)",
+   "device": "Contactor",
+   "location": null,
+   "internal": true,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DI",
+   "point": "Quá tải EAF-2.02 (MPCB)",
+   "device": "MPCB",
+   "location": null,
+   "internal": true,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DI",
+   "point": "Xác nhận dòng gió EAF-2.02",
+   "device": "Công tắc chênh áp 20–300 Pa",
+   "location": "EAF-2.02",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 2C×1,0 mm²",
+   "L_m": 23.9
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DO",
+   "point": "Lệnh chạy EAF-2.03 (contactor)",
+   "device": "Contactor (trong tủ)",
+   "location": null,
+   "internal": true,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DI",
+   "point": "Trạng thái chạy EAF-2.03 (tiếp điểm phụ)",
+   "device": "Contactor",
+   "location": null,
+   "internal": true,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DI",
+   "point": "Quá tải EAF-2.03 (MPCB)",
+   "device": "MPCB",
+   "location": null,
+   "internal": true,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DI",
+   "point": "Xác nhận dòng gió EAF-2.03",
+   "device": "Công tắc chênh áp 20–300 Pa",
+   "location": "EAF-2.03",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 2C×1,0 mm²",
+   "L_m": 17.3
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DI",
+   "point": "Yêu cầu chạy quạt tủ DIG-FH1 (công tắc tại tủ)",
+   "device": "Hộp công tắc ON/OFF + đèn tại tủ hood",
+   "location": "hood:DIG-FH1",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 4C×1,0 mm²",
+   "L_m": 34.9
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DO",
+   "point": "Đóng contactor quạt tủ DIG-FH1",
+   "device": "Contactor (trong tủ)",
+   "location": null,
+   "internal": true,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DI",
+   "point": "Xác nhận chạy quạt tủ DIG-FH1 (rơ le dòng)",
+   "device": "Rơ le dòng (trong tủ)",
+   "location": null,
+   "internal": true,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DO",
+   "point": "Mở van gió bù MD-DIG-FH1",
+   "device": "Bộ chấp hành van gió 24 VAC",
+   "location": "hood:DIG-FH1",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 3C×1,0 mm²",
+   "L_m": 34.4
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DI",
+   "point": "Yêu cầu chạy quạt tủ DIG-FH2 (công tắc tại tủ)",
+   "device": "Hộp công tắc ON/OFF + đèn tại tủ hood",
+   "location": "hood:DIG-FH2",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 4C×1,0 mm²",
+   "L_m": 36.2
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DO",
+   "point": "Đóng contactor quạt tủ DIG-FH2",
+   "device": "Contactor (trong tủ)",
+   "location": null,
+   "internal": true,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DI",
+   "point": "Xác nhận chạy quạt tủ DIG-FH2 (rơ le dòng)",
+   "device": "Rơ le dòng (trong tủ)",
+   "location": null,
+   "internal": true,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DO",
+   "point": "Mở van gió bù MD-DIG-FH2",
+   "device": "Bộ chấp hành van gió 24 VAC",
+   "location": "hood:DIG-FH2",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 3C×1,0 mm²",
+   "L_m": 35.7
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DI",
+   "point": "Yêu cầu chạy quạt tủ ST1-FH1 (công tắc tại tủ)",
+   "device": "Hộp công tắc ON/OFF + đèn tại tủ hood",
+   "location": "hood:ST1-FH1",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 4C×1,0 mm²",
+   "L_m": 30.2
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DO",
+   "point": "Đóng contactor quạt tủ ST1-FH1",
+   "device": "Contactor (trong tủ)",
+   "location": null,
+   "internal": true,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DI",
+   "point": "Xác nhận chạy quạt tủ ST1-FH1 (rơ le dòng)",
+   "device": "Rơ le dòng (trong tủ)",
+   "location": null,
+   "internal": true,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DO",
+   "point": "Mở van gió bù MD-ST1-FH1",
+   "device": "Bộ chấp hành van gió 24 VAC",
+   "location": "hood:ST1-FH1",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 3C×1,0 mm²",
+   "L_m": 29.7
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DI",
+   "point": "Yêu cầu chạy quạt tủ ST1-FH2 (công tắc tại tủ)",
+   "device": "Hộp công tắc ON/OFF + đèn tại tủ hood",
+   "location": "hood:ST1-FH2",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 4C×1,0 mm²",
+   "L_m": 28.4
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DO",
+   "point": "Đóng contactor quạt tủ ST1-FH2",
+   "device": "Contactor (trong tủ)",
+   "location": null,
+   "internal": true,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DI",
+   "point": "Xác nhận chạy quạt tủ ST1-FH2 (rơ le dòng)",
+   "device": "Rơ le dòng (trong tủ)",
+   "location": null,
+   "internal": true,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DO",
+   "point": "Mở van gió bù MD-ST1-FH2",
+   "device": "Bộ chấp hành van gió 24 VAC",
+   "location": "hood:ST1-FH2",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 3C×1,0 mm²",
+   "L_m": 27.9
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DI",
+   "point": "Yêu cầu chạy quạt tủ ST1-FH3 (công tắc tại tủ)",
+   "device": "Hộp công tắc ON/OFF + đèn tại tủ hood",
+   "location": "hood:ST1-FH3",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 4C×1,0 mm²",
+   "L_m": 27.4
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DO",
+   "point": "Đóng contactor quạt tủ ST1-FH3",
+   "device": "Contactor (trong tủ)",
+   "location": null,
+   "internal": true,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DI",
+   "point": "Xác nhận chạy quạt tủ ST1-FH3 (rơ le dòng)",
+   "device": "Rơ le dòng (trong tủ)",
+   "location": null,
+   "internal": true,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DO",
+   "point": "Mở van gió bù MD-ST1-FH3",
+   "device": "Bộ chấp hành van gió 24 VAC",
+   "location": "hood:ST1-FH3",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 3C×1,0 mm²",
+   "L_m": 26.9
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DI",
+   "point": "Yêu cầu chạy quạt tủ ST2-FH1 (công tắc tại tủ)",
+   "device": "Hộp công tắc ON/OFF + đèn tại tủ hood",
+   "location": "hood:ST2-FH1",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 4C×1,0 mm²",
+   "L_m": 23.4
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DO",
+   "point": "Đóng contactor quạt tủ ST2-FH1",
+   "device": "Contactor (trong tủ)",
+   "location": null,
+   "internal": true,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DI",
+   "point": "Xác nhận chạy quạt tủ ST2-FH1 (rơ le dòng)",
+   "device": "Rơ le dòng (trong tủ)",
+   "location": null,
+   "internal": true,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DO",
+   "point": "Mở van gió bù MD-ST2-FH1",
+   "device": "Bộ chấp hành van gió 24 VAC",
+   "location": "hood:ST2-FH1",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 3C×1,0 mm²",
+   "L_m": 22.9
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DI",
+   "point": "Yêu cầu chạy quạt tủ ST2-FH2 (công tắc tại tủ)",
+   "device": "Hộp công tắc ON/OFF + đèn tại tủ hood",
+   "location": "hood:ST2-FH2",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 4C×1,0 mm²",
+   "L_m": 25.2
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DO",
+   "point": "Đóng contactor quạt tủ ST2-FH2",
+   "device": "Contactor (trong tủ)",
+   "location": null,
+   "internal": true,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DI",
+   "point": "Xác nhận chạy quạt tủ ST2-FH2 (rơ le dòng)",
+   "device": "Rơ le dòng (trong tủ)",
+   "location": null,
+   "internal": true,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DO",
+   "point": "Mở van gió bù MD-ST2-FH2",
+   "device": "Bộ chấp hành van gió 24 VAC",
+   "location": "hood:ST2-FH2",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 3C×1,0 mm²",
+   "L_m": 24.7
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DI",
+   "point": "Yêu cầu chạy quạt tủ ST2-FH3 (công tắc tại tủ)",
+   "device": "Hộp công tắc ON/OFF + đèn tại tủ hood",
+   "location": "hood:ST2-FH3",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 4C×1,0 mm²",
+   "L_m": 27.1
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DO",
+   "point": "Đóng contactor quạt tủ ST2-FH3",
+   "device": "Contactor (trong tủ)",
+   "location": null,
+   "internal": true,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DI",
+   "point": "Xác nhận chạy quạt tủ ST2-FH3 (rơ le dòng)",
+   "device": "Rơ le dòng (trong tủ)",
+   "location": null,
+   "internal": true,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DO",
+   "point": "Mở van gió bù MD-ST2-FH3",
+   "device": "Bộ chấp hành van gió 24 VAC",
+   "location": "hood:ST2-FH3",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 3C×1,0 mm²",
+   "L_m": 26.6
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DI",
+   "point": "Yêu cầu chạy quạt tủ ST2-FH4 (công tắc tại tủ)",
+   "device": "Hộp công tắc ON/OFF + đèn tại tủ hood",
+   "location": "hood:ST2-FH4",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 4C×1,0 mm²",
+   "L_m": 20.2
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DO",
+   "point": "Đóng contactor quạt tủ ST2-FH4",
+   "device": "Contactor (trong tủ)",
+   "location": null,
+   "internal": true,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DI",
+   "point": "Xác nhận chạy quạt tủ ST2-FH4 (rơ le dòng)",
+   "device": "Rơ le dòng (trong tủ)",
+   "location": null,
+   "internal": true,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DO",
+   "point": "Mở van gió bù MD-ST2-FH4",
+   "device": "Bộ chấp hành van gió 24 VAC",
+   "location": "hood:ST2-FH4",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 3C×1,0 mm²",
+   "L_m": 19.7
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DI",
+   "point": "Yêu cầu chạy quạt tủ ST2-FH5 (công tắc tại tủ)",
+   "device": "Hộp công tắc ON/OFF + đèn tại tủ hood",
+   "location": "hood:ST2-FH5",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 4C×1,0 mm²",
+   "L_m": 16.4
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DO",
+   "point": "Đóng contactor quạt tủ ST2-FH5",
+   "device": "Contactor (trong tủ)",
+   "location": null,
+   "internal": true,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DI",
+   "point": "Xác nhận chạy quạt tủ ST2-FH5 (rơ le dòng)",
+   "device": "Rơ le dòng (trong tủ)",
+   "location": null,
+   "internal": true,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DO",
+   "point": "Mở van gió bù MD-ST2-FH5",
+   "device": "Bộ chấp hành van gió 24 VAC",
+   "location": "hood:ST2-FH5",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 3C×1,0 mm²",
+   "L_m": 15.9
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DI",
+   "point": "Yêu cầu chạy quạt tủ ST2-FH6 (công tắc tại tủ)",
+   "device": "Hộp công tắc ON/OFF + đèn tại tủ hood",
+   "location": "hood:ST2-FH6",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 4C×1,0 mm²",
+   "L_m": 18.2
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DO",
+   "point": "Đóng contactor quạt tủ ST2-FH6",
+   "device": "Contactor (trong tủ)",
+   "location": null,
+   "internal": true,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DI",
+   "point": "Xác nhận chạy quạt tủ ST2-FH6 (rơ le dòng)",
+   "device": "Rơ le dòng (trong tủ)",
+   "location": null,
+   "internal": true,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DO",
+   "point": "Mở van gió bù MD-ST2-FH6",
+   "device": "Bộ chấp hành van gió 24 VAC",
+   "location": "hood:ST2-FH6",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 3C×1,0 mm²",
+   "L_m": 17.7
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DI",
+   "point": "Yêu cầu chạy quạt tủ STD20-FH1 (công tắc tại tủ)",
+   "device": "Hộp công tắc ON/OFF + đèn tại tủ hood",
+   "location": "hood:STD20-FH1",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 4C×1,0 mm²",
+   "L_m": 12.8
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DO",
+   "point": "Đóng contactor quạt tủ STD20-FH1",
+   "device": "Contactor (trong tủ)",
+   "location": null,
+   "internal": true,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DI",
+   "point": "Xác nhận chạy quạt tủ STD20-FH1 (rơ le dòng)",
+   "device": "Rơ le dòng (trong tủ)",
+   "location": null,
+   "internal": true,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DO",
+   "point": "Mở van gió bù MD-STD20-FH1",
+   "device": "Bộ chấp hành van gió 24 VAC",
+   "location": "hood:STD20-FH1",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 3C×1,0 mm²",
+   "L_m": 12.3
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DI",
+   "point": "Yêu cầu chạy quạt tủ STD20-FH2 (công tắc tại tủ)",
+   "device": "Hộp công tắc ON/OFF + đèn tại tủ hood",
+   "location": "hood:STD20-FH2",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 4C×1,0 mm²",
+   "L_m": 14.6
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DO",
+   "point": "Đóng contactor quạt tủ STD20-FH2",
+   "device": "Contactor (trong tủ)",
+   "location": null,
+   "internal": true,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DI",
+   "point": "Xác nhận chạy quạt tủ STD20-FH2 (rơ le dòng)",
+   "device": "Rơ le dòng (trong tủ)",
+   "location": null,
+   "internal": true,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DO",
+   "point": "Mở van gió bù MD-STD20-FH2",
+   "device": "Bộ chấp hành van gió 24 VAC",
+   "location": "hood:STD20-FH2",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 3C×1,0 mm²",
+   "L_m": 14.1
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DI",
+   "point": "Yêu cầu chạy quạt tủ STD20-FH3 (công tắc tại tủ)",
+   "device": "Hộp công tắc ON/OFF + đèn tại tủ hood",
+   "location": "hood:STD20-FH3",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 4C×1,0 mm²",
+   "L_m": 18.8
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DO",
+   "point": "Đóng contactor quạt tủ STD20-FH3",
+   "device": "Contactor (trong tủ)",
+   "location": null,
+   "internal": true,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DI",
+   "point": "Xác nhận chạy quạt tủ STD20-FH3 (rơ le dòng)",
+   "device": "Rơ le dòng (trong tủ)",
+   "location": null,
+   "internal": true,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DO",
+   "point": "Mở van gió bù MD-STD20-FH3",
+   "device": "Bộ chấp hành van gió 24 VAC",
+   "location": "hood:STD20-FH3",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 3C×1,0 mm²",
+   "L_m": 18.3
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DI",
+   "point": "Yêu cầu chạy quạt tủ STD20-FH4 (công tắc tại tủ)",
+   "device": "Hộp công tắc ON/OFF + đèn tại tủ hood",
+   "location": "hood:STD20-FH4",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 4C×1,0 mm²",
+   "L_m": 19.6
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DO",
+   "point": "Đóng contactor quạt tủ STD20-FH4",
+   "device": "Contactor (trong tủ)",
+   "location": null,
+   "internal": true,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DI",
+   "point": "Xác nhận chạy quạt tủ STD20-FH4 (rơ le dòng)",
+   "device": "Rơ le dòng (trong tủ)",
+   "location": null,
+   "internal": true,
+   "cable": null,
+   "L_m": 0.0
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DO",
+   "point": "Mở van gió bù MD-STD20-FH4",
+   "device": "Bộ chấp hành van gió 24 VAC",
+   "location": "hood:STD20-FH4",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 3C×1,0 mm²",
+   "L_m": 19.1
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DO",
+   "point": "Mở van gió bù MD-G-DIG (theo EAF-2.01 chạy)",
+   "device": "Bộ chấp hành van gió 24 VAC",
+   "location": "MD-G-DIG",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 3C×1,0 mm²",
+   "L_m": 30.7
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DO",
+   "point": "Mở van gió bù MD-G-KJE (theo EAF-2.01 chạy)",
+   "device": "Bộ chấp hành van gió 24 VAC",
+   "location": "MD-G-KJE",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 3C×1,0 mm²",
+   "L_m": 27.0
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DO",
+   "point": "Mở van gió bù MD-G-ST1 (theo EAF-2.01 chạy)",
+   "device": "Bộ chấp hành van gió 24 VAC",
+   "location": "MD-G-ST1",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 3C×1,0 mm²",
+   "L_m": 24.3
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DO",
+   "point": "Mở van gió bù MD-G-PRE (theo EAF-2.03 chạy)",
+   "device": "Bộ chấp hành van gió 24 VAC",
+   "location": "MD-G-PRE",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 3C×1,0 mm²",
+   "L_m": 22.9
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DO",
+   "point": "Mở van gió bù MD-G-ST2 (theo EAF-2.02 chạy)",
+   "device": "Bộ chấp hành van gió 24 VAC",
+   "location": "MD-G-ST2",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 3C×1,0 mm²",
+   "L_m": 17.7
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DO",
+   "point": "Mở van gió bù MD-G-STD20 (theo EAF-2.02 chạy)",
+   "device": "Bộ chấp hành van gió 24 VAC",
+   "location": "MD-G-STD20",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 3C×1,0 mm²",
+   "L_m": 13.2
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DO",
+   "point": "Mở van gió bù MD-G-STD12 (theo EAF-2.02 chạy)",
+   "device": "Bộ chấp hành van gió 24 VAC",
+   "location": "MD-G-STD12",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 3C×1,0 mm²",
+   "L_m": 20.5
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DO",
+   "point": "Lệnh chạy scrubber SCR-2.01 (từ xa)",
+   "device": "Tủ điều khiển scrubber (vendor)",
+   "location": "SCR-2.01",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 2C×1,0 mm²",
+   "L_m": 40.4
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DI",
+   "point": "Trạng thái chạy scrubber (cho phép quạt hood acid)",
+   "device": "Tủ scrubber (tiếp điểm khô)",
+   "location": "SCR-2.01",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 2C×1,0 mm²",
+   "L_m": 40.4
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DI",
+   "point": "Lỗi tổng scrubber (pH, mức, quạt, bơm)",
+   "device": "Tủ scrubber (tiếp điểm khô)",
+   "location": "SCR-2.01",
+   "internal": false,
+   "cable": "Cáp ĐK chống nhiễu 2C×1,0 mm²",
+   "L_m": 40.4
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DI",
+   "point": "Tín hiệu báo cháy – dừng FAF, đóng van bù",
+   "device": "Module rơ le báo cháy (gói PCCC)",
+   "location": "FA",
+   "internal": false,
+   "cable": "Cáp chống cháy FR 2C×1,5 mm²",
+   "L_m": 8.2
+  },
+  {
+   "panel": "DDC-FAN",
+   "type": "DI",
+   "point": "Công tắc chọn Tay/Tự động (H-O-A)",
+   "device": "Công tắc mặt tủ",
+   "location": null,
+   "internal": true,
+   "cable": null,
+   "L_m": 0.0
+  }
+ ],
+ "io_summary": {
+  "DDC-AHU-2.01": {
+   "DI": 16,
+   "DO": 7,
+   "AI": 21,
+   "AO": 5,
+   "total": 49,
+   "DI_spare": 20,
+   "DO_spare": 9,
+   "AI_spare": 26,
+   "AO_spare": 6
+  },
+  "DDC-AHU-2.02": {
+   "DI": 12,
+   "DO": 5,
+   "AI": 15,
+   "AO": 3,
+   "total": 35,
+   "DI_spare": 15,
+   "DO_spare": 6,
+   "AI_spare": 18,
+   "AO_spare": 4
+  },
+  "DDC-AHU-2.03": {
+   "DI": 16,
+   "DO": 7,
+   "AI": 9,
+   "AO": 4,
+   "total": 36,
+   "DI_spare": 20,
+   "DO_spare": 9,
+   "AI_spare": 11,
+   "AO_spare": 5
+  },
+  "DDC-FAN": {
+   "DI": 51,
+   "DO": 45,
+   "AI": 2,
+   "AO": 2,
+   "total": 100,
+   "DI_spare": 62,
+   "DO_spare": 54,
+   "AI_spare": 3,
+   "AO_spare": 3
+  }
+ },
+ "io_total": {
+  "DI": 95,
+  "DO": 64,
+  "AI": 47,
+  "AO": 14,
+  "total": 220
+ },
+ "extra_control_cables": [
+  {
+   "cable": "Cáp mạng RS485 1 đôi xoắn chống nhiễu 0,75 mm² (BACnet MS/TP/Modbus)",
+   "desc": "Mạng BACnet MS/TP/Modbus DB.HVAC → DDC-FAN (đồng hồ điện + DDC)",
+   "L_m": 8.2
+  },
+  {
+   "cable": "Cáp mạng RS485 1 đôi xoắn chống nhiễu 0,75 mm² (BACnet MS/TP/Modbus)",
+   "desc": "Mạng BACnet MS/TP/Modbus DDC-FAN → DDC-AHU-2.02 (đồng hồ điện + DDC)",
+   "L_m": 8.4
+  },
+  {
+   "cable": "Cáp mạng RS485 1 đôi xoắn chống nhiễu 0,75 mm² (BACnet MS/TP/Modbus)",
+   "desc": "Mạng BACnet MS/TP/Modbus DDC-AHU-2.02 → DDC-AHU-2.01 (đồng hồ điện + DDC)",
+   "L_m": 12.2
+  },
+  {
+   "cable": "Cáp mạng RS485 1 đôi xoắn chống nhiễu 0,75 mm² (BACnet MS/TP/Modbus)",
+   "desc": "Mạng BACnet MS/TP/Modbus DDC-AHU-2.01 → DDC-AHU-2.03 (đồng hồ điện + DDC)",
+   "L_m": 16.6
+  },
+  {
+   "cable": "Cáp truyền tín hiệu DX-kit ↔ CDU 2C×1,25 mm² chống nhiễu",
+   "desc": "Truyền tín hiệu DX-kit AHU-2.01 ↔ CDU-2.01-1",
+   "L_m": 42.5
+  },
+  {
+   "cable": "Cáp truyền tín hiệu DX-kit ↔ CDU 2C×1,25 mm² chống nhiễu",
+   "desc": "Truyền tín hiệu DX-kit AHU-2.01 ↔ CDU-2.01-2",
+   "L_m": 43.7
+  },
+  {
+   "cable": "Cáp truyền tín hiệu DX-kit ↔ CDU 2C×1,25 mm² chống nhiễu",
+   "desc": "Truyền tín hiệu DX-kit AHU-2.01 ↔ CDU-2.01-3",
+   "L_m": 44.8
+  },
+  {
+   "cable": "Cáp truyền tín hiệu DX-kit ↔ CDU 2C×1,25 mm² chống nhiễu",
+   "desc": "Truyền tín hiệu DX-kit AHU-2.02 ↔ CDU-2.02",
+   "L_m": 21.4
+  },
+  {
+   "cable": "Cáp truyền tín hiệu DX-kit ↔ CDU 2C×1,25 mm² chống nhiễu",
+   "desc": "Truyền tín hiệu DX-kit AHU-2.03 ↔ CDU-2.03-1",
+   "L_m": 52.0
+  },
+  {
+   "cable": "Cáp truyền tín hiệu DX-kit ↔ CDU 2C×1,25 mm² chống nhiễu",
+   "desc": "Truyền tín hiệu DX-kit AHU-2.03 ↔ CDU-2.03-2",
+   "L_m": 53.2
+  }
+ ],
+ "sensors": {
+  "Cảm biến nhiệt độ/độ ẩm phòng gắn tường": {
+   "spec": "0–50 °C ±0,3 K; 0–100 %RH ±2 %; ra 0–10 V; 24 VAC/DC; vỏ chịu hóa chất cho phòng hóa",
+   "qty": 14
+  },
+  "Cảm biến nhiệt độ/độ ẩm ống gió": {
+   "spec": "Que 200 mm, ±0,3 K / ±2 %RH, 0–10 V (gió cấp + gió hồi mỗi AHU)",
+   "qty": 6
+  },
+  "Cảm biến nhiệt độ/độ ẩm ngoài trời": {
+   "spec": "IP65, có hộp che nắng, 0–10 V",
+   "qty": 1
+  },
+  "Bộ chuyển đổi chênh áp quạt AHU (đo lưu lượng k-factor)": {
+   "spec": "0–1000 Pa, 0–10 V, kèm ống mềm & đầu đo",
+   "qty": 3
+  },
+  "Cảm biến áp suất tĩnh ống gió bù FAF": {
+   "spec": "0–500 Pa, 0–10 V, đầu đo tĩnh áp",
+   "qty": 2
+  },
+  "Công tắc chênh áp lọc": {
+   "spec": "50–500 Pa, tiếp điểm SPDT (G4 + F8 mỗi AHU/FAF)",
+   "qty": 10
+  },
+  "Công tắc dòng gió (airflow switch)": {
+   "spec": "20–300 Pa, SPDT (3 AHU – liên động sưởi; 3 EAF – xác nhận hút)",
+   "qty": 6
+  },
+  "Thermostat an toàn sưởi reset tay": {
+   "spec": "Kèm cụm sưởi AHU – WP4 chỉ đấu nối (không tính tiền nếu AHU đã kèm)",
+   "qty": 3
+  },
+  "Bộ chấp hành van gió on/off lò xo hồi 24 VAC": {
+   "spec": "≥ 10 Nm, thời gian chạy ≤ 90 s; van gió bù 15 hood + 7 nhóm EAF + 3 OA AHU + 2 OA FAF (thân van thuộc WP3)",
+   "qty": 27
+  },
+  "Hộp công tắc tại tủ hood": {
+   "spec": "Công tắc ON/OFF + đèn báo chạy, 24 VDC, IP54, gắn trên tủ hood",
+   "qty": 15
+  },
+  "Rơ le dòng (current sensing relay) quạt tủ hood": {
+   "spec": "Lõi xuyên, 0,5–5 A, tiếp điểm khô (lắp trong DDC-FAN)",
+   "qty": 15
+  }
+ },
+ "group_make_up_dampers": {
+  "MD-G-DIG": {
+   "linked_fan": "EAF-2.01",
+   "points": [
+    "DIG-CH1"
+   ],
+   "xy_mm": [
+    8518.0,
+    15104.0
+   ]
+  },
+  "MD-G-KJE": {
+   "linked_fan": "EAF-2.01",
+   "points": [
+    "KJE-CH1"
+   ],
+   "xy_mm": [
+    11711.0,
+    15104.0
+   ]
+  },
+  "MD-G-ST1": {
+   "linked_fan": "EAF-2.01",
+   "points": [
+    "ST1-CC1",
+    "ST1-CC2"
+   ],
+   "xy_mm": [
+    11445.0,
+    10614.0
+   ]
+  },
+  "MD-G-PRE": {
+   "linked_fan": "EAF-2.03",
+   "points": [
+    "PRE-AH1",
+    "PRE-AH2"
+   ],
+   "xy_mm": [
+    4494.0,
+    2316.0
+   ]
+  },
+  "MD-G-ST2": {
+   "linked_fan": "EAF-2.02",
+   "points": [
+    "ST2-CC1",
+    "ST2-CC2",
+    "ST2-SK1",
+    "ST2-SK2"
+   ],
+   "xy_mm": [
+    25374.0,
+    2296.0
+   ]
+  },
+  "MD-G-STD20": {
+   "linked_fan": "EAF-2.02",
+   "points": [
+    "STD20-SK1"
+   ],
+   "xy_mm": [
+    16610.0,
+    51.0
+   ]
+  },
+  "MD-G-STD12": {
+   "linked_fan": "EAF-2.02",
+   "points": [
+    "STD12-CC1"
+   ],
+   "xy_mm": [
+    20366.0,
+    -5351.0
+   ]
+  }
+ },
+ "control_sequences": [
+  {
+   "topic": "AHU – khởi động",
+   "text": "Lệnh chạy (lịch/BMS/H-O-A) → mở van OA → trễ 60 s → biến tần chạy, giữ lưu lượng gió cấp theo chênh áp quạt (k-factor, PID). AHU-2.03 chạy 24/7. Quạt mất xác nhận (biến tần/airflow) → báo lỗi, khóa sưởi và CDU."
+  },
+  {
+   "topic": "AHU – làm lạnh",
+   "text": "Điều khiển theo nhiệt độ hồi (giới hạn bởi giá trị cao nhất của cảm biến phòng trong vùng): yêu cầu công suất 0–10 V tới DX-kit, phân cấp module CDU (lead/lag, luân phiên 24 h, chống chu kỳ ngắn 5 phút)."
+  },
+  {
+   "topic": "AHU – khử ẩm",
+   "text": "RH phòng > 60 % (Instrument > 55 %) → ưu tiên khử ẩm: CDU chạy để T sau coil ≈ 15 °C; nhiệt độ phòng giữ bằng sưởi gia nhiệt lại (SSR điều biến + 2 cấp contactor)."
+  },
+  {
+   "topic": "AHU – sưởi (đông)",
+   "text": "T phòng < 20 °C → sưởi theo PID (SSR cấp 1 điều biến, cấp 2–3 đóng tuần tự). Liên động cứng: chỉ cấp điện sưởi khi biến tần chạy + airflow switch đóng + thermostat an toàn bình thường; sau khi tắt sưởi quạt chạy thêm 3 phút. Không chạy sưởi và lạnh ở chế độ thường (chỉ đồng thời khi khử ẩm)."
+  },
+  {
+   "topic": "AHU – lọc, nước ngưng",
+   "text": "Công tắc ΔP lọc G4/F8 → báo bẩn. Phao mức cao bơm nước ngưng → cắt cứng DX-kit (CDU), báo động; quạt vẫn chạy."
+  },
+  {
+   "topic": "Máy hút ẩm DH-2.01",
+   "text": "DDC-AHU-2.03 cho phép DH chạy khi RH Instrument > 55 % (trễ 5 %), hoặc khi AHU-2.03 ở non tải không giữ được RH; giám sát chạy/lỗi/bồn đầy."
+  },
+  {
+   "topic": "Hút tủ hood ↔ gió bù",
+   "text": "Người dùng bật công tắc tại tủ → DDC mở van gió bù MD-<hood> → trễ 30 s → đóng contactor quạt tủ → rơ le dòng xác nhận → đèn tại tủ. Tắt: dừng quạt, đóng van sau 30 s."
+  },
+  {
+   "topic": "Hood acid ↔ scrubber",
+   "text": "4 hood acid (DIG-FH1/FH2, ST1-FH1, ST2-FH3): yêu cầu chạy → DO khởi động scrubber → chỉ đóng contactor quạt hood khi scrubber báo chạy; scrubber chạy thêm 10 phút sau hood acid cuối cùng tắt. Lỗi scrubber → báo động tại tủ + DDC (quạt hood giữ chạy, người dùng hạ cửa tủ)."
+  },
+  {
+   "topic": "EAF ↔ van bù nhóm",
+   "text": "EAF-2.01/2.02/2.03 chạy theo lịch (giờ làm việc; EAF-2.03 theo Instrument 24/7) → mở van bù nhóm MD-G-xx tương ứng; xác nhận dòng gió bằng công tắc ΔP. Instrument: thải bù bằng gió tươi AHU-2.03 (van OA mở khi EAF-2.03 chạy)."
+  },
+  {
+   "topic": "FAF (gió bù)",
+   "text": "FAF-2.01/2.02 được phép chạy khi có ≥ 1 van bù mở; biến tần PID giữ áp suất tĩnh ống gió bù (đặt khi T&C, ~250 Pa) nên lưu lượng tự theo số van mở; van OA cửa hút mở trước khi quạt chạy. Lỗi FAF → chỉ báo động (không dừng quạt hút)."
+  },
+  {
+   "topic": "Báo cháy",
+   "text": "Tín hiệu từ module rơ le báo cháy (gói PCCC): dừng 3 AHU (cắt cứng enable/STO biến tần + sưởi), dừng FAF, đóng van OA và van bù. Quạt hút EAF/hood/scrubber GIỮ chạy để không thoát hơi hóa chất ra phòng – cần tư vấn PCCC/CĐT xác nhận."
+  },
+  {
+   "topic": "Chế độ mùa",
+   "text": "Cảm biến T/RH ngoài trời (DDC-AHU-2.02, chia sẻ qua mạng) chọn chế độ Hè/Đông/Nồm; mạng RS485 BACnet MS/TP nối 4 tủ DDC + đồng hồ DB.HVAC."
+  }
+ ],
+ "containment": {
+  "nodes": {
+   "C-4800": [
+    15285,
+    -4800
+   ],
+   "C-1200": [
+    15285,
+    -1200
+   ],
+   "C-900": [
+    15285,
+    -900
+   ],
+   "C700": [
+    15285,
+    700
+   ],
+   "C2200": [
+    15285,
+    2200
+   ],
+   "C3900": [
+    15285,
+    3900
+   ],
+   "C5150": [
+    15285,
+    5150
+   ],
+   "C11000": [
+    15285,
+    11000
+   ],
+   "C16000": [
+    15285,
+    16000
+   ],
+   "A1": [
+    14100,
+    5150
+   ],
+   "N1": [
+    13000,
+    11000
+   ],
+   "N2": [
+    10000,
+    11000
+   ],
+   "N3": [
+    7000,
+    11000
+   ],
+   "N4": [
+    7000,
+    13855
+   ],
+   "N5": [
+    7000,
+    18000
+   ],
+   "E1": [
+    13000,
+    16000
+   ],
+   "E2": [
+    8500,
+    16000
+   ],
+   "S1": [
+    11900,
+    -1200
+   ],
+   "S2": [
+    10500,
+    -1200
+   ],
+   "S3": [
+    8575,
+    -1200
+   ],
+   "S4": [
+    4500,
+    -1200
+   ],
+   "R1": [
+    18000,
+    2200
+   ],
+   "R2": [
+    21700,
+    2200
+   ],
+   "R3": [
+    24600,
+    2200
+   ],
+   "R4": [
+    27300,
+    2200
+   ],
+   "W0": [
+    18000,
+    89
+   ],
+   "W1": [
+    18000,
+    -1482
+   ],
+   "W2": [
+    18000,
+    -5000
+   ],
+   "V1": [
+    21700,
+    334
+   ],
+   "V2": [
+    21700,
+    -1270
+   ],
+   "V3": [
+    21700,
+    7385
+   ],
+   "V4": [
+    21700,
+    9000
+   ],
+   "H1": [
+    22906,
+    9000
+   ],
+   "H2": [
+    24507,
+    9000
+   ],
+   "H3": [
+    26111,
+    9000
+   ],
+   "R5": [
+    27300,
+    5000
+   ],
+   "R6": [
+    27300,
+    9000
+   ],
+   "R7": [
+    27300,
+    9300
+   ],
+   "R8": [
+    27300,
+    -3300
+   ],
+   "R9": [
+    27300,
+    -5500
+   ],
+   "O1": [
+    28300,
+    -5500
+   ],
+   "O2": [
+    28300,
+    -9000
+   ],
+   "Y0": [
+    28800,
+    -9600
+   ],
+   "Y1": [
+    28800,
+    -10600
+   ],
+   "Y2": [
+    28800,
+    -11600
+   ],
+   "Y3": [
+    28800,
+    -12600
+   ],
+   "Y4": [
+    28800,
+    -13600
+   ],
+   "Y5": [
+    28800,
+    -14600
+   ],
+   "P1": [
+    28300,
+    9300
+   ],
+   "P2": [
+    28300,
+    15500
+   ],
+   "P_DB.HVAC": [
+    15935,
+    2200
+   ],
+   "P_DDC-FAN": [
+    15935,
+    700
+   ],
+   "P_DDC-AHU-2.02": [
+    16035,
+    -900
+   ],
+   "P_DDC-AHU-2.01": [
+    14585,
+    3900
+   ],
+   "P_DDC-AHU-2.03": [
+    14585,
+    -4800
+   ]
+  },
+  "segments": [
+   {
+    "i": 0,
+    "a": "C-4800",
+    "b": "C-1200",
+    "name": "Máng chính lối đi",
+    "env": "in",
+    "xa": 15285,
+    "ya": -4800,
+    "xb": 15285,
+    "yb": -1200,
+    "vz": 0.0,
+    "L": 3.6,
+    "n_pw": 8,
+    "n_ct": 24,
+    "pw_tray": [
+     200,
+     100
+    ],
+    "pw_area": 1268.0,
+    "pw_fill": 6.3,
+    "ct_tray": [
+     100,
+     50
+    ],
+    "ct_area": 997.0,
+    "ct_fill": 19.9
+   },
+   {
+    "i": 1,
+    "a": "C-1200",
+    "b": "C-900",
+    "name": "Máng chính lối đi",
+    "env": "in",
+    "xa": 15285,
+    "ya": -1200,
+    "xb": 15285,
+    "yb": -900,
+    "vz": 0.0,
+    "L": 0.3,
+    "n_pw": 2,
+    "n_ct": 10,
+    "pw_tray": [
+     200,
+     100
+    ],
+    "pw_area": 546.0,
+    "pw_fill": 2.7,
+    "ct_tray": [
+     100,
+     50
+    ],
+    "ct_area": 464.0,
+    "ct_fill": 9.3
+   },
+   {
+    "i": 2,
+    "a": "C-900",
+    "b": "C700",
+    "name": "Máng chính lối đi",
+    "env": "in",
+    "xa": 15285,
+    "ya": -900,
+    "xb": 15285,
+    "yb": 700,
+    "vz": 0.0,
+    "L": 1.6,
+    "n_pw": 9,
+    "n_ct": 31,
+    "pw_tray": [
+     200,
+     100
+    ],
+    "pw_area": 1601.0,
+    "pw_fill": 8.0,
+    "ct_tray": [
+     100,
+     50
+    ],
+    "ct_area": 1371.0,
+    "ct_fill": 27.4
+   },
+   {
+    "i": 3,
+    "a": "C700",
+    "b": "C2200",
+    "name": "Máng chính lối đi",
+    "env": "in",
+    "xa": 15285,
+    "ya": 700,
+    "xb": 15285,
+    "yb": 2200,
+    "vz": 0.0,
+    "L": 1.5,
+    "n_pw": 28,
+    "n_ct": 79,
+    "pw_tray": [
+     200,
+     100
+    ],
+    "pw_area": 4503.0,
+    "pw_fill": 22.5,
+    "ct_tray": [
+     200,
+     100
+    ],
+    "ct_area": 3654.0,
+    "ct_fill": 18.3
+   },
+   {
+    "i": 4,
+    "a": "C2200",
+    "b": "C3900",
+    "name": "Máng chính lối đi",
+    "env": "in",
+    "xa": 15285,
+    "ya": 2200,
+    "xb": 15285,
+    "yb": 3900,
+    "vz": 0.0,
+    "L": 1.7,
+    "n_pw": 8,
+    "n_ct": 29,
+    "pw_tray": [
+     200,
+     100
+    ],
+    "pw_area": 1474.0,
+    "pw_fill": 7.4,
+    "ct_tray": [
+     100,
+     50
+    ],
+    "ct_area": 1345.0,
+    "ct_fill": 26.9
+   },
+   {
+    "i": 5,
+    "a": "C3900",
+    "b": "C5150",
+    "name": "Máng chính lối đi",
+    "env": "in",
+    "xa": 15285,
+    "ya": 3900,
+    "xb": 15285,
+    "yb": 5150,
+    "vz": 0.0,
+    "L": 1.25,
+    "n_pw": 13,
+    "n_ct": 47,
+    "pw_tray": [
+     200,
+     100
+    ],
+    "pw_area": 1807.0,
+    "pw_fill": 9.0,
+    "ct_tray": [
+     200,
+     100
+    ],
+    "ct_area": 2068.0,
+    "ct_fill": 10.3
+   },
+   {
+    "i": 6,
+    "a": "C5150",
+    "b": "C11000",
+    "name": "Máng chính lối đi",
+    "env": "in",
+    "xa": 15285,
+    "ya": 5150,
+    "xb": 15285,
+    "yb": 11000,
+    "vz": 0.0,
+    "L": 5.85,
+    "n_pw": 7,
+    "n_ct": 21,
+    "pw_tray": [
+     200,
+     100
+    ],
+    "pw_area": 901.0,
+    "pw_fill": 4.5,
+    "ct_tray": [
+     100,
+     50
+    ],
+    "ct_area": 992.0,
+    "ct_fill": 19.8
+   },
+   {
+    "i": 7,
+    "a": "C11000",
+    "b": "C16000",
+    "name": "Máng chính lối đi",
+    "env": "in",
+    "xa": 15285,
+    "ya": 11000,
+    "xb": 15285,
+    "yb": 16000,
+    "vz": 0.0,
+    "L": 5.0,
+    "n_pw": 1,
+    "n_ct": 5,
+    "pw_tray": [
+     200,
+     100
+    ],
+    "pw_area": 123.0,
+    "pw_fill": 0.6,
+    "ct_tray": [
+     100,
+     50
+    ],
+    "ct_area": 227.0,
+    "ct_fill": 4.5
+   },
+   {
+    "i": 8,
+    "a": "C5150",
+    "b": "A1",
+    "name": "Nhánh AHU-2.01",
+    "env": "in",
+    "xa": 15285,
+    "ya": 5150,
+    "xb": 14100,
+    "yb": 5150,
+    "vz": 0.0,
+    "L": 1.19,
+    "n_pw": 6,
+    "n_ct": 25,
+    "pw_tray": [
+     100,
+     50
+    ],
+    "pw_area": 906.0,
+    "pw_fill": 18.1,
+    "ct_tray": [
+     100,
+     50
+    ],
+    "ct_area": 1026.0,
+    "ct_fill": 20.5
+   },
+   {
+    "i": 9,
+    "a": "C11000",
+    "b": "N1",
+    "name": "Nhánh bắc trái (ST1)",
+    "env": "in",
+    "xa": 15285,
+    "ya": 11000,
+    "xb": 13000,
+    "yb": 11000,
+    "vz": 0.0,
+    "L": 2.29,
+    "n_pw": 6,
+    "n_ct": 16,
+    "pw_tray": [
+     100,
+     50
+    ],
+    "pw_area": 779.0,
+    "pw_fill": 15.6,
+    "ct_tray": [
+     100,
+     50
+    ],
+    "ct_area": 764.0,
+    "ct_fill": 15.3
+   },
+   {
+    "i": 10,
+    "a": "N1",
+    "b": "N2",
+    "name": "Nhánh bắc trái (ST1)",
+    "env": "in",
+    "xa": 13000,
+    "ya": 11000,
+    "xb": 10000,
+    "yb": 11000,
+    "vz": 0.0,
+    "L": 3.0,
+    "n_pw": 5,
+    "n_ct": 12,
+    "pw_tray": [
+     100,
+     50
+    ],
+    "pw_area": 614.0,
+    "pw_fill": 12.3,
+    "ct_tray": [
+     100,
+     50
+    ],
+    "ct_area": 599.0,
+    "ct_fill": 12.0
+   },
+   {
+    "i": 11,
+    "a": "N2",
+    "b": "N3",
+    "name": "Nhánh bắc trái (ST1)",
+    "env": "in",
+    "xa": 10000,
+    "ya": 11000,
+    "xb": 7000,
+    "yb": 11000,
+    "vz": 0.0,
+    "L": 3.0,
+    "n_pw": 5,
+    "n_ct": 10,
+    "pw_tray": [
+     100,
+     50
+    ],
+    "pw_area": 614.0,
+    "pw_fill": 12.3,
+    "ct_tray": [
+     100,
+     50
+    ],
+    "ct_area": 505.0,
+    "ct_fill": 10.1
+   },
+   {
+    "i": 12,
+    "a": "N3",
+    "b": "N4",
+    "name": "Nhánh hood ST1/Digestion",
+    "env": "in",
+    "xa": 7000,
+    "ya": 11000,
+    "xb": 7000,
+    "yb": 13855,
+    "vz": 0.0,
+    "L": 2.85,
+    "n_pw": 3,
+    "n_ct": 6,
+    "pw_tray": [
+     100,
+     50
+    ],
+    "pw_area": 368.0,
+    "pw_fill": 7.4,
+    "ct_tray": [
+     100,
+     50
+    ],
+    "ct_area": 303.0,
+    "ct_fill": 6.1
+   },
+   {
+    "i": 13,
+    "a": "N4",
+    "b": "N5",
+    "name": "Nhánh hood ST1/Digestion",
+    "env": "in",
+    "xa": 7000,
+    "ya": 13855,
+    "xb": 7000,
+    "yb": 18000,
+    "vz": 0.0,
+    "L": 4.14,
+    "n_pw": 2,
+    "n_ct": 4,
+    "pw_tray": [
+     100,
+     50
+    ],
+    "pw_area": 245.0,
+    "pw_fill": 4.9,
+    "ct_tray": [
+     100,
+     50
+    ],
+    "ct_area": 202.0,
+    "ct_fill": 4.0
+   },
+   {
+    "i": 14,
+    "a": "C16000",
+    "b": "E1",
+    "name": "Nhánh EAF-2.01/Kjeldahl",
+    "env": "in",
+    "xa": 15285,
+    "ya": 16000,
+    "xb": 13000,
+    "yb": 16000,
+    "vz": 0.0,
+    "L": 2.29,
+    "n_pw": 1,
+    "n_ct": 5,
+    "pw_tray": [
+     100,
+     50
+    ],
+    "pw_area": 123.0,
+    "pw_fill": 2.5,
+    "ct_tray": [
+     100,
+     50
+    ],
+    "ct_area": 227.0,
+    "ct_fill": 4.5
+   },
+   {
+    "i": 15,
+    "a": "E1",
+    "b": "E2",
+    "name": "Nhánh EAF-2.01/Kjeldahl",
+    "env": "in",
+    "xa": 13000,
+    "ya": 16000,
+    "xb": 8500,
+    "yb": 16000,
+    "vz": 0.0,
+    "L": 4.5,
+    "n_pw": 0,
+    "n_ct": 2,
+    "ct_tray": [
+     100,
+     50
+    ],
+    "ct_area": 94.0,
+    "ct_fill": 1.9
+   },
+   {
+    "i": 16,
+    "a": "C-1200",
+    "b": "S1",
+    "name": "Nhánh nam trái (Instrument)",
+    "env": "in",
+    "xa": 15285,
+    "ya": -1200,
+    "xb": 11900,
+    "yb": -1200,
+    "vz": 0.0,
+    "L": 3.38,
+    "n_pw": 8,
+    "n_ct": 30,
+    "pw_tray": [
+     100,
+     50
+    ],
+    "pw_area": 968.0,
+    "pw_fill": 19.4,
+    "ct_tray": [
+     100,
+     50
+    ],
+    "ct_area": 1277.0,
+    "ct_fill": 25.5
+   },
+   {
+    "i": 17,
+    "a": "S1",
+    "b": "S2",
+    "name": "Nhánh nam trái (Instrument)",
+    "env": "in",
+    "xa": 11900,
+    "ya": -1200,
+    "xb": 10500,
+    "yb": -1200,
+    "vz": 0.0,
+    "L": 1.4,
+    "n_pw": 7,
+    "n_ct": 26,
+    "pw_tray": [
+     100,
+     50
+    ],
+    "pw_area": 864.0,
+    "pw_fill": 17.3,
+    "ct_tray": [
+     100,
+     50
+    ],
+    "ct_area": 1112.0,
+    "ct_fill": 22.2
+   },
+   {
+    "i": 18,
+    "a": "S2",
+    "b": "S3",
+    "name": "Nhánh nam trái (Instrument)",
+    "env": "in",
+    "xa": 10500,
+    "ya": -1200,
+    "xb": 8575,
+    "yb": -1200,
+    "vz": 0.0,
+    "L": 1.93,
+    "n_pw": 1,
+    "n_ct": 5,
+    "pw_tray": [
+     100,
+     50
+    ],
+    "pw_area": 123.0,
+    "pw_fill": 2.5,
+    "ct_tray": [
+     100,
+     50
+    ],
+    "ct_area": 233.0,
+    "ct_fill": 4.7
+   },
+   {
+    "i": 19,
+    "a": "S3",
+    "b": "S4",
+    "name": "Nhánh Sample prep/Coding/Dividing",
+    "env": "in",
+    "xa": 8575,
+    "ya": -1200,
+    "xb": 4500,
+    "yb": -1200,
+    "vz": 0.0,
+    "L": 4.08,
+    "n_pw": 0,
+    "n_ct": 4,
+    "ct_tray": [
+     100,
+     50
+    ],
+    "ct_area": 195.0,
+    "ct_fill": 3.9
+   },
+   {
+    "i": 20,
+    "a": "C2200",
+    "b": "R1",
+    "name": "Máng chính khối phải",
+    "env": "in",
+    "xa": 15285,
+    "ya": 2200,
+    "xb": 18000,
+    "yb": 2200,
+    "vz": 0.0,
+    "L": 2.71,
+    "n_pw": 25,
+    "n_ct": 53,
+    "pw_tray": [
+     200,
+     100
+    ],
+    "pw_area": 4072.0,
+    "pw_fill": 20.4,
+    "ct_tray": [
+     200,
+     100
+    ],
+    "ct_area": 2418.0,
+    "ct_fill": 12.1
+   },
+   {
+    "i": 21,
+    "a": "R1",
+    "b": "R2",
+    "name": "Máng chính khối phải",
+    "env": "in",
+    "xa": 18000,
+    "ya": 2200,
+    "xb": 21700,
+    "yb": 2200,
+    "vz": 0.0,
+    "L": 3.7,
+    "n_pw": 21,
+    "n_ct": 42,
+    "pw_tray": [
+     200,
+     100
+    ],
+    "pw_area": 3582.0,
+    "pw_fill": 17.9,
+    "ct_tray": [
+     100,
+     50
+    ],
+    "ct_area": 1876.0,
+    "ct_fill": 37.5
+   },
+   {
+    "i": 22,
+    "a": "R2",
+    "b": "R3",
+    "name": "Máng chính khối phải",
+    "env": "in",
+    "xa": 21700,
+    "ya": 2200,
+    "xb": 24600,
+    "yb": 2200,
+    "vz": 0.0,
+    "L": 2.9,
+    "n_pw": 14,
+    "n_ct": 26,
+    "pw_tray": [
+     200,
+     100
+    ],
+    "pw_area": 2666.0,
+    "pw_fill": 13.3,
+    "ct_tray": [
+     100,
+     50
+    ],
+    "ct_area": 1105.0,
+    "ct_fill": 22.1
+   },
+   {
+    "i": 23,
+    "a": "R3",
+    "b": "R4",
+    "name": "Máng chính khối phải",
+    "env": "in",
+    "xa": 24600,
+    "ya": 2200,
+    "xb": 27300,
+    "yb": 2200,
+    "vz": 0.0,
+    "L": 2.7,
+    "n_pw": 13,
+    "n_ct": 20,
+    "pw_tray": [
+     200,
+     100
+    ],
+    "pw_area": 2465.0,
+    "pw_fill": 12.3,
+    "ct_tray": [
+     100,
+     50
+    ],
+    "ct_area": 845.0,
+    "ct_fill": 16.9
+   },
+   {
+    "i": 24,
+    "a": "R1",
+    "b": "W0",
+    "name": "Nhánh Standard 19,72",
+    "env": "in",
+    "xa": 18000,
+    "ya": 2200,
+    "xb": 18000,
+    "yb": 89,
+    "vz": 0.0,
+    "L": 2.11,
+    "n_pw": 4,
+    "n_ct": 11,
+    "pw_tray": [
+     100,
+     50
+    ],
+    "pw_area": 491.0,
+    "pw_fill": 9.8,
+    "ct_tray": [
+     100,
+     50
+    ],
+    "ct_area": 542.0,
+    "ct_fill": 10.8
+   },
+   {
+    "i": 25,
+    "a": "W0",
+    "b": "W1",
+    "name": "Nhánh Standard 19,72",
+    "env": "in",
+    "xa": 18000,
+    "ya": 89,
+    "xb": 18000,
+    "yb": -1482,
+    "vz": 0.0,
+    "L": 1.57,
+    "n_pw": 3,
+    "n_ct": 8,
+    "pw_tray": [
+     100,
+     50
+    ],
+    "pw_area": 368.0,
+    "pw_fill": 7.4,
+    "ct_tray": [
+     100,
+     50
+    ],
+    "ct_area": 397.0,
+    "ct_fill": 7.9
+   },
+   {
+    "i": 26,
+    "a": "W1",
+    "b": "W2",
+    "name": "Nhánh Standard 19,72",
+    "env": "in",
+    "xa": 18000,
+    "ya": -1482,
+    "xb": 18000,
+    "yb": -5000,
+    "vz": 0.0,
+    "L": 3.52,
+    "n_pw": 2,
+    "n_ct": 5,
+    "pw_tray": [
+     100,
+     50
+    ],
+    "pw_area": 245.0,
+    "pw_fill": 4.9,
+    "ct_tray": [
+     100,
+     50
+    ],
+    "ct_area": 246.0,
+    "ct_fill": 4.9
+   },
+   {
+    "i": 27,
+    "a": "R2",
+    "b": "V1",
+    "name": "Nhánh hood ST2 (vách trái)",
+    "env": "in",
+    "xa": 21700,
+    "ya": 2200,
+    "xb": 21700,
+    "yb": 334,
+    "vz": 0.0,
+    "L": 1.87,
+    "n_pw": 2,
+    "n_ct": 5,
+    "pw_tray": [
+     100,
+     50
+    ],
+    "pw_area": 245.0,
+    "pw_fill": 4.9,
+    "ct_tray": [
+     100,
+     50
+    ],
+    "ct_area": 252.0,
+    "ct_fill": 5.0
+   },
+   {
+    "i": 28,
+    "a": "V1",
+    "b": "V2",
+    "name": "Nhánh hood ST2 (vách trái)",
+    "env": "in",
+    "xa": 21700,
+    "ya": 334,
+    "xb": 21700,
+    "yb": -1270,
+    "vz": 0.0,
+    "L": 1.6,
+    "n_pw": 1,
+    "n_ct": 3,
+    "pw_tray": [
+     100,
+     50
+    ],
+    "pw_area": 123.0,
+    "pw_fill": 2.5,
+    "ct_tray": [
+     100,
+     50
+    ],
+    "ct_area": 151.0,
+    "ct_fill": 3.0
+   },
+   {
+    "i": 29,
+    "a": "R2",
+    "b": "V3",
+    "name": "Nhánh hood ST2 (vách trái)",
+    "env": "in",
+    "xa": 21700,
+    "ya": 2200,
+    "xb": 21700,
+    "yb": 7385,
+    "vz": 0.0,
+    "L": 5.18,
+    "n_pw": 5,
+    "n_ct": 11,
+    "pw_tray": [
+     100,
+     50
+    ],
+    "pw_area": 670.0,
+    "pw_fill": 13.4,
+    "ct_tray": [
+     100,
+     50
+    ],
+    "ct_area": 519.0,
+    "ct_fill": 10.4
+   },
+   {
+    "i": 30,
+    "a": "V3",
+    "b": "V4",
+    "name": "Nhánh hood ST2 (vách trái)",
+    "env": "in",
+    "xa": 21700,
+    "ya": 7385,
+    "xb": 21700,
+    "yb": 9000,
+    "vz": 0.0,
+    "L": 1.61,
+    "n_pw": 4,
+    "n_ct": 9,
+    "pw_tray": [
+     100,
+     50
+    ],
+    "pw_area": 548.0,
+    "pw_fill": 11.0,
+    "ct_tray": [
+     100,
+     50
+    ],
+    "ct_area": 418.0,
+    "ct_fill": 8.4
+   },
+   {
+    "i": 31,
+    "a": "V4",
+    "b": "H1",
+    "name": "Nhánh hood ST2 (vách trên)",
+    "env": "in",
+    "xa": 21700,
+    "ya": 9000,
+    "xb": 22906,
+    "yb": 9000,
+    "vz": 0.0,
+    "L": 1.21,
+    "n_pw": 4,
+    "n_ct": 9,
+    "pw_tray": [
+     100,
+     50
+    ],
+    "pw_area": 548.0,
+    "pw_fill": 11.0,
+    "ct_tray": [
+     100,
+     50
+    ],
+    "ct_area": 418.0,
+    "ct_fill": 8.4
+   },
+   {
+    "i": 32,
+    "a": "H1",
+    "b": "H2",
+    "name": "Nhánh hood ST2 (vách trên)",
+    "env": "in",
+    "xa": 22906,
+    "ya": 9000,
+    "xb": 24507,
+    "yb": 9000,
+    "vz": 0.0,
+    "L": 1.6,
+    "n_pw": 3,
+    "n_ct": 7,
+    "pw_tray": [
+     100,
+     50
+    ],
+    "pw_area": 425.0,
+    "pw_fill": 8.5,
+    "ct_tray": [
+     100,
+     50
+    ],
+    "ct_area": 317.0,
+    "ct_fill": 6.3
+   },
+   {
+    "i": 33,
+    "a": "H2",
+    "b": "H3",
+    "name": "Nhánh hood ST2 (vách trên)",
+    "env": "in",
+    "xa": 24507,
+    "ya": 9000,
+    "xb": 26111,
+    "yb": 9000,
+    "vz": 0.0,
+    "L": 1.6,
+    "n_pw": 2,
+    "n_ct": 5,
+    "pw_tray": [
+     100,
+     50
+    ],
+    "pw_area": 302.0,
+    "pw_fill": 6.0,
+    "ct_tray": [
+     100,
+     50
+    ],
+    "ct_area": 216.0,
+    "ct_fill": 4.3
+   },
+   {
+    "i": 34,
+    "a": "H3",
+    "b": "R6",
+    "name": "Nhánh hood ST2 (vách trên)",
+    "env": "in",
+    "xa": 26111,
+    "ya": 9000,
+    "xb": 27300,
+    "yb": 9000,
+    "vz": 0.0,
+    "L": 1.19,
+    "n_pw": 1,
+    "n_ct": 3,
+    "pw_tray": [
+     100,
+     50
+    ],
+    "pw_area": 180.0,
+    "pw_fill": 3.6,
+    "ct_tray": [
+     100,
+     50
+    ],
+    "ct_area": 115.0,
+    "ct_fill": 2.3
+   },
+   {
+    "i": 35,
+    "a": "R4",
+    "b": "R5",
+    "name": "Máng dọc tường A (trong ST2)",
+    "env": "in",
+    "xa": 27300,
+    "ya": 2200,
+    "xb": 27300,
+    "yb": 5000,
+    "vz": 0.0,
+    "L": 2.8,
+    "n_pw": 1,
+    "n_ct": 1,
+    "pw_tray": [
+     100,
+     50
+    ],
+    "pw_area": 123.0,
+    "pw_fill": 2.5,
+    "ct_tray": [
+     100,
+     50
+    ],
+    "ct_area": 38.0,
+    "ct_fill": 0.8
+   },
+   {
+    "i": 36,
+    "a": "R5",
+    "b": "R6",
+    "name": "Máng dọc tường A (trong ST2)",
+    "env": "in",
+    "xa": 27300,
+    "ya": 5000,
+    "xb": 27300,
+    "yb": 9000,
+    "vz": 0.0,
+    "L": 4.0,
+    "n_pw": 0,
+    "n_ct": 0
+   },
+   {
+    "i": 37,
+    "a": "R6",
+    "b": "R7",
+    "name": "Máng dọc tường A (trong ST2)",
+    "env": "in",
+    "xa": 27300,
+    "ya": 9000,
+    "xb": 27300,
+    "yb": 9300,
+    "vz": 0.0,
+    "L": 0.3,
+    "n_pw": 1,
+    "n_ct": 3,
+    "pw_tray": [
+     100,
+     50
+    ],
+    "pw_area": 180.0,
+    "pw_fill": 3.6,
+    "ct_tray": [
+     100,
+     50
+    ],
+    "ct_area": 115.0,
+    "ct_fill": 2.3
+   },
+   {
+    "i": 38,
+    "a": "R4",
+    "b": "R8",
+    "name": "Máng dọc tường A (trong ST2)",
+    "env": "in",
+    "xa": 27300,
+    "ya": 2200,
+    "xb": 27300,
+    "yb": -3300,
+    "vz": 0.0,
+    "L": 5.5,
+    "n_pw": 12,
+    "n_ct": 19,
+    "pw_tray": [
+     200,
+     100
+    ],
+    "pw_area": 2342.0,
+    "pw_fill": 11.7,
+    "ct_tray": [
+     100,
+     50
+    ],
+    "ct_area": 806.0,
+    "ct_fill": 16.1
+   },
+   {
+    "i": 39,
+    "a": "R8",
+    "b": "R9",
+    "name": "Máng dọc tường A (trong ST2)",
+    "env": "in",
+    "xa": 27300,
+    "ya": -3300,
+    "xb": 27300,
+    "yb": -5500,
+    "vz": 0.0,
+    "L": 2.2,
+    "n_pw": 6,
+    "n_ct": 6,
+    "pw_tray": [
+     100,
+     50
+    ],
+    "pw_area": 1601.0,
+    "pw_fill": 32.0,
+    "ct_tray": [
+     100,
+     50
+    ],
+    "ct_area": 265.0,
+    "ct_fill": 5.3
+   },
+   {
+    "i": 40,
+    "a": "R9",
+    "b": "O1",
+    "name": "Xuyên tường A (ống lồng) → ngoài nhà",
+    "env": "wall",
+    "xa": 27300,
+    "ya": -5500,
+    "xb": 28300,
+    "yb": -5500,
+    "vz": 0.0,
+    "L": 1.0,
+    "n_pw": 6,
+    "n_ct": 6,
+    "pw_tray": [
+     100,
+     50
+    ],
+    "pw_area": 1601.0,
+    "pw_fill": 32.0,
+    "ct_tray": [
+     100,
+     50
+    ],
+    "ct_area": 265.0,
+    "ct_fill": 5.3
+   },
+   {
+    "i": 41,
+    "a": "O1",
+    "b": "O2",
+    "name": "Máng ngoài nhà ốp tường A (có nắp) – vượt ram dốc",
+    "env": "out",
+    "xa": 28300,
+    "ya": -5500,
+    "xb": 28300,
+    "yb": -9000,
+    "vz": 0.0,
+    "L": 3.5,
+    "n_pw": 6,
+    "n_ct": 6,
+    "pw_tray": [
+     200,
+     100
+    ],
+    "pw_area": 1601.0,
+    "pw_fill": 8.0,
+    "ct_tray": [
+     100,
+     50
+    ],
+    "ct_area": 265.0,
+    "ct_fill": 5.3
+   },
+   {
+    "i": 42,
+    "a": "O2",
+    "b": "Y0",
+    "name": "Máng đứng xuống bãi CDU",
+    "env": "out",
+    "xa": 28300,
+    "ya": -9000,
+    "xb": 28800,
+    "yb": -9600,
+    "vz": 3.1,
+    "L": 4.2,
+    "n_pw": 6,
+    "n_ct": 6,
+    "pw_tray": [
+     200,
+     100
+    ],
+    "pw_area": 1601.0,
+    "pw_fill": 8.0,
+    "ct_tray": [
+     100,
+     50
+    ],
+    "ct_area": 265.0,
+    "ct_fill": 5.3
+   },
+   {
+    "i": 43,
+    "a": "Y0",
+    "b": "Y1",
+    "name": "Máng bãi CDU (có nắp)",
+    "env": "out",
+    "xa": 28800,
+    "ya": -9600,
+    "xb": 28800,
+    "yb": -10600,
+    "vz": 0.0,
+    "L": 1.0,
+    "n_pw": 5,
+    "n_ct": 5,
+    "pw_tray": [
+     200,
+     100
+    ],
+    "pw_area": 1287.0,
+    "pw_fill": 6.4,
+    "ct_tray": [
+     100,
+     50
+    ],
+    "ct_area": 221.0,
+    "ct_fill": 4.4
+   },
+   {
+    "i": 44,
+    "a": "Y1",
+    "b": "Y2",
+    "name": "Máng bãi CDU (có nắp)",
+    "env": "out",
+    "xa": 28800,
+    "ya": -10600,
+    "xb": 28800,
+    "yb": -11600,
+    "vz": 0.0,
+    "L": 1.0,
+    "n_pw": 4,
+    "n_ct": 4,
+    "pw_tray": [
+     200,
+     100
+    ],
+    "pw_area": 974.0,
+    "pw_fill": 4.9,
+    "ct_tray": [
+     100,
+     50
+    ],
+    "ct_area": 177.0,
+    "ct_fill": 3.5
+   },
+   {
+    "i": 45,
+    "a": "Y2",
+    "b": "Y3",
+    "name": "Máng bãi CDU (có nắp)",
+    "env": "out",
+    "xa": 28800,
+    "ya": -11600,
+    "xb": 28800,
+    "yb": -12600,
+    "vz": 0.0,
+    "L": 1.0,
+    "n_pw": 3,
+    "n_ct": 3,
+    "pw_tray": [
+     200,
+     100
+    ],
+    "pw_area": 660.0,
+    "pw_fill": 3.3,
+    "ct_tray": [
+     100,
+     50
+    ],
+    "ct_area": 133.0,
+    "ct_fill": 2.7
+   },
+   {
+    "i": 46,
+    "a": "Y3",
+    "b": "Y4",
+    "name": "Máng bãi CDU (có nắp)",
+    "env": "out",
+    "xa": 28800,
+    "ya": -12600,
+    "xb": 28800,
+    "yb": -13600,
+    "vz": 0.0,
+    "L": 1.0,
+    "n_pw": 2,
+    "n_ct": 2,
+    "pw_tray": [
+     200,
+     100
+    ],
+    "pw_area": 440.0,
+    "pw_fill": 2.2,
+    "ct_tray": [
+     100,
+     50
+    ],
+    "ct_area": 88.0,
+    "ct_fill": 1.8
+   },
+   {
+    "i": 47,
+    "a": "Y4",
+    "b": "Y5",
+    "name": "Máng bãi CDU (có nắp)",
+    "env": "out",
+    "xa": 28800,
+    "ya": -13600,
+    "xb": 28800,
+    "yb": -14600,
+    "vz": 0.0,
+    "L": 1.0,
+    "n_pw": 1,
+    "n_ct": 1,
+    "pw_tray": [
+     200,
+     100
+    ],
+    "pw_area": 220.0,
+    "pw_fill": 1.1,
+    "ct_tray": [
+     100,
+     50
+    ],
+    "ct_area": 44.0,
+    "ct_fill": 0.9
+   },
+   {
+    "i": 48,
+    "a": "R7",
+    "b": "P1",
+    "name": "Xuyên tường A (ống lồng) → ngoài nhà",
+    "env": "wall",
+    "xa": 27300,
+    "ya": 9300,
+    "xb": 28300,
+    "yb": 9300,
+    "vz": 0.0,
+    "L": 1.0,
+    "n_pw": 1,
+    "n_ct": 3,
+    "pw_tray": [
+     100,
+     50
+    ],
+    "pw_area": 180.0,
+    "pw_fill": 3.6,
+    "ct_tray": [
+     100,
+     50
+    ],
+    "ct_area": 115.0,
+    "ct_fill": 2.3
+   },
+   {
+    "i": 49,
+    "a": "P1",
+    "b": "P2",
+    "name": "Máng ngoài nhà ốp tường A (có nắp) – tới scrubber",
+    "env": "out",
+    "xa": 28300,
+    "ya": 9300,
+    "xb": 28300,
+    "yb": 15500,
+    "vz": 0.0,
+    "L": 6.2,
+    "n_pw": 1,
+    "n_ct": 3,
+    "pw_tray": [
+     200,
+     100
+    ],
+    "pw_area": 180.0,
+    "pw_fill": 0.9,
+    "ct_tray": [
+     100,
+     50
+    ],
+    "ct_area": 115.0,
+    "ct_fill": 2.3
+   },
+   {
+    "i": 50,
+    "a": "P_DB.HVAC",
+    "b": "C2200",
+    "name": "Máng đứng nóc tủ DB.HVAC",
+    "env": "riser",
+    "xa": 15935,
+    "ya": 2200,
+    "xb": 15285,
+    "yb": 2200,
+    "vz": 1.5,
+    "L": 2.15,
+    "n_pw": 11,
+    "n_ct": 5,
+    "pw_tray": [
+     200,
+     100
+    ],
+    "pw_area": 3663.0,
+    "pw_fill": 18.3,
+    "ct_tray": [
+     100,
+     50
+    ],
+    "ct_area": 283.0,
+    "ct_fill": 5.7
+   },
+   {
+    "i": 51,
+    "a": "P_DDC-FAN",
+    "b": "C700",
+    "name": "Máng đứng nóc tủ DDC-FAN",
+    "env": "riser",
+    "xa": 15935,
+    "ya": 700,
+    "xb": 15285,
+    "yb": 700,
+    "vz": 1.5,
+    "L": 2.15,
+    "n_pw": 21,
+    "n_ct": 54,
+    "pw_tray": [
+     200,
+     100
+    ],
+    "pw_area": 3148.0,
+    "pw_fill": 15.7,
+    "ct_tray": [
+     200,
+     100
+    ],
+    "ct_area": 2505.0,
+    "ct_fill": 12.5
+   },
+   {
+    "i": 52,
+    "a": "P_DDC-AHU-2.02",
+    "b": "C-900",
+    "name": "Máng đứng nóc tủ DDC-AHU-2.02",
+    "env": "riser",
+    "xa": 16035,
+    "ya": -900,
+    "xb": 15285,
+    "yb": -900,
+    "vz": 1.5,
+    "L": 2.25,
+    "n_pw": 7,
+    "n_ct": 21,
+    "pw_tray": [
+     200,
+     100
+    ],
+    "pw_area": 1055.0,
+    "pw_fill": 5.3,
+    "ct_tray": [
+     100,
+     50
+    ],
+    "ct_area": 907.0,
+    "ct_fill": 18.1
+   },
+   {
+    "i": 53,
+    "a": "P_DDC-AHU-2.01",
+    "b": "C3900",
+    "name": "Máng đứng nóc tủ DDC-AHU-2.01",
+    "env": "riser",
+    "xa": 14585,
+    "ya": 3900,
+    "xb": 15285,
+    "yb": 3900,
+    "vz": 1.5,
+    "L": 2.2,
+    "n_pw": 7,
+    "n_ct": 32,
+    "pw_tray": [
+     200,
+     100
+    ],
+    "pw_area": 1479.0,
+    "pw_fill": 7.4,
+    "ct_tray": [
+     100,
+     50
+    ],
+    "ct_area": 1365.0,
+    "ct_fill": 27.3
+   },
+   {
+    "i": 54,
+    "a": "P_DDC-AHU-2.03",
+    "b": "C-4800",
+    "name": "Máng đứng nóc tủ DDC-AHU-2.03",
+    "env": "riser",
+    "xa": 14585,
+    "ya": -4800,
+    "xb": 15285,
+    "yb": -4800,
+    "vz": 1.5,
+    "L": 2.2,
+    "n_pw": 8,
+    "n_ct": 24,
+    "pw_tray": [
+     200,
+     100
+    ],
+    "pw_area": 1268.0,
+    "pw_fill": 6.3,
+    "ct_tray": [
+     100,
+     50
+    ],
+    "ct_area": 997.0,
+    "ct_fill": 19.9
+   }
+  ],
+  "tray_m": {
+   "Máng cáp đục lỗ sơn tĩnh điện 200×100 dày 1,2 mm": 56.870000000000005,
+   "Máng cáp đục lỗ sơn tĩnh điện 100×50 dày 1,2 mm": 157.89,
+   "Máng cáp đục lỗ mạ kẽm nhúng nóng 200×100 có nắp (ngoài trời)": 18.9,
+   "Máng cáp đục lỗ mạ kẽm nhúng nóng 100×50 có nắp (ngoài trời)": 18.9
+  },
+  "fittings": {
+   "Co ngang 90°": 4,
+   "Tê ngang (T)": 9,
+   "Chữ thập (+)": 2,
+   "Nắp bịt đầu máng": 12,
+   "Co đứng 90° (máng đứng nóc tủ)": 7,
+   "Nối máng (khớp nối + bu lông), mỗi 2,4 m": 106,
+   "Giá treo trong nhà (ty M10 ×2 + U-channel 41×41, mỗi 1,5 m)": 144,
+   "Giá đỡ ngoài trời ốp tường/bệ (mạ kẽm nhúng nóng, mỗi 1,5 m)": 26,
+   "Ống lồng xuyên tường A Ø100 thép mạ kẽm + chèn chống cháy/chống thấm": 4
+  },
+  "conduits_m": {
+   "Ống thép mạ kẽm (GI/IMC) ren Ø32 ngoài trời": 5.0,
+   "Ống thép mạ kẽm (GI/IMC) ren Ø25 ngoài trời": 4.0,
+   "Ống thép EMT Ø25 (đoạn xuống thiết bị trên trần)": 35.0,
+   "Ống thép EMT Ø20 (đoạn xuống thiết bị trên trần)": 15.0,
+   "Ống thép EMT Ø32 (đoạn xuống thiết bị trên trần)": 2.0,
+   "Ống nhựa PVC cứng Ø20 (cáp điều khiển/cảm biến)": 326.0,
+   "Ống thép mạ kẽm (GI/IMC) ren Ø20 ngoài trời": 17.0
+  },
+  "flex_m": {
+   "Ống mềm kim loại bọc PVC kín nước Ø32 + đầu nối": 7.0,
+   "Ống mềm kim loại bọc PVC kín nước Ø25 + đầu nối": 31.0,
+   "Ống mềm kim loại bọc PVC kín nước Ø40 + đầu nối": 1.0,
+   "Ống mềm kim loại bọc PVC kín nước Ø20 + đầu nối": 4.0
+  },
+  "glands": {
+   "Ốc siết cáp đồng mạ niken IP68 M32": 12,
+   "Ốc siết cáp đồng mạ niken IP68 M25": 16,
+   "Ốc siết cáp đồng mạ niken EMC M32": 4,
+   "Ốc siết cáp nhựa nylon IP68 M20": 398,
+   "Ốc siết cáp đồng mạ niken EMC M25": 16,
+   "Ốc siết cáp nhựa nylon IP68 M40": 4,
+   "Ốc siết cáp nhựa nylon IP68 M32": 4
+  }
+ },
+ "isolators": {
+  "Cầu dao cách ly tại chỗ 4P 40A IP65 ngoài trời (chống UV)": 3,
+  "Cầu dao cách ly tại chỗ 4P 32A IP65 ngoài trời (chống UV)": 3,
+  "Cầu dao cách ly tại chỗ 4P 25A IP65 ngoài trời (chống UV)": 1,
+  "Cầu dao cách ly tại chỗ 3P 40A IP65 + tiếp điểm phụ (báo biến tần)": 1,
+  "Cầu dao cách ly tại chỗ 3P 20A IP65": 27,
+  "Cầu dao cách ly tại chỗ 2P 20A IP65": 4,
+  "Cầu dao cách ly tại chỗ 3P 20A IP65 + tiếp điểm phụ (báo biến tần)": 3,
+  "Cầu dao cách ly tại chỗ 3P 25A IP65 + tiếp điểm phụ (báo biến tần)": 1
+ },
+ "earthing": {
+  "Dây tiếp địa dọc máng cáp động lực CV 1×25 mm² vàng-xanh": {
+   "unit": "m",
+   "qty": 130.0
+  },
+  "Dây nối đẳng thế mối nối máng CV 1×6 mm² + đầu cos": {
+   "unit": "bộ",
+   "qty": 106
+  },
+  "Dây nối đất vỏ CDU/scrubber/khung bệ CV 1×16 mm² (3 m/thiết bị)": {
+   "unit": "m",
+   "qty": 21.0
+  },
+  "Đấu nối thanh PE DB.HVAC → thanh tiếp địa chính tòa nhà (MET) CV 1×95 mm² (giả định 10 m)": {
+   "unit": "m",
+   "qty": 10.0
+  },
+  "Kẹp tiếp địa/đầu cos đồng các loại": {
+   "unit": "bộ",
+   "qty": 60
+  }
+ },
+ "cable_totals": {
+  "power_m": {
+   "CXV 4×10 + E10": 125.5,
+   "CXV 4×6 + E6": 125.6,
+   "CXV 4×4 + E4": 38.6,
+   "CXV/S (màn chắn Cu, cáp biến tần) 3×10 + E10": 7.2,
+   "CXV 3×2,5 + E2,5": 573.9,
+   "CXV 2×2,5 + E2,5": 125.7,
+   "CXV/S (màn chắn Cu, cáp biến tần) 3×2,5 + E2,5": 63.1,
+   "CXV/S (màn chắn Cu, cáp biến tần) 3×4 + E4": 18.2,
+   "CXV 4×25 + E16": 16.7,
+   "CXV 4×16 + E16": 14.6
+  },
+  "control_m": {
+   "Cáp tín hiệu chống nhiễu 3C×0,75 mm²": 94.9,
+   "Cáp ĐK chống nhiễu 2C×1,0 mm²": 869.1,
+   "Cáp tín hiệu chống nhiễu 4C×0,75 mm²": 449.3,
+   "Cáp ĐK chống nhiễu 3C×1,0 mm²": 597.1,
+   "Cáp tín hiệu chống nhiễu 2C×0,75 mm²": 94.7,
+   "Cáp chống cháy FR 2C×1,5 mm²": 41.5,
+   "Cáp ĐK chống nhiễu 4C×1,0 mm²": 353.4,
+   "Cáp mạng RS485 1 đôi xoắn chống nhiễu 0,75 mm² (BACnet MS/TP/Modbus)": 45.4,
+   "Cáp truyền tín hiệu DX-kit ↔ CDU 2C×1,25 mm² chống nhiễu": 257.6
+  }
+ },
+ "options": [
+  {
+   "code": "OP-1",
+   "item": "Bộ điều khiển mạng (network controller/BACnet router) BACnet MS/TP ↔ BACnet/IP, lắp trong DDC-FAN",
+   "unit": "bộ",
+   "qty": 1
+  },
+  {
+   "code": "OP-2",
+   "item": "Màn hình HMI cảm ứng 15,6\" (đồ họa 3 AHU, FAF/EAF, hood, scrubber, báo động, xu hướng) đặt tại Office hoặc phòng điều khiển Phase 1",
+   "unit": "bộ",
+   "qty": 1
+  },
+  {
+   "code": "OP-3",
+   "item": "Phần mềm + lập trình đồ họa, tích hợp vào HMI Phase 1 (\"MÀN HÌNH HMI\" – F3-SD-AC-017) qua BACnet/IP hoặc Modbus TCP",
+   "unit": "lô",
+   "qty": 1
+  },
+  {
+   "code": "OP-4",
+   "item": "Gateway BACnet/Modbus cho CDU (giám sát chi tiết lỗi/công suất từ hãng CDU)",
+   "unit": "bộ",
+   "qty": 3
+  },
+  {
+   "code": "OP-5",
+   "item": "Cáp mạng Cat6 FTP (DDC-FAN → HMI Phase 1, giả định 80 m) + ống PVC Ø20 + switch công nghiệp 8 cổng",
+   "unit": "lô",
+   "qty": 1
+  }
+ ]
+}
