@@ -1,0 +1,4639 @@
+{
+ "meta": {
+  "project": "SGS Hải Phòng – H&N Phase 2 (Nhà xưởng 3)",
+  "wp": "WP2 geometry",
+  "date": "2026-11-14",
+  "source_pdf": "00_inputs/261109_Cai_tao_khu_HN_xuong_3.pdf (trang 5 DW-A-03-04, 6 DW-A-03-05, 7 DW-A-03-06, 2 DW-A-03-01)",
+  "coords": "mm; gốc giao trục E/3; X → trục A (phải); Y → trục 5 (lên)",
+  "levels": {
+   "FFL": 0,
+   "ceiling": 3000,
+   "equipment_zone_above_ceiling": [
+    3300,
+    6000
+   ],
+   "phase1_ducts_BOD": [
+    4200,
+    6200
+   ],
+   "roof": "chưa biết"
+  },
+  "wall_panel_mm": 50
+ },
+ "calibration": {
+  "page": 6,
+  "grid_detail_pt": {
+   "E": {
+    "label_x_pt": 122.94,
+    "line_x_pt": 122.94
+   },
+   "D": {
+    "label_x_pt": 308.39,
+    "line_x_pt": 308.38
+   },
+   "C": {
+    "label_x_pt": 493.84,
+    "line_x_pt": 493.84
+   },
+   "B": {
+    "label_x_pt": 679.29,
+    "line_x_pt": 679.29
+   },
+   "A": {
+    "label_x_pt": 865.15,
+    "line_x_pt": 864.75
+   },
+   "3": {
+    "label_y_pt": 553.49,
+    "line_y_pt": 552.85
+   },
+   "4": {
+    "label_y_pt": 349.49,
+    "line_y_pt": 348.85
+   },
+   "5": {
+    "label_y_pt": 145.49,
+    "line_y_pt": 144.86
+   }
+  },
+  "sx_mm_per_pt": 37.7454,
+  "sy_mm_per_pt": 37.746,
+  "x_mm = a*x_pt + b": [
+   37.74541,
+   -4640.19
+  ],
+  "y_mm = a*top_pt + b": [
+   -37.74602,
+   20867.83
+  ],
+  "residual_x_mm": [
+   -0.2,
+   0.3,
+   0.0,
+   0.1,
+   -0.2
+  ],
+  "residual_y_mm": [
+   0.1,
+   -0.1,
+   0.1
+  ],
+  "grid_spacing_check_mm": {
+   "E-D,D-C,C-B,B-A": [
+    6999.5,
+    7000.3,
+    6999.9,
+    7000.3
+   ],
+   "3-4,4-5": [
+    7700.2,
+    7699.8
+   ]
+  },
+  "implied_paper_scale": "1:107 (A3, bản vẽ không theo tỷ lệ chuẩn)",
+  "same_grid_on_pages": {
+   "page5": true,
+   "page7": true
+  }
+ },
+ "wall_centreline_check": {
+  "xL_left_block_outer": {
+   "measured_cl_mm": 1071,
+   "model_cl_mm": 1070,
+   "diff_mm": 1,
+   "vector_line_present": true
+  },
+  "x_dividing_coding": {
+   "measured_cl_mm": 3192,
+   "model_cl_mm": 3220,
+   "diff_mm": -28,
+   "vector_line_present": true
+  },
+  "x_dining_digestion": {
+   "measured_cl_mm": 5868,
+   "model_cl_mm": 5870,
+   "diff_mm": -2,
+   "vector_line_present": true
+  },
+  "x_prep_balance_instr": {
+   "measured_cl_mm": 8574,
+   "model_cl_mm": 8575,
+   "diff_mm": -1,
+   "vector_line_present": true
+  },
+  "x_digestion_kjeldahl": {
+   "measured_cl_mm": 9571,
+   "model_cl_mm": 9570,
+   "diff_mm": 1,
+   "vector_line_present": true
+  },
+  "x_instr_reporting": {
+   "measured_cl_mm": 12398,
+   "model_cl_mm": 12410,
+   "diff_mm": -12,
+   "vector_line_present": true
+  },
+  "xR_left_block_outer": {
+   "measured_cl_mm": 14361,
+   "model_cl_mm": 14360,
+   "diff_mm": 1,
+   "vector_line_present": true
+  },
+  "xL_right_block_outer": {
+   "measured_cl_mm": 16210,
+   "model_cl_mm": 16210,
+   "diff_mm": 0,
+   "vector_line_present": true
+  },
+  "x_std_std": {
+   "measured_cl_mm": 19109,
+   "model_cl_mm": 19160,
+   "diff_mm": -51,
+   "vector_line_present": true
+  },
+  "x_std_st2_office_st2": {
+   "measured_cl_mm": 20959,
+   "model_cl_mm": 20960,
+   "diff_mm": -1,
+   "vector_line_present": true
+  },
+  "xR_right_block_A_side": {
+   "measured_cl_mm": 27681,
+   "model_cl_mm": 27730,
+   "diff_mm": -49,
+   "vector_line_present": true
+  },
+  "y_top": {
+   "measured_cl_mm": 18701,
+   "model_cl_mm": 18700,
+   "diff_mm": 1,
+   "vector_line_present": true
+  },
+  "y_kj_st1": {
+   "measured_cl_mm": 14651,
+   "model_cl_mm": 14650,
+   "diff_mm": 1,
+   "vector_line_present": true
+  },
+  "y_cst_office_st2": {
+   "measured_cl_mm": 9676,
+   "model_cl_mm": 9675,
+   "diff_mm": 1,
+   "vector_line_present": true
+  },
+  "y_st1_prep_balance": {
+   "measured_cl_mm": 6800,
+   "model_cl_mm": 6800,
+   "diff_mm": 0,
+   "vector_line_present": true
+  },
+  "y_balance_instr": {
+   "measured_cl_mm": 3535,
+   "model_cl_mm": 3535,
+   "diff_mm": 0,
+   "vector_line_present": true
+  },
+  "y_office_std": {
+   "measured_cl_mm": 851,
+   "model_cl_mm": 850,
+   "diff_mm": 1,
+   "vector_line_present": true
+  },
+  "y_prep_coding": {
+   "measured_cl_mm": -1198,
+   "model_cl_mm": -1200,
+   "diff_mm": 2,
+   "vector_line_present": true
+  },
+  "y_bottom": {
+   "measured_cl_mm": -6000,
+   "model_cl_mm": -6000,
+   "diff_mm": 0,
+   "vector_line_present": true
+  }
+ },
+ "rooms": [
+  {
+   "id": "DIG",
+   "name": "Digestion room",
+   "group": "Hóa",
+   "ahu_zone": "AHU-2.01",
+   "area_vector_only_m2": 14.61,
+   "area_vector_only_diff_pct": 0.08,
+   "polygon_mm": [
+    [
+     5895,
+     14675
+    ],
+    [
+     9545,
+     14675
+    ],
+    [
+     9545,
+     18675
+    ],
+    [
+     5895,
+     18675
+    ]
+   ],
+   "clear_dims_mm": [
+    3650,
+    4000
+   ],
+   "area_model_m2": 14.6,
+   "area_gross_wall_cl_m2": 14.98,
+   "area_schedule_m2": 14.6,
+   "area_diff_pct": 0.0,
+   "area_check_5pct": true,
+   "centroid_mm": [
+    7720,
+    16675
+   ],
+   "bbox_mm": [
+    5895,
+    14675,
+    9545,
+    18675
+   ],
+   "page6_label_mm": [
+    9022,
+    16683
+   ],
+   "page6_label_inside": true,
+   "volume_m3_at_ceiling_3m": 43.8,
+   "exposure": {
+    "shared_walls": [
+     {
+      "side": "E",
+      "with": "KJE",
+      "length_mm": 4000
+     },
+     {
+      "side": "S",
+      "with": "ST1",
+      "length_mm": 3650
+     }
+    ],
+    "exposed_segments": [
+     {
+      "side": "W",
+      "from_mm": [
+       5895,
+       14675
+      ],
+      "to_mm": [
+       5895,
+       18675
+      ],
+      "length_mm": 4000,
+      "faces": "DINING_nonscope"
+     },
+     {
+      "side": "N",
+      "from_mm": [
+       5895,
+       18675
+      ],
+      "to_mm": [
+       9545,
+       18675
+      ],
+      "length_mm": 3650,
+      "faces": "factory_unconditioned"
+     }
+    ],
+    "exposed_length_mm_by_type": {
+     "DINING_nonscope": 4000,
+     "factory_unconditioned": 3650
+    },
+    "exposed_wall_area_m2_by_type_h3m": {
+     "DINING_nonscope": 12.0,
+     "factory_unconditioned": 10.95
+    }
+   }
+  },
+  {
+   "id": "KJE",
+   "name": "Kjeldahl room",
+   "group": "Hóa",
+   "ahu_zone": "AHU-2.01",
+   "area_vector_only_m2": 18.96,
+   "area_vector_only_diff_pct": 0.43,
+   "polygon_mm": [
+    [
+     9595,
+     14675
+    ],
+    [
+     14335,
+     14675
+    ],
+    [
+     14335,
+     18675
+    ],
+    [
+     9595,
+     18675
+    ]
+   ],
+   "clear_dims_mm": [
+    4740,
+    4000
+   ],
+   "area_model_m2": 18.96,
+   "area_gross_wall_cl_m2": 19.4,
+   "area_schedule_m2": 18.88,
+   "area_diff_pct": 0.42,
+   "area_check_5pct": true,
+   "centroid_mm": [
+    11965,
+    16675
+   ],
+   "bbox_mm": [
+    9595,
+    14675,
+    14335,
+    18675
+   ],
+   "page6_label_mm": [
+    13208,
+    16683
+   ],
+   "page6_label_inside": true,
+   "volume_m3_at_ceiling_3m": 56.9,
+   "exposure": {
+    "shared_walls": [
+     {
+      "side": "W",
+      "with": "DIG",
+      "length_mm": 4000
+     },
+     {
+      "side": "S",
+      "with": "ST1",
+      "length_mm": 4740
+     }
+    ],
+    "exposed_segments": [
+     {
+      "side": "E",
+      "from_mm": [
+       14335,
+       14675
+      ],
+      "to_mm": [
+       14335,
+       18675
+      ],
+      "length_mm": 4000,
+      "faces": "CORRIDOR"
+     },
+     {
+      "side": "N",
+      "from_mm": [
+       9595,
+       18675
+      ],
+      "to_mm": [
+       14335,
+       18675
+      ],
+      "length_mm": 4740,
+      "faces": "factory_unconditioned"
+     }
+    ],
+    "exposed_length_mm_by_type": {
+     "CORRIDOR": 4000,
+     "factory_unconditioned": 4740
+    },
+    "exposed_wall_area_m2_by_type_h3m": {
+     "CORRIDOR": 12.0,
+     "factory_unconditioned": 14.22
+    }
+   }
+  },
+  {
+   "id": "ST1",
+   "name": "Sample treatment 1",
+   "group": "Hóa",
+   "ahu_zone": "AHU-2.01",
+   "area_vector_only_m2": 65.86,
+   "area_vector_only_diff_pct": 0.25,
+   "polygon_mm": [
+    [
+     5895,
+     6825
+    ],
+    [
+     14335,
+     6825
+    ],
+    [
+     14335,
+     14625
+    ],
+    [
+     5895,
+     14625
+    ]
+   ],
+   "clear_dims_mm": [
+    8440,
+    7800
+   ],
+   "area_model_m2": 65.83,
+   "area_gross_wall_cl_m2": 66.65,
+   "area_schedule_m2": 65.7,
+   "area_diff_pct": 0.2,
+   "area_check_5pct": true,
+   "centroid_mm": [
+    10115,
+    10725
+   ],
+   "bbox_mm": [
+    5895,
+    6825,
+    14335,
+    14625
+   ],
+   "page6_label_mm": [
+    11734,
+    10733
+   ],
+   "page6_label_inside": true,
+   "volume_m3_at_ceiling_3m": 197.5,
+   "exposure": {
+    "shared_walls": [
+     {
+      "side": "S",
+      "with": "BAL",
+      "length_mm": 5735
+     },
+     {
+      "side": "S",
+      "with": "PRE",
+      "length_mm": 2655
+     },
+     {
+      "side": "N",
+      "with": "DIG",
+      "length_mm": 3650
+     },
+     {
+      "side": "N",
+      "with": "KJE",
+      "length_mm": 4740
+     }
+    ],
+    "exposed_segments": [
+     {
+      "side": "W",
+      "from_mm": [
+       5895,
+       6825
+      ],
+      "to_mm": [
+       5895,
+       14625
+      ],
+      "length_mm": 7800,
+      "faces": "DINING_nonscope"
+     },
+     {
+      "side": "E",
+      "from_mm": [
+       14335,
+       6825
+      ],
+      "to_mm": [
+       14335,
+       14625
+      ],
+      "length_mm": 7800,
+      "faces": "CORRIDOR"
+     }
+    ],
+    "exposed_length_mm_by_type": {
+     "DINING_nonscope": 7800,
+     "CORRIDOR": 7800
+    },
+    "exposed_wall_area_m2_by_type_h3m": {
+     "DINING_nonscope": 23.4,
+     "CORRIDOR": 23.4
+    }
+   }
+  },
+  {
+   "id": "BAL",
+   "name": "Balance room",
+   "group": "Thường",
+   "ahu_zone": "AHU-2.01",
+   "area_vector_only_m2": 18.44,
+   "area_vector_only_diff_pct": 0.5,
+   "polygon_mm": [
+    [
+     8600,
+     3560
+    ],
+    [
+     14335,
+     3560
+    ],
+    [
+     14335,
+     6775
+    ],
+    [
+     8600,
+     6775
+    ]
+   ],
+   "clear_dims_mm": [
+    5735,
+    3215
+   ],
+   "area_model_m2": 18.44,
+   "area_gross_wall_cl_m2": 18.89,
+   "area_schedule_m2": 18.35,
+   "area_diff_pct": 0.48,
+   "area_check_5pct": true,
+   "centroid_mm": [
+    11468,
+    5168
+   ],
+   "bbox_mm": [
+    8600,
+    3560,
+    14335,
+    6775
+   ],
+   "page6_label_mm": [
+    12659,
+    5175
+   ],
+   "page6_label_inside": true,
+   "volume_m3_at_ceiling_3m": 55.3,
+   "exposure": {
+    "shared_walls": [
+     {
+      "side": "W",
+      "with": "PRE",
+      "length_mm": 3215
+     },
+     {
+      "side": "S",
+      "with": "INS",
+      "length_mm": 3785
+     },
+     {
+      "side": "S",
+      "with": "REP",
+      "length_mm": 1900
+     },
+     {
+      "side": "N",
+      "with": "ST1",
+      "length_mm": 5735
+     }
+    ],
+    "exposed_segments": [
+     {
+      "side": "E",
+      "from_mm": [
+       14335,
+       3560
+      ],
+      "to_mm": [
+       14335,
+       6775
+      ],
+      "length_mm": 3215,
+      "faces": "CORRIDOR"
+     }
+    ],
+    "exposed_length_mm_by_type": {
+     "CORRIDOR": 3215
+    },
+    "exposed_wall_area_m2_by_type_h3m": {
+     "CORRIDOR": 9.64
+    }
+   }
+  },
+  {
+   "id": "PRE",
+   "name": "Sample preparation",
+   "group": "Thường (có hút)",
+   "ahu_zone": "AHU-2.01",
+   "area_vector_only_m2": 59.25,
+   "area_vector_only_diff_pct": 0.43,
+   "polygon_mm": [
+    [
+     1095,
+     -1175
+    ],
+    [
+     8550,
+     -1175
+    ],
+    [
+     8550,
+     6775
+    ],
+    [
+     1095,
+     6775
+    ]
+   ],
+   "clear_dims_mm": [
+    7455,
+    7950
+   ],
+   "area_model_m2": 59.27,
+   "area_gross_wall_cl_m2": 60.04,
+   "area_schedule_m2": 58.99,
+   "area_diff_pct": 0.47,
+   "area_check_5pct": true,
+   "centroid_mm": [
+    4822,
+    2800
+   ],
+   "bbox_mm": [
+    1095,
+    -1175,
+    8550,
+    6775
+   ],
+   "page6_label_mm": [
+    6471,
+    2807
+   ],
+   "page6_label_inside": true,
+   "volume_m3_at_ceiling_3m": 177.8,
+   "exposure": {
+    "shared_walls": [
+     {
+      "side": "E",
+      "with": "BAL",
+      "length_mm": 3215
+     },
+     {
+      "side": "E",
+      "with": "INS",
+      "length_mm": 4685
+     },
+     {
+      "side": "S",
+      "with": "COD",
+      "length_mm": 5305
+     },
+     {
+      "side": "S",
+      "with": "DIV",
+      "length_mm": 2100
+     },
+     {
+      "side": "N",
+      "with": "ST1",
+      "length_mm": 2655
+     }
+    ],
+    "exposed_segments": [
+     {
+      "side": "W",
+      "from_mm": [
+       1095,
+       -1175
+      ],
+      "to_mm": [
+       1095,
+       6775
+      ],
+      "length_mm": 7950,
+      "faces": "factory_unconditioned"
+     },
+     {
+      "side": "N",
+      "from_mm": [
+       1095,
+       6775
+      ],
+      "to_mm": [
+       5895,
+       6775
+      ],
+      "length_mm": 4800,
+      "faces": "DINING_nonscope"
+     }
+    ],
+    "exposed_length_mm_by_type": {
+     "factory_unconditioned": 7950,
+     "DINING_nonscope": 4800
+    },
+    "exposed_wall_area_m2_by_type_h3m": {
+     "factory_unconditioned": 23.85,
+     "DINING_nonscope": 14.4
+    }
+   }
+  },
+  {
+   "id": "COD",
+   "name": "Sample coding",
+   "group": "Thường",
+   "ahu_zone": "AHU-2.01",
+   "area_vector_only_m2": 25.34,
+   "area_vector_only_diff_pct": 0.54,
+   "polygon_mm": [
+    [
+     3245,
+     -5975
+    ],
+    [
+     8550,
+     -5975
+    ],
+    [
+     8550,
+     -1225
+    ],
+    [
+     3245,
+     -1225
+    ]
+   ],
+   "clear_dims_mm": [
+    5305,
+    4750
+   ],
+   "area_model_m2": 25.2,
+   "area_gross_wall_cl_m2": 25.7,
+   "area_schedule_m2": 25.2,
+   "area_diff_pct": -0.0,
+   "area_check_5pct": true,
+   "centroid_mm": [
+    5898,
+    -3600
+   ],
+   "bbox_mm": [
+    3245,
+    -5975,
+    8550,
+    -1225
+   ],
+   "page6_label_mm": [
+    7000,
+    -3592
+   ],
+   "page6_label_inside": true,
+   "volume_m3_at_ceiling_3m": 75.6,
+   "exposure": {
+    "shared_walls": [
+     {
+      "side": "W",
+      "with": "DIV",
+      "length_mm": 4750
+     },
+     {
+      "side": "E",
+      "with": "INS",
+      "length_mm": 4750
+     },
+     {
+      "side": "N",
+      "with": "PRE",
+      "length_mm": 5305
+     }
+    ],
+    "exposed_segments": [
+     {
+      "side": "S",
+      "from_mm": [
+       3245,
+       -5975
+      ],
+      "to_mm": [
+       8550,
+       -5975
+      ],
+      "length_mm": 5305,
+      "faces": "factory_unconditioned"
+     }
+    ],
+    "exposed_length_mm_by_type": {
+     "factory_unconditioned": 5305
+    },
+    "exposed_wall_area_m2_by_type_h3m": {
+     "factory_unconditioned": 15.91
+    }
+   }
+  },
+  {
+   "id": "DIV",
+   "name": "Sample dividing",
+   "group": "Thường",
+   "ahu_zone": "AHU-2.01",
+   "area_vector_only_m2": 9.84,
+   "area_vector_only_diff_pct": -1.39,
+   "polygon_mm": [
+    [
+     1095,
+     -5975
+    ],
+    [
+     3195,
+     -5975
+    ],
+    [
+     3195,
+     -1225
+    ],
+    [
+     1095,
+     -1225
+    ]
+   ],
+   "clear_dims_mm": [
+    2100,
+    4750
+   ],
+   "area_model_m2": 9.97,
+   "area_gross_wall_cl_m2": 10.32,
+   "area_schedule_m2": 9.98,
+   "area_diff_pct": -0.05,
+   "area_check_5pct": true,
+   "centroid_mm": [
+    2145,
+    -3600
+   ],
+   "bbox_mm": [
+    1095,
+    -5975,
+    3195,
+    -1225
+   ],
+   "page6_label_mm": [
+    1940,
+    -2533
+   ],
+   "page6_label_inside": true,
+   "volume_m3_at_ceiling_3m": 29.9,
+   "exposure": {
+    "shared_walls": [
+     {
+      "side": "E",
+      "with": "COD",
+      "length_mm": 4750
+     },
+     {
+      "side": "N",
+      "with": "PRE",
+      "length_mm": 2100
+     }
+    ],
+    "exposed_segments": [
+     {
+      "side": "W",
+      "from_mm": [
+       1095,
+       -5975
+      ],
+      "to_mm": [
+       1095,
+       -1225
+      ],
+      "length_mm": 4750,
+      "faces": "factory_unconditioned"
+     },
+     {
+      "side": "S",
+      "from_mm": [
+       1095,
+       -5975
+      ],
+      "to_mm": [
+       3195,
+       -5975
+      ],
+      "length_mm": 2100,
+      "faces": "factory_unconditioned"
+     }
+    ],
+    "exposed_length_mm_by_type": {
+     "factory_unconditioned": 6850
+    },
+    "exposed_wall_area_m2_by_type_h3m": {
+     "factory_unconditioned": 20.55
+    }
+   }
+  },
+  {
+   "id": "INS",
+   "name": "Instrument room",
+   "group": "Thường (có hút)",
+   "ahu_zone": "AHU-2.03 (phương án) / AHU-2.01",
+   "area_vector_only_m2": 35.79,
+   "area_vector_only_diff_pct": -0.08,
+   "polygon_mm": [
+    [
+     8600,
+     -5975
+    ],
+    [
+     12385,
+     -5975
+    ],
+    [
+     12385,
+     3510
+    ],
+    [
+     8600,
+     3510
+    ]
+   ],
+   "clear_dims_mm": [
+    3785,
+    9485
+   ],
+   "area_model_m2": 35.9,
+   "area_gross_wall_cl_m2": 36.57,
+   "area_schedule_m2": 35.82,
+   "area_diff_pct": 0.23,
+   "area_check_5pct": true,
+   "centroid_mm": [
+    10492,
+    -1232
+   ],
+   "bbox_mm": [
+    8600,
+    -5975,
+    12385,
+    3510
+   ],
+   "page6_label_mm": [
+    9809,
+    97
+   ],
+   "page6_label_inside": true,
+   "volume_m3_at_ceiling_3m": 107.7,
+   "exposure": {
+    "shared_walls": [
+     {
+      "side": "W",
+      "with": "PRE",
+      "length_mm": 4685
+     },
+     {
+      "side": "W",
+      "with": "COD",
+      "length_mm": 4750
+     },
+     {
+      "side": "E",
+      "with": "REP",
+      "length_mm": 9485
+     },
+     {
+      "side": "N",
+      "with": "BAL",
+      "length_mm": 3785
+     }
+    ],
+    "exposed_segments": [
+     {
+      "side": "S",
+      "from_mm": [
+       8600,
+       -5975
+      ],
+      "to_mm": [
+       12385,
+       -5975
+      ],
+      "length_mm": 3785,
+      "faces": "factory_unconditioned"
+     }
+    ],
+    "exposed_length_mm_by_type": {
+     "factory_unconditioned": 3785
+    },
+    "exposed_wall_area_m2_by_type_h3m": {
+     "factory_unconditioned": 11.36
+    }
+   }
+  },
+  {
+   "id": "REP",
+   "name": "Reporting room",
+   "group": "Thường",
+   "ahu_zone": "AHU-2.01",
+   "area_vector_only_m2": 18.14,
+   "area_vector_only_diff_pct": 0.68,
+   "polygon_mm": [
+    [
+     12435,
+     -5975
+    ],
+    [
+     14335,
+     -5975
+    ],
+    [
+     14335,
+     3510
+    ],
+    [
+     12435,
+     3510
+    ]
+   ],
+   "clear_dims_mm": [
+    1900,
+    9485
+   ],
+   "area_model_m2": 18.02,
+   "area_gross_wall_cl_m2": 18.59,
+   "area_schedule_m2": 18.02,
+   "area_diff_pct": 0.01,
+   "area_check_5pct": true,
+   "centroid_mm": [
+    13385,
+    -1232
+   ],
+   "bbox_mm": [
+    12435,
+    -5975,
+    14335,
+    3510
+   ],
+   "page6_label_mm": [
+    12881,
+    218
+   ],
+   "page6_label_inside": true,
+   "volume_m3_at_ceiling_3m": 54.1,
+   "exposure": {
+    "shared_walls": [
+     {
+      "side": "W",
+      "with": "INS",
+      "length_mm": 9485
+     },
+     {
+      "side": "N",
+      "with": "BAL",
+      "length_mm": 1900
+     }
+    ],
+    "exposed_segments": [
+     {
+      "side": "E",
+      "from_mm": [
+       14335,
+       -5975
+      ],
+      "to_mm": [
+       14335,
+       3510
+      ],
+      "length_mm": 9485,
+      "faces": "CORRIDOR"
+     },
+     {
+      "side": "S",
+      "from_mm": [
+       12435,
+       -5975
+      ],
+      "to_mm": [
+       14335,
+       -5975
+      ],
+      "length_mm": 1900,
+      "faces": "factory_unconditioned"
+     }
+    ],
+    "exposed_length_mm_by_type": {
+     "CORRIDOR": 9485,
+     "factory_unconditioned": 1900
+    },
+    "exposed_wall_area_m2_by_type_h3m": {
+     "CORRIDOR": 28.45,
+     "factory_unconditioned": 5.7
+    }
+   }
+  },
+  {
+   "id": "OFF",
+   "name": "Office",
+   "group": "Thường",
+   "ahu_zone": "AHU-2.02",
+   "area_vector_only_m2": 41.23,
+   "area_vector_only_diff_pct": 0.66,
+   "polygon_mm": [
+    [
+     16235,
+     875
+    ],
+    [
+     20935,
+     875
+    ],
+    [
+     20935,
+     9650
+    ],
+    [
+     16235,
+     9650
+    ]
+   ],
+   "clear_dims_mm": [
+    4700,
+    8775
+   ],
+   "area_model_m2": 41.24,
+   "area_gross_wall_cl_m2": 41.92,
+   "area_schedule_m2": 40.96,
+   "area_diff_pct": 0.69,
+   "area_check_5pct": true,
+   "centroid_mm": [
+    18585,
+    5262
+   ],
+   "bbox_mm": [
+    16235,
+    875,
+    20935,
+    9650
+   ],
+   "page6_label_mm": [
+    19194,
+    5270
+   ],
+   "page6_label_inside": true,
+   "volume_m3_at_ceiling_3m": 123.7,
+   "exposure": {
+    "shared_walls": [
+     {
+      "side": "E",
+      "with": "ST2",
+      "length_mm": 8775
+     },
+     {
+      "side": "S",
+      "with": "STD20",
+      "length_mm": 2900
+     },
+     {
+      "side": "S",
+      "with": "STD12",
+      "length_mm": 1750
+     }
+    ],
+    "exposed_segments": [
+     {
+      "side": "W",
+      "from_mm": [
+       16235,
+       875
+      ],
+      "to_mm": [
+       16235,
+       9650
+      ],
+      "length_mm": 8775,
+      "faces": "CORRIDOR"
+     },
+     {
+      "side": "N",
+      "from_mm": [
+       16235,
+       9650
+      ],
+      "to_mm": [
+       20935,
+       9650
+      ],
+      "length_mm": 4700,
+      "faces": "CST_nonscope"
+     }
+    ],
+    "exposed_length_mm_by_type": {
+     "CORRIDOR": 8775,
+     "CST_nonscope": 4700
+    },
+    "exposed_wall_area_m2_by_type_h3m": {
+     "CORRIDOR": 26.32,
+     "CST_nonscope": 14.1
+    }
+   }
+  },
+  {
+   "id": "STD20",
+   "name": "Standard (19,72 m²)",
+   "group": "Hóa",
+   "ahu_zone": "AHU-2.02",
+   "area_vector_only_m2": 19.37,
+   "area_vector_only_diff_pct": -1.75,
+   "polygon_mm": [
+    [
+     16235,
+     -5975
+    ],
+    [
+     19135,
+     -5975
+    ],
+    [
+     19135,
+     825
+    ],
+    [
+     16235,
+     825
+    ]
+   ],
+   "clear_dims_mm": [
+    2900,
+    6800
+   ],
+   "area_model_m2": 19.72,
+   "area_gross_wall_cl_m2": 20.21,
+   "area_schedule_m2": 19.72,
+   "area_diff_pct": 0.0,
+   "area_check_5pct": true,
+   "centroid_mm": [
+    17685,
+    -2575
+   ],
+   "bbox_mm": [
+    16235,
+    -5975,
+    19135,
+    825
+   ],
+   "page6_label_mm": [
+    17696,
+    -1445
+   ],
+   "page6_label_inside": true,
+   "volume_m3_at_ceiling_3m": 59.2,
+   "exposure": {
+    "shared_walls": [
+     {
+      "side": "E",
+      "with": "STD12",
+      "length_mm": 6800
+     },
+     {
+      "side": "N",
+      "with": "OFF",
+      "length_mm": 2900
+     }
+    ],
+    "exposed_segments": [
+     {
+      "side": "W",
+      "from_mm": [
+       16235,
+       -5975
+      ],
+      "to_mm": [
+       16235,
+       825
+      ],
+      "length_mm": 6800,
+      "faces": "CORRIDOR"
+     },
+     {
+      "side": "S",
+      "from_mm": [
+       16235,
+       -5975
+      ],
+      "to_mm": [
+       19135,
+       -5975
+      ],
+      "length_mm": 2900,
+      "faces": "factory_unconditioned"
+     }
+    ],
+    "exposed_length_mm_by_type": {
+     "CORRIDOR": 6800,
+     "factory_unconditioned": 2900
+    },
+    "exposed_wall_area_m2_by_type_h3m": {
+     "CORRIDOR": 20.4,
+     "factory_unconditioned": 8.7
+    }
+   }
+  },
+  {
+   "id": "STD12",
+   "name": "Standard (11,90 m²)",
+   "group": "Hóa",
+   "ahu_zone": "AHU-2.02",
+   "area_vector_only_m2": 12.24,
+   "area_vector_only_diff_pct": 2.84,
+   "polygon_mm": [
+    [
+     19185,
+     -5975
+    ],
+    [
+     20935,
+     -5975
+    ],
+    [
+     20935,
+     825
+    ],
+    [
+     19185,
+     825
+    ]
+   ],
+   "clear_dims_mm": [
+    1750,
+    6800
+   ],
+   "area_model_m2": 11.9,
+   "area_gross_wall_cl_m2": 12.33,
+   "area_schedule_m2": 11.9,
+   "area_diff_pct": 0.0,
+   "area_check_5pct": true,
+   "centroid_mm": [
+    20060,
+    -2575
+   ],
+   "bbox_mm": [
+    19185,
+    -5975,
+    20935,
+    825
+   ],
+   "page6_label_mm": [
+    20065,
+    -1974
+   ],
+   "page6_label_inside": true,
+   "volume_m3_at_ceiling_3m": 35.7,
+   "exposure": {
+    "shared_walls": [
+     {
+      "side": "W",
+      "with": "STD20",
+      "length_mm": 6800
+     },
+     {
+      "side": "E",
+      "with": "ST2",
+      "length_mm": 6800
+     },
+     {
+      "side": "N",
+      "with": "OFF",
+      "length_mm": 1750
+     }
+    ],
+    "exposed_segments": [
+     {
+      "side": "S",
+      "from_mm": [
+       19185,
+       -5975
+      ],
+      "to_mm": [
+       20935,
+       -5975
+      ],
+      "length_mm": 1750,
+      "faces": "factory_unconditioned"
+     }
+    ],
+    "exposed_length_mm_by_type": {
+     "factory_unconditioned": 1750
+    },
+    "exposed_wall_area_m2_by_type_h3m": {
+     "factory_unconditioned": 5.25
+    }
+   }
+  },
+  {
+   "id": "ST2",
+   "name": "Sample treatment 2",
+   "group": "Hóa",
+   "ahu_zone": "AHU-2.02",
+   "area_vector_only_m2": 104.26,
+   "area_vector_only_diff_pct": 0.6,
+   "polygon_mm": [
+    [
+     20985,
+     -5975
+    ],
+    [
+     27705,
+     -5975
+    ],
+    [
+     27705,
+     9650
+    ],
+    [
+     20985,
+     9650
+    ]
+   ],
+   "clear_dims_mm": [
+    6720,
+    15625
+   ],
+   "area_model_m2": 105.0,
+   "area_gross_wall_cl_m2": 106.12,
+   "area_schedule_m2": 103.64,
+   "area_diff_pct": 1.31,
+   "area_check_5pct": true,
+   "centroid_mm": [
+    24345,
+    1838
+   ],
+   "bbox_mm": [
+    20985,
+    -5975,
+    27705,
+    9650
+   ],
+   "page6_label_mm": [
+    25968,
+    1845
+   ],
+   "page6_label_inside": true,
+   "volume_m3_at_ceiling_3m": 315.0,
+   "exposure": {
+    "shared_walls": [
+     {
+      "side": "W",
+      "with": "OFF",
+      "length_mm": 8775
+     },
+     {
+      "side": "W",
+      "with": "STD12",
+      "length_mm": 6800
+     }
+    ],
+    "exposed_segments": [
+     {
+      "side": "E",
+      "from_mm": [
+       27705,
+       -5975
+      ],
+      "to_mm": [
+       27705,
+       9650
+      ],
+      "length_mm": 15625,
+      "faces": "external_wall_A"
+     },
+     {
+      "side": "S",
+      "from_mm": [
+       20985,
+       -5975
+      ],
+      "to_mm": [
+       27705,
+       -5975
+      ],
+      "length_mm": 6720,
+      "faces": "factory_unconditioned"
+     },
+     {
+      "side": "N",
+      "from_mm": [
+       20985,
+       9650
+      ],
+      "to_mm": [
+       27705,
+       9650
+      ],
+      "length_mm": 6720,
+      "faces": "CST_nonscope"
+     }
+    ],
+    "exposed_length_mm_by_type": {
+     "external_wall_A": 15625,
+     "factory_unconditioned": 6720,
+     "CST_nonscope": 6720
+    },
+    "exposed_wall_area_m2_by_type_h3m": {
+     "external_wall_A": 46.88,
+     "factory_unconditioned": 20.16,
+     "CST_nonscope": 20.16
+    }
+   }
+  }
+ ],
+ "rooms_total_m2": {
+  "model": 444.05,
+  "schedule": 441.76
+ },
+ "zones_nonscope": {
+  "DINING_nonscope": {
+   "name": "Khu hiện hữu không ghi tên (trái trên, ~DIR nhà ăn trên DW-A-03-01) – ngoài phạm vi",
+   "rect": [
+    1095,
+    6825,
+    5845,
+    18675
+   ]
+  },
+  "CST_nonscope": {
+   "name": "Khu hiện hữu không ghi tên (phải trên, ~CST kho hóa chất trên DW-A-03-01) – ngoài phạm vi",
+   "rect": [
+    16235,
+    9700,
+    27705,
+    18675
+   ]
+  },
+  "CORRIDOR": {
+   "name": "Lối đi/không gian xưởng giữa khối trái (E–C) và khối phải (B–A), không điều hòa",
+   "rect": [
+    14385,
+    -6000,
+    16185,
+    18700
+   ]
+  }
+ },
+ "external_wall_A": {
+  "x_mm": 28000,
+  "room_side_inner_face_x_mm": 27705,
+  "note": "Vách panel ST2 đặt cách tường A ~0,3 m; tường A là tường bao ngoài nhà"
+ },
+ "exhaust_points": [
+  {
+   "id": "DIG-FH1",
+   "room": "DIG",
+   "type": "fume_hood_1600",
+   "acid": true,
+   "xy_mm": [
+    6668,
+    18301
+   ],
+   "facing": "S",
+   "flow_m3h_basis": 2270,
+   "discharge_path": "scrubber",
+   "pdf_page7_pt": [
+    299.6,
+    68.0
+   ],
+   "label_verified": true,
+   "inside_room_polygon": true,
+   "note": "Hood acid đặt trên bàn 1600×800 sát vách trên"
+  },
+  {
+   "id": "DIG-FH2",
+   "room": "DIG",
+   "type": "fume_hood_1600",
+   "acid": true,
+   "xy_mm": [
+    8469,
+    18301
+   ],
+   "facing": "S",
+   "flow_m3h_basis": 2270,
+   "discharge_path": "scrubber",
+   "pdf_page7_pt": [
+    347.3,
+    68.0
+   ],
+   "label_verified": true,
+   "inside_room_polygon": true,
+   "note": "Hood acid 1600 đặt trên bàn 2000×800 sát vách trên"
+  },
+  {
+   "id": "DIG-CH1",
+   "room": "DIG",
+   "type": "canopy",
+   "acid": false,
+   "xy_mm": [
+    8518,
+    15104
+   ],
+   "facing": "N",
+   "flow_m3h_basis": 1100,
+   "discharge_path": "quạt EAF HVAC",
+   "pdf_page7_pt": [
+    348.6,
+    152.7
+   ],
+   "label_verified": true,
+   "inside_room_polygon": true,
+   "note": "Chụp treo 2000×800 trên bàn lò nung"
+  },
+  {
+   "id": "KJE-CH1",
+   "room": "KJE",
+   "type": "canopy",
+   "acid": false,
+   "xy_mm": [
+    11711,
+    15104
+   ],
+   "facing": "N",
+   "flow_m3h_basis": 1100,
+   "discharge_path": "quạt EAF HVAC",
+   "pdf_page7_pt": [
+    433.2,
+    152.7
+   ],
+   "label_verified": true,
+   "inside_room_polygon": true,
+   "note": "Chụp treo 2000×800 trên bàn (máy Kjeldahl)"
+  },
+  {
+   "id": "ST1-FH1",
+   "room": "ST1",
+   "type": "fume_hood_1600",
+   "acid": true,
+   "xy_mm": [
+    6268,
+    13855
+   ],
+   "facing": "E",
+   "flow_m3h_basis": 2270,
+   "discharge_path": "scrubber",
+   "pdf_page7_pt": [
+    289.0,
+    185.8
+   ],
+   "label_verified": true,
+   "inside_room_polygon": true,
+   "note": "Hood acid, vách trái"
+  },
+  {
+   "id": "ST1-FH2",
+   "room": "ST1",
+   "type": "fume_hood_1600",
+   "acid": false,
+   "xy_mm": [
+    6268,
+    12250
+   ],
+   "facing": "E",
+   "flow_m3h_basis": 2270,
+   "discharge_path": "thải thẳng (lọc than tại tủ)",
+   "pdf_page7_pt": [
+    289.0,
+    228.3
+   ],
+   "label_verified": true,
+   "inside_room_polygon": true,
+   "note": "Hood hữu cơ (lọc than)"
+  },
+  {
+   "id": "ST1-FH3",
+   "room": "ST1",
+   "type": "fume_hood_1600",
+   "acid": false,
+   "xy_mm": [
+    6268,
+    10650
+   ],
+   "facing": "E",
+   "flow_m3h_basis": 2270,
+   "discharge_path": "thải thẳng (lọc than tại tủ)",
+   "pdf_page7_pt": [
+    289.0,
+    270.7
+   ],
+   "label_verified": true,
+   "inside_room_polygon": true,
+   "note": "Hood hữu cơ (lọc than)"
+  },
+  {
+   "id": "ST1-CC1",
+   "room": "ST1",
+   "type": "chemical_cabinet",
+   "acid": false,
+   "xy_mm": [
+    13980,
+    14051
+   ],
+   "facing": "W",
+   "flow_m3h_basis": 1300,
+   "discharge_path": "quạt EAF HVAC",
+   "pdf_page7_pt": [
+    493.3,
+    180.6
+   ],
+   "label_verified": true,
+   "inside_room_polygon": true,
+   "note": "Tủ hóa chất 2000×650 (mua mới), vách phải"
+  },
+  {
+   "id": "ST1-CC2",
+   "room": "ST1",
+   "type": "chemical_cabinet",
+   "acid": false,
+   "xy_mm": [
+    8910,
+    7177
+   ],
+   "facing": "N",
+   "flow_m3h_basis": 1300,
+   "discharge_path": "quạt EAF HVAC",
+   "pdf_page7_pt": [
+    359.0,
+    362.7
+   ],
+   "label_verified": true,
+   "inside_room_polygon": true,
+   "note": "Tủ hóa chất 2000×650 (mua mới), vách dưới – CẦN XÁC NHẬN có hút (cơ sở TK chỉ 1 tủ)"
+  },
+  {
+   "id": "ST2-FH1",
+   "room": "ST2",
+   "type": "fume_hood_1600",
+   "acid": false,
+   "xy_mm": [
+    22906,
+    9280
+   ],
+   "facing": "S",
+   "flow_m3h_basis": 2270,
+   "discharge_path": "thải thẳng (lọc than tại tủ)",
+   "pdf_page7_pt": [
+    729.8,
+    307.0
+   ],
+   "label_verified": true,
+   "inside_room_polygon": true,
+   "note": "Hàng 3 hood sát vách trên"
+  },
+  {
+   "id": "ST2-FH2",
+   "room": "ST2",
+   "type": "fume_hood_1600",
+   "acid": false,
+   "xy_mm": [
+    24507,
+    9280
+   ],
+   "facing": "S",
+   "flow_m3h_basis": 2270,
+   "discharge_path": "thải thẳng (lọc than tại tủ)",
+   "pdf_page7_pt": [
+    772.2,
+    307.0
+   ],
+   "label_verified": true,
+   "inside_room_polygon": true,
+   "note": ""
+  },
+  {
+   "id": "ST2-FH3",
+   "room": "ST2",
+   "type": "fume_hood_1600",
+   "acid": true,
+   "xy_mm": [
+    26111,
+    9280
+   ],
+   "facing": "S",
+   "flow_m3h_basis": 2270,
+   "discharge_path": "scrubber",
+   "pdf_page7_pt": [
+    814.7,
+    307.0
+   ],
+   "label_verified": true,
+   "inside_room_polygon": true,
+   "note": "GIẢ ĐỊNH là hood acid (bản vẽ không phân biệt; chọn hood gần trục A/scrubber nhất)"
+  },
+  {
+   "id": "ST2-FH4",
+   "room": "ST2",
+   "type": "fume_hood_1600",
+   "acid": false,
+   "xy_mm": [
+    21381,
+    7385
+   ],
+   "facing": "E",
+   "flow_m3h_basis": 2270,
+   "discharge_path": "thải thẳng (lọc than tại tủ)",
+   "pdf_page7_pt": [
+    689.4,
+    357.2
+   ],
+   "label_verified": true,
+   "inside_room_polygon": true,
+   "note": "Vách trái ST2"
+  },
+  {
+   "id": "ST2-FH5",
+   "room": "ST2",
+   "type": "fume_hood_1600",
+   "acid": false,
+   "xy_mm": [
+    21381,
+    334
+   ],
+   "facing": "E",
+   "flow_m3h_basis": 2270,
+   "discharge_path": "thải thẳng (lọc than tại tủ)",
+   "pdf_page7_pt": [
+    689.4,
+    544.0
+   ],
+   "label_verified": true,
+   "inside_room_polygon": true,
+   "note": "Vách trái ST2"
+  },
+  {
+   "id": "ST2-FH6",
+   "room": "ST2",
+   "type": "fume_hood_1600",
+   "acid": false,
+   "xy_mm": [
+    21381,
+    -1270
+   ],
+   "facing": "E",
+   "flow_m3h_basis": 2270,
+   "discharge_path": "thải thẳng (lọc than tại tủ)",
+   "pdf_page7_pt": [
+    689.4,
+    586.5
+   ],
+   "label_verified": true,
+   "inside_room_polygon": true,
+   "note": "Vách trái ST2"
+  },
+  {
+   "id": "ST2-SK1",
+   "room": "ST2",
+   "type": "sink_hood",
+   "acid": false,
+   "xy_mm": [
+    23473,
+    6675
+   ],
+   "facing": "E",
+   "flow_m3h_basis": 300,
+   "discharge_path": "quạt EAF HVAC",
+   "pdf_page7_pt": [
+    744.8,
+    376.0
+   ],
+   "label_verified": true,
+   "inside_room_polygon": true,
+   "note": "Bồn rửa đôi 1400×800 (đầu bàn đảo) – chụp hút"
+  },
+  {
+   "id": "ST2-SK2",
+   "room": "ST2",
+   "type": "sink_hood",
+   "acid": false,
+   "xy_mm": [
+    23473,
+    1685
+   ],
+   "facing": "E",
+   "flow_m3h_basis": 300,
+   "discharge_path": "quạt EAF HVAC",
+   "pdf_page7_pt": [
+    744.8,
+    508.2
+   ],
+   "label_verified": true,
+   "inside_room_polygon": true,
+   "note": "Bồn rửa đôi 1400×800 (đầu bàn đảo) – chụp hút"
+  },
+  {
+   "id": "ST2-CC1",
+   "room": "ST2",
+   "type": "chemical_cabinet",
+   "acid": false,
+   "xy_mm": [
+    27274,
+    1391
+   ],
+   "facing": "W",
+   "flow_m3h_basis": 1300,
+   "discharge_path": "quạt EAF HVAC",
+   "pdf_page7_pt": [
+    845.5,
+    516.0
+   ],
+   "label_verified": true,
+   "inside_room_polygon": true,
+   "note": "Tủ hóa chất 800×800, vách phải (trục A)"
+  },
+  {
+   "id": "ST2-CC2",
+   "room": "ST2",
+   "type": "chemical_cabinet",
+   "acid": false,
+   "xy_mm": [
+    27274,
+    -568
+   ],
+   "facing": "W",
+   "flow_m3h_basis": 1300,
+   "discharge_path": "quạt EAF HVAC",
+   "pdf_page7_pt": [
+    845.5,
+    567.9
+   ],
+   "label_verified": true,
+   "inside_room_polygon": true,
+   "note": "Tủ hóa chất 800×800, vách phải (trục A)"
+  },
+  {
+   "id": "STD20-FH1",
+   "room": "STD20",
+   "type": "fume_hood_1600",
+   "acid": false,
+   "xy_mm": [
+    18686,
+    89
+   ],
+   "facing": "W",
+   "flow_m3h_basis": 2270,
+   "discharge_path": "thải thẳng (lọc than tại tủ)",
+   "pdf_page7_pt": [
+    618.0,
+    550.5
+   ],
+   "label_verified": true,
+   "inside_room_polygon": true,
+   "note": "Sát vách ngăn 2 phòng Standard"
+  },
+  {
+   "id": "STD20-FH2",
+   "room": "STD20",
+   "type": "fume_hood_1600",
+   "acid": false,
+   "xy_mm": [
+    18686,
+    -1482
+   ],
+   "facing": "W",
+   "flow_m3h_basis": 2270,
+   "discharge_path": "thải thẳng (lọc than tại tủ)",
+   "pdf_page7_pt": [
+    618.0,
+    592.1
+   ],
+   "label_verified": true,
+   "inside_room_polygon": true,
+   "note": ""
+  },
+  {
+   "id": "STD20-FH3",
+   "room": "STD20",
+   "type": "fume_hood_1600",
+   "acid": false,
+   "xy_mm": [
+    18686,
+    -5113
+   ],
+   "facing": "W",
+   "flow_m3h_basis": 2270,
+   "discharge_path": "thải thẳng (lọc than tại tủ)",
+   "pdf_page7_pt": [
+    618.0,
+    688.3
+   ],
+   "label_verified": true,
+   "inside_room_polygon": true,
+   "note": "Góc dưới phải"
+  },
+  {
+   "id": "STD20-FH4",
+   "room": "STD20",
+   "type": "fume_hood_1600",
+   "acid": false,
+   "xy_mm": [
+    16614,
+    -5113
+   ],
+   "facing": "E",
+   "flow_m3h_basis": 2270,
+   "discharge_path": "thải thẳng (lọc than tại tủ)",
+   "pdf_page7_pt": [
+    563.1,
+    688.3
+   ],
+   "label_verified": true,
+   "inside_room_polygon": true,
+   "note": "Góc dưới trái"
+  },
+  {
+   "id": "STD20-SK1",
+   "room": "STD20",
+   "type": "sink_hood",
+   "acid": false,
+   "xy_mm": [
+    16610,
+    51
+   ],
+   "facing": "E",
+   "flow_m3h_basis": 300,
+   "discharge_path": "quạt EAF HVAC",
+   "pdf_page7_pt": [
+    563.0,
+    551.5
+   ],
+   "label_verified": null,
+   "inside_room_polygon": true,
+   "note": "Bồn rửa đôi (ký hiệu, không nhãn) góc trên trái – chụp hút"
+  },
+  {
+   "id": "STD12-CC1",
+   "room": "STD12",
+   "type": "chemical_cabinet",
+   "acid": false,
+   "xy_mm": [
+    20366,
+    -5351
+   ],
+   "facing": "W",
+   "flow_m3h_basis": 1300,
+   "discharge_path": "quạt EAF HVAC",
+   "pdf_page7_pt": [
+    662.5,
+    694.6
+   ],
+   "label_verified": true,
+   "inside_room_polygon": true,
+   "note": "\"TỦ KHÔ\" = tủ khô chứa hóa chất 1000×600 có hút (DM nội thất 9.6)"
+  },
+  {
+   "id": "PRE-AH1",
+   "room": "PRE",
+   "type": "arm_hood",
+   "acid": false,
+   "xy_mm": [
+    3169,
+    2316
+   ],
+   "facing": "-",
+   "flow_m3h_basis": 800,
+   "discharge_path": "quạt EAF HVAC",
+   "pdf_page7_pt": [
+    206.9,
+    491.5
+   ],
+   "label_verified": null,
+   "inside_room_polygon": true,
+   "note": "GIẢ ĐỊNH: arm hood treo trên đảo bàn trái (bản vẽ không thể hiện)"
+  },
+  {
+   "id": "PRE-AH2",
+   "room": "PRE",
+   "type": "arm_hood",
+   "acid": false,
+   "xy_mm": [
+    5819,
+    2316
+   ],
+   "facing": "-",
+   "flow_m3h_basis": 800,
+   "discharge_path": "quạt EAF HVAC",
+   "pdf_page7_pt": [
+    277.1,
+    491.5
+   ],
+   "label_verified": null,
+   "inside_room_polygon": true,
+   "note": "GIẢ ĐỊNH: arm hood treo trên đảo bàn phải (bản vẽ không thể hiện)"
+  },
+  {
+   "id": "INS-V1",
+   "room": "INS",
+   "type": "instr_vent",
+   "acid": false,
+   "xy_mm": [
+    9729,
+    1051
+   ],
+   "facing": "-",
+   "flow_m3h_basis": 150,
+   "discharge_path": "quạt EAF HVAC",
+   "pdf_page7_pt": [
+    380.7,
+    525.0
+   ],
+   "label_verified": true,
+   "inside_room_polygon": true,
+   "note": "Điểm hút thiết bị (snorkel/ống mềm) trên bàn để máy 2000×1000 (8 bàn = 8 điểm)"
+  },
+  {
+   "id": "INS-V2",
+   "room": "INS",
+   "type": "instr_vent",
+   "acid": false,
+   "xy_mm": [
+    9729,
+    -949
+   ],
+   "facing": "-",
+   "flow_m3h_basis": 150,
+   "discharge_path": "quạt EAF HVAC",
+   "pdf_page7_pt": [
+    380.7,
+    578.0
+   ],
+   "label_verified": true,
+   "inside_room_polygon": true,
+   "note": "Điểm hút thiết bị (snorkel/ống mềm) trên bàn để máy 2000×1000 (8 bàn = 8 điểm)"
+  },
+  {
+   "id": "INS-V3",
+   "room": "INS",
+   "type": "instr_vent",
+   "acid": false,
+   "xy_mm": [
+    9729,
+    -2954
+   ],
+   "facing": "-",
+   "flow_m3h_basis": 150,
+   "discharge_path": "quạt EAF HVAC",
+   "pdf_page7_pt": [
+    380.7,
+    631.1
+   ],
+   "label_verified": true,
+   "inside_room_polygon": true,
+   "note": "Điểm hút thiết bị (snorkel/ống mềm) trên bàn để máy 2000×1000 (8 bàn = 8 điểm)"
+  },
+  {
+   "id": "INS-V4",
+   "room": "INS",
+   "type": "instr_vent",
+   "acid": false,
+   "xy_mm": [
+    9729,
+    -4958
+   ],
+   "facing": "-",
+   "flow_m3h_basis": 150,
+   "discharge_path": "quạt EAF HVAC",
+   "pdf_page7_pt": [
+    380.7,
+    684.2
+   ],
+   "label_verified": true,
+   "inside_room_polygon": true,
+   "note": "Điểm hút thiết bị (snorkel/ống mềm) trên bàn để máy 2000×1000 (8 bàn = 8 điểm)"
+  },
+  {
+   "id": "INS-V5",
+   "room": "INS",
+   "type": "instr_vent",
+   "acid": false,
+   "xy_mm": [
+    11228,
+    1051
+   ],
+   "facing": "-",
+   "flow_m3h_basis": 150,
+   "discharge_path": "quạt EAF HVAC",
+   "pdf_page7_pt": [
+    420.4,
+    525.0
+   ],
+   "label_verified": true,
+   "inside_room_polygon": true,
+   "note": "Điểm hút thiết bị (snorkel/ống mềm) trên bàn để máy 2000×1000 (8 bàn = 8 điểm)"
+  },
+  {
+   "id": "INS-V6",
+   "room": "INS",
+   "type": "instr_vent",
+   "acid": false,
+   "xy_mm": [
+    11228,
+    -949
+   ],
+   "facing": "-",
+   "flow_m3h_basis": 150,
+   "discharge_path": "quạt EAF HVAC",
+   "pdf_page7_pt": [
+    420.4,
+    578.0
+   ],
+   "label_verified": true,
+   "inside_room_polygon": true,
+   "note": "Điểm hút thiết bị (snorkel/ống mềm) trên bàn để máy 2000×1000 (8 bàn = 8 điểm)"
+  },
+  {
+   "id": "INS-V7",
+   "room": "INS",
+   "type": "instr_vent",
+   "acid": false,
+   "xy_mm": [
+    11228,
+    -2954
+   ],
+   "facing": "-",
+   "flow_m3h_basis": 150,
+   "discharge_path": "quạt EAF HVAC",
+   "pdf_page7_pt": [
+    420.4,
+    631.1
+   ],
+   "label_verified": true,
+   "inside_room_polygon": true,
+   "note": "Điểm hút thiết bị (snorkel/ống mềm) trên bàn để máy 2000×1000 (8 bàn = 8 điểm)"
+  },
+  {
+   "id": "INS-V8",
+   "room": "INS",
+   "type": "instr_vent",
+   "acid": false,
+   "xy_mm": [
+    11228,
+    -4958
+   ],
+   "facing": "-",
+   "flow_m3h_basis": 150,
+   "discharge_path": "quạt EAF HVAC",
+   "pdf_page7_pt": [
+    420.4,
+    684.2
+   ],
+   "label_verified": true,
+   "inside_room_polygon": true,
+   "note": "Điểm hút thiết bị (snorkel/ống mềm) trên bàn để máy 2000×1000 (8 bàn = 8 điểm)"
+  }
+ ],
+ "exhaust_reconciliation": {
+  "per_room": [
+   {
+    "room": "DIG",
+    "fume_hood_1600": {
+     "drawing": 2,
+     "basis": 2,
+     "match": true
+    },
+    "acid": {
+     "drawing": 2,
+     "basis": 2,
+     "match": true
+    },
+    "canopy": {
+     "drawing": 1,
+     "basis": 1,
+     "match": true
+    }
+   },
+   {
+    "room": "KJE",
+    "canopy": {
+     "drawing": 1,
+     "basis": 1,
+     "match": true
+    }
+   },
+   {
+    "room": "ST1",
+    "fume_hood_1600": {
+     "drawing": 3,
+     "basis": 3,
+     "match": true
+    },
+    "acid": {
+     "drawing": 1,
+     "basis": 1,
+     "match": true
+    },
+    "chemical_cabinet": {
+     "drawing": 2,
+     "basis": 1,
+     "match": false
+    }
+   },
+   {
+    "room": "ST2",
+    "fume_hood_1600": {
+     "drawing": 6,
+     "basis": 6,
+     "match": true
+    },
+    "acid": {
+     "drawing": 1,
+     "basis": 1,
+     "match": true
+    },
+    "chemical_cabinet": {
+     "drawing": 2,
+     "basis": 3,
+     "match": false
+    },
+    "sink_hood": {
+     "drawing": 2,
+     "basis": 3,
+     "match": false
+    }
+   },
+   {
+    "room": "STD20",
+    "fume_hood_1600": {
+     "drawing": 4,
+     "basis": 3,
+     "match": false
+    },
+    "sink_hood": {
+     "drawing": 1,
+     "basis": 0,
+     "match": false
+    }
+   },
+   {
+    "room": "STD12",
+    "fume_hood_1600": {
+     "drawing": 0,
+     "basis": 1,
+     "match": false
+    },
+    "chemical_cabinet": {
+     "drawing": 1,
+     "basis": 0,
+     "match": false
+    }
+   },
+   {
+    "room": "PRE",
+    "arm_hood": {
+     "drawing": 2,
+     "basis": 2,
+     "match": true
+    }
+   },
+   {
+    "room": "INS",
+    "instr_vent": {
+     "drawing": 8,
+     "basis": 8,
+     "match": true
+    }
+   }
+  ],
+  "total": {
+   "fume_hood_1600": {
+    "drawing": 15,
+    "basis": 15
+   },
+   "acid": {
+    "drawing": 4,
+    "basis": 4
+   },
+   "canopy": {
+    "drawing": 2,
+    "basis": 2
+   },
+   "chemical_cabinet": {
+    "drawing": 5,
+    "basis": 4
+   },
+   "sink_hood": {
+    "drawing": 3,
+    "basis": 3
+   },
+   "arm_hood": {
+    "drawing": 2,
+    "basis": 2
+   },
+   "instr_vent": {
+    "drawing": 8,
+    "basis": 8
+   }
+  },
+  "group_ST2_plus_2_Standard": {
+   "fume_hood_1600": {
+    "drawing": 10,
+    "basis": 10
+   },
+   "acid": {
+    "drawing": 1,
+    "basis": 1
+   },
+   "canopy": {
+    "drawing": 0,
+    "basis": 0
+   },
+   "chemical_cabinet": {
+    "drawing": 3,
+    "basis": 3
+   },
+   "sink_hood": {
+    "drawing": 3,
+    "basis": 3
+   },
+   "arm_hood": {
+    "drawing": 0,
+    "basis": 0
+   },
+   "instr_vent": {
+    "drawing": 0,
+    "basis": 0
+   }
+  }
+ },
+ "doors": [
+  {
+   "id": "D-01",
+   "between": [
+    "DIG",
+    "KJE"
+   ],
+   "wall": "x",
+   "center_mm": [
+    9571,
+    16678
+   ],
+   "width_mm": 900,
+   "kind": "cánh đơn",
+   "note": "Digestion chỉ đi qua Kjeldahl"
+  },
+  {
+   "id": "D-02",
+   "between": [
+    "KJE",
+    "ST1"
+   ],
+   "wall": "y",
+   "center_mm": [
+    10148,
+    14650
+   ],
+   "width_mm": 1000,
+   "kind": "cánh đơn D4.5 (tận dụng)",
+   "note": ""
+  },
+  {
+   "id": "D-03",
+   "between": [
+    "KJE",
+    "CORRIDOR"
+   ],
+   "wall": "x",
+   "center_mm": [
+    14360,
+    16950
+   ],
+   "width_mm": 1400,
+   "kind": "cửa đôi 1,4 m (giữ hiện trạng)",
+   "note": ""
+  },
+  {
+   "id": "D-04",
+   "between": [
+    "ST1",
+    "CORRIDOR"
+   ],
+   "wall": "x",
+   "center_mm": [
+    14360,
+    8019
+   ],
+   "width_mm": 1400,
+   "kind": "cửa đôi lệch cánh (hiện trạng)",
+   "note": ""
+  },
+  {
+   "id": "D-05",
+   "between": [
+    "BAL",
+    "CORRIDOR"
+   ],
+   "wall": "x",
+   "center_mm": [
+    14360,
+    5241
+   ],
+   "width_mm": 1400,
+   "kind": "cửa đôi lệch cánh (hiện trạng)",
+   "note": ""
+  },
+  {
+   "id": "D-06",
+   "between": [
+    "REP",
+    "CORRIDOR"
+   ],
+   "wall": "x",
+   "center_mm": [
+    14360,
+    2580
+   ],
+   "width_mm": 1400,
+   "kind": "cửa đôi lệch cánh (hiện trạng)",
+   "note": ""
+  },
+  {
+   "id": "D-07",
+   "between": [
+    "INS",
+    "REP"
+   ],
+   "wall": "x",
+   "center_mm": [
+    12410,
+    2760
+   ],
+   "width_mm": 1400,
+   "kind": "D_1.4x2.2 (làm mới)",
+   "note": "Instrument vào qua Reporting"
+  },
+  {
+   "id": "D-08",
+   "between": [
+    "BAL",
+    "PRE"
+   ],
+   "wall": "x",
+   "center_mm": [
+    8575,
+    5128
+   ],
+   "width_mm": 1000,
+   "kind": "cửa lùa D_1x2.2 (làm mới)",
+   "note": ""
+  },
+  {
+   "id": "D-09",
+   "between": [
+    "PRE",
+    "FACTORY_W"
+   ],
+   "wall": "x",
+   "center_mm": [
+    1070,
+    5241
+   ],
+   "width_mm": 1400,
+   "kind": "cửa đôi lệch cánh (hiện trạng)",
+   "note": ""
+  },
+  {
+   "id": "D-10",
+   "between": [
+    "PRE",
+    "COD"
+   ],
+   "wall": "y",
+   "center_mm": [
+    7808,
+    -1200
+   ],
+   "width_mm": 1000,
+   "kind": "D_1x2.2 (tận dụng)",
+   "note": ""
+  },
+  {
+   "id": "D-11",
+   "between": [
+    "COD",
+    "FACTORY_S"
+   ],
+   "wall": "y",
+   "center_mm": [
+    7627,
+    -6000
+   ],
+   "width_mm": 1400,
+   "kind": "D_1.4x2.2 (làm mới)",
+   "note": ""
+  },
+  {
+   "id": "D-12",
+   "between": [
+    "DIV",
+    "FACTORY_W"
+   ],
+   "wall": "x",
+   "center_mm": [
+    1070,
+    -3320
+   ],
+   "width_mm": 1000,
+   "kind": "D_1x2.2 (tận dụng), đổi chiều mở",
+   "note": ""
+  },
+  {
+   "id": "PB-01",
+   "between": [
+    "COD",
+    "DIV"
+   ],
+   "wall": "x",
+   "center_mm": [
+    3220,
+    -2384
+   ],
+   "width_mm": 800,
+   "kind": "cửa inox 800×800 kiểu passbox, đáy cách sàn 0,9–1,0 m",
+   "note": ""
+  },
+  {
+   "id": "D-13",
+   "between": [
+    "OFF",
+    "CORRIDOR"
+   ],
+   "wall": "x",
+   "center_mm": [
+    16210,
+    5177
+   ],
+   "width_mm": 1600,
+   "kind": "cửa đôi 1,6 m",
+   "note": ""
+  },
+  {
+   "id": "D-14",
+   "between": [
+    "OFF",
+    "ST2"
+   ],
+   "wall": "x",
+   "center_mm": [
+    20960,
+    2448
+   ],
+   "width_mm": 1000,
+   "kind": "cửa lùa 1 m D_1x2.2 (làm mới)",
+   "note": ""
+  },
+  {
+   "id": "D-15",
+   "between": [
+    "STD20",
+    "CORRIDOR"
+   ],
+   "wall": "x",
+   "center_mm": [
+    16210,
+    -3101
+   ],
+   "width_mm": 1400,
+   "kind": "cửa đôi lệch cánh",
+   "note": ""
+  },
+  {
+   "id": "D-16",
+   "between": [
+    "STD20",
+    "STD12"
+   ],
+   "wall": "x",
+   "center_mm": [
+    19160,
+    -3101
+   ],
+   "width_mm": 1400,
+   "kind": "D_1.4x2.2 (làm mới)",
+   "note": ""
+  },
+  {
+   "id": "D-17",
+   "between": [
+    "STD12",
+    "ST2"
+   ],
+   "wall": "x",
+   "center_mm": [
+    20960,
+    -3101
+   ],
+   "width_mm": 1400,
+   "kind": "D_1.4x2.2 (làm mới)",
+   "note": ""
+  },
+  {
+   "id": "D-18",
+   "between": [
+    "ST2",
+    "FACTORY_S"
+   ],
+   "wall": "y",
+   "center_mm": [
+    22661,
+    -6000
+   ],
+   "width_mm": 1600,
+   "kind": "cửa đôi 1,6 m mở 2 chiều D_1.6x2.2 (làm mới)",
+   "note": ""
+  },
+  {
+   "id": "D-N1",
+   "between": [
+    "DINING_nonscope",
+    "FACTORY_W"
+   ],
+   "wall": "x",
+   "center_mm": [
+    1070,
+    12526
+   ],
+   "width_mm": 1400,
+   "kind": "hiện trạng",
+   "note": "ngoài phạm vi"
+  },
+  {
+   "id": "D-N2",
+   "between": [
+    "CST_nonscope",
+    "CORRIDOR"
+   ],
+   "wall": "x",
+   "center_mm": [
+    16210,
+    10801
+   ],
+   "width_mm": 1700,
+   "kind": "cửa đôi hiện trạng",
+   "note": "ngoài phạm vi"
+  },
+  {
+   "id": "D-N3",
+   "between": [
+    "CST_nonscope",
+    "FACTORY_N"
+   ],
+   "wall": "y",
+   "center_mm": [
+    26538,
+    18700
+   ],
+   "width_mm": 1700,
+   "kind": "cửa đôi hiện trạng",
+   "note": "ngoài phạm vi"
+  },
+  {
+   "id": "D-N4",
+   "between": [
+    "CST_nonscope",
+    "OUTSIDE_A"
+   ],
+   "wall": "x",
+   "center_mm": [
+    28000,
+    13726
+   ],
+   "width_mm": 900,
+   "kind": "cửa ra ngoài trên tường trục A",
+   "note": "giữ lối ra – không đặt thiết bị trước cửa"
+  },
+  {
+   "id": "D-N5",
+   "between": [
+    "ST2 (khe tường A)",
+    "OUTSIDE_A"
+   ],
+   "wall": "x",
+   "center_mm": [
+    28000,
+    -850
+   ],
+   "width_mm": 900,
+   "kind": "EXISTING D3 (theo DW-A-03-01)",
+   "note": "cần khảo sát: có còn sau cải tạo?"
+  }
+ ],
+ "equipment_proposed": [
+  {
+   "id": "AHU-2.01",
+   "type": "AHU",
+   "center_mm": [
+    11700,
+    5150
+   ],
+   "footprint_mm": [
+    4800,
+    2000
+   ],
+   "rect_mm": [
+    9300,
+    4150,
+    14100,
+    6150
+   ],
+   "level": "+3,3…+5,3 (sàn kết cấu trên trần)",
+   "location": "Trên trần Balance room, sát lối đi giữa 2 khối (trục C)",
+   "serves": [
+    "DIG",
+    "KJE",
+    "ST1",
+    "BAL",
+    "PRE",
+    "COD",
+    "DIV",
+    "REP",
+    "INS*"
+   ]
+  },
+  {
+   "id": "AHU-2.02",
+   "type": "AHU",
+   "center_mm": [
+    24600,
+    -3300
+   ],
+   "footprint_mm": [
+    4800,
+    2000
+   ],
+   "rect_mm": [
+    22200,
+    -4300,
+    27000,
+    -2300
+   ],
+   "level": "+3,3…+5,3",
+   "location": "Trên trần ST2 (khu \"đặt máy tương lai\"), cách tường A ~3 m",
+   "serves": [
+    "OFF",
+    "STD20",
+    "STD12",
+    "ST2"
+   ]
+  },
+  {
+   "id": "AHU-2.03",
+   "type": "AHU (phương án)",
+   "center_mm": [
+    10500,
+    -3800
+   ],
+   "footprint_mm": [
+    3000,
+    1600
+   ],
+   "rect_mm": [
+    9000,
+    -4600,
+    12000,
+    -3000
+   ],
+   "level": "+3,3…+5,0",
+   "location": "Trên trần Instrument room (nếu WP1 chọn tách AHU)",
+   "serves": [
+    "INS"
+   ]
+  },
+  {
+   "id": "DH-2.01",
+   "type": "Máy hút ẩm",
+   "center_mm": [
+    11900,
+    -1200
+   ],
+   "footprint_mm": [
+    1200,
+    800
+   ],
+   "rect_mm": [
+    11300,
+    -1600,
+    12500,
+    -800
+   ],
+   "level": "+3,3… (dạng nối ống)",
+   "location": "Trên trần Instrument, cạnh AHU-2.03",
+   "serves": [
+    "INS"
+   ]
+  },
+  {
+   "id": "FAF-2.01",
+   "type": "Quạt cấp bù FAFE (G4+F8)",
+   "center_mm": [
+    13000,
+    11000
+   ],
+   "footprint_mm": [
+    1500,
+    900
+   ],
+   "rect_mm": [
+    12250,
+    10550,
+    13750,
+    11450
+   ],
+   "level": "+3,3…+4,3",
+   "location": "Trên trần ST1 sát lối đi",
+   "serves": [
+    "DIG",
+    "KJE",
+    "ST1"
+   ]
+  },
+  {
+   "id": "FAF-2.02",
+   "type": "Quạt cấp bù FAFE (G4+F8)",
+   "center_mm": [
+    24600,
+    400
+   ],
+   "footprint_mm": [
+    1500,
+    900
+   ],
+   "rect_mm": [
+    23850,
+    -50,
+    25350,
+    850
+   ],
+   "level": "+3,3…+4,3",
+   "location": "Trên trần ST2 gần AHU-2.02 và louver LV-2.02",
+   "serves": [
+    "ST2",
+    "STD20",
+    "STD12"
+   ]
+  },
+  {
+   "id": "EAF-2.01",
+   "type": "Quạt hút EAF (SS304)",
+   "center_mm": [
+    13000,
+    16000
+   ],
+   "footprint_mm": [
+    1200,
+    900
+   ],
+   "rect_mm": [
+    12400,
+    15550,
+    13600,
+    16450
+   ],
+   "level": "+3,3…+4,3",
+   "location": "Trên trần Kjeldahl sát lối đi",
+   "serves": [
+    "DIG-CH1",
+    "KJE-CH1",
+    "ST1-CC1",
+    "ST1-CC2"
+   ]
+  },
+  {
+   "id": "EAF-2.02",
+   "type": "Quạt hút EAF (SS304)",
+   "center_mm": [
+    26500,
+    5000
+   ],
+   "footprint_mm": [
+    1200,
+    900
+   ],
+   "rect_mm": [
+    25900,
+    4550,
+    27100,
+    5450
+   ],
+   "level": "+3,3…+4,3",
+   "location": "Trên trần ST2 phía tường A",
+   "serves": [
+    "ST2-SK1",
+    "ST2-SK2",
+    "ST2-CC1",
+    "ST2-CC2",
+    "STD20-SK1",
+    "STD12-CC1"
+   ]
+  },
+  {
+   "id": "EAF-2.03",
+   "type": "Quạt hút EAF (GI/SS)",
+   "center_mm": [
+    8575,
+    1500
+   ],
+   "footprint_mm": [
+    1200,
+    900
+   ],
+   "rect_mm": [
+    7975,
+    1050,
+    9175,
+    1950
+   ],
+   "level": "+3,3…+4,3",
+   "location": "Trên vách Sample prep/Instrument",
+   "serves": [
+    "PRE-AH1",
+    "PRE-AH2",
+    "INS-V1",
+    "INS-V2",
+    "INS-V3",
+    "INS-V4",
+    "INS-V5",
+    "INS-V6",
+    "INS-V7",
+    "INS-V8"
+   ]
+  },
+  {
+   "id": "SCR-2.01",
+   "type": "Scrubber ướt (PP) – ngoài nhà",
+   "center_mm": [
+    30000,
+    16250
+   ],
+   "footprint_mm": [
+    2000,
+    2500
+   ],
+   "rect_mm": [
+    29000,
+    15000,
+    31000,
+    17500
+   ],
+   "level": "mặt đất ngoài nhà, ống xả ≥ đỉnh mái",
+   "location": "Ngoài tường trục A, phía bắc cửa CST (D-N4), cách FPS > 6 m",
+   "serves": [
+    "DIG-FH1",
+    "DIG-FH2",
+    "ST1-FH1",
+    "ST2-FH3"
+   ]
+  },
+  {
+   "id": "CDU-YARD",
+   "type": "Bãi dàn nóng CDU-2.01/2.02/(2.03)",
+   "center_mm": [
+    29500,
+    -12000
+   ],
+   "footprint_mm": [
+    2000,
+    6000
+   ],
+   "rect_mm": [
+    28500,
+    -15000,
+    30500,
+    -9000
+   ],
+   "level": "mặt đất (móng: xây dựng)",
+   "location": "Ngoài tường A, phía nam bậc/ram dốc hiện hữu (Y -5,9…-7,6 m)",
+   "serves": [
+    "AHU-2.01",
+    "AHU-2.02",
+    "AHU-2.03"
+   ]
+  },
+  {
+   "id": "DB.HVAC",
+   "type": "Tủ điện tổng HVAC (gợi ý cho WP4)",
+   "center_mm": [
+    16400,
+    2200
+   ],
+   "footprint_mm": [
+    800,
+    400
+   ],
+   "rect_mm": [
+    16000,
+    2000,
+    16800,
+    2400
+   ],
+   "level": "sàn",
+   "location": "Vách khối phải phía lối đi (giữa D-13 và D-15)",
+   "serves": []
+  }
+ ],
+ "louvers_discharge_drain": [
+  {
+   "id": "LV-2.01",
+   "type": "louver_OA",
+   "xy_mm": [
+    28000,
+    -2400
+   ],
+   "level": "+4,0…+5,5",
+   "note": "Gió tươi AHU-2.01 + FAF-2.01 (+AHU-2.03 nếu gộp)"
+  },
+  {
+   "id": "LV-2.02",
+   "type": "louver_OA",
+   "xy_mm": [
+    28000,
+    -3700
+   ],
+   "level": "+4,0…+5,5",
+   "note": "Gió tươi AHU-2.02 + FAF-2.02"
+  },
+  {
+   "id": "LV-2.03",
+   "type": "louver_OA",
+   "xy_mm": [
+    28000,
+    -5000
+   ],
+   "level": "+4,0…+5,5",
+   "note": "Gió tươi AHU-2.03 (phương án)"
+  },
+  {
+   "id": "DP-2.00",
+   "type": "discharge",
+   "xy_mm": [
+    30700,
+    17300
+   ],
+   "level": "ống xả scrubber, đỉnh ≥ mái +3 m",
+   "note": "Khí acid sau scrubber"
+  },
+  {
+   "id": "DP-2.01",
+   "type": "discharge",
+   "xy_mm": [
+    28000,
+    18200
+   ],
+   "level": "xuyên tường A tại +4,5 → ống đứng vượt mái",
+   "note": "Hood hữu cơ ST1 (2) + EAF-2.01"
+  },
+  {
+   "id": "DP-2.02",
+   "type": "discharge",
+   "xy_mm": [
+    28000,
+    12000
+   ],
+   "level": "xuyên tường A tại +4,5 → ống đứng vượt mái",
+   "note": "Hood hữu cơ ST2 (5) + Standard (4) + EAF-2.02"
+  },
+  {
+   "id": "DP-2.03",
+   "type": "discharge",
+   "xy_mm": [
+    28000,
+    9600
+   ],
+   "level": "xuyên tường A tại +4,5 → ống đứng vượt mái",
+   "note": "EAF-2.03 (arm hood + Instrument)"
+  },
+  {
+   "id": "CD-2.01",
+   "type": "condensate_drain",
+   "xy_mm": [
+    28100,
+    -8500
+   ],
+   "level": "ngoài nhà, cao độ đất",
+   "note": "Điểm thoát nước ngưng giả định (rãnh/ga thoát nước mưa ngoài tường A)"
+  }
+ ],
+ "outdoor_obstacles": [
+  {
+   "id": "FPS",
+   "name": "Phòng FUMI & PCO (kho hiện hữu ngoài tường A)",
+   "rect_mm": [
+    28390,
+    640,
+    31010,
+    8650
+   ]
+  },
+  {
+   "id": "RAMP",
+   "name": "Bậc/ram dốc hiện hữu ngoài tường A",
+   "rect_mm": [
+    28000,
+    -7600,
+    30000,
+    -5900
+   ]
+  }
+ ],
+ "intake_exhaust_separation": [
+  {
+   "louver": "LV-2.01",
+   "discharge": "DP-2.00",
+   "dist_m": 19.9,
+   "ok_ge_10m": true
+  },
+  {
+   "louver": "LV-2.01",
+   "discharge": "DP-2.01",
+   "dist_m": 20.6,
+   "ok_ge_10m": true
+  },
+  {
+   "louver": "LV-2.01",
+   "discharge": "DP-2.02",
+   "dist_m": 14.4,
+   "ok_ge_10m": true
+  },
+  {
+   "louver": "LV-2.01",
+   "discharge": "DP-2.03",
+   "dist_m": 12.0,
+   "ok_ge_10m": true
+  },
+  {
+   "louver": "LV-2.02",
+   "discharge": "DP-2.00",
+   "dist_m": 21.2,
+   "ok_ge_10m": true
+  },
+  {
+   "louver": "LV-2.02",
+   "discharge": "DP-2.01",
+   "dist_m": 21.9,
+   "ok_ge_10m": true
+  },
+  {
+   "louver": "LV-2.02",
+   "discharge": "DP-2.02",
+   "dist_m": 15.7,
+   "ok_ge_10m": true
+  },
+  {
+   "louver": "LV-2.02",
+   "discharge": "DP-2.03",
+   "dist_m": 13.3,
+   "ok_ge_10m": true
+  },
+  {
+   "louver": "LV-2.03",
+   "discharge": "DP-2.00",
+   "dist_m": 22.5,
+   "ok_ge_10m": true
+  },
+  {
+   "louver": "LV-2.03",
+   "discharge": "DP-2.01",
+   "dist_m": 23.2,
+   "ok_ge_10m": true
+  },
+  {
+   "louver": "LV-2.03",
+   "discharge": "DP-2.02",
+   "dist_m": 17.0,
+   "ok_ge_10m": true
+  },
+  {
+   "louver": "LV-2.03",
+   "discharge": "DP-2.03",
+   "dist_m": 14.6,
+   "ok_ge_10m": true
+  }
+ ],
+ "runs_for_takeoff": [
+  {
+   "system": "SA/RA AHU-2.01 (tới tâm phòng)",
+   "from": "AHU-2.01",
+   "to": "DIG",
+   "L_manhattan_m": 15.5,
+   "L_est_m": 18.6
+  },
+  {
+   "system": "SA/RA AHU-2.01 (tới tâm phòng)",
+   "from": "AHU-2.01",
+   "to": "KJE",
+   "L_manhattan_m": 11.8,
+   "L_est_m": 14.5
+  },
+  {
+   "system": "SA/RA AHU-2.01 (tới tâm phòng)",
+   "from": "AHU-2.01",
+   "to": "ST1",
+   "L_manhattan_m": 7.2,
+   "L_est_m": 9.4
+  },
+  {
+   "system": "SA/RA AHU-2.01 (tới tâm phòng)",
+   "from": "AHU-2.01",
+   "to": "BAL",
+   "L_manhattan_m": 0.2,
+   "L_est_m": 1.8
+  },
+  {
+   "system": "SA/RA AHU-2.01 (tới tâm phòng)",
+   "from": "AHU-2.01",
+   "to": "PRE",
+   "L_manhattan_m": 9.2,
+   "L_est_m": 11.7
+  },
+  {
+   "system": "SA/RA AHU-2.01 (tới tâm phòng)",
+   "from": "AHU-2.01",
+   "to": "COD",
+   "L_manhattan_m": 14.6,
+   "L_est_m": 17.5
+  },
+  {
+   "system": "SA/RA AHU-2.01 (tới tâm phòng)",
+   "from": "AHU-2.01",
+   "to": "DIV",
+   "L_manhattan_m": 18.3,
+   "L_est_m": 21.6
+  },
+  {
+   "system": "SA/RA AHU-2.01 (tới tâm phòng)",
+   "from": "AHU-2.01",
+   "to": "REP",
+   "L_manhattan_m": 8.1,
+   "L_est_m": 10.4
+  },
+  {
+   "system": "SA/RA AHU-2.01 (nếu không tách AHU-2.03)",
+   "from": "AHU-2.01",
+   "to": "INS",
+   "L_manhattan_m": 7.6,
+   "L_est_m": 9.8
+  },
+  {
+   "system": "SA/RA AHU-2.02 (tới tâm phòng)",
+   "from": "AHU-2.02",
+   "to": "OFF",
+   "L_manhattan_m": 14.6,
+   "L_est_m": 17.5
+  },
+  {
+   "system": "SA/RA AHU-2.02 (tới tâm phòng)",
+   "from": "AHU-2.02",
+   "to": "STD20",
+   "L_manhattan_m": 7.6,
+   "L_est_m": 9.9
+  },
+  {
+   "system": "SA/RA AHU-2.02 (tới tâm phòng)",
+   "from": "AHU-2.02",
+   "to": "STD12",
+   "L_manhattan_m": 5.3,
+   "L_est_m": 7.3
+  },
+  {
+   "system": "SA/RA AHU-2.02 (tới tâm phòng)",
+   "from": "AHU-2.02",
+   "to": "ST2",
+   "L_manhattan_m": 5.4,
+   "L_est_m": 7.4
+  },
+  {
+   "system": "SA/RA AHU-2.03",
+   "from": "AHU-2.03",
+   "to": "INS",
+   "L_manhattan_m": 2.6,
+   "L_est_m": 4.3
+  },
+  {
+   "system": "Máy hút ẩm",
+   "from": "DH-2.01",
+   "to": "INS",
+   "L_manhattan_m": 1.4,
+   "L_est_m": 3.1
+  },
+  {
+   "system": "OA",
+   "from": "LV-2.01",
+   "to": "AHU-2.01",
+   "L_manhattan_m": 23.9,
+   "L_est_m": 26.7
+  },
+  {
+   "system": "OA",
+   "from": "LV-2.01",
+   "to": "FAF-2.01",
+   "L_manhattan_m": 28.4,
+   "L_est_m": 31.7
+  },
+  {
+   "system": "OA",
+   "from": "LV-2.02",
+   "to": "AHU-2.02",
+   "L_manhattan_m": 3.8,
+   "L_est_m": 4.7
+  },
+  {
+   "system": "OA",
+   "from": "LV-2.02",
+   "to": "FAF-2.02",
+   "L_manhattan_m": 7.5,
+   "L_est_m": 8.8
+  },
+  {
+   "system": "OA",
+   "from": "LV-2.03",
+   "to": "AHU-2.03",
+   "L_manhattan_m": 18.7,
+   "L_est_m": 21.1
+  },
+  {
+   "system": "Ống gas AHU→CDU",
+   "from": "AHU-2.01",
+   "to": "CDU-YARD",
+   "L_manhattan_m": 35.0,
+   "L_est_m": 42.9
+  },
+  {
+   "system": "Nước ngưng",
+   "from": "AHU-2.01",
+   "to": "CD-2.01",
+   "L_manhattan_m": 30.1,
+   "L_est_m": 36.6
+  },
+  {
+   "system": "Ống gas AHU→CDU",
+   "from": "AHU-2.02",
+   "to": "CDU-YARD",
+   "L_manhattan_m": 13.6,
+   "L_est_m": 19.5
+  },
+  {
+   "system": "Nước ngưng",
+   "from": "AHU-2.02",
+   "to": "CD-2.01",
+   "L_manhattan_m": 8.7,
+   "L_est_m": 13.1
+  },
+  {
+   "system": "Ống gas AHU→CDU",
+   "from": "AHU-2.03",
+   "to": "CDU-YARD",
+   "L_manhattan_m": 27.2,
+   "L_est_m": 34.4
+  },
+  {
+   "system": "Nước ngưng",
+   "from": "AHU-2.03",
+   "to": "CD-2.01",
+   "L_manhattan_m": 22.3,
+   "L_est_m": 28.0
+  },
+  {
+   "system": "Nước ngưng",
+   "from": "DH-2.01",
+   "to": "CD-2.01",
+   "L_manhattan_m": 23.5,
+   "L_est_m": 29.4
+  },
+  {
+   "system": "Gió bù FAFE",
+   "from": "FAF-2.01",
+   "to": "DIG-FH1",
+   "L_manhattan_m": 13.6,
+   "L_est_m": 16.5
+  },
+  {
+   "system": "Hút acid → scrubber (PP)",
+   "from": "DIG-FH1",
+   "to": "SCR-2.01",
+   "L_manhattan_m": 25.4,
+   "L_est_m": 30.4
+  },
+  {
+   "system": "Gió bù FAFE",
+   "from": "FAF-2.01",
+   "to": "DIG-FH2",
+   "L_manhattan_m": 11.8,
+   "L_est_m": 14.5
+  },
+  {
+   "system": "Hút acid → scrubber (PP)",
+   "from": "DIG-FH2",
+   "to": "SCR-2.01",
+   "L_manhattan_m": 23.6,
+   "L_est_m": 28.4
+  },
+  {
+   "system": "Gió bù FAFE",
+   "from": "FAF-2.01",
+   "to": "DIG-CH1",
+   "L_manhattan_m": 8.6,
+   "L_est_m": 10.9
+  },
+  {
+   "system": "Gió bù FAFE",
+   "from": "FAF-2.01",
+   "to": "KJE-CH1",
+   "L_manhattan_m": 5.4,
+   "L_est_m": 7.4
+  },
+  {
+   "system": "Gió bù FAFE",
+   "from": "FAF-2.01",
+   "to": "ST1-FH1",
+   "L_manhattan_m": 9.6,
+   "L_est_m": 12.0
+  },
+  {
+   "system": "Hút acid → scrubber (PP)",
+   "from": "ST1-FH1",
+   "to": "SCR-2.01",
+   "L_manhattan_m": 26.1,
+   "L_est_m": 31.2
+  },
+  {
+   "system": "Gió bù FAFE",
+   "from": "FAF-2.01",
+   "to": "ST1-FH2",
+   "L_manhattan_m": 8.0,
+   "L_est_m": 10.3
+  },
+  {
+   "system": "Hood hữu cơ → xả (SS304)",
+   "from": "ST1-FH2",
+   "to": "DP-2.01",
+   "L_manhattan_m": 27.7,
+   "L_est_m": 33.0
+  },
+  {
+   "system": "Gió bù FAFE",
+   "from": "FAF-2.01",
+   "to": "ST1-FH3",
+   "L_manhattan_m": 7.1,
+   "L_est_m": 9.3
+  },
+  {
+   "system": "Hood hữu cơ → xả (SS304)",
+   "from": "ST1-FH3",
+   "to": "DP-2.01",
+   "L_manhattan_m": 29.3,
+   "L_est_m": 34.7
+  },
+  {
+   "system": "Gió bù FAFE",
+   "from": "FAF-2.01",
+   "to": "ST1-CC1",
+   "L_manhattan_m": 4.0,
+   "L_est_m": 5.9
+  },
+  {
+   "system": "Gió bù FAFE",
+   "from": "FAF-2.01",
+   "to": "ST1-CC2",
+   "L_manhattan_m": 7.9,
+   "L_est_m": 10.2
+  },
+  {
+   "system": "Gió bù FAFE",
+   "from": "FAF-2.02",
+   "to": "ST2-FH1",
+   "L_manhattan_m": 10.6,
+   "L_est_m": 13.1
+  },
+  {
+   "system": "Hood hữu cơ → xả (SS304)",
+   "from": "ST2-FH1",
+   "to": "DP-2.02",
+   "L_manhattan_m": 7.8,
+   "L_est_m": 11.1
+  },
+  {
+   "system": "Gió bù FAFE",
+   "from": "FAF-2.02",
+   "to": "ST2-FH2",
+   "L_manhattan_m": 9.0,
+   "L_est_m": 11.4
+  },
+  {
+   "system": "Hood hữu cơ → xả (SS304)",
+   "from": "ST2-FH2",
+   "to": "DP-2.02",
+   "L_manhattan_m": 6.2,
+   "L_est_m": 9.3
+  },
+  {
+   "system": "Gió bù FAFE",
+   "from": "FAF-2.02",
+   "to": "ST2-FH3",
+   "L_manhattan_m": 10.4,
+   "L_est_m": 12.9
+  },
+  {
+   "system": "Hút acid → scrubber (PP)",
+   "from": "ST2-FH3",
+   "to": "SCR-2.01",
+   "L_manhattan_m": 10.9,
+   "L_est_m": 14.4
+  },
+  {
+   "system": "Gió bù FAFE",
+   "from": "FAF-2.02",
+   "to": "ST2-FH4",
+   "L_manhattan_m": 10.2,
+   "L_est_m": 12.7
+  },
+  {
+   "system": "Hood hữu cơ → xả (SS304)",
+   "from": "ST2-FH4",
+   "to": "DP-2.02",
+   "L_manhattan_m": 11.2,
+   "L_est_m": 14.9
+  },
+  {
+   "system": "Gió bù FAFE",
+   "from": "FAF-2.02",
+   "to": "ST2-FH5",
+   "L_manhattan_m": 3.3,
+   "L_est_m": 5.1
+  },
+  {
+   "system": "Hood hữu cơ → xả (SS304)",
+   "from": "ST2-FH5",
+   "to": "DP-2.02",
+   "L_manhattan_m": 18.3,
+   "L_est_m": 22.6
+  },
+  {
+   "system": "Gió bù FAFE",
+   "from": "FAF-2.02",
+   "to": "ST2-FH6",
+   "L_manhattan_m": 4.9,
+   "L_est_m": 6.9
+  },
+  {
+   "system": "Hood hữu cơ → xả (SS304)",
+   "from": "ST2-FH6",
+   "to": "DP-2.02",
+   "L_manhattan_m": 19.9,
+   "L_est_m": 24.4
+  },
+  {
+   "system": "Gió bù FAFE",
+   "from": "FAF-2.02",
+   "to": "ST2-SK1",
+   "L_manhattan_m": 7.4,
+   "L_est_m": 9.6
+  },
+  {
+   "system": "Gió bù FAFE",
+   "from": "FAF-2.02",
+   "to": "ST2-SK2",
+   "L_manhattan_m": 2.4,
+   "L_est_m": 4.2
+  },
+  {
+   "system": "Gió bù FAFE",
+   "from": "FAF-2.02",
+   "to": "ST2-CC1",
+   "L_manhattan_m": 3.7,
+   "L_est_m": 5.5
+  },
+  {
+   "system": "Gió bù FAFE",
+   "from": "FAF-2.02",
+   "to": "ST2-CC2",
+   "L_manhattan_m": 3.6,
+   "L_est_m": 5.5
+  },
+  {
+   "system": "Gió bù FAFE",
+   "from": "FAF-2.02",
+   "to": "STD20-FH1",
+   "L_manhattan_m": 6.2,
+   "L_est_m": 8.3
+  },
+  {
+   "system": "Hood hữu cơ → xả (SS304)",
+   "from": "STD20-FH1",
+   "to": "DP-2.02",
+   "L_manhattan_m": 21.2,
+   "L_est_m": 25.8
+  },
+  {
+   "system": "Gió bù FAFE",
+   "from": "FAF-2.02",
+   "to": "STD20-FH2",
+   "L_manhattan_m": 7.8,
+   "L_est_m": 10.1
+  },
+  {
+   "system": "Hood hữu cơ → xả (SS304)",
+   "from": "STD20-FH2",
+   "to": "DP-2.02",
+   "L_manhattan_m": 22.8,
+   "L_est_m": 27.6
+  },
+  {
+   "system": "Gió bù FAFE",
+   "from": "FAF-2.02",
+   "to": "STD20-FH3",
+   "L_manhattan_m": 11.4,
+   "L_est_m": 14.1
+  },
+  {
+   "system": "Hood hữu cơ → xả (SS304)",
+   "from": "STD20-FH3",
+   "to": "DP-2.02",
+   "L_manhattan_m": 26.4,
+   "L_est_m": 31.6
+  },
+  {
+   "system": "Gió bù FAFE",
+   "from": "FAF-2.02",
+   "to": "STD20-FH4",
+   "L_manhattan_m": 13.5,
+   "L_est_m": 16.3
+  },
+  {
+   "system": "Hood hữu cơ → xả (SS304)",
+   "from": "STD20-FH4",
+   "to": "DP-2.02",
+   "L_manhattan_m": 28.5,
+   "L_est_m": 33.8
+  },
+  {
+   "system": "Gió bù FAFE",
+   "from": "FAF-2.02",
+   "to": "STD20-SK1",
+   "L_manhattan_m": 8.3,
+   "L_est_m": 10.7
+  },
+  {
+   "system": "Gió bù FAFE",
+   "from": "FAF-2.02",
+   "to": "STD12-CC1",
+   "L_manhattan_m": 10.0,
+   "L_est_m": 12.5
+  },
+  {
+   "system": "Hút EAF nhánh",
+   "from": "DIG-CH1",
+   "to": "EAF-2.01",
+   "L_manhattan_m": 5.4,
+   "L_est_m": 7.9
+  },
+  {
+   "system": "Hút EAF nhánh",
+   "from": "KJE-CH1",
+   "to": "EAF-2.01",
+   "L_manhattan_m": 2.2,
+   "L_est_m": 4.4
+  },
+  {
+   "system": "Hút EAF nhánh",
+   "from": "ST1-CC1",
+   "to": "EAF-2.01",
+   "L_manhattan_m": 2.9,
+   "L_est_m": 5.2
+  },
+  {
+   "system": "Hút EAF nhánh",
+   "from": "ST1-CC2",
+   "to": "EAF-2.01",
+   "L_manhattan_m": 12.9,
+   "L_est_m": 16.2
+  },
+  {
+   "system": "Hút EAF nhánh",
+   "from": "ST2-SK1",
+   "to": "EAF-2.02",
+   "L_manhattan_m": 4.7,
+   "L_est_m": 7.2
+  },
+  {
+   "system": "Hút EAF nhánh",
+   "from": "ST2-SK2",
+   "to": "EAF-2.02",
+   "L_manhattan_m": 6.3,
+   "L_est_m": 9.0
+  },
+  {
+   "system": "Hút EAF nhánh",
+   "from": "ST2-CC1",
+   "to": "EAF-2.02",
+   "L_manhattan_m": 4.4,
+   "L_est_m": 6.8
+  },
+  {
+   "system": "Hút EAF nhánh",
+   "from": "ST2-CC2",
+   "to": "EAF-2.02",
+   "L_manhattan_m": 6.3,
+   "L_est_m": 9.0
+  },
+  {
+   "system": "Hút EAF nhánh",
+   "from": "STD20-SK1",
+   "to": "EAF-2.02",
+   "L_manhattan_m": 14.8,
+   "L_est_m": 18.3
+  },
+  {
+   "system": "Hút EAF nhánh",
+   "from": "STD12-CC1",
+   "to": "EAF-2.02",
+   "L_manhattan_m": 16.5,
+   "L_est_m": 20.1
+  },
+  {
+   "system": "Hút EAF nhánh",
+   "from": "PRE-AH1",
+   "to": "EAF-2.03",
+   "L_manhattan_m": 6.2,
+   "L_est_m": 8.8
+  },
+  {
+   "system": "Hút EAF nhánh",
+   "from": "PRE-AH2",
+   "to": "EAF-2.03",
+   "L_manhattan_m": 3.6,
+   "L_est_m": 5.9
+  },
+  {
+   "system": "Hút EAF nhánh",
+   "from": "INS-V1",
+   "to": "EAF-2.03",
+   "L_manhattan_m": 1.6,
+   "L_est_m": 3.8
+  },
+  {
+   "system": "Hút EAF nhánh",
+   "from": "INS-V2",
+   "to": "EAF-2.03",
+   "L_manhattan_m": 3.6,
+   "L_est_m": 6.0
+  },
+  {
+   "system": "Hút EAF nhánh",
+   "from": "INS-V3",
+   "to": "EAF-2.03",
+   "L_manhattan_m": 5.6,
+   "L_est_m": 8.2
+  },
+  {
+   "system": "Hút EAF nhánh",
+   "from": "INS-V4",
+   "to": "EAF-2.03",
+   "L_manhattan_m": 7.6,
+   "L_est_m": 10.4
+  },
+  {
+   "system": "Hút EAF nhánh",
+   "from": "INS-V5",
+   "to": "EAF-2.03",
+   "L_manhattan_m": 3.1,
+   "L_est_m": 5.4
+  },
+  {
+   "system": "Hút EAF nhánh",
+   "from": "INS-V6",
+   "to": "EAF-2.03",
+   "L_manhattan_m": 5.1,
+   "L_est_m": 7.6
+  },
+  {
+   "system": "Hút EAF nhánh",
+   "from": "INS-V7",
+   "to": "EAF-2.03",
+   "L_manhattan_m": 7.1,
+   "L_est_m": 9.8
+  },
+  {
+   "system": "Hút EAF nhánh",
+   "from": "INS-V8",
+   "to": "EAF-2.03",
+   "L_manhattan_m": 9.1,
+   "L_est_m": 12.0
+  },
+  {
+   "system": "Hút EAF → xả",
+   "from": "EAF-2.01",
+   "to": "DP-2.01",
+   "L_manhattan_m": 17.2,
+   "L_est_m": 20.4
+  },
+  {
+   "system": "Hút EAF → xả",
+   "from": "EAF-2.02",
+   "to": "DP-2.02",
+   "L_manhattan_m": 8.5,
+   "L_est_m": 10.8
+  },
+  {
+   "system": "Hút EAF → xả",
+   "from": "EAF-2.03",
+   "to": "DP-2.03",
+   "L_manhattan_m": 27.5,
+   "L_est_m": 31.8
+  }
+ ],
+ "distance_matrix_manhattan_mm": {
+  "AHU-2.01": {
+   "room:DIG": 15505,
+   "room:KJE": 11790,
+   "room:ST1": 7160,
+   "room:BAL": 250,
+   "room:PRE": 9228,
+   "room:COD": 14552,
+   "room:DIV": 18305,
+   "room:INS": 7590,
+   "room:REP": 8067,
+   "room:OFF": 6997,
+   "room:STD20": 13710,
+   "room:STD12": 16085,
+   "room:ST2": 15957,
+   "exh:DIG-FH1": 18183,
+   "exh:DIG-FH2": 16382,
+   "exh:DIG-CH1": 13136,
+   "exh:KJE-CH1": 9965,
+   "exh:ST1-FH1": 14137,
+   "exh:ST1-FH2": 12532,
+   "exh:ST1-FH3": 10932,
+   "exh:ST1-CC1": 11181,
+   "exh:ST1-CC2": 4817,
+   "exh:ST2-FH1": 15336,
+   "exh:ST2-FH2": 16937,
+   "exh:ST2-FH3": 18541,
+   "exh:ST2-FH4": 11916,
+   "exh:ST2-FH5": 14497,
+   "exh:ST2-FH6": 16101,
+   "exh:ST2-SK1": 13298,
+   "exh:ST2-SK2": 15238,
+   "exh:ST2-CC1": 19333,
+   "exh:ST2-CC2": 21292,
+   "exh:STD20-FH1": 12047,
+   "exh:STD20-FH2": 13618,
+   "exh:STD20-FH3": 17249,
+   "exh:STD20-FH4": 15177,
+   "exh:STD20-SK1": 10009,
+   "exh:STD12-CC1": 19167,
+   "exh:PRE-AH1": 11365,
+   "exh:PRE-AH2": 8715,
+   "exh:INS-V1": 6070,
+   "exh:INS-V2": 8070,
+   "exh:INS-V3": 10075,
+   "exh:INS-V4": 12079,
+   "exh:INS-V5": 4571,
+   "exh:INS-V6": 6571,
+   "exh:INS-V7": 8576,
+   "exh:INS-V8": 10580,
+   "pt:LV-2.01": 23850,
+   "pt:LV-2.02": 25150,
+   "pt:LV-2.03": 26450,
+   "pt:DP-2.00": 31150,
+   "pt:DP-2.01": 29350,
+   "pt:DP-2.02": 23150,
+   "pt:DP-2.03": 20750,
+   "pt:CD-2.01": 30050
+  },
+  "AHU-2.02": {
+   "room:DIG": 36855,
+   "room:KJE": 32610,
+   "room:ST1": 28510,
+   "room:BAL": 21600,
+   "room:PRE": 25878,
+   "room:COD": 19002,
+   "room:DIV": 22755,
+   "room:INS": 16176,
+   "room:REP": 13283,
+   "room:OFF": 14577,
+   "room:STD20": 7640,
+   "room:STD12": 5265,
+   "room:ST2": 5393,
+   "exh:DIG-FH1": 39533,
+   "exh:DIG-FH2": 37732,
+   "exh:DIG-CH1": 34486,
+   "exh:KJE-CH1": 31293,
+   "exh:ST1-FH1": 35487,
+   "exh:ST1-FH2": 33882,
+   "exh:ST1-FH3": 32282,
+   "exh:ST1-CC1": 27971,
+   "exh:ST1-CC2": 26167,
+   "exh:ST2-FH1": 14274,
+   "exh:ST2-FH2": 12673,
+   "exh:ST2-FH3": 14091,
+   "exh:ST2-FH4": 13904,
+   "exh:ST2-FH5": 6853,
+   "exh:ST2-FH6": 5249,
+   "exh:ST2-SK1": 11102,
+   "exh:ST2-SK2": 6112,
+   "exh:ST2-CC1": 7365,
+   "exh:ST2-CC2": 5406,
+   "exh:STD20-FH1": 9303,
+   "exh:STD20-FH2": 7732,
+   "exh:STD20-FH3": 7727,
+   "exh:STD20-FH4": 9799,
+   "exh:STD20-SK1": 11341,
+   "exh:STD12-CC1": 6285,
+   "exh:PRE-AH1": 27047,
+   "exh:PRE-AH2": 24397,
+   "exh:INS-V1": 19222,
+   "exh:INS-V2": 17222,
+   "exh:INS-V3": 15217,
+   "exh:INS-V4": 16529,
+   "exh:INS-V5": 17723,
+   "exh:INS-V6": 15723,
+   "exh:INS-V7": 13718,
+   "exh:INS-V8": 15030,
+   "pt:LV-2.01": 4300,
+   "pt:LV-2.02": 3800,
+   "pt:LV-2.03": 5100,
+   "pt:DP-2.00": 26700,
+   "pt:DP-2.01": 24900,
+   "pt:DP-2.02": 18700,
+   "pt:DP-2.03": 16300,
+   "pt:CD-2.01": 8700
+  },
+  "AHU-2.03": {
+   "room:DIG": 23255,
+   "room:KJE": 21940,
+   "room:ST1": 14910,
+   "room:BAL": 9936,
+   "room:PRE": 12278,
+   "room:COD": 4802,
+   "room:DIV": 8555,
+   "room:INS": 2576,
+   "room:REP": 5453,
+   "room:OFF": 17147,
+   "room:STD20": 8410,
+   "room:STD12": 10785,
+   "room:ST2": 19483,
+   "exh:DIG-FH1": 25933,
+   "exh:DIG-FH2": 24132,
+   "exh:DIG-CH1": 20886,
+   "exh:KJE-CH1": 20115,
+   "exh:ST1-FH1": 21887,
+   "exh:ST1-FH2": 20282,
+   "exh:ST1-FH3": 18682,
+   "exh:ST1-CC1": 21331,
+   "exh:ST1-CC2": 12567,
+   "exh:ST2-FH1": 25486,
+   "exh:ST2-FH2": 27087,
+   "exh:ST2-FH3": 28691,
+   "exh:ST2-FH4": 22066,
+   "exh:ST2-FH5": 15015,
+   "exh:ST2-FH6": 13411,
+   "exh:ST2-SK1": 23448,
+   "exh:ST2-SK2": 18458,
+   "exh:ST2-CC1": 21965,
+   "exh:ST2-CC2": 20006,
+   "exh:STD20-FH1": 12075,
+   "exh:STD20-FH2": 10504,
+   "exh:STD20-FH3": 9499,
+   "exh:STD20-FH4": 7427,
+   "exh:STD20-SK1": 9961,
+   "exh:STD12-CC1": 11417,
+   "exh:PRE-AH1": 13447,
+   "exh:PRE-AH2": 10797,
+   "exh:INS-V1": 5622,
+   "exh:INS-V2": 3622,
+   "exh:INS-V3": 1617,
+   "exh:INS-V4": 1929,
+   "exh:INS-V5": 5579,
+   "exh:INS-V6": 3579,
+   "exh:INS-V7": 1574,
+   "exh:INS-V8": 1886,
+   "pt:LV-2.01": 18900,
+   "pt:LV-2.02": 17600,
+   "pt:LV-2.03": 18700,
+   "pt:DP-2.00": 41300,
+   "pt:DP-2.01": 39500,
+   "pt:DP-2.02": 33300,
+   "pt:DP-2.03": 30900,
+   "pt:CD-2.01": 22300
+  },
+  "DH-2.01": {
+   "room:DIG": 22055,
+   "room:KJE": 17940,
+   "room:ST1": 13710,
+   "room:BAL": 6800,
+   "room:PRE": 11078,
+   "room:COD": 8402,
+   "room:DIV": 12155,
+   "room:INS": 1440,
+   "room:REP": 1517,
+   "room:OFF": 13147,
+   "room:STD20": 7160,
+   "room:STD12": 9535,
+   "room:ST2": 15483,
+   "exh:DIG-FH1": 24733,
+   "exh:DIG-FH2": 22932,
+   "exh:DIG-CH1": 19686,
+   "exh:KJE-CH1": 16493,
+   "exh:ST1-FH1": 20687,
+   "exh:ST1-FH2": 19082,
+   "exh:ST1-FH3": 17482,
+   "exh:ST1-CC1": 17331,
+   "exh:ST1-CC2": 11367,
+   "exh:ST2-FH1": 21486,
+   "exh:ST2-FH2": 23087,
+   "exh:ST2-FH3": 24691,
+   "exh:ST2-FH4": 18066,
+   "exh:ST2-FH5": 11015,
+   "exh:ST2-FH6": 9551,
+   "exh:ST2-SK1": 19448,
+   "exh:ST2-SK2": 14458,
+   "exh:ST2-CC1": 17965,
+   "exh:ST2-CC2": 16006,
+   "exh:STD20-FH1": 8075,
+   "exh:STD20-FH2": 7068,
+   "exh:STD20-FH3": 10699,
+   "exh:STD20-FH4": 8627,
+   "exh:STD20-SK1": 5961,
+   "exh:STD12-CC1": 12617,
+   "exh:PRE-AH1": 12247,
+   "exh:PRE-AH2": 9597,
+   "exh:INS-V1": 4422,
+   "exh:INS-V2": 2422,
+   "exh:INS-V3": 3925,
+   "exh:INS-V4": 5929,
+   "exh:INS-V5": 2923,
+   "exh:INS-V6": 923,
+   "exh:INS-V7": 2426,
+   "exh:INS-V8": 4430,
+   "pt:LV-2.01": 17300,
+   "pt:LV-2.02": 18600,
+   "pt:LV-2.03": 19900,
+   "pt:DP-2.00": 37300,
+   "pt:DP-2.01": 35500,
+   "pt:DP-2.02": 29300,
+   "pt:DP-2.03": 26900,
+   "pt:CD-2.01": 23500
+  },
+  "FAF-2.01": {
+   "room:DIG": 10955,
+   "room:KJE": 6710,
+   "room:ST1": 3160,
+   "room:BAL": 7364,
+   "room:PRE": 16378,
+   "room:COD": 21702,
+   "room:DIV": 25455,
+   "room:INS": 14740,
+   "room:REP": 12617,
+   "room:OFF": 11323,
+   "room:STD20": 18260,
+   "room:STD12": 20635,
+   "room:ST2": 20507,
+   "exh:DIG-FH1": 13633,
+   "exh:DIG-FH2": 11832,
+   "exh:DIG-CH1": 8586,
+   "exh:KJE-CH1": 5393,
+   "exh:ST1-FH1": 9587,
+   "exh:ST1-FH2": 7982,
+   "exh:ST1-FH3": 7082,
+   "exh:ST1-CC1": 4031,
+   "exh:ST1-CC2": 7913,
+   "exh:ST2-FH1": 11626,
+   "exh:ST2-FH2": 13227,
+   "exh:ST2-FH3": 14831,
+   "exh:ST2-FH4": 11996,
+   "exh:ST2-FH5": 19047,
+   "exh:ST2-FH6": 20651,
+   "exh:ST2-SK1": 14798,
+   "exh:ST2-SK2": 19788,
+   "exh:ST2-CC1": 23883,
+   "exh:ST2-CC2": 25842,
+   "exh:STD20-FH1": 16597,
+   "exh:STD20-FH2": 18168,
+   "exh:STD20-FH3": 21799,
+   "exh:STD20-FH4": 19727,
+   "exh:STD20-SK1": 14559,
+   "exh:STD12-CC1": 23717,
+   "exh:PRE-AH1": 18515,
+   "exh:PRE-AH2": 15865,
+   "exh:INS-V1": 13220,
+   "exh:INS-V2": 15220,
+   "exh:INS-V3": 17225,
+   "exh:INS-V4": 19229,
+   "exh:INS-V5": 11721,
+   "exh:INS-V6": 13721,
+   "exh:INS-V7": 15726,
+   "exh:INS-V8": 17730,
+   "pt:LV-2.01": 28400,
+   "pt:LV-2.02": 29700,
+   "pt:LV-2.03": 31000,
+   "pt:DP-2.00": 24000,
+   "pt:DP-2.01": 22200,
+   "pt:DP-2.02": 16000,
+   "pt:DP-2.03": 16400,
+   "pt:CD-2.01": 34600
+  },
+  "FAF-2.02": {
+   "room:DIG": 33155,
+   "room:KJE": 28910,
+   "room:ST1": 24810,
+   "room:BAL": 17900,
+   "room:PRE": 22178,
+   "room:COD": 22702,
+   "room:DIV": 26455,
+   "room:INS": 15740,
+   "room:REP": 12847,
+   "room:OFF": 10877,
+   "room:STD20": 9890,
+   "room:STD12": 7515,
+   "room:ST2": 1693,
+   "exh:DIG-FH1": 35833,
+   "exh:DIG-FH2": 34032,
+   "exh:DIG-CH1": 30786,
+   "exh:KJE-CH1": 27593,
+   "exh:ST1-FH1": 31787,
+   "exh:ST1-FH2": 30182,
+   "exh:ST1-FH3": 28582,
+   "exh:ST1-CC1": 24271,
+   "exh:ST1-CC2": 22467,
+   "exh:ST2-FH1": 10574,
+   "exh:ST2-FH2": 8973,
+   "exh:ST2-FH3": 10391,
+   "exh:ST2-FH4": 10204,
+   "exh:ST2-FH5": 3285,
+   "exh:ST2-FH6": 4889,
+   "exh:ST2-SK1": 7402,
+   "exh:ST2-SK2": 2412,
+   "exh:ST2-CC1": 3665,
+   "exh:ST2-CC2": 3642,
+   "exh:STD20-FH1": 6225,
+   "exh:STD20-FH2": 7796,
+   "exh:STD20-FH3": 11427,
+   "exh:STD20-FH4": 13499,
+   "exh:STD20-SK1": 8339,
+   "exh:STD12-CC1": 9985,
+   "exh:PRE-AH1": 23347,
+   "exh:PRE-AH2": 20697,
+   "exh:INS-V1": 15522,
+   "exh:INS-V2": 16220,
+   "exh:INS-V3": 18225,
+   "exh:INS-V4": 20229,
+   "exh:INS-V5": 14023,
+   "exh:INS-V6": 14721,
+   "exh:INS-V7": 16726,
+   "exh:INS-V8": 18730,
+   "pt:LV-2.01": 6200,
+   "pt:LV-2.02": 7500,
+   "pt:LV-2.03": 8800,
+   "pt:DP-2.00": 23000,
+   "pt:DP-2.01": 21200,
+   "pt:DP-2.02": 15000,
+   "pt:DP-2.03": 12600,
+   "pt:CD-2.01": 12400
+  },
+  "EAF-2.01": {
+   "room:DIG": 5955,
+   "room:KJE": 1710,
+   "room:ST1": 8160,
+   "room:BAL": 12364,
+   "room:PRE": 21378,
+   "room:COD": 26702,
+   "room:DIV": 30455,
+   "room:INS": 19740,
+   "room:REP": 17617,
+   "room:OFF": 16323,
+   "room:STD20": 23260,
+   "room:STD12": 25635,
+   "room:ST2": 25507,
+   "exh:DIG-FH1": 8633,
+   "exh:DIG-FH2": 6832,
+   "exh:DIG-CH1": 5378,
+   "exh:KJE-CH1": 2185,
+   "exh:ST1-FH1": 8877,
+   "exh:ST1-FH2": 10482,
+   "exh:ST1-FH3": 12082,
+   "exh:ST1-CC1": 2929,
+   "exh:ST1-CC2": 12913,
+   "exh:ST2-FH1": 16626,
+   "exh:ST2-FH2": 18227,
+   "exh:ST2-FH3": 19831,
+   "exh:ST2-FH4": 16996,
+   "exh:ST2-FH5": 24047,
+   "exh:ST2-FH6": 25651,
+   "exh:ST2-SK1": 19798,
+   "exh:ST2-SK2": 24788,
+   "exh:ST2-CC1": 28883,
+   "exh:ST2-CC2": 30842,
+   "exh:STD20-FH1": 21597,
+   "exh:STD20-FH2": 23168,
+   "exh:STD20-FH3": 26799,
+   "exh:STD20-FH4": 24727,
+   "exh:STD20-SK1": 19559,
+   "exh:STD12-CC1": 28717,
+   "exh:PRE-AH1": 23515,
+   "exh:PRE-AH2": 20865,
+   "exh:INS-V1": 18220,
+   "exh:INS-V2": 20220,
+   "exh:INS-V3": 22225,
+   "exh:INS-V4": 24229,
+   "exh:INS-V5": 16721,
+   "exh:INS-V6": 18721,
+   "exh:INS-V7": 20726,
+   "exh:INS-V8": 22730,
+   "pt:LV-2.01": 33400,
+   "pt:LV-2.02": 34700,
+   "pt:LV-2.03": 36000,
+   "pt:DP-2.00": 19000,
+   "pt:DP-2.01": 17200,
+   "pt:DP-2.02": 19000,
+   "pt:DP-2.03": 21400,
+   "pt:CD-2.01": 39600
+  },
+  "EAF-2.02": {
+   "room:DIG": 30455,
+   "room:KJE": 26210,
+   "room:ST1": 22110,
+   "room:BAL": 15200,
+   "room:PRE": 23878,
+   "room:COD": 29202,
+   "room:DIV": 32955,
+   "room:INS": 22240,
+   "room:REP": 19347,
+   "room:OFF": 8177,
+   "room:STD20": 16390,
+   "room:STD12": 14015,
+   "room:ST2": 5317,
+   "exh:DIG-FH1": 33133,
+   "exh:DIG-FH2": 31332,
+   "exh:DIG-CH1": 28086,
+   "exh:KJE-CH1": 24893,
+   "exh:ST1-FH1": 29087,
+   "exh:ST1-FH2": 27482,
+   "exh:ST1-FH3": 25882,
+   "exh:ST1-CC1": 21571,
+   "exh:ST1-CC2": 19767,
+   "exh:ST2-FH1": 7874,
+   "exh:ST2-FH2": 6273,
+   "exh:ST2-FH3": 4669,
+   "exh:ST2-FH4": 7504,
+   "exh:ST2-FH5": 9785,
+   "exh:ST2-FH6": 11389,
+   "exh:ST2-SK1": 4702,
+   "exh:ST2-SK2": 6342,
+   "exh:ST2-CC1": 4383,
+   "exh:ST2-CC2": 6342,
+   "exh:STD20-FH1": 12725,
+   "exh:STD20-FH2": 14296,
+   "exh:STD20-FH3": 17927,
+   "exh:STD20-FH4": 19999,
+   "exh:STD20-SK1": 14839,
+   "exh:STD12-CC1": 16485,
+   "exh:PRE-AH1": 26015,
+   "exh:PRE-AH2": 23365,
+   "exh:INS-V1": 20720,
+   "exh:INS-V2": 22720,
+   "exh:INS-V3": 24725,
+   "exh:INS-V4": 26729,
+   "exh:INS-V5": 19221,
+   "exh:INS-V6": 21221,
+   "exh:INS-V7": 23226,
+   "exh:INS-V8": 25230,
+   "pt:LV-2.01": 8900,
+   "pt:LV-2.02": 10200,
+   "pt:LV-2.03": 11500,
+   "pt:DP-2.00": 16500,
+   "pt:DP-2.01": 14700,
+   "pt:DP-2.02": 8500,
+   "pt:DP-2.03": 6100,
+   "pt:CD-2.01": 15100
+  },
+  "EAF-2.03": {
+   "room:DIG": 16030,
+   "room:KJE": 18565,
+   "room:ST1": 10765,
+   "room:BAL": 6561,
+   "room:PRE": 5053,
+   "room:COD": 7777,
+   "room:DIV": 11530,
+   "room:INS": 4649,
+   "room:REP": 7542,
+   "room:OFF": 13772,
+   "room:STD20": 13185,
+   "room:STD12": 15560,
+   "room:ST2": 16108,
+   "exh:DIG-FH1": 18708,
+   "exh:DIG-FH2": 16907,
+   "exh:DIG-CH1": 13661,
+   "exh:KJE-CH1": 16740,
+   "exh:ST1-FH1": 14662,
+   "exh:ST1-FH2": 13057,
+   "exh:ST1-FH3": 11457,
+   "exh:ST1-CC1": 17956,
+   "exh:ST1-CC2": 6012,
+   "exh:ST2-FH1": 22111,
+   "exh:ST2-FH2": 23712,
+   "exh:ST2-FH3": 25316,
+   "exh:ST2-FH4": 18691,
+   "exh:ST2-FH5": 13972,
+   "exh:ST2-FH6": 15576,
+   "exh:ST2-SK1": 20073,
+   "exh:ST2-SK2": 15083,
+   "exh:ST2-CC1": 18808,
+   "exh:ST2-CC2": 20767,
+   "exh:STD20-FH1": 11522,
+   "exh:STD20-FH2": 13093,
+   "exh:STD20-FH3": 16724,
+   "exh:STD20-FH4": 14652,
+   "exh:STD20-SK1": 9484,
+   "exh:STD12-CC1": 18642,
+   "exh:PRE-AH1": 6222,
+   "exh:PRE-AH2": 3572,
+   "exh:INS-V1": 1603,
+   "exh:INS-V2": 3603,
+   "exh:INS-V3": 5608,
+   "exh:INS-V4": 7612,
+   "exh:INS-V5": 3102,
+   "exh:INS-V6": 5102,
+   "exh:INS-V7": 7107,
+   "exh:INS-V8": 9111,
+   "pt:LV-2.01": 23325,
+   "pt:LV-2.02": 24625,
+   "pt:LV-2.03": 25925,
+   "pt:DP-2.00": 37925,
+   "pt:DP-2.01": 36125,
+   "pt:DP-2.02": 29925,
+   "pt:DP-2.03": 27525,
+   "pt:CD-2.01": 29525
+  },
+  "SCR-2.01": {
+   "room:DIG": 22705,
+   "room:KJE": 18460,
+   "room:ST1": 25410,
+   "room:BAL": 29614,
+   "room:PRE": 38628,
+   "room:COD": 43952,
+   "room:DIV": 47705,
+   "room:INS": 36990,
+   "room:REP": 34097,
+   "room:OFF": 22403,
+   "room:STD20": 31140,
+   "room:STD12": 28765,
+   "room:ST2": 20067,
+   "exh:DIG-FH1": 25383,
+   "exh:DIG-FH2": 23582,
+   "exh:DIG-CH1": 22628,
+   "exh:KJE-CH1": 19435,
+   "exh:ST1-FH1": 26127,
+   "exh:ST1-FH2": 27732,
+   "exh:ST1-FH3": 29332,
+   "exh:ST1-CC1": 18219,
+   "exh:ST1-CC2": 30163,
+   "exh:ST2-FH1": 14064,
+   "exh:ST2-FH2": 12463,
+   "exh:ST2-FH3": 10859,
+   "exh:ST2-FH4": 17484,
+   "exh:ST2-FH5": 24535,
+   "exh:ST2-FH6": 26139,
+   "exh:ST2-SK1": 16102,
+   "exh:ST2-SK2": 21092,
+   "exh:ST2-CC1": 17585,
+   "exh:ST2-CC2": 19544,
+   "exh:STD20-FH1": 27475,
+   "exh:STD20-FH2": 29046,
+   "exh:STD20-FH3": 32677,
+   "exh:STD20-FH4": 34749,
+   "exh:STD20-SK1": 29589,
+   "exh:STD12-CC1": 31235,
+   "exh:PRE-AH1": 40765,
+   "exh:PRE-AH2": 38115,
+   "exh:INS-V1": 35470,
+   "exh:INS-V2": 37470,
+   "exh:INS-V3": 39475,
+   "exh:INS-V4": 41479,
+   "exh:INS-V5": 33971,
+   "exh:INS-V6": 35971,
+   "exh:INS-V7": 37976,
+   "exh:INS-V8": 39980,
+   "pt:LV-2.01": 20650,
+   "pt:LV-2.02": 21950,
+   "pt:LV-2.03": 23250,
+   "pt:DP-2.00": 1750,
+   "pt:DP-2.01": 3950,
+   "pt:DP-2.02": 6250,
+   "pt:DP-2.03": 8650,
+   "pt:CD-2.01": 26650
+  },
+  "CDU-YARD": {
+   "room:DIG": 50455,
+   "room:KJE": 46210,
+   "room:ST1": 42110,
+   "room:BAL": 35200,
+   "room:PRE": 39478,
+   "room:COD": 32002,
+   "room:DIV": 35755,
+   "room:INS": 29776,
+   "room:REP": 26883,
+   "room:OFF": 28177,
+   "room:STD20": 21240,
+   "room:STD12": 18865,
+   "room:ST2": 18993,
+   "exh:DIG-FH1": 53133,
+   "exh:DIG-FH2": 51332,
+   "exh:DIG-CH1": 48086,
+   "exh:KJE-CH1": 44893,
+   "exh:ST1-FH1": 49087,
+   "exh:ST1-FH2": 47482,
+   "exh:ST1-FH3": 45882,
+   "exh:ST1-CC1": 41571,
+   "exh:ST1-CC2": 39767,
+   "exh:ST2-FH1": 27874,
+   "exh:ST2-FH2": 26273,
+   "exh:ST2-FH3": 24669,
+   "exh:ST2-FH4": 27504,
+   "exh:ST2-FH5": 20453,
+   "exh:ST2-FH6": 18849,
+   "exh:ST2-SK1": 24702,
+   "exh:ST2-SK2": 19712,
+   "exh:ST2-CC1": 15617,
+   "exh:ST2-CC2": 13658,
+   "exh:STD20-FH1": 22903,
+   "exh:STD20-FH2": 21332,
+   "exh:STD20-FH3": 17701,
+   "exh:STD20-FH4": 19773,
+   "exh:STD20-SK1": 24941,
+   "exh:STD12-CC1": 15783,
+   "exh:PRE-AH1": 40647,
+   "exh:PRE-AH2": 37997,
+   "exh:INS-V1": 32822,
+   "exh:INS-V2": 30822,
+   "exh:INS-V3": 28817,
+   "exh:INS-V4": 26813,
+   "exh:INS-V5": 31323,
+   "exh:INS-V6": 29323,
+   "exh:INS-V7": 27318,
+   "exh:INS-V8": 25314,
+   "pt:LV-2.01": 11100,
+   "pt:LV-2.02": 9800,
+   "pt:LV-2.03": 8500,
+   "pt:DP-2.00": 30500,
+   "pt:DP-2.01": 31700,
+   "pt:DP-2.02": 25500,
+   "pt:DP-2.03": 23100,
+   "pt:CD-2.01": 4900
+  },
+  "DB.HVAC": {
+   "room:DIG": 23155,
+   "room:KJE": 18910,
+   "room:ST1": 14810,
+   "room:BAL": 7900,
+   "room:PRE": 12178,
+   "room:COD": 16302,
+   "room:DIV": 20055,
+   "room:INS": 9340,
+   "room:REP": 6447,
+   "room:OFF": 5247,
+   "room:STD20": 6060,
+   "room:STD12": 8435,
+   "room:ST2": 8307,
+   "exh:DIG-FH1": 25833,
+   "exh:DIG-FH2": 24032,
+   "exh:DIG-CH1": 20786,
+   "exh:KJE-CH1": 17593,
+   "exh:ST1-FH1": 21787,
+   "exh:ST1-FH2": 20182,
+   "exh:ST1-FH3": 18582,
+   "exh:ST1-CC1": 14271,
+   "exh:ST1-CC2": 12467,
+   "exh:ST2-FH1": 13586,
+   "exh:ST2-FH2": 15187,
+   "exh:ST2-FH3": 16791,
+   "exh:ST2-FH4": 10166,
+   "exh:ST2-FH5": 6847,
+   "exh:ST2-FH6": 8451,
+   "exh:ST2-SK1": 11548,
+   "exh:ST2-SK2": 7588,
+   "exh:ST2-CC1": 11683,
+   "exh:ST2-CC2": 13642,
+   "exh:STD20-FH1": 4397,
+   "exh:STD20-FH2": 5968,
+   "exh:STD20-FH3": 9599,
+   "exh:STD20-FH4": 7527,
+   "exh:STD20-SK1": 2359,
+   "exh:STD12-CC1": 11517,
+   "exh:PRE-AH1": 13347,
+   "exh:PRE-AH2": 10697,
+   "exh:INS-V1": 7820,
+   "exh:INS-V2": 9820,
+   "exh:INS-V3": 11825,
+   "exh:INS-V4": 13829,
+   "exh:INS-V5": 6321,
+   "exh:INS-V6": 8321,
+   "exh:INS-V7": 10326,
+   "exh:INS-V8": 12330,
+   "pt:LV-2.01": 16200,
+   "pt:LV-2.02": 17500,
+   "pt:LV-2.03": 18800,
+   "pt:DP-2.00": 29400,
+   "pt:DP-2.01": 27600,
+   "pt:DP-2.02": 21400,
+   "pt:DP-2.03": 19000,
+   "pt:CD-2.01": 22400
+  }
+ }
+}
