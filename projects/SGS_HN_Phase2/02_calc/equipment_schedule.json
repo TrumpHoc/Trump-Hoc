@@ -2,25 +2,25 @@
  "project": "SGS Hai Phong – H&N Phase 2 – HVAC",
  "source": "HVAC_Phase2_Calc_v4.xlsx",
  "revision": "v4 (WP1)",
- "total_installed_electrical_kW": 206.7,
- "total_cooling_selected_kW": 300.0,
+ "total_installed_electrical_kW": 211.7,
+ "total_cooling_selected_kW": 300.4,
  "equipment": [
   {
    "tag": "AHU-2.01",
    "type": "AHU DX (draw-through, quạt plug EC/biến tần, lọc G4+F8, coil DX, sưởi điện, máng ngưng inox)",
    "qty": 1,
    "location": "Trên sàn kết cấu trên trần panel; phục vụ Digestion room, Kjeldahl room, Sample treatment 1, Balance room, Sample preparation, Sample coding, Sample dividing, Reporting room",
-   "airflow_m3h": 22130,
+   "airflow_m3h": 22180,
    "outdoor_air_m3h": 1650,
-   "return_air_m3h": 20480,
+   "return_air_m3h": 20530,
    "esp_Pa": 500,
    "fan_total_pressure_Pa": 985,
-   "cooling_total_kW_design": 132.54,
-   "cooling_total_kW_selected": 145.79,
-   "cooling_sensible_kW_selected": 89.42,
+   "cooling_total_kW_design": 132.77,
+   "cooling_total_kW_selected": 146.05,
+   "cooling_sensible_kW_selected": 89.61,
    "coil_entering": {
     "T_C": 25.95,
-    "W_kgkg": 0.01295,
+    "W_kgkg": 0.01294,
     "RH": 0.617
    },
    "coil_leaving": {
@@ -30,12 +30,12 @@
    "supply_temp_C": 16.36,
    "heater_kW": 15,
    "fan_motor_kW": 15,
-   "fan_shaft_kW": 10.09,
+   "fan_shaft_kW": 10.11,
    "electrical_kW": 30,
    "voltage_phase": "380V/3P/50Hz",
    "FLA_A_est": 54.33,
    "filters": "G4 + F8",
-   "condensate_kg_h": 70.18,
+   "condensate_kg_h": 70.27,
    "coil_face_area_m2": 2.46,
    "duct_connection_mm": {
     "supply": "1300x600",
@@ -50,17 +50,17 @@
    "type": "AHU DX (draw-through, quạt plug EC/biến tần, lọc G4+F8, coil DX, sưởi điện, máng ngưng inox)",
    "qty": 1,
    "location": "Trên sàn kết cấu trên trần panel; phục vụ Sample treatment 2, Standard (19.72 m²), Standard (11.90 m²), Office",
-   "airflow_m3h": 5230,
+   "airflow_m3h": 5250,
    "outdoor_air_m3h": 2750,
-   "return_air_m3h": 2480,
+   "return_air_m3h": 2500,
    "esp_Pa": 500,
    "fan_total_pressure_Pa": 985,
-   "cooling_total_kW_design": 70.8,
-   "cooling_total_kW_selected": 77.88,
-   "cooling_sensible_kW_selected": 32.28,
+   "cooling_total_kW_design": 70.9,
+   "cooling_total_kW_selected": 77.99,
+   "cooling_sensible_kW_selected": 32.35,
    "coil_entering": {
-    "T_C": 31.73,
-    "W_kgkg": 0.01947,
+    "T_C": 31.7,
+    "W_kgkg": 0.01944,
     "RH": 0.658
    },
    "coil_leaving": {
@@ -70,19 +70,19 @@
    "supply_temp_C": 16.36,
    "heater_kW": 18,
    "fan_motor_kW": 3,
-   "fan_shaft_kW": 2.38,
+   "fan_shaft_kW": 2.39,
    "electrical_kW": 21,
    "voltage_phase": "380V/3P/50Hz",
    "FLA_A_est": 33.66,
    "filters": "G4 + F8",
-   "condensate_kg_h": 57.52,
+   "condensate_kg_h": 57.55,
    "coil_face_area_m2": 0.58,
    "duct_connection_mm": {
     "supply": "450x400",
     "return": "350x250",
     "outdoor_air": "450x350"
    },
-   "condensate_drain": "Tự chảy",
+   "condensate_drain": "Cần bơm",
    "notes": "Công suất lạnh chọn = tải coil × 1,10. ESP ước tính theo tuyến sơ bộ, WP3 kiểm lại."
   },
   {
@@ -128,197 +128,164 @@
   {
    "tag": "CDU-2.01",
    "type": "Dàn nóng DX inverter R410A/R32 (module ghép AHU)",
-   "qty": 3,
-   "location": "Ngoài nhà, móng BT (xây dựng) – cho AHU-2.01",
-   "cooling_kW_per_unit_at_37.8C": 48.6,
-   "electrical_kW_per_unit": 16.2,
+   "qty": 4,
+   "location": "Bãi CDU ngoài tường A (phía nam ram dốc) – cho AHU-2.01",
+   "cooling_kW_per_unit_nominal_at_37.8C": 39.3,
+   "cooling_kW_per_unit_actual_after_pipe_derate": 36.51,
+   "refrigerant_pipe_length_m": 42.9,
+   "pipe_derate_factor": 0.93,
+   "electrical_kW_per_unit": 13.1,
    "voltage_phase": "380V/3P/50Hz",
-   "FLA_A_est_per_unit": 28.96,
-   "notes": "Tổng 145.8 kW ≥ 145.79 kW yêu cầu; COP 3,0; mỗi module một mạch coil riêng trong AHU-2.01."
+   "FLA_A_est_per_unit": 23.41,
+   "notes": "Tổng thực 146.0 kW ≥ 146.05 kW yêu cầu; COP 3,0; mỗi module một mạch coil riêng trong AHU-2.01."
   },
   {
    "tag": "CDU-2.02",
    "type": "Dàn nóng DX inverter R410A/R32 (module ghép AHU)",
    "qty": 2,
-   "location": "Ngoài nhà, móng BT (xây dựng) – cho AHU-2.02",
-   "cooling_kW_per_unit_at_37.8C": 38.94,
-   "electrical_kW_per_unit": 12.98,
+   "location": "Bãi CDU ngoài tường A (phía nam ram dốc) – cho AHU-2.02",
+   "cooling_kW_per_unit_nominal_at_37.8C": 39.95,
+   "cooling_kW_per_unit_actual_after_pipe_derate": 38.99,
+   "refrigerant_pipe_length_m": 19.5,
+   "pipe_derate_factor": 0.98,
+   "electrical_kW_per_unit": 13.32,
    "voltage_phase": "380V/3P/50Hz",
-   "FLA_A_est_per_unit": 23.2,
-   "notes": "Tổng 77.9 kW ≥ 77.88 kW yêu cầu; COP 3,0; mỗi module một mạch coil riêng trong AHU-2.02."
+   "FLA_A_est_per_unit": 23.8,
+   "notes": "Tổng thực 78.0 kW ≥ 77.99 kW yêu cầu; COP 3,0; mỗi module một mạch coil riêng trong AHU-2.02."
   },
   {
    "tag": "CDU-2.03",
    "type": "Dàn nóng DX inverter R410A/R32 (module ghép AHU)",
    "qty": 2,
-   "location": "Ngoài nhà, móng BT (xây dựng) – cho AHU-2.03",
-   "cooling_kW_per_unit_at_37.8C": 38.17,
-   "electrical_kW_per_unit": 12.72,
+   "location": "Bãi CDU ngoài tường A (phía nam ram dốc) – cho AHU-2.03",
+   "cooling_kW_per_unit_nominal_at_37.8C": 40.34,
+   "cooling_kW_per_unit_actual_after_pipe_derate": 38.17,
+   "refrigerant_pipe_length_m": 34.4,
+   "pipe_derate_factor": 0.95,
+   "electrical_kW_per_unit": 13.45,
    "voltage_phase": "380V/3P/50Hz",
-   "FLA_A_est_per_unit": 22.74,
-   "notes": "Tổng 76.3 kW ≥ 76.34 kW yêu cầu; COP 3,0; mỗi module một mạch coil riêng trong AHU-2.03."
+   "FLA_A_est_per_unit": 24.03,
+   "notes": "Tổng thực 76.3 kW ≥ 76.34 kW yêu cầu; COP 3,0; mỗi module một mạch coil riêng trong AHU-2.03."
   },
   {
    "tag": "FAF-2.01",
-   "type": "Quạt cấp bù FAFE – Hộp ly tâm (cabinet) + G4/F8",
+   "type": "Quạt cấp bù FAFE – Hộp ly tâm (cabinet) + G4/F8, biến tần",
    "qty": 1,
-   "location": "Digestion room (quạt trên trần, lấy gió qua louver tường ngoài + lưới côn trùng)",
-   "airflow_m3h": 5076,
+   "location": "Trên trần ST1 sát lối đi; gió tươi từ LV-2.01 (≈ 32 m)",
+   "serves_rooms": [
+    "Digestion room",
+    "Kjeldahl room",
+    "Sample treatment 1",
+    "Sample preparation"
+   ],
+   "airflow_by_room_m3h": {
+    "Digestion room": 5076,
+    "Kjeldahl room": 990,
+    "Sample treatment 1": 7299,
+    "Sample preparation": 1440
+   },
+   "airflow_m3h": 14805,
    "esp_Pa": 400,
    "filter_box_Pa": 285,
    "fan_total_pressure_Pa": 685,
-   "motor_kW": 2.2,
-   "electrical_kW": 2.2,
+   "motor_kW": 5.5,
+   "electrical_kW": 5.5,
    "voltage_phase": "380V/3P",
-   "FLA_A_est": 4.6,
-   "duct_connection_mm": "450x400",
+   "FLA_A_est": 11.6,
+   "duct_connection_mm": "1050x500",
    "cooling_kW": 0,
    "heater_kW": 0,
-   "notes": "Không xử lý lạnh; = 90 % gió thải phòng; biến tần, liên động với quạt hút/tủ hood trong phòng."
+   "notes": "Không xử lý lạnh; = 90 % gió thải các phòng phục vụ; biến tần giữ áp ống; van gió động cơ tại mỗi miệng bù, mở theo tín hiệu chạy quạt tủ/chụp/EAF tương ứng."
   },
   {
    "tag": "FAF-2.02",
-   "type": "Quạt cấp bù FAFE – In-line ly tâm + hộp lọc G4/F8",
+   "type": "Quạt cấp bù FAFE – Hộp ly tâm (cabinet) + G4/F8, biến tần",
    "qty": 1,
-   "location": "Kjeldahl room (quạt trên trần, lấy gió qua louver tường ngoài + lưới côn trùng)",
-   "airflow_m3h": 990,
+   "location": "Trên trần ST2 gần AHU-2.02; gió tươi từ LV-2.02 (≈ 9 m)",
+   "serves_rooms": [
+    "Sample treatment 2",
+    "Standard (19.72 m²)",
+    "Standard (11.90 m²)"
+   ],
+   "airflow_by_room_m3h": {
+    "Sample treatment 2": 15138,
+    "Standard (19.72 m²)": 8442,
+    "Standard (11.90 m²)": 1170
+   },
+   "airflow_m3h": 24750,
    "esp_Pa": 400,
    "filter_box_Pa": 285,
    "fan_total_pressure_Pa": 685,
-   "motor_kW": 0.37,
-   "electrical_kW": 0.37,
-   "voltage_phase": "220V/1P",
-   "FLA_A_est": 2.3,
-   "duct_connection_mm": "250x150",
-   "cooling_kW": 0,
-   "heater_kW": 0,
-   "notes": "Không xử lý lạnh; = 90 % gió thải phòng; biến tần, liên động với quạt hút/tủ hood trong phòng."
-  },
-  {
-   "tag": "FAF-2.03",
-   "type": "Quạt cấp bù FAFE – Hộp ly tâm (cabinet) + G4/F8",
-   "qty": 1,
-   "location": "Sample treatment 1 (quạt trên trần, lấy gió qua louver tường ngoài + lưới côn trùng)",
-   "airflow_m3h": 7299,
-   "esp_Pa": 400,
-   "filter_box_Pa": 285,
-   "fan_total_pressure_Pa": 685,
-   "motor_kW": 3,
-   "electrical_kW": 3,
+   "motor_kW": 11,
+   "electrical_kW": 11,
    "voltage_phase": "380V/3P",
-   "FLA_A_est": 6.3,
-   "duct_connection_mm": "650x400",
+   "FLA_A_est": 23.1,
+   "duct_connection_mm": "1750x500",
    "cooling_kW": 0,
    "heater_kW": 0,
-   "notes": "Không xử lý lạnh; = 90 % gió thải phòng; biến tần, liên động với quạt hút/tủ hood trong phòng."
+   "notes": "Không xử lý lạnh; = 90 % gió thải các phòng phục vụ; biến tần giữ áp ống; van gió động cơ tại mỗi miệng bù, mở theo tín hiệu chạy quạt tủ/chụp/EAF tương ứng."
   },
   {
-   "tag": "FAF-2.04",
-   "type": "Quạt cấp bù FAFE – Hộp ly tâm (cabinet) + G4/F8",
+   "tag": "EAF-2.01",
+   "type": "Quạt hút EAF – Ly tâm, vỏ/cánh SS304, biến tần",
    "qty": 1,
-   "location": "Sample treatment 2 (quạt trên trần, lấy gió qua louver tường ngoài + lưới côn trùng)",
-   "airflow_m3h": 16578,
+   "location": "Trên trần Kjeldahl sát lối đi → DP-2.01",
+   "serves": "Chụp treo Digestion + Kjeldahl, tủ hóa chất ST1",
+   "airflow_by_point_m3h": [
+    {
+     "room": "Digestion room",
+     "type": "Ecan",
+     "m3h": 1100
+    },
+    {
+     "room": "Kjeldahl room",
+     "type": "Ecan",
+     "m3h": 1100
+    },
+    {
+     "room": "Sample treatment 1",
+     "type": "Ecab",
+     "m3h": 1300
+    }
+   ],
+   "airflow_m3h": 3500,
    "esp_Pa": 400,
-   "filter_box_Pa": 285,
-   "fan_total_pressure_Pa": 685,
-   "motor_kW": 7.5,
-   "electrical_kW": 7.5,
-   "voltage_phase": "380V/3P",
-   "FLA_A_est": 15.8,
-   "duct_connection_mm": "1200x500",
-   "cooling_kW": 0,
-   "heater_kW": 0,
-   "notes": "Không xử lý lạnh; = 90 % gió thải phòng; biến tần, liên động với quạt hút/tủ hood trong phòng."
-  },
-  {
-   "tag": "FAF-2.05",
-   "type": "Quạt cấp bù FAFE – Hộp ly tâm (cabinet) + G4/F8",
-   "qty": 1,
-   "location": "Standard (19.72 m²) (quạt trên trần, lấy gió qua louver tường ngoài + lưới côn trùng)",
-   "airflow_m3h": 6129,
-   "esp_Pa": 400,
-   "filter_box_Pa": 285,
-   "fan_total_pressure_Pa": 685,
-   "motor_kW": 3,
-   "electrical_kW": 3,
-   "voltage_phase": "380V/3P",
-   "FLA_A_est": 6.3,
-   "duct_connection_mm": "550x400",
-   "cooling_kW": 0,
-   "heater_kW": 0,
-   "notes": "Không xử lý lạnh; = 90 % gió thải phòng; biến tần, liên động với quạt hút/tủ hood trong phòng."
-  },
-  {
-   "tag": "FAF-2.06",
-   "type": "Quạt cấp bù FAFE – In-line ly tâm + hộp lọc G4/F8",
-   "qty": 1,
-   "location": "Standard (11.90 m²) (quạt trên trần, lấy gió qua louver tường ngoài + lưới côn trùng)",
-   "airflow_m3h": 2043,
-   "esp_Pa": 400,
-   "filter_box_Pa": 285,
-   "fan_total_pressure_Pa": 685,
+   "material": "SS304",
    "motor_kW": 0.75,
    "electrical_kW": 0.75,
    "voltage_phase": "380V/3P",
    "FLA_A_est": 1.6,
-   "duct_connection_mm": "300x250",
-   "cooling_kW": 0,
-   "heater_kW": 0,
-   "notes": "Không xử lý lạnh; = 90 % gió thải phòng; biến tần, liên động với quạt hút/tủ hood trong phòng."
-  },
-  {
-   "tag": "FAF-2.07",
-   "type": "Quạt cấp bù FAFE – In-line ly tâm + hộp lọc G4/F8",
-   "qty": 1,
-   "location": "Sample preparation (quạt trên trần, lấy gió qua louver tường ngoài + lưới côn trùng)",
-   "airflow_m3h": 1440,
-   "esp_Pa": 400,
-   "filter_box_Pa": 285,
-   "fan_total_pressure_Pa": 685,
-   "motor_kW": 0.55,
-   "electrical_kW": 0.55,
-   "voltage_phase": "220V/1P",
-   "FLA_A_est": 3.5,
-   "duct_connection_mm": "250x200",
-   "cooling_kW": 0,
-   "heater_kW": 0,
-   "notes": "Không xử lý lạnh; = 90 % gió thải phòng; biến tần, liên động với quạt hút/tủ hood trong phòng."
-  },
-  {
-   "tag": "EAF-2.01",
-   "type": "Quạt hút EAF – Ly tâm, vỏ/cánh SS304",
-   "qty": 1,
-   "location": "Chụp treo Digestion + Kjeldahl",
-   "airflow_m3h": 2200,
-   "esp_Pa": 400,
-   "material": "SS304",
-   "motor_kW": 0.55,
-   "electrical_kW": 0.55,
-   "voltage_phase": "220V/1P",
-   "FLA_A_est": 3.5,
-   "duct_connection_mm": "Ø300",
+   "duct_connection_mm": "Ø400",
    "notes": "Đặt trên trần, xả ra ngoài qua weather cover + lưới côn trùng; liên động FAF của phòng."
   },
   {
    "tag": "EAF-2.02",
-   "type": "Quạt hút EAF – Ly tâm, vỏ/cánh SS304",
+   "type": "Quạt hút EAF – Ly tâm, vỏ/cánh SS304, biến tần",
    "qty": 1,
-   "location": "Tủ hóa chất ST1",
-   "airflow_m3h": 1300,
-   "esp_Pa": 400,
-   "material": "SS304",
-   "motor_kW": 0.37,
-   "electrical_kW": 0.37,
-   "voltage_phase": "220V/1P",
-   "FLA_A_est": 2.3,
-   "duct_connection_mm": "Ø250",
-   "notes": "Đặt trên trần, xả ra ngoài qua weather cover + lưới côn trùng; liên động FAF của phòng."
-  },
-  {
-   "tag": "EAF-2.03",
-   "type": "Quạt hút EAF – Ly tâm, vỏ/cánh SS304",
-   "qty": 1,
-   "location": "Tủ hóa chất + chụp bồn rửa ST2",
+   "location": "Trên trần ST2 phía tường A → DP-2.02",
+   "serves": "Tủ hóa chất + chụp bồn rửa ST2, bồn rửa Standard 19,72, tủ hóa chất Standard 11,90",
+   "airflow_by_point_m3h": [
+    {
+     "room": "Sample treatment 2",
+     "type": "Ecab",
+     "m3h": 2600
+    },
+    {
+     "room": "Sample treatment 2",
+     "type": "Esnk",
+     "m3h": 600
+    },
+    {
+     "room": "Standard (19.72 m²)",
+     "type": "Esnk",
+     "m3h": 300
+    },
+    {
+     "room": "Standard (11.90 m²)",
+     "type": "Ecab",
+     "m3h": 1300
+    }
+   ],
    "airflow_m3h": 4800,
    "esp_Pa": 400,
    "material": "SS304",
@@ -330,33 +297,31 @@
    "notes": "Đặt trên trần, xả ra ngoài qua weather cover + lưới côn trùng; liên động FAF của phòng."
   },
   {
-   "tag": "EAF-2.04",
-   "type": "Quạt hút EAF – Ly tâm in-line, sơn tĩnh điện",
+   "tag": "EAF-2.03",
+   "type": "Quạt hút EAF – Ly tâm in-line SS304, biến tần",
    "qty": 1,
-   "location": "Arm hood Sample preparation",
-   "airflow_m3h": 1600,
+   "location": "Trên vách Sample prep / Instrument → DP-2.03 (≈ 32 m)",
+   "serves": "Arm hood Sample preparation + điểm hút Instrument",
+   "airflow_by_point_m3h": [
+    {
+     "room": "Sample preparation",
+     "type": "Earm",
+     "m3h": 1600
+    },
+    {
+     "room": "Instrument room",
+     "type": "Eins",
+     "m3h": 1200
+    }
+   ],
+   "airflow_m3h": 2800,
    "esp_Pa": 400,
-   "material": "Thép sơn epoxy (ống GI)",
-   "motor_kW": 0.37,
-   "electrical_kW": 0.37,
-   "voltage_phase": "220V/1P",
-   "FLA_A_est": 2.3,
-   "duct_connection_mm": "Ø300",
-   "notes": "Đặt trên trần, xả ra ngoài qua weather cover + lưới côn trùng; liên động FAF của phòng."
-  },
-  {
-   "tag": "EAF-2.05",
-   "type": "Quạt hút EAF – Ly tâm in-line, SS304",
-   "qty": 1,
-   "location": "Điểm hút thiết bị Instrument",
-   "airflow_m3h": 1200,
-   "esp_Pa": 400,
-   "material": "SS304",
-   "motor_kW": 0.37,
-   "electrical_kW": 0.37,
-   "voltage_phase": "220V/1P",
-   "FLA_A_est": 2.3,
-   "duct_connection_mm": "Ø250",
+   "material": "SS304 (nhánh arm hood GI)",
+   "motor_kW": 0.75,
+   "electrical_kW": 0.75,
+   "voltage_phase": "380V/3P",
+   "FLA_A_est": 1.6,
+   "duct_connection_mm": "Ø350",
    "notes": "Đặt trên trần, xả ra ngoài qua weather cover + lưới côn trùng; liên động FAF của phòng."
   },
   {
@@ -395,24 +360,13 @@
   {
    "tag": "FHF-2.04",
    "type": "Điểm cấp nguồn quạt tủ hood (quạt tích hợp, thuộc gói nội thất)",
-   "qty": 3,
+   "qty": 4,
    "location": "Standard (19.72 m²)",
-   "airflow_m3h_total": 6810,
+   "airflow_m3h_total": 9080,
    "electrical_kW_per_unit": 0.6,
    "voltage_phase": "380V/3P",
    "FLA_A_est_per_unit": 1.26,
-   "notes": "Acid → SCR-2.01: 0; hữu cơ (lọc than tại tủ) xả thẳng ống SS304: 3. HVAC cấp nguồn + điều khiển, KHÔNG cung cấp quạt."
-  },
-  {
-   "tag": "FHF-2.05",
-   "type": "Điểm cấp nguồn quạt tủ hood (quạt tích hợp, thuộc gói nội thất)",
-   "qty": 1,
-   "location": "Standard (11.90 m²)",
-   "airflow_m3h_total": 2270,
-   "electrical_kW_per_unit": 0.6,
-   "voltage_phase": "380V/3P",
-   "FLA_A_est_per_unit": 1.26,
-   "notes": "Acid → SCR-2.01: 0; hữu cơ (lọc than tại tủ) xả thẳng ống SS304: 1. HVAC cấp nguồn + điều khiển, KHÔNG cung cấp quạt."
+   "notes": "Acid → SCR-2.01: 0; hữu cơ (lọc than tại tủ) xả thẳng ống SS304: 4. HVAC cấp nguồn + điều khiển, KHÔNG cung cấp quạt."
   },
   {
    "tag": "SCR-2.01",
@@ -467,7 +421,19 @@
    "electrical_kW": 0.1,
    "voltage_phase": "220V/1P",
    "FLA_A_est": 0.63,
-   "notes": "Lượng ngưng thiết kế 70.2 L/h; tuyến > 0,8·L_max tự chảy."
+   "notes": "Lượng ngưng thiết kế 70.3 L/h; tuyến > 0,8·L_max tự chảy."
+  },
+  {
+   "tag": "CP-2.03",
+   "type": "Bơm nước ngưng có bình chứa + phao báo mức cao (cắt lạnh AHU)",
+   "qty": 1,
+   "location": "Cạnh AHU-2.02 trên trần",
+   "flow_L_h": 173.0,
+   "head_m": 6,
+   "electrical_kW": 0.1,
+   "voltage_phase": "220V/1P",
+   "FLA_A_est": 0.63,
+   "notes": "Lượng ngưng thiết kế 57.6 L/h; tuyến > 0,8·L_max tự chảy."
   }
  ]
 }

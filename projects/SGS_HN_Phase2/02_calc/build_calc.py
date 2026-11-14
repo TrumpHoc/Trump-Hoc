@@ -106,7 +106,9 @@ P = [
  ('Hstep', 'Bậc công suất sưởi điện', 3, 'kW', 'NCC điển hình'),
  ('SEC', 'DÀN NÓNG CDU'),
  ('COP', 'COP dàn nóng @37,8 °C', 3.0, '-', 'Chỉ đạo WP1'),
- ('CDUmax', 'Công suất lạnh tối đa / module CDU', 50, 'kW', 'GĐ (≈ 18–20 HP, inverter)'),
+ ('CDUmax', 'Công suất lạnh danh định tối đa / module CDU', 50, 'kW', 'GĐ (≈ 18–20 HP, inverter)'),
+ ('kref', 'Suy giảm công suất theo chiều dài ống gas', 0.002, '1/m', 'GĐ – catalogue DX điển hình (≈ −2 %/10 m)'),
+ ('Lref0', 'Chiều dài ống gas chuẩn của catalogue', 7.5, 'm', 'Catalogue điển hình'),
  ('SEC', 'QUẠT HÚT / CẤP BÙ / SCRUBBER'),
  ('ESPf', 'ESP quạt FAF (ống, louver, miệng gió – không gồm lọc)', 400, 'Pa', 'DB §1 (IFC: quạt 400 Pa)'),
  ('ESPe', 'ESP quạt EAF', 400, 'Pa', 'DB §1 (IFC)'),
@@ -219,25 +221,26 @@ t['A1'] = 'TẢI LẠNH PHÒNG & CÂN BẰNG GIÓ – PHASE 2 (v4)'; t['A1'].fon
 t['A2'] = ('Diện tích, số người, số tủ: DB §3 (DW-A-03-05/06). Chiều dài vách tiếp giáp xưởng: v3. Cân bằng khối lượng mỗi phòng: '
            'Cấp AHU + Bù FAFE + Chuyển vào = Hồi + Thải + Chuyển ra. Gió chuyển lấy từ bảng “GIÓ CHUYỂN” bên dưới.')
 ROOMS = [
- # name, group, ahu, area, ppl, wall, rh, rhmax, fh, acid, can, cab, snk, arm, ins, fmkey, FAF, EAF
- ('Digestion room', 'Hóa', 'AHU-2.01', 14.60, 2, 3.7, 'RHr', 'RHmax', 2, 2, 1, 0, 0, 0, 0, 'fm', 'FAF-2.01', 'EAF-2.01'),
- ('Kjeldahl room', 'Hóa', 'AHU-2.01', 18.88, 2, 8.8, 'RHr', 'RHmax', 0, 0, 1, 0, 0, 0, 0, 'fm', 'FAF-2.02', 'EAF-2.01'),
- ('Sample treatment 1', 'Hóa', 'AHU-2.01', 65.70, 10, 15.8, 'RHr', 'RHmax', 3, 1, 0, 1, 0, 0, 0, 'fm', 'FAF-2.03', 'EAF-2.02'),
- ('Balance room', 'Thường', 'AHU-2.01', 18.35, 4, 3.3, 'RHr', 'RHmax', 0, 0, 0, 0, 0, 0, 0, 'fm', '', ''),
- ('Sample preparation', 'Thường (có hút)', 'AHU-2.01', 58.99, 10, 8.0, 'RHr', 'RHmax', 0, 0, 0, 0, 0, 2, 0, 'fm', 'FAF-2.07', 'EAF-2.04'),
- ('Sample coding', 'Thường', 'AHU-2.01', 25.20, 2, 5.3, 'RHr', 'RHmax', 0, 0, 0, 0, 0, 0, 0, 'fm', '', ''),
- ('Sample dividing', 'Thường', 'AHU-2.01', 9.98, 1, 7.0, 'RHr', 'RHmax', 0, 0, 0, 0, 0, 0, 0, 'fm', '', ''),
- ('Reporting room', 'Thường', 'AHU-2.01', 18.02, 10, 11.6, 'RHr', 'RHmax', 0, 0, 0, 0, 0, 0, 0, 'fm', '', ''),
- ('Instrument room', 'Thường (có hút)', 'AHU-2.03', 35.82, 10, 3.9, 'RHi', 'RHi', 0, 0, 0, 0, 0, 0, 8, 'fmi', '', 'EAF-2.05'),
- ('Sample treatment 2', 'Hóa', 'AHU-2.02', 103.64, 10, 29.3, 'RHr', 'RHmax', 6, 1, 0, 3, 3, 0, 0, 'fm', 'FAF-2.04', 'EAF-2.03'),
- ('Standard (19.72 m²)', 'Hóa', 'AHU-2.02', 19.72, 2, 9.9, 'RHr', 'RHmax', 3, 0, 0, 0, 0, 0, 0, 'fm', 'FAF-2.05', ''),
- ('Standard (11.90 m²)', 'Hóa', 'AHU-2.02', 11.90, 2, 1.7, 'RHr', 'RHmax', 1, 0, 0, 0, 0, 0, 0, 'fm', 'FAF-2.06', ''),
- ('Office', 'Thường', 'AHU-2.02', 40.96, 10, 13.7, 'RHr', 'RHmax', 0, 0, 0, 0, 0, 0, 0, 'fm', '', ''),
+ # name, group, ahu, area, ppl, wall(non-A exposed, m), wallA(external wall A, m), rh, rhmax, fh, acid, can, cab, snk, arm, ins, fmkey, FAF, EAF
+ # exposed wall lengths: 03_geometry/geometry.json rooms[].exposure (WP2); exhaust split: DB §3 + WP2 (DW-A-03-06) for right block
+ ('Digestion room', 'Hóa', 'AHU-2.01', 14.60, 2, 7.65, 0, 'RHr', 'RHmax', 2, 2, 1, 0, 0, 0, 0, 'fm', 'FAF-2.01', 'EAF-2.01'),
+ ('Kjeldahl room', 'Hóa', 'AHU-2.01', 18.88, 2, 8.74, 0, 'RHr', 'RHmax', 0, 0, 1, 0, 0, 0, 0, 'fm', 'FAF-2.01', 'EAF-2.01'),
+ ('Sample treatment 1', 'Hóa', 'AHU-2.01', 65.70, 10, 15.60, 0, 'RHr', 'RHmax', 3, 1, 0, 1, 0, 0, 0, 'fm', 'FAF-2.01', 'EAF-2.01'),
+ ('Balance room', 'Thường', 'AHU-2.01', 18.35, 4, 3.215, 0, 'RHr', 'RHmax', 0, 0, 0, 0, 0, 0, 0, 'fm', '', ''),
+ ('Sample preparation', 'Thường (có hút)', 'AHU-2.01', 58.99, 10, 12.75, 0, 'RHr', 'RHmax', 0, 0, 0, 0, 0, 2, 0, 'fm', 'FAF-2.01', 'EAF-2.03'),
+ ('Sample coding', 'Thường', 'AHU-2.01', 25.20, 2, 5.305, 0, 'RHr', 'RHmax', 0, 0, 0, 0, 0, 0, 0, 'fm', '', ''),
+ ('Sample dividing', 'Thường', 'AHU-2.01', 9.98, 1, 6.85, 0, 'RHr', 'RHmax', 0, 0, 0, 0, 0, 0, 0, 'fm', '', ''),
+ ('Reporting room', 'Thường', 'AHU-2.01', 18.02, 10, 11.385, 0, 'RHr', 'RHmax', 0, 0, 0, 0, 0, 0, 0, 'fm', '', ''),
+ ('Instrument room', 'Thường (có hút)', 'AHU-2.03', 35.82, 10, 3.785, 0, 'RHi', 'RHi', 0, 0, 0, 0, 0, 0, 8, 'fmi', '', 'EAF-2.03'),
+ ('Sample treatment 2', 'Hóa', 'AHU-2.02', 103.64, 10, 13.44, 15.625, 'RHr', 'RHmax', 6, 1, 0, 2, 2, 0, 0, 'fm', 'FAF-2.02', 'EAF-2.02'),
+ ('Standard (19.72 m²)', 'Hóa', 'AHU-2.02', 19.72, 2, 9.70, 0, 'RHr', 'RHmax', 4, 0, 0, 0, 1, 0, 0, 'fm', 'FAF-2.02', 'EAF-2.02'),
+ ('Standard (11.90 m²)', 'Hóa', 'AHU-2.02', 11.90, 2, 1.75, 0, 'RHr', 'RHmax', 0, 0, 0, 1, 0, 0, 0, 'fm', 'FAF-2.02', 'EAF-2.02'),
+ ('Office', 'Thường', 'AHU-2.02', 40.96, 10, 13.475, 0, 'RHr', 'RHmax', 0, 0, 0, 0, 0, 0, 0, 'fm', '', ''),
 ]
 COLS = [
  ('stt', 'STT'), ('name', 'Phòng'), ('grp', 'Nhóm'), ('ahu', 'AHU phục vụ'), ('A', 'Diện tích (m²)'), ('H', 'Cao (m)'), ('V', 'Thể tích (m³)'),
  ('T', 'T thiết kế (°C)'), ('RH', 'RH thiết kế'), ('RHM', 'RH tối đa'), ('Ps', 'Psat (kPa)'), ('W', 'W phòng (kg/kg)'), ('h', 'h phòng (kJ/kg)'), ('WM', 'W @RH tối đa'),
- ('ppl', 'Số người'), ('eq', 'Nhiệt thiết bị (kW) – ThietBi'), ('wl', 'Dài vách giáp xưởng (m)'),
+ ('ppl', 'Số người'), ('eq', 'Nhiệt thiết bị (kW) – ThietBi'), ('wl', 'Dài vách giáp KV không ĐH (m) – WP2'), ('wlA', 'Dài vách giáp tường ngoài A (m) – WP2'),
  ('Qw', 'Q vách (W)'), ('Qc', 'Q trần (W)'), ('Ql', 'Q đèn (W)'), ('Qps', 'Q người hiện (W)'), ('Qe', 'Q thiết bị (W)'), ('RSH', 'RSH (W) ×(1+SF)'),
  ('Qpl', 'Q người ẩn (W)'), ('Qtl', 'Ẩn do gió chuyển vào (W)'), ('RLH', 'RLH (W) ×(1+SF)'),
  ('nfh', 'Tủ hood 1600'), ('nac', '…trong đó hood acid'), ('ncan', 'Chụp treo'), ('ncab', 'Tủ hóa chất'), ('nsnk', 'Chụp bồn rửa'), ('narm', 'Arm hood'), ('nins', 'Điểm hút thiết bị'),
@@ -259,14 +262,15 @@ R0 = HR + 1; RL = R0 + len(ROOMS) - 1; RT = RL + 1
 ROW = {rm[0]: R0 + i for i, rm in enumerate(ROOMS)}
 # transfer table location
 TR0 = RT + 4
-TRANS = [  # from, to, formula(lambda), path
- ('Sample treatment 1', 'Digestion room', lambda: f"{CI['E']}{ROW['Digestion room']}-{CI['M']}{ROW['Digestion room']}", 'Khe cửa / miệng gió chuyển trên vách ST1 → Digestion'),
- ('Sample treatment 1', 'Kjeldahl room', lambda: f"{CI['E']}{ROW['Kjeldahl room']}-{CI['M']}{ROW['Kjeldahl room']}", 'Khe cửa / miệng gió chuyển trên vách ST1 → Kjeldahl'),
- ('Sample preparation', 'Sample treatment 1', lambda: '+'.join(f"({CI['E']}{ROW[x]}-{CI['M']}{ROW[x]})" for x in ['Sample treatment 1', 'Digestion room', 'Kjeldahl room']),
-  'Miệng gió chuyển (có cánh chặn sáng) trên vách Sample prep / ST1 (trục 4, D–C); gồm cả phần đi tiếp sang Digestion, Kjeldahl'),
- ('Office', 'Sample treatment 2', lambda: f"{N['Toff']}", 'Miệng gió chuyển trên vách Office / ST2 (trục B)'),
- ('Sample treatment 2', 'Standard (19.72 m²)', lambda: f"{CI['E']}{ROW['Standard (19.72 m²)']}-{CI['M']}{ROW['Standard (19.72 m²)']}", 'Khe cửa Standard 19,72 (cửa mở ra ST2)'),
- ('Sample treatment 2', 'Standard (11.90 m²)', lambda: f"{CI['E']}{ROW['Standard (11.90 m²)']}-{CI['M']}{ROW['Standard (11.90 m²)']}", 'Khe cửa Standard 11,90 (cửa mở ra ST2)'),
+def _sh(rm): return f"({CI['E']}{ROW[rm]}-{CI['M']}{ROW[rm]})"   # shortfall E - FAFE of a room
+TRANS = [  # from, to, formula(lambda), path  (doors per WP2 geometry.json)
+ ('Kjeldahl room', 'Digestion room', lambda: _sh('Digestion room'), 'Khe cửa D-01 (Digestion chỉ đi qua Kjeldahl)'),
+ ('Sample treatment 1', 'Kjeldahl room', lambda: _sh('Kjeldahl room') + '+' + _sh('Digestion room'), 'Khe cửa D-02 ST1 → Kjeldahl (gồm phần đi tiếp sang Digestion)'),
+ ('Sample preparation', 'Sample treatment 1', lambda: '+'.join(_sh(x) for x in ['Sample treatment 1', 'Kjeldahl room', 'Digestion room']),
+  'Miệng gió chuyển có cánh chặn sáng trên vách chung Sample prep / ST1 (2,65 m) – gồm phần đi tiếp sang Kjeldahl, Digestion'),
+ ('Office', 'Sample treatment 2', lambda: f"{N['Toff']}", 'Khe cửa D-14 + miệng gió chuyển trên vách chung Office / ST2 (8,8 m)'),
+ ('Sample treatment 2', 'Standard (11.90 m²)', lambda: _sh('Standard (11.90 m²)') + '+' + _sh('Standard (19.72 m²)'), 'Khe cửa D-17 ST2 → Standard 11,90 (gồm phần đi tiếp sang Standard 19,72)'),
+ ('Standard (11.90 m²)', 'Standard (19.72 m²)', lambda: _sh('Standard (19.72 m²)'), 'Khe cửa D-16 Standard 11,90 → Standard 19,72'),
 ]
 TRL = TR0 + len(TRANS) - 1
 TR_FROM = f"$B${TR0}:$B${TRL}"; TR_TO = f"$C${TR0}:$C${TRL}"; TR_Q = f"$D${TR0}:$D${TRL}"; TR_LAT = f"$H${TR0}:$H${TRL}"
@@ -276,11 +280,11 @@ def rng(k):
     return f"TaiPhong!${CI[k]}${R0}:${CI[k]}${RL}"
 
 for i, rm in enumerate(ROOMS):
-    (nm, grp, ahu, A, ppl, wl, rhk, rhmk, nfh, nac, ncan, ncab, nsnk, narm, nins, fmk, faf, eaf) = rm
+    (nm, grp, ahu, A, ppl, wl, wlA, rhk, rhmk, nfh, nac, ncan, ncab, nsnk, narm, nins, fmk, faf, eaf) = rm
     r = R0 + i
     c = lambda k: f"{CI[k]}{r}"
     V = {
-     'stt': i + 1, 'name': nm, 'grp': grp, 'ahu': ahu, 'A': A, 'ppl': ppl, 'wl': wl,
+     'stt': i + 1, 'name': nm, 'grp': grp, 'ahu': ahu, 'A': A, 'ppl': ppl, 'wl': wl, 'wlA': wlA,
      'nfh': nfh, 'nac': nac, 'ncan': ncan, 'ncab': ncab, 'nsnk': nsnk, 'narm': narm, 'nins': nins,
      'FAF': faf, 'EAF': eaf,
      'H': f"={N['H']}", 'V': f"={c('A')}*{c('H')}", 'T': f"={N['Tr']}", 'RH': f"={N[rhk]}", 'RHM': f"={N[rhmk]}",
@@ -289,7 +293,7 @@ for i, rm in enumerate(ROOMS):
      'h': f"=1.006*{c('T')}+{c('W')}*(2501+1.86*{c('T')})",
      'WM': f"=0.622*{c('RHM')}*{c('Ps')}/({N['P']}-{c('RHM')}*{c('Ps')})",
      'eq': f"=SUMIF({EQ_B},{c('name')},{EQ_K})/1000",
-     'Qw': f"={c('wl')}*{c('H')}*{N['Uw']}*({N['Tsur']}-{c('T')})",
+     'Qw': f"={c('wl')}*{c('H')}*{N['Uw']}*({N['Tsur']}-{c('T')})+{c('wlA')}*{c('H')}*{N['Uw']}*({N['To']}-{c('T')})",
      'Qc': f"={c('A')}*{N['Uc']}*({N['Tpl']}-{c('T')})",
      'Ql': f"={c('A')}*{N['LPD']}", 'Qps': f"={c('ppl')}*{N['qps']}", 'Qe': f"={c('eq')}*1000",
      'RSH': f"=({c('Qw')}+{c('Qc')}+{c('Ql')}+{c('Qps')}+{c('Qe')}+{N['SPL']}*{c('M')}*{N['rho']}*{N['cp']}*({N['To']}-{c('T')})/3.6)*(1+{N['SF']})",
@@ -320,13 +324,13 @@ for i, rm in enumerate(ROOMS):
      'LCM': f"={c('S')}*{N['rho']}*({c('WM')}-{N['Wc']})*{N['hfg']}/3.6",
      'SPT': f"=IF({c('M')}>0,MAX(0,{c('LCM')}-{c('RLH')})/({c('M')}*{N['rho']}*({N['Wo']}-{c('WM')})*{N['hfg']}/3.6),\"–\")",
      'Zp': f"={c('OAp')}/{c('S')}",
-     'Qwin': f"={c('wl')}*{c('H')}*{N['Uw']}*({N['Twr']}-{N['Tsurw']})+{c('A')}*{N['Uc']}*({N['Twr']}-{N['Tplw']})",
+     'Qwin': f"={c('wl')}*{c('H')}*{N['Uw']}*({N['Twr']}-{N['Tsurw']})+{c('wlA')}*{c('H')}*{N['Uw']}*({N['Twr']}-{N['Tw']})+{c('A')}*{N['Uc']}*({N['Twr']}-{N['Tplw']})",
      'Qrm': f"=({c('RSH')}+{c('RLH')})/1000", 'Wm2': f"={c('Qrm')}*1000/{c('A')}",
      'SCR': f"=IF({c('Eac')}>0,\"Có\",\"Không\")", 'nhf': f"={c('nfh')}",
     }
     for k, v in V.items():
         t[f"{c(k)}"] = v
-    for k in ('A', 'ppl', 'wl', 'nfh', 'nac', 'ncan', 'ncab', 'nsnk', 'narm', 'nins', 'ahu', 'grp'):
+    for k in ('A', 'ppl', 'wl', 'wlA', 'nfh', 'nac', 'ncan', 'ncab', 'nsnk', 'narm', 'nins', 'ahu', 'grp'):
         t[c(k)].fill = INP
 SUMK = ['A', 'V', 'ppl', 'eq', 'Qw', 'Qc', 'Ql', 'Qps', 'Qe', 'RSH', 'Qpl', 'Qtl', 'RLH', 'nfh', 'nac', 'ncan', 'ncab', 'nsnk', 'narm', 'nins',
         'Efh', 'Eac', 'Eor', 'Ecan', 'Ecab', 'Esnk', 'Earm', 'Eins', 'E', 'Eeaf', 'M', 'Ti', 'To', 'Net', 'OAp', 'Ss', 'Sl', 'Sa', 'S', 'R', 'LC', 'LCM', 'Qwin', 'Qrm', 'nhf']
@@ -364,7 +368,8 @@ for note in [
     '(3) Gió hồi = Cấp + Bù + Chuyển vào − Thải − Chuyển ra. (4) Gió bù FAFE không xử lý, cấp ngay trước tủ/chụp; SPL = 0 (như IFC/Phase 1) → không tính vào tải phòng/AHU.',
     '(5) “Tỷ lệ tràn FAFE chịu được” = phần gió bù chưa xử lý được phép lọt vào vùng phòng mà gió cấp vẫn giữ RH ≤ RH tối đa (chỉ xét ẩm). Phòng có tỷ lệ thấp cần bố trí miệng bù sát mặt tủ.',
     '(6) Instrument room: thải 1.200 m³/h được bù 100 % bằng gió tươi đã xử lý qua AHU-2.03 (không dùng FAFE) để giữ RH ≤ 55 %.',
-    '(7) ACH > 40 ở Kjeldahl, ST1, Instrument do mật độ nhiệt thiết bị (0,5–0,9 kW/m²); ΔT cấp đã tối đa theo T sau coil 15 °C → không giảm được bằng ΔT. Xem báo cáo §5.']:
+    '(7) ACH > 40 ở Kjeldahl, ST1, Instrument do mật độ nhiệt thiết bị (0,5–0,9 kW/m²); ΔT cấp đã tối đa theo T sau coil 15 °C → không giảm được bằng ΔT. Xem báo cáo WP1 §4.4.',
+    '(8) Số điểm hút khối phải theo bản vẽ DW-A-03-06 (WP2): ST2 6 hood + 2 tủ HC + 2 bồn rửa; Standard 19,72 4 hood + 1 bồn rửa; Standard 11,90 1 tủ HC. Chiều dài vách tiếp xúc theo 03_geometry/geometry.json.']:
     t.cell(nr, 2, note); nr += 1
 
 # =====================================================================================
@@ -378,9 +383,11 @@ for i, h in enumerate(['Hạng mục', 'Đơn vị'] + AH + ['Tổng (PA B)', 'P
     c_ = a.cell(4, i + 1, h); c_.font = B; c_.fill = HDR; c_.alignment = WR; c_.border = BD
 TPA = 'TaiPhong!'
 ROOMLIST = {ah: ', '.join(rm[0] for rm in ROOMS if rm[2] == ah) for ah in AH}
-LSUP = {'AHU-2.01': 40, 'AHU-2.02': 30, 'AHU-2.03': 15}
-LRET = {'AHU-2.01': 30, 'AHU-2.02': 25, 'AHU-2.03': 10}
-LCOND = {'AHU-2.01': 14, 'AHU-2.02': 8, 'AHU-2.03': 20}
+LSUP = {'AHU-2.01': 25, 'AHU-2.02': 20, 'AHU-2.03': 6}   # WP2 runs_for_takeoff (to farthest room centre) + ~3 m in room
+LRET = {'AHU-2.01': 22, 'AHU-2.02': 18, 'AHU-2.03': 5}
+LOA = {'AHU-2.01': 26.7, 'AHU-2.02': 4.7, 'AHU-2.03': 21.1}   # WP2: louver LV-2.0x on wall A -> AHU
+LREF = {'AHU-2.01': 42.9, 'AHU-2.02': 19.5, 'AHU-2.03': 34.4}  # WP2: refrigerant AHU -> CDU yard
+LCOND = {'AHU-2.01': 36.6, 'AHU-2.02': 13.1, 'AHU-2.03': 29.4}  # WP2: to CD-2.01 outside wall A (AHU-2.03 line incl. DH-2.01)
 AROWS = []   # (key, label, unit, func(col, tag) -> formula/value, total('sum'|None), optA('add'|None|str), note, fmt)
 def sumif(k):
     return lambda col, tag: f"=SUMIF({rng('ahu')},{col}$4,{rng(k)})"
@@ -430,9 +437,10 @@ AROWS += [
  ('condd', 'Lượng nước ngưng / ngày (24 h đỉnh)', 'L/ngày', lambda col, tag: f"={col}{{cond}}*24", 'sum', 'add', '', '#,##0'),
  ('Acoil', 'Diện tích mặt coil/lọc (@v mặt)', 'm²', lambda col, tag: f"={col}{{S}}/3600/{N['vCoil']}", 'sum', 'add', '', '0.00'),
  ('Aduct', 'Tiết diện cổ cấp/hồi (@v ống chính)', 'm²', lambda col, tag: f"={col}{{S}}/3600/{N['vDuct']}", None, 'f:={c}{{S}}/3600/' + N['vDuct'], '', '0.000'),
- ('Lsup', 'Chiều dài tuyến cấp xa nhất (ước tính)', 'm', lambda col, tag: LSUP[tag], None, None, 'GĐ từ DW-A-03-05 – WP3 kiểm lại', '0'),
+ ('Lsup', 'Chiều dài tuyến cấp xa nhất (ước tính)', 'm', lambda col, tag: LSUP[tag], None, None, 'WP2 runs_for_takeoff + 3 m – WP3 kiểm lại', '0'),
  ('Lret', 'Chiều dài tuyến hồi xa nhất (ước tính)', 'm', lambda col, tag: LRET[tag], None, None, 'GĐ – WP3 kiểm lại', '0'),
- ('ESPe', 'ESP ước tính = (Lc + Lh)·f·(1+k) + đầu cuối', 'Pa', lambda col, tag: f"=({col}{{Lsup}}+{col}{{Lret}})*{N['fr']}*(1+{N['kfit']})+{N['dTerm']}", None, None, '', '0'),
+ ('Loa', 'Chiều dài ống gió tươi louver → AHU', 'm', lambda col, tag: LOA[tag], None, None, 'WP2 geometry.json', '0.0'),
+ ('ESPe', 'ESP ước tính = (Lc + MAX(Lh; Ltươi))·f·(1+k) + đầu cuối', 'Pa', lambda col, tag: f"=({col}{{Lsup}}+MAX({col}{{Lret}},{col}{{Loa}}))*{N['fr']}*(1+{N['kfit']})+{N['dTerm']}", None, None, '', '0'),
  ('ESP', 'ESP THIẾT KẾ = MAX(ESPmin; làm tròn(ước tính × 1,25))', 'Pa', lambda col, tag: f"=MAX({N['ESPmin']},ROUNDUP({col}{{ESPe}}*(1+{N['ESPm']})/50,0)*50)", None, None, '', '0'),
  ('dPi', 'Tổn thất trong AHU (G4 + F8 + coil + sưởi + vỏ)', 'Pa', lambda col, tag: f"={N['dG4']}+{N['dF8']}+{N['dCoil']}+{N['dHeat']}+{N['dCas']}", None, None, '', '0'),
  ('dPt', 'Áp tổng quạt', 'Pa', lambda col, tag: f"={col}{{ESP}}+{col}{{dPi}}", None, None, '', '0'),
@@ -452,12 +460,15 @@ AROWS += [
  ('dTh', 'Khả năng gia nhiệt lại của sưởi', 'K', lambda col, tag: f"={col}{{Hs}}/({col}{{S}}*{N['rho']}*{N['cp']}/3600)", None, None, '', '0.00'),
  ('Pahu', 'Điện AHU (quạt + sưởi)', 'kW', lambda col, tag: f"={col}{{Mf}}+{col}{{Hs}}", 'sum', None, '380 V/3P/50 Hz', '0.00'),
  ('Iahu', 'Dòng định mức AHU (ước tính)', 'A', lambda col, tag: f"={fla3(col + '{Mf}')}+{col}{{Hs}}*1000/(SQRT(3)*{N['V3']})", 'sum', None, '', '0.0'),
- ('Ncdu', 'Số module CDU', 'bộ', lambda col, tag: f"=ROUNDUP({col}{{Qsel}}/{N['CDUmax']},0)", 'sum', None, 'Mỗi module 1 mạch coil riêng', '0'),
- ('Qcdu', 'Công suất lạnh / module @37,8 °C (yêu cầu)', 'kW', lambda col, tag: f"={col}{{Qsel}}/{col}{{Ncdu}}", None, None, 'Inverter, R410A/R32', '0.0'),
- ('Pcdu', 'Điện / module (COP)', 'kW', lambda col, tag: f"={col}{{Qcdu}}/{N['COP']}", None, None, '', '0.00'),
+ ('Lref', 'Chiều dài ống gas AHU → bãi CDU (một chiều)', 'm', lambda col, tag: LREF[tag], None, None, 'WP2 geometry.json', '0.0'),
+ ('kref', 'Hệ số suy giảm công suất do chiều dài ống gas', '-', lambda col, tag: f"=MAX(0.85,1-{N['kref']}*MAX(0,{col}{{Lref}}-{N['Lref0']}))", None, None, 'GĐ: −0,2 %/m sau 7,5 m', '0.000'),
+ ('Ncdu', 'Số module CDU', 'bộ', lambda col, tag: f"=ROUNDUP({col}{{Qsel}}/{col}{{kref}}/{N['CDUmax']},0)", 'sum', None, 'Mỗi module 1 mạch coil riêng', '0'),
+ ('Qcdu', 'Công suất lạnh thực / module @37,8 °C, sau suy giảm ống (yêu cầu)', 'kW', lambda col, tag: f"={col}{{Qsel}}/{col}{{Ncdu}}", None, None, 'Inverter, R410A/R32', '0.0'),
+ ('Qcdun', 'Công suất danh định / module @37,8 °C, ống chuẩn (chọn máy)', 'kW', lambda col, tag: f"={col}{{Qcdu}}/{col}{{kref}}", None, None, 'Dùng để chọn model', '0.0'),
+ ('Pcdu', 'Điện / module (danh định / COP)', 'kW', lambda col, tag: f"={col}{{Qcdun}}/{N['COP']}", None, None, '', '0.00'),
  ('Icdu', 'Dòng / module (ước tính)', 'A', lambda col, tag: f"={col}{{Pcdu}}*1000/(SQRT(3)*{N['V3']}*{N['PF']})", None, None, '380 V/3P', '0.0'),
  ('PcduT', 'Tổng điện CDU', 'kW', lambda col, tag: f"={col}{{Pcdu}}*{col}{{Ncdu}}", 'sum', None, '', '0.00'),
- ('Lc', 'Chiều dài ống nước ngưng tới điểm thoát (ước tính)', 'm', lambda col, tag: LCOND[tag], None, None, 'GĐ – điểm thoát tường E/A, WP2/WP3 xác nhận', '0'),
+ ('Lc', 'Chiều dài ống nước ngưng tới điểm thoát (ước tính)', 'm', lambda col, tag: LCOND[tag], None, None, 'WP2: tới CD-2.01 ngoài tường A', '0'),
  ('Lmax', 'Chiều dài tự chảy tối đa = H_khả dụng / độ dốc', 'm', lambda col, tag: f"={N['Hav']}/{N['slope']}", None, None, '', '0.0'),
  ('CPn', 'Cần bơm nước ngưng?', '', lambda col, tag: f"=IF({col}{{Lc}}>{N['CPk']}*{col}{{Lmax}},\"Cần bơm\",\"Tự chảy\")", None, None, 'Bơm nếu L > 0,8·L_max', '@'),
 ]
@@ -572,21 +583,14 @@ q = wb.create_sheet('QuatHut_Bu')
 q['A1'] = 'QUẠT CẤP BÙ FAF, QUẠT HÚT EAF, QUẠT TỦ HOOD, SCRUBBER'; q['A1'].font = BT
 q['A2'] = 'Áp tổng quạt FAF = ESP (IFC 400 Pa) + hộp lọc G4+F8 (trung bình). EAF: ESP 400 Pa. Công suất trục = Q·ΔP/(3600·η). Động cơ = cỡ IEC ≥ 1,15 × trục.'
 def tp(k, room): return f"TaiPhong!${CI[k]}${ROW[room]}"
-FAFS = [
- ('FAF-2.01', 'Digestion room', 'Hộp ly tâm (cabinet) + G4/F8'),
- ('FAF-2.02', 'Kjeldahl room', 'In-line ly tâm + hộp lọc G4/F8'),
- ('FAF-2.03', 'Sample treatment 1', 'Hộp ly tâm (cabinet) + G4/F8'),
- ('FAF-2.04', 'Sample treatment 2', 'Hộp ly tâm (cabinet) + G4/F8'),
- ('FAF-2.05', 'Standard (19.72 m²)', 'Hộp ly tâm (cabinet) + G4/F8'),
- ('FAF-2.06', 'Standard (11.90 m²)', 'In-line ly tâm + hộp lọc G4/F8'),
- ('FAF-2.07', 'Sample preparation', 'In-line ly tâm + hộp lọc G4/F8'),
+FAFS = [  # tag, rooms served, type, location (WP2 equipment_proposed)
+ ('FAF-2.01', ['Digestion room', 'Kjeldahl room', 'Sample treatment 1', 'Sample preparation'], 'Hộp ly tâm (cabinet) + G4/F8, biến tần', 'Trên trần ST1 sát lối đi; gió tươi từ LV-2.01 (≈ 32 m)'),
+ ('FAF-2.02', ['Sample treatment 2', 'Standard (19.72 m²)', 'Standard (11.90 m²)'], 'Hộp ly tâm (cabinet) + G4/F8, biến tần', 'Trên trần ST2 gần AHU-2.02; gió tươi từ LV-2.02 (≈ 9 m)'),
 ]
 EAFS = [
- ('EAF-2.01', 'Chụp treo Digestion + Kjeldahl', [('Ecan', 'Digestion room'), ('Ecan', 'Kjeldahl room')], 'SS304', 'Ly tâm, vỏ/cánh SS304'),
- ('EAF-2.02', 'Tủ hóa chất ST1', [('Ecab', 'Sample treatment 1')], 'SS304', 'Ly tâm, vỏ/cánh SS304'),
- ('EAF-2.03', 'Tủ hóa chất + chụp bồn rửa ST2', [('Ecab', 'Sample treatment 2'), ('Esnk', 'Sample treatment 2')], 'SS304', 'Ly tâm, vỏ/cánh SS304'),
- ('EAF-2.04', 'Arm hood Sample preparation', [('Earm', 'Sample preparation')], 'Thép sơn epoxy (ống GI)', 'Ly tâm in-line, sơn tĩnh điện'),
- ('EAF-2.05', 'Điểm hút thiết bị Instrument', [('Eins', 'Instrument room')], 'SS304', 'Ly tâm in-line, SS304'),
+ ('EAF-2.01', 'Chụp treo Digestion + Kjeldahl, tủ hóa chất ST1', [('Ecan', 'Digestion room'), ('Ecan', 'Kjeldahl room'), ('Ecab', 'Sample treatment 1')], 'SS304', 'Ly tâm, vỏ/cánh SS304, biến tần', 'Trên trần Kjeldahl sát lối đi → DP-2.01'),
+ ('EAF-2.02', 'Tủ hóa chất + chụp bồn rửa ST2, bồn rửa Standard 19,72, tủ hóa chất Standard 11,90', [('Ecab', 'Sample treatment 2'), ('Esnk', 'Sample treatment 2'), ('Esnk', 'Standard (19.72 m²)'), ('Ecab', 'Standard (11.90 m²)')], 'SS304', 'Ly tâm, vỏ/cánh SS304, biến tần', 'Trên trần ST2 phía tường A → DP-2.02'),
+ ('EAF-2.03', 'Arm hood Sample preparation + điểm hút Instrument', [('Earm', 'Sample preparation'), ('Eins', 'Instrument room')], 'SS304 (nhánh arm hood GI)', 'Ly tâm in-line SS304, biến tần', 'Trên vách Sample prep / Instrument → DP-2.03 (≈ 32 m)'),
 ]
 r = 4
 q.cell(r, 1, 'A. QUẠT CẤP BÙ FAF (gió tươi không xử lý lạnh, lọc G4+F8, cấp trước tủ/chụp; liên động theo quạt hút trong phòng, biến tần theo số tủ đang chạy)').font = B
@@ -598,10 +602,10 @@ for i, h in enumerate(FH_):
 r += 1
 QR = {}
 F0 = r
-for tag, room, typ in FAFS:
+for tag, rms, typ, loc in FAFS:
     QR[tag] = r
-    q.cell(r, 1, tag); q.cell(r, 2, room)
-    q.cell(r, 3, f"={tp('E', room)}"); q.cell(r, 4, f"={tp('fm', room)}"); q.cell(r, 5, f"={tp('M', room)}")
+    q.cell(r, 1, tag); q.cell(r, 2, ', '.join(rms))
+    q.cell(r, 3, '=' + '+'.join(tp('E', x) for x in rms)); q.cell(r, 4, f"=E{r}/C{r}"); q.cell(r, 5, '=' + '+'.join(tp('M', x) for x in rms))
     q.cell(r, 6, f"={N['ESPf']}"); q.cell(r, 7, f"={N['dG4']}+{N['dF8']}"); q.cell(r, 8, f"=F{r}+G{r}")
     q.cell(r, 9, f"=E{r}/3600*H{r}/{N['ETA']}/1000"); q.cell(r, 10, '=' + motor(f"I{r}"))
     q.cell(r, 11, f"=IF(J{r}>={N['M3']},\"380V/3P\",\"220V/1P\")")
@@ -620,7 +624,7 @@ for i, h in enumerate(EH_):
     c_ = q.cell(r, i + 1, h); c_.font = B; c_.fill = HDR; c_.alignment = WR; c_.border = BD
 r += 1
 E0 = r
-for tag, desc, parts, mat, typ in EAFS:
+for tag, desc, parts, mat, typ, loc in EAFS:
     QR[tag] = r
     q.cell(r, 1, tag); q.cell(r, 2, desc); q.cell(r, 3, ', '.join(sorted(set(p[1] for p in parts)))); q.cell(r, 4, mat)
     q.cell(r, 5, '=' + '+'.join(tp(k, rm) for k, rm in parts))
@@ -640,7 +644,7 @@ r += 1
 for i, h in enumerate(['Tag', 'Phòng', 'Số tủ', '…acid → scrubber', '…hữu cơ → xả thẳng SS304', 'Lưu lượng (m³/h)', 'kW/tủ', 'Tổng kW', 'Điện', 'FLA/tủ (A)']):
     c_ = q.cell(r, i + 1, h); c_.font = B; c_.fill = HDR; c_.alignment = WR; c_.border = BD
 r += 1
-HF = [('FHF-2.01', 'Digestion room'), ('FHF-2.02', 'Sample treatment 1'), ('FHF-2.03', 'Sample treatment 2'), ('FHF-2.04', 'Standard (19.72 m²)'), ('FHF-2.05', 'Standard (11.90 m²)')]
+HF = [('FHF-2.01', 'Digestion room'), ('FHF-2.02', 'Sample treatment 1'), ('FHF-2.03', 'Sample treatment 2'), ('FHF-2.04', 'Standard (19.72 m²)')]
 H0 = r
 for tag, room in HF:
     QR[tag] = r
@@ -718,15 +722,15 @@ for j, tag in enumerate(AH):
                 f"=AHU!{col}{AR['Iahu']}", f"=D{{r}}*J{{r}}", f'="OA "&TEXT(AHU!{col}{AR["OA"]},"#,##0")&" m³/h; hiện "&TEXT(AHU!{col}{AR["Qssel"]},"0.0")&" kW; quạt "&TEXT(AHU!{col}{AR["Mf"]},"0.0")&" kW; ngưng "&TEXT(AHU!{col}{AR["cond"]},"0.0")&" kg/h"'])
 for j, tag in enumerate(AH):
     col = CL(3 + j); ct = 'CDU-2.0' + tag[-1]
-    SCH.append([ct, 'Dàn nóng DX inverter (R410A/R32) ghép AHU – module', f"=AHU!{col}{AR['Ncdu']}", f'Ngoài nhà – cho {tag}', '', '', f"=AHU!{col}{AR['Qcdu']}", '',
-                f"=AHU!{col}{AR['Pcdu']}", '380V/3P', f"=AHU!{col}{AR['Icdu']}", f"=D{{r}}*J{{r}}", 'Công suất yêu cầu mỗi module tại 37,8 °C; COP 3,0'])
-for tag, room, typ in FAFS:
+    SCH.append([ct, 'Dàn nóng DX inverter (R410A/R32) ghép AHU – module', f"=AHU!{col}{AR['Ncdu']}", f'Bãi CDU ngoài tường A – cho {tag}', '', '', f"=AHU!{col}{AR['Qcdun']}", '',
+                f"=AHU!{col}{AR['Pcdu']}", '380V/3P', f"=AHU!{col}{AR['Icdu']}", f"=D{{r}}*J{{r}}", f'="Danh định/module @37,8 °C; thực sau suy giảm ống gas "&TEXT(AHU!{col}{AR["Qcdu"]},"0.0")&" kW (L "&AHU!{col}{AR["Lref"]}&" m); COP 3,0"'])
+for tag, rms, typ, loc in FAFS:
     rr = QR[tag]
-    SCH.append([tag, 'Quạt cấp bù FAFE – ' + typ, '1', room, f"=QuatHut_Bu!E{rr}", f"=QuatHut_Bu!F{rr}", '', '', f"=QuatHut_Bu!J{rr}", f"=QuatHut_Bu!K{rr}",
-                f"=QuatHut_Bu!L{rr}", f"=D{{r}}*J{{r}}", 'Gió tươi không xử lý; ESP ngoài hộp lọc; lọc G4+F8 thêm ' + str(100 + 185) + ' Pa; biến tần (quạt 1 pha: động cơ EC 0–10 V)'])
-for tag, desc, parts, mat, typ in EAFS:
+    SCH.append([tag, 'Quạt cấp bù FAFE – ' + typ, '1', loc + '; phục vụ ' + ', '.join(rms), f"=QuatHut_Bu!E{rr}", f"=QuatHut_Bu!F{rr}", '', '', f"=QuatHut_Bu!J{rr}", f"=QuatHut_Bu!K{rr}",
+                f"=QuatHut_Bu!L{rr}", f"=D{{r}}*J{{r}}", 'Gió tươi không xử lý; ESP ngoài hộp lọc; lọc G4+F8 thêm ' + str(100 + 185) + ' Pa; biến tần theo áp ống; van gió động cơ ON/OFF tại mỗi tủ/chụp liên động quạt tủ'])
+for tag, desc, parts, mat, typ, loc in EAFS:
     rr = QR[tag]
-    SCH.append([tag, 'Quạt hút EAF – ' + typ, '1', desc, f"=QuatHut_Bu!E{rr}", f"=QuatHut_Bu!F{rr}", '', '', f"=QuatHut_Bu!J{rr}", f"=QuatHut_Bu!K{rr}",
+    SCH.append([tag, 'Quạt hút EAF – ' + typ, '1', loc + '; phục vụ ' + desc, f"=QuatHut_Bu!E{rr}", f"=QuatHut_Bu!F{rr}", '', '', f"=QuatHut_Bu!J{rr}", f"=QuatHut_Bu!K{rr}",
                 f"=QuatHut_Bu!L{rr}", f"=D{{r}}*J{{r}}", 'Vật liệu: ' + mat + '; xả ngoài + weather cover + lưới côn trùng'])
 for tag, room in HF:
     rr = QR[tag]
@@ -803,7 +807,7 @@ for j, tag in enumerate(AH):
      (f"{tag}: Coil khử ẩm (W vào > W ra) và RH vào ≤ 100 %", f"={A_('Wmix')}-{A_('Wc')}", '> 0', f"AND(C{{r}}>0,{A_('RHmix')}<=1)"),
      (f"{tag}: Tải coil ≥ Σ tải phòng (RSH + RLH)", f"={A_('Qt')}-{A_('RSH')}-{A_('RLH')}", '≥ 0', 'C{r}>=0'),
      (f"{tag}: CDU Σ module ≥ công suất chọn", f"={A_('Ncdu')}*{A_('Qcdu')}-{A_('Qsel')}", '≥ 0', 'C{r}>=-0.01'),
-     (f"{tag}: CDU module ≤ giới hạn module", f"={A_('Qcdu')}", f"≤ CDUmax", f"C{{r}}<={N['CDUmax']}+0.01"),
+     (f"{tag}: CDU module (danh định) ≤ giới hạn module", f"={A_('Qcdun')}", f"≤ CDUmax", f"C{{r}}<={N['CDUmax']}+0.01"),
      (f"{tag}: Sưởi đông – T sau sưởi ≥ T cấp yêu cầu (phòng ≥ 18 °C)", f"={A_('Two')}-{A_('Twq')}", '≥ 0', 'C{r}>=0'),
      (f"{tag}: Động cơ quạt ≥ 1,15 × trục", f"={A_('Mf')}/{A_('Pf')}", '≥ 1,15', f"C{{r}}>={N['MM']}-0.0001"),
      (f"{tag}: ESP thiết kế ≥ ESP ước tính tuyến", f"={A_('ESP')}-{A_('ESPe')}", '≥ 0', 'C{r}>=0'),
@@ -900,8 +904,9 @@ if shutil.which('soffice') and os.environ.get('NORECALC') != '1':
         trans.append({'from': tv.cell(rr, 2).value, 'to': tv.cell(rr, 3).value, 'flow_m3h': rnd(tv.cell(rr, 4).value, 0), 'path': tv.cell(rr, 5).value})
     rooms = []
     eaf_of = {}
-    for tag, desc, parts, mat, typ in EAFS:
-        for _, rm in parts: eaf_of.setdefault(rm, []).append(tag)
+    for tag, desc, parts, mat, typ, loc in EAFS:
+        for _, rm in parts:
+            if tag not in eaf_of.setdefault(rm, []): eaf_of[rm].append(tag)
     hf_of = {room: tag for tag, room in HF}
     for rm in ROOMS:
         rr = ROW[rm[0]]; v = lambda k: tv[f"{CI[k]}{rr}"].value
@@ -921,13 +926,13 @@ if shutil.which('soffice') and os.environ.get('NORECALC') != '1':
             'transfer_in_m3h': rnd(v('Ti'), 0), 'transfer_out_m3h': rnd(v('To'), 0),
             'transfer_in_from': [x['from'] for x in trans if x['to'] == rm[0]], 'transfer_out_to': [x['to'] for x in trans if x['from'] == rm[0]],
             'supply_minus_return_m3h': rnd(v('Net'), 0),
-            'serving_FAF': v('FAF') or None, 'serving_EAF': eaf_of.get(rm[0], []), 'hood_fan_power_points': hf_of.get(rm[0]) if v('nfh') else None,
+            'serving_FAF': v('FAF') or None, 'serving_EAF': eaf_of.get(rm[0], []), 'hood_fan_power_points': hf_of.get(rm[0]),
             'scrubber': v('SCR') == 'Có', 'latent_check': v('LOK'), 'tolerable_FAFE_spill_fraction': rnd(v('SPT'), 4) if isinstance(v('SPT'), (int, float)) else None,
         })
     ahus = {}
     for j, tag in enumerate(AH):
         col = CL(3 + j)
-        ahus[tag] = {k: rnd(av[f"{col}{AR[k]}"].value, 5 if k == 'Wmix' else 3 if k == 'RHmix' else 2) for k in ('S', 'OA', 'Ret', 'Vot', 'Net', 'X', 'Qt', 'Qs', 'Ql', 'Qsel', 'Qssel', 'Hs', 'ESP', 'dPt', 'Tsup', 'Mf', 'Pf', 'cond', 'Tmix', 'Wmix', 'RHmix', 'Ncdu', 'Qcdu', 'Pcdu', 'Icdu', 'Pahu', 'Iahu', 'Acoil', 'Aduct', 'CPn', 'Lc')}
+        ahus[tag] = {k: rnd(av[f"{col}{AR[k]}"].value, 5 if k == 'Wmix' else 3 if k == 'RHmix' else 2) for k in ('S', 'OA', 'Ret', 'Vot', 'Net', 'X', 'Qt', 'Qs', 'Ql', 'Qsel', 'Qssel', 'Hs', 'ESP', 'dPt', 'Tsup', 'Mf', 'Pf', 'cond', 'Tmix', 'Wmix', 'RHmix', 'Ncdu', 'Qcdu', 'Qcdun', 'kref', 'Lref', 'Loa', 'Pcdu', 'Icdu', 'Pahu', 'Iahu', 'Acoil', 'Aduct', 'CPn', 'Lc')}
     json.dump({'project': 'SGS Hai Phong – H&N Phase 2 – HVAC', 'source': 'HVAC_Phase2_Calc_v4.xlsx (TaiPhong)', 'units': 'm3/h, W, kW, °C',
                'transfers': trans, 'rooms': rooms,
                'totals': {'supply_m3h': rnd(tv[f"{CI['S']}{RT}"].value, 0), 'exhaust_m3h': rnd(tv[f"{CI['E']}{RT}"].value, 0), 'makeup_FAFE_m3h': rnd(tv[f"{CI['M']}{RT}"].value, 0),
@@ -949,19 +954,22 @@ if shutil.which('soffice') and os.environ.get('NORECALC') != '1':
     for j, tag in enumerate(AH):
         d = ahus[tag]
         eq.append({'tag': 'CDU-2.0' + tag[-1], 'type': 'Dàn nóng DX inverter R410A/R32 (module ghép AHU)', 'qty': int(d['Ncdu']), 'location': 'Ngoài nhà, móng BT (xây dựng) – cho ' + tag,
-                   'cooling_kW_per_unit_at_37.8C': d['Qcdu'], 'electrical_kW_per_unit': d['Pcdu'], 'voltage_phase': '380V/3P/50Hz', 'FLA_A_est_per_unit': d['Icdu'],
-                   'notes': f"Tổng {rnd(d['Qcdu']*d['Ncdu'],1)} kW ≥ {d['Qsel']} kW yêu cầu; COP 3,0; mỗi module một mạch coil riêng trong {tag}."})
-    for tag, room, typ in FAFS:
+                   'cooling_kW_per_unit_nominal_at_37.8C': d['Qcdun'], 'cooling_kW_per_unit_actual_after_pipe_derate': d['Qcdu'], 'refrigerant_pipe_length_m': d['Lref'], 'pipe_derate_factor': d['kref'], 'electrical_kW_per_unit': d['Pcdu'], 'voltage_phase': '380V/3P/50Hz', 'FLA_A_est_per_unit': d['Icdu'],
+                   'location': 'Bãi CDU ngoài tường A (phía nam ram dốc) – cho ' + tag,
+                   'notes': f"Tổng thực {rnd(d['Qcdu']*d['Ncdu'],1)} kW ≥ {d['Qsel']} kW yêu cầu; COP 3,0; mỗi module một mạch coil riêng trong {tag}."})
+    for tag, rms, typ, loc in FAFS:
         rr = QR[tag]
         Q_ = qv[f'E{rr}'].value
-        eq.append({'tag': tag, 'type': 'Quạt cấp bù FAFE – ' + typ, 'qty': 1, 'location': room + ' (quạt trên trần, lấy gió qua louver tường ngoài + lưới côn trùng)',
+        eq.append({'tag': tag, 'type': 'Quạt cấp bù FAFE – ' + typ, 'qty': 1, 'location': loc, 'serves_rooms': rms,
+                   'airflow_by_room_m3h': {x: rnd(tv[f"{CI['M']}{ROW[x]}"].value, 0) for x in rms},
                    'airflow_m3h': rnd(Q_, 0), 'esp_Pa': qv[f'F{rr}'].value, 'filter_box_Pa': qv[f'G{rr}'].value, 'fan_total_pressure_Pa': qv[f'H{rr}'].value,
                    'motor_kW': qv[f'J{rr}'].value, 'electrical_kW': qv[f'J{rr}'].value, 'voltage_phase': qv[f'K{rr}'].value, 'FLA_A_est': rnd(qv[f'L{rr}'].value, 1),
                    'duct_connection_mm': rect(qv[f'N{rr}'].value, 500), 'cooling_kW': 0, 'heater_kW': 0,
-                   'notes': 'Không xử lý lạnh; = 90 % gió thải phòng; biến tần, liên động với quạt hút/tủ hood trong phòng.'})
-    for tag, desc, parts, mat, typ in EAFS:
+                   'notes': 'Không xử lý lạnh; = 90 % gió thải các phòng phục vụ; biến tần giữ áp ống; van gió động cơ tại mỗi miệng bù, mở theo tín hiệu chạy quạt tủ/chụp/EAF tương ứng.'})
+    for tag, desc, parts, mat, typ, loc in EAFS:
         rr = QR[tag]
-        eq.append({'tag': tag, 'type': 'Quạt hút EAF – ' + typ, 'qty': 1, 'location': desc, 'airflow_m3h': rnd(qv[f'E{rr}'].value, 0), 'esp_Pa': qv[f'F{rr}'].value,
+        eq.append({'tag': tag, 'type': 'Quạt hút EAF – ' + typ, 'qty': 1, 'location': loc, 'serves': desc,
+                   'airflow_by_point_m3h': [{'room': rm_, 'type': k_x, 'm3h': rnd(tv[f"{CI[k_x]}{ROW[rm_]}"].value, 0)} for k_x, rm_ in parts], 'airflow_m3h': rnd(qv[f'E{rr}'].value, 0), 'esp_Pa': qv[f'F{rr}'].value,
                    'material': mat, 'motor_kW': qv[f'J{rr}'].value, 'electrical_kW': qv[f'J{rr}'].value, 'voltage_phase': qv[f'K{rr}'].value,
                    'FLA_A_est': rnd(qv[f'L{rr}'].value, 1), 'duct_connection_mm': f"Ø{qv[f'N{rr}'].value}",
                    'notes': 'Đặt trên trần, xả ra ngoài qua weather cover + lưới côn trùng; liên động FAF của phòng.'})

@@ -1,7 +1,7 @@
 # CƠ SỞ THIẾT KẾ HVAC – SGS HẢI PHÒNG, KHU H&N PHASE 2 (NHÀ XƯỞNG 3)
 
 > Tài liệu gốc cho mọi bước tính toán, thiết kế và BOQ. Mọi số liệu dùng trong `02_calc` … `06_boq` phải truy được về đây hoặc về `00_inputs`.
-> Phiên bản: v1.0 – 14/11/2026. Tổng thầu: **GGV (Greengrow Việt)**; thầu phụ MEP coi như cùng bên GGV.
+> Phiên bản: v1.1 – 14/11/2026 (cập nhật phân bổ điểm hút theo bản vẽ – WP2; gió bù 100 %; 3 AHU). Tổng thầu: **GGV (Greengrow Việt)**; thầu phụ MEP coi như cùng bên GGV.
 
 ## 0. Trạng thái RFI
 Toàn bộ RFI (`RFI_HVAC_SGS_HN_Phase2.xlsx`, 19 câu) **được duyệt theo giả định của GGV** (cột "Giả định tạm thời của GGV"). Bổ sung chỉ đạo của chủ trì thiết kế (14/11/2026):
@@ -33,7 +33,7 @@ Toàn bộ RFI (`RFI_HVAC_SGS_HN_Phase2.xlsx`, 19 câu) **được duyệt theo 
 | Sau coil | 15 °C / 97 % (Phase 1); gió cấp 16 °C | Phase 1 |
 | Cấp sạch | Không ISO; tối thiểu **6 ACH**; lọc **G4 + F8** | RFI I.4 |
 | Gió tươi cho người | 25 m³/h/người (TCVN 5687) cho tất cả các phòng | TCVN 5687 |
-| Chênh áp | Không yêu cầu đồng hồ; phòng hóa giữ âm áp nhẹ bằng cân bằng: **gió bù FAFE = 90 % gió thải** | quyết định thiết kế |
+| Chênh áp | Không yêu cầu (file thiết bị CĐT cột Q). **Gió bù FAFE = 100 % gió thải từng phòng** như Phase 1 (FAFE 3.100 / EAFE 3.050); không dùng gió chuyển tiếp giữa các phòng | CĐT + IFC/Phase 1 – chủ trì duyệt 14/11 |
 | Cao độ | Trần panel PU 50 mm cao **3,0 m**; thiết bị/ống trên trần (sàn kết cấu có sẵn); Phase 1 ống gió BOD FFL+4.2…6.2 m | DW-A-03-04/08, Phase 1 |
 
 ## 3. Phòng (DW-A-03-05) – 13 phòng, 441,76 m²
@@ -42,9 +42,9 @@ Toàn bộ RFI (`RFI_HVAC_SGS_HN_Phase2.xlsx`, 19 câu) **được duyệt theo 
 | Digestion room | 14,60 | 2 | 2 (2) | 1 (lò nung) | – | – | – | Hóa |
 | Kjeldahl room | 18,88 | 2 | – | 1 | – | – | – | Hóa |
 | Sample treatment 1 | 65,70 | 10 | 3 (1) | – | 1 | – | – | Hóa |
-| Sample treatment 2 | 103,64 | 10 | 6 (1) | – | 3 | 3 | – | Hóa |
-| Standard (19,72 m²) | 19,72 | 2 | 3 (0) | – | – | – | – | Hóa |
-| Standard (11,90 m²) | 11,90 | 2 | 1 (0) | – | – | – | – | Hóa |
+| Sample treatment 2 | 103,64 | 10 | 6 (1 – ST2-FH3) | – | 2 | 2 | – | Hóa |
+| Standard (19,72 m²) | 19,72 | 2 | 4 (0) | – | – | 1 | – | Hóa |
+| Standard (11,90 m²) | 11,90 | 2 | – | – | 1 (tủ khô) | – | – | Hóa |
 | Balance room | 18,35 | 4 | – | – | – | – | – | Thường |
 | Sample preparation | 58,99 | 10 | – | – | – | – | 2 arm hood × 800 | Thường (có hút) |
 | Sample coding | 25,20 | 2 | – | – | – | – | – | Thường |
@@ -56,8 +56,8 @@ Toàn bộ RFI (`RFI_HVAC_SGS_HN_Phase2.xlsx`, 19 câu) **được duyệt theo 
 Lưu lượng hút (RFI IV – GGV): hood 1600 **2.270 m³/h** (CAV, cảm biến sash chỉ báo động); chụp treo **1.100 m³/h**; tủ hóa chất **1.300 m³/h**; chụp bồn rửa **300 m³/h**; arm hood **800 m³/h**; điểm hút thiết bị phân tích **150 m³/h**. Tính tải theo **SL thiết bị khi mua đủ** (SL 2027 + bổ sung).
 
 ## 4. Phương án hệ thống (RFI duyệt theo GGV)
-1. **Điều hòa**: AHU DX (như Phase 1) + dàn nóng CDU ngoài nhà, hồi gió cho phép (kể cả phòng hóa, như Phase 1). Lọc G4+F8, sưởi điện, ESP tham khảo Phase 1 (≤ 800 Pa, phải tính lại theo tuyến ống). Phân khối sơ bộ: AHU-2.01 khối trái (trục E–C), AHU-2.02 khối phải (trục B–A). **Instrument room** tải rất lớn (~31 kW nhiệt thiết bị/35,8 m²) → được phép tách AHU riêng (AHU-2.03) nếu tính toán cho thấy hợp lý.
-2. **Gió bù**: quạt FAFE in-line/hộp, lọc G4+F8, **không xử lý lạnh**, cấp miệng gió ngay trước tủ hood/chụp; lưu lượng = 90 % gió thải từng phòng. Lấy gió tươi qua louver/weather cover + insect screen ở tường ngoài.
+1. **Điều hòa**: AHU DX (như Phase 1) + dàn nóng CDU ngoài nhà, hồi gió cho phép (kể cả phòng hóa, như Phase 1). Lọc G4+F8, sưởi điện, ESP tham khảo Phase 1 (≤ 800 Pa, phải tính lại theo tuyến ống). **Chốt 3 AHU** (chủ trì duyệt 14/11): AHU-2.01 khối trái trừ Instrument (đặt trên Balance room), AHU-2.02 khối phải (trên ST2), AHU-2.03 riêng Instrument room (chạy 24/7). Gió cấp 16,36 °C (15 °C sau coil + nhiệt quạt). Chấp nhận ACH cao ở Kjeldahl/ST1/Instrument do tải hiện.
+2. **Gió bù**: quạt FAFE in-line/hộp, lọc G4+F8, **không xử lý lạnh**, cấp miệng gió ngay trước tủ hood/chụp; lưu lượng = 100 % gió thải từng phòng. **Ngoại lệ: Instrument room** – gió hút điểm thiết bị được bù 100 % bằng gió tươi đã xử lý qua AHU-2.03 (RH ≤ 55 %). Lấy gió tươi qua louver/weather cover + insect screen ở tường ngoài.
 3. **Hút khí độc**:
    - Tủ hood (cả hữu cơ và acid) có **quạt riêng lắp sẵn theo máy** (600 W, 3 pha) – thiết bị thuộc gói nội thất; HVAC làm ống từ cổ tủ đến miệng xả/scrubber, cấp điện + điều khiển quạt từ DB.HVAC.
    - Hood hữu cơ: lọc than tại tủ → xả thẳng ra ngoài (ống SS304).
